@@ -165,4 +165,20 @@ export const getAdjustedTime = (): string => {
     return `${randomChars}${datePart}`;
   }
   
-  
+  export  function generatePassword(length: number = 8): string {
+    const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+    const symbols = "!@#$%^&*()_+{}[]<>?";
+    const allChars = upperCase + lowerCase + symbols;
+    
+    let password = "";
+    password += upperCase[Math.floor(Math.random() * upperCase.length)];
+    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    password += symbols[Math.floor(Math.random() * symbols.length)];
+    
+    for (let i = 3; i < length; i++) {
+        password += allChars[Math.floor(Math.random() * allChars.length)];
+    }
+    
+    return password.split('').sort(() => 0.5 - Math.random()).join('');
+}

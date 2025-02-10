@@ -2,7 +2,6 @@
 
 const Hapi = require("@hapi/hapi");
 import logger from "./helper/logger";
-
 import Router from "./routes";
 
 import * as DotEnv from "dotenv";

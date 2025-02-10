@@ -1,0 +1,38 @@
+import { adminRepository } from "./adminRepository";
+
+export class Resolver {
+  public adminRepository: any;
+  constructor() {
+    this.adminRepository = new adminRepository();
+  }
+  public async userSignUpV1(user_data: any, domain_code: any): Promise<any> {
+    return await this.adminRepository.userSignUpV1(user_data, domain_code);
+  }
+  public async adminloginV1(user_data: any, token_data: any): Promise<any> {
+    return await this.adminRepository.adminloginV1(user_data, token_data);
+  }
+  public async viewProfileV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.viewProfileV1(user_data, token_data, domain_code);
+  }
+  public async addPartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.addPartnersV1(user_data, token_data, domain_code);
+  }
+  public async updatePartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.updatePartnersV1(user_data, token_data, domain_code);
+  }
+  public async getPartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getPartnersV1(user_data, token_data, domain_code);
+  }
+  public async deletePartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.deletePartnersV1(user_data, token_data, domain_code);
+  }
+  public async addVendorV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.addVendorV1(user_data, token_data, domain_code);
+  }
+  public async updateVendorV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.updateVendorV1(user_data, token_data, domain_code);
+  }
+  public async deleteVendorV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.deleteVendorV1(user_data, token_data, domain_code);
+  }
+}

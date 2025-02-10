@@ -1,8 +1,8 @@
 import * as Hapi from "@hapi/hapi";
 import * as Boom from "@hapi/boom";
-import { decodeToken } from "../helper/token"
+import { decodeToken } from "../../helper/token"
 import { Resolver } from "./resolver";
-import logger from "../helper/logger";
+import logger from "../../helper/logger";
 
 export class Profile {
   public resolver: any;
@@ -28,6 +28,31 @@ export class Profile {
         .response({
           success: false,
           message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  }
+  public viewProfile = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------view profile");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.viewProfileV1(request.payload,decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in view profile:", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in view profile",
         })
         .code(500);
     }
@@ -103,6 +128,38 @@ export class Profile {
 
     } catch (error) {
       logger.error("Error in update partner", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
+  public getPartners = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    const decodedToken ={
+      id:request.plugins.token.id
+    }
+    console.log('decodedToken', decodedToken)
+    logger.info("Router-----get partners");
+    try {
+      let entity;
+      entity = await this.resolver.getPartnersV1(request.payload,decodedToken);
+      console.log('request.payload---------------------------------------------------', request.payload)
+
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in getting offers", error);
       return response
         .response({
           success: false,

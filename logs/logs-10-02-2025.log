@@ -1,0 +1,197 @@
+{"level":"error","message":"Server not running ---  this.adminRepository is not a constructor","stack":"TypeError: this.adminRepository is not a constructor\n    at new Resolver (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:6:28)\n    at new Profile (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\controller.ts:11:21)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:11:26\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:4:12)\n    at newRoutes.register (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:17:16)","timestamp":"2025-02-10T06:20:34.719Z"}
+{"level":"error","message":"Server not running ---  this.adminRepository is not a constructor","stack":"TypeError: this.adminRepository is not a constructor\n    at new Resolver (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:6:28)\n    at new Profile (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\controller.ts:11:21)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:11:26\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:4:12)\n    at newRoutes.register (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:17:16)","timestamp":"2025-02-10T06:22:53.455Z"}
+{"level":"error","message":"Server not running ---  this.adminRepository is not a constructor","stack":"TypeError: this.adminRepository is not a constructor\n    at new Resolver (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:6:28)\n    at new Profile (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\controller.ts:11:21)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:11:26\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:4:12)\n    at newRoutes.register (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:17:16)","timestamp":"2025-02-10T06:23:40.491Z"}
+{"level":"error","message":"Server not running ---  this.adminRepository is not a constructor","stack":"TypeError: this.adminRepository is not a constructor\n    at new Resolver (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:6:28)\n    at new Profile (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\controller.ts:11:21)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:11:26\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:4:12)\n    at newRoutes.register (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:17:16)","timestamp":"2025-02-10T06:24:55.606Z"}
+{"level":"error","message":"Server not running ---  this.adminRepository is not a constructor","stack":"TypeError: this.adminRepository is not a constructor\n    at new Resolver (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:6:28)\n    at new Profile (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\controller.ts:11:21)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:11:26\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:4:12)\n    at newRoutes.register (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:17:16)","timestamp":"2025-02-10T06:25:57.116Z"}
+{"level":"error","message":"Server not running ---  this.adminRepository is not a constructor","stack":"TypeError: this.adminRepository is not a constructor\n    at new Resolver (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:6:28)\n    at new Profile (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\controller.ts:11:21)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:11:26\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:4:12)\n    at newRoutes.register (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:17:16)","timestamp":"2025-02-10T06:26:00.167Z"}
+{"level":"error","message":"Server not running ---  this.adminRepository is not a constructor","stack":"TypeError: this.adminRepository is not a constructor\n    at new Resolver (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:6:28)\n    at new Profile (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\controller.ts:11:21)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:11:26\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:4:12)\n    at newRoutes.register (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:17:16)","timestamp":"2025-02-10T06:26:37.898Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:27:24.061Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-10T06:27:42.763Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-10T06:30:04.851Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:30:55.774Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:31:00.349Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:32:48.434Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-10T06:33:00.637Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:35:02.263Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:35:11.682Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:35:20.561Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:35:32.554Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-10T06:35:40.693Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:38:17.879Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:38:34.338Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-10T06:39:27.123Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:41:56.744Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-10T06:41:58.772Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:47:32.128Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:47:59.416Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T06:56:02.367Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:08:55.904Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:09:01.169Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:09:13.322Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:09:26.527Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:09:33.792Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:15:48.673Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:18:50.102Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:32:16.145Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:32:58.933Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:42:35.655Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:46:17.719Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:48:43.454Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T07:48:48.475Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:50:59.222Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T07:51:04.865Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:53:45.068Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T07:55:30.364Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T07:58:29.292Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:58:54.555Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:58:59.694Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:59:22.482Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T07:59:24.650Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T07:59:55.134Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:00:00.533Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:00:20.114Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:00:34.027Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:00:36.357Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:01:02.554Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:01:05.260Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:02:40.383Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:02:43.824Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:02:48.569Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:03:00.159Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:03:07.484Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:03:46.975Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:04:21.223Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:04:31.244Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:04:37.016Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:05:50.422Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:06:02.933Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:06:15.392Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:06:21.184Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:06:23.467Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:07:04.408Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:07:12.565Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:07:14.046Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:08:04.947Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:08:20.456Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:08:24.078Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:08:34.230Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:08:39.662Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:09:46.540Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:13:56.721Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:14:14.118Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:14:24.256Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:14:30.938Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:21:12.787Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:21:15.876Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:21:33.615Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:21:41.820Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T08:23:19.531Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T08:23:19.893Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:19:41.616Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T09:19:54.831Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:20:31.262Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:22:13.747Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:22:19.171Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:22:26.673Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:26:18.204Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T09:26:41.040Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:28:45.909Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:28:56.681Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:29:02.875Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T09:29:27.588Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T09:29:57.581Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T09:30:25.856Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:31:41.768Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:33:13.310Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:43:17.321Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:44:42.205Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:46:52.875Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:47:00.713Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:47:34.309Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T09:47:52.321Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:07:28.702Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:07:35.301Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:08:03.169Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:08:08.914Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:08:12.578Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:17:22.702Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:19:50.756Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:24:16.506Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:24:30.682Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:33:03.447Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:34:28.699Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:35:58.683Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:36:16.859Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:36:22.768Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:36:35.660Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:36:39.553Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:38:27.053Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:38:31.283Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:38:45.355Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:38:53.601Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:39:02.033Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:39:22.725Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:39:31.826Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:39:38.818Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:39:45.140Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:40:02.292Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:40:22.691Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:43:23.306Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:43:59.084Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:45:15.008Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:45:19.817Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:45:28.504Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:45:37.158Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:45:42.293Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:45:47.335Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:46:06.538Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:46:25.659Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T10:46:36.987Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:52:54.512Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:54:55.032Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:55:00.125Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:55:07.406Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T10:55:36.809Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:08:16.697Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:08:24.797Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:08:34.876Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:10:24.257Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:10:35.451Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:11:03.505Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:11:28.164Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:11:32.958Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:11:39.906Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:11:43.432Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:11:50.028Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:12:05.488Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:12:13.772Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:12:21.586Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:12:36.789Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:12:40.850Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:12:58.947Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:13:10.231Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:13:17.120Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:13:33.788Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:13:38.650Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:14:14.056Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:14:24.439Z"}
+{"level":"info","message":"Router ------------signUp","timestamp":"2025-02-10T11:16:06.399Z"}
+{"level":"error","message":"Error in userSignUp: Cannot read properties of undefined (reading 'id')","stack":"TypeError: Cannot read properties of undefined (reading 'id')\n    at adminRepository.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\adminRepository.ts:128:35)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\adminRepository.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\adminRepository.ts:4:12)\n    at adminRepository.viewProfileV1 (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\adminRepository.ts:119:16)\n    at Resolver.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:15:39)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\resolver.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-02-10T11:16:06.417Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:16:34.955Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:16:43.756Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:16:53.277Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:17:02.582Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:17:07.978Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:17:34.723Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:17:45.404Z"}
+{"level":"info","message":"Router ------------view profile","timestamp":"2025-02-10T11:17:57.022Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:18:27.723Z"}
+{"level":"info","message":"Router ------------view profile","timestamp":"2025-02-10T11:18:32.503Z"}
+{"level":"info","message":"Router ------------view profile","timestamp":"2025-02-10T11:18:49.830Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:19:14.268Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:19:22.729Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:19:31.314Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:41:15.898Z"}
+{"level":"info","message":"Router ------------view profile","timestamp":"2025-02-10T11:41:18.190Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:44:36.074Z"}
+{"level":"info","message":"Router ------------view profile","timestamp":"2025-02-10T11:44:43.815Z"}
