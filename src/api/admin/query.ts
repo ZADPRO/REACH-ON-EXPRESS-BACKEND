@@ -63,13 +63,13 @@ export const deletePartnerQuery = `
    UPDATE public."partners" SET "partnersName" = '', "mobileNumber" = '', "validityDate" = ''
 WHERE "partnersId" = $1 RETURNING *;`;
 
-export const addVendorQuery = `INSERT INTO public."customers" ("refUserId", "refCustomerName", "refCode", "refNotes", "refCustomerType")
+export const addCustomerQuery = `INSERT INTO public."customers" ("refUserId", "refCustomerName", "refCode", "refNotes", "refCustomerType")
 VALUES ($1, $2, $3, $4, $5)
 RETURNING *;`;
 
-export const updateVendorQuery = ``;
+export const updateCustomerQuery = ``;
 
-export const getVendorQuery = `SELECT "refCustomerName","refUserId", "refCode", "refNotes", "refCustomerType" FROM Public."customers" 
+export const getCustomerQuery = `SELECT "refCustomerName","refUserId", "refCode", "refNotes", "refCustomerType" FROM Public."customers" 
 WHERE "refCustomerId" = $1;`;
 
-export const deleteVendorQuery = ``;
+export const deleteCustomerQuery = ``;

@@ -195,3 +195,5 @@
 {"level":"info","message":"Router ------------view profile","timestamp":"2025-02-10T11:41:18.190Z"}
 {"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T11:44:36.074Z"}
 {"level":"info","message":"Router ------------view profile","timestamp":"2025-02-10T11:44:43.815Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-10T12:23:29.413Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-10T12:23:36.206Z"}

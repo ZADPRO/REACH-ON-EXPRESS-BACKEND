@@ -26,13 +26,16 @@ export class Resolver {
   public async deletePartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.deletePartnersV1(user_data, token_data, domain_code);
   }
-  public async addVendorV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
-    return await this.adminRepository.addVendorV1(user_data, token_data, domain_code);
+  public async addCustomerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.addCustomerV1(user_data, token_data, domain_code);
   }
-  public async updateVendorV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
-    return await this.adminRepository.updateVendorV1(user_data, token_data, domain_code);
+  public async updateCustomerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.updateCustomerV1(user_data, token_data, domain_code);
   }
-  public async deleteVendorV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
-    return await this.adminRepository.deleteVendorV1(user_data, token_data, domain_code);
+  public async getCustomerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getCustomerV1(user_data, token_data, domain_code);
+  }
+  public async deleteCustomerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.deleteCustomerV1(user_data, token_data, domain_code);
   }
 }

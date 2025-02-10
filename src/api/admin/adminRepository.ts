@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 import { generateTokenWithExpire } from "../../helper/token";
 import {
   selectUserByLogin, checkQuery, insertUserQuery, insertUserDomainQuery, insertUserCommunicationQuery,
-  addPartnerQuery, addVendorQuery, deletePartnerQuery, deleteVendorQuery, getPartnerQuery, getVendorQuery, updateHistoryQuery, updatePartnerQuery, updateVendorQuery,
+  addPartnerQuery, addCustomerQuery, deletePartnerQuery, deleteCustomerQuery, getPartnerQuery, getCustomerQuery, updateHistoryQuery, updatePartnerQuery, updateCustomerQuery,
   getLastCustomerIdQuery, getLastEmployeeIdQuery,fetchProfileData
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
@@ -175,7 +175,6 @@ export class adminRepository {
       }, false);
     }
   }
-
   public async adminloginV1(user_data: any, domain_code?: any): Promise<any> {
     try {
       const params = [user_data.login];
@@ -316,7 +315,7 @@ export class adminRepository {
         tokenData.id,
         "Update Partners",
         CurrentTime(),
-        "vendor"
+        "Customer"
       ];
       const txnHistoryResult = await client.query(updateHistoryQuery, txnHistoryParams);
       await client.query("COMMIT");
@@ -346,7 +345,6 @@ export class adminRepository {
       client.release();
     }
   }
-
   public async getPartnersV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
     console.log('token', token);
@@ -388,7 +386,6 @@ export class adminRepository {
       );
     }
   }
-
   public async deletePartnersV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     try {
@@ -448,7 +445,7 @@ export class adminRepository {
       client.release();
     }
   }
-  public async addVendorV1(user_data: any, tokendata: any): Promise<any> {
+  public async addCustomerV1(user_data: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; 
     const tokens = generateTokenWithExpire(token, true);
@@ -459,19 +456,19 @@ export class adminRepository {
         return encrypt(
           {
             success: false,
-            message: "'Vendor' must be a non-empty string.",
+            message: "'Customer' must be a non-empty string.",
             token: tokens,
           },
           false
         );
       }
-      const result = await client.query(addVendorQuery, [paymentType]);
+      const result = await client.query(addCustomerQuery, [paymentType]);
       // const insertedData = result.rows[0];
 
       const txnHistoryParams = [
         5,
         tokendata.id,
-        "add vendor",
+        "add Customer",
         CurrentTime(),
         "Admin"
       ];
@@ -480,7 +477,7 @@ export class adminRepository {
       return encrypt(
         {
           success: true,
-          message: 'vendor inserted successfully.',
+          message: 'Customer inserted successfully.',
           token: tokens,
           //data: insertedData, 
         },
@@ -488,12 +485,12 @@ export class adminRepository {
       );
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during vendor insertion:', error);
+      console.error('Error during Customer insertion:', error);
 
       return encrypt(
         {
           success: false,
-          message: 'vendor insertion failed',
+          message: 'Customer insertion failed',
           error: errorMessage,
           //   token: tokens,
         },
@@ -501,7 +498,7 @@ export class adminRepository {
       );
     }
   }
-  public async updateVendorV1(userData: any, tokenData: any): Promise<any> {
+  public async updateCustomerV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     console.log('token', token);
@@ -514,12 +511,12 @@ export class adminRepository {
       const { paymentTypeName, paymentId } = userData;
       const documentParams = [paymentTypeName, paymentId];
 
-      const paymentDetails = await client.query(updateVendorQuery, documentParams);
+      const paymentDetails = await client.query(updateCustomerQuery, documentParams);
 
       const txnHistoryParams = [
         6,
         tokenData.id,
-        "edit vendor",
+        "edit Customer",
         CurrentTime(),
         "Admin"
       ];
@@ -530,7 +527,7 @@ export class adminRepository {
       return encrypt(
         {
           success: true,
-          message: "vendor updated successfully",
+          message: "Customer updated successfully",
           //   token: tokens,
           paymentDetails: paymentDetails,
         },
@@ -541,12 +538,12 @@ export class adminRepository {
       await client.query("ROLLBACK");
 
       const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
-      console.error("Error during vendor update:", error);
+      console.error("Error during Customer update:", error);
 
       return encrypt(
         {
           success: false,
-          message: "vendor update failed",
+          message: "Customer update failed",
           error: errorMessage,
           //   token: tokens,
         },
@@ -556,7 +553,48 @@ export class adminRepository {
       client.release();
     }
   }
-  public async deleteVendorV1(userData: any, tokendata: any): Promise<any> {
+  public async getCustomerV1(user_data: any, tokendata: any): Promise<any> {
+    const token = { id: tokendata.id }; // Extract token ID
+    console.log('token', token);
+
+    // Generate token with expiration
+    const tokens = generateTokenWithExpire(token, true);
+    console.log('tokens', tokens);
+
+    try {
+      const { refCustomerId } = user_data;
+
+      // Get Restaurant/Document Details
+      const Customer = await executeQuery(getCustomerQuery, [refCustomerId]);
+
+      // Return success response
+      return encrypt(
+        {
+          success: true,
+          message: 'Returned Customer successfully',
+          token: tokens,
+          Customer: Customer,
+        },
+        false
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      console.error('Error during data retrieval:', error);
+
+      // Return error response
+      return encrypt(
+        {
+          success: false,
+          message: 'Data retrieval failed',
+          error: errorMessage,
+          token: tokens,
+        },
+        false
+      );
+    }
+  }
+  public async deleteCustomerV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     try {
       if (!userData.documentId) {
@@ -571,22 +609,22 @@ export class adminRepository {
 
       await client.query("BEGIN");
 
-      const documentRecord = await client.query(getVendorQuery, [userData.documentId]);
+      const documentRecord = await client.query(getCustomerQuery, [userData.documentId]);
       if (!documentRecord.rows || documentRecord.rows.length === 0) {
         await client.query("ROLLBACK");
         return encrypt(
           {
             success: false,
-            message: "vendor record not found",
+            message: "Customer record not found",
           },
           false
         );
       }
 
-      await client.query(deleteVendorQuery, [userData.documentId]);
+      await client.query(deleteCustomerQuery, [userData.documentId]);
 
       const TransTypeID = 7;
-      const transData = "vendor Deleted";
+      const transData = "Customer Deleted";
       const TransTime = CurrentTime();
       const updatedBy = "Admin";
       const transactionValues = [TransTypeID, tokendata.id, transData, TransTime, updatedBy];
@@ -597,17 +635,17 @@ export class adminRepository {
       return encrypt(
         {
           success: true,
-          message: "vendor deleted successfully",
+          message: "Customer deleted successfully",
         },
         false
       );
     } catch (error) {
-      console.error("Error in deleting vendor:", (error as Error).message);
+      console.error("Error in deleting Customer:", (error as Error).message);
       await client.query("ROLLBACK");
       return encrypt(
         {
           success: false,
-          message: `Error in deleting vendor: ${(error as Error).message}`,
+          message: `Error in deleting Customer: ${(error as Error).message}`,
         },
         false
       );

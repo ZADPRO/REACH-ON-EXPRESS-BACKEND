@@ -197,21 +197,21 @@ export class Profile {
         .code(500);
     }
   };
-  public addVendor = async (
+  public addCustomer = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add vendor");
+    logger.info("Router-----add Customer");
     try {
       let entity;
-      entity = await this.resolver.addVendorV1(request.payload);
+      entity = await this.resolver.addCustomerV1(request.payload);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
 
     } catch (error) {
-      logger.error("Error in add vendor", error);
+      logger.error("Error in add Customer", error);
       return response
         .response({
           success: false,
@@ -223,21 +223,21 @@ export class Profile {
         .code(500);
     }
   };
-  public updateVendor = async (
+  public updateCustomer = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----update vendor");
+    logger.info("Router-----update Customer");
     try {
       let entity;
-      entity = await this.resolver.updateVendorV1(request.payload);
+      entity = await this.resolver.updateCustomerV1(request.payload);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
 
     } catch (error) {
-      logger.error("Error in update vendor", error);
+      logger.error("Error in update Customer", error);
       return response
         .response({
           success: false,
@@ -249,21 +249,52 @@ export class Profile {
         .code(500);
     }
   };
-  public deleteVendor = async (
+  public getCustomer = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----delete vendor");
+    const decodedToken ={
+      id:request.plugins.token.id
+    }
+    console.log('decodedToken', decodedToken)
+    logger.info("Router-----get partners");
     try {
       let entity;
-      entity = await this.resolver.deleteVendorV1(request.payload);
+      entity = await this.resolver.getCustomerV1(request.payload,decodedToken);
+
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
 
     } catch (error) {
-      logger.error("Error in delete vendor", error);
+      logger.error("Error in getting customer", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
+  public deleteCustomer = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router-----delete Customer");
+    try {
+      let entity;
+      entity = await this.resolver.deleteCustomerV1(request.payload);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in delete Customer", error);
       return response
         .response({
           success: false,
