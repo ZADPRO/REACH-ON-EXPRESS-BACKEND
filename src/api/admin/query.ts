@@ -31,6 +31,9 @@ export const insertUserCommunicationQuery = `INSERT INTO public."refCommunicatio
 "refUserId", "refMobileNo", "refEmail") VALUES ($1, $2, $3)
 RETURNING *;`;
 
+
+// TESTING CODE
+
 export const fetchProfileData = `SELECT
     u."refUserFName", u."refCustomerId", u."refUserLName", u."userTypeId", 
     rc."refMobileNo", rc."refEmail", 
