@@ -8,7 +8,7 @@ SELECT
 FROM
   public."user" u
 WHERE
-  u."refCustomerId" LIKE 'R-EMP-%'
+  u."refCustId" LIKE 'R-EMP-%'
   `;
 
   export const getLastCustomerIdQuery = `
@@ -17,12 +17,12 @@ WHERE
   FROM
     public."user" u
   WHERE
-    u."refCustomerId" LIKE 'R-UNIQ-%'
+    u."refCustId" LIKE 'R-UNIQ-%'
     `;
 
 export const checkQuery = `SELECT * FROM public."refusersdomain" WHERE "refUsername"=$1 LIMIT 10;`;
-export const insertUserQuery = `INSERT INTO public."user" ( "refUserFName", "refUserLName", "userTypeId", "refCustomerId") 
-VALUES ($1, $2, $3, $4) RETURNING *;`;
+export const insertUserQuery = `INSERT INTO public."user" ( "refUserFName", "refUserLName", "designation", "userTypeId", "refCustId") 
+VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 export const insertUserDomainQuery = `INSERT INTO public."refusersdomain" (
 "refUserId", "refCustMobileNum","refCustpassword", "refCusthashedpassword", "refUsername" )
 VALUES ($1, $2,$3, $4, $5)
@@ -35,7 +35,7 @@ RETURNING *;`;
 // TESTING CODE
 
 export const fetchProfileData = `SELECT
-    u."refUserFName", u."refCustomerId", u."refUserLName", u."userTypeId", 
+    u."refUserFName", u."refCustId", u."refUserLName", u."userTypeId", 
     rc."refMobileNo", rc."refEmail", 
     rua."refCity", rua."refState", rua."refPincode",
     rud."refCustMobileNum", rud."refCustpassword", rud."refCusthashedpassword"
@@ -73,3 +73,24 @@ export const getCustomerQuery = `SELECT "refCustomerName","refUserId", "refCode"
 WHERE "refCustomerId" = $1;`;
 
 export const deleteCustomerQuery = ``;
+
+export const addPriceDetailsQuery = `INSERT INTO public."pricing"
+  ("partnersId", "refCustomerId", "minWeight", "maxWeight", "price", "weightORdimension", "refLength","refBreadth", "refHeight", "calculation", "answer") 
+  VALUES 
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) 
+  RETURNING *;`;
+
+export const insertCategoryQuery = `
+INSERT INTO public."refCategoryTable" ("refCategory") 
+VALUES ($1) RETURNING *;`;
+
+export const getAllCategoriesQuery = `
+  SELECT * FROM public."refCategoryTable";`;
+
+export const insertSubcategoryQuery = `
+  INSERT INTO public."refSubcategoryTable" ("refCategoryId", "refSubCategory") 
+  VALUES ($1, $2) RETURNING *;`;
+
+export const getAllSubcategoriesQuery = `
+  SELECT * FROM public."refSubcategoryTable";`;
+

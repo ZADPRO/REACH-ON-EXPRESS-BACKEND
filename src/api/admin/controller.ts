@@ -10,14 +10,17 @@ export class Profile {
   constructor() {
     this.resolver = new Resolver();
   }
-  public userSignUp = async (
-    request: Hapi.Request,
+  public addEmployee = async (
+    request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
     logger.info("Router ------------signUp");
     try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
       let entity;
-      entity = await this.resolver.userSignUpV1(request.payload);
+      entity = await this.resolver.addEmployeeV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -203,8 +206,11 @@ export class Profile {
   ): Promise<any> => {
     logger.info("Router-----add Customer");
     try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
       let entity;
-      entity = await this.resolver.addCustomerV1(request.payload);
+      entity = await this.resolver.addCustomerV1(request.payload,decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -306,5 +312,91 @@ export class Profile {
         .code(500);
     }
   };
-  
+  public addPricing = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router-----add price");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.addPricingV1(request.payload,decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in add price", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
+  public addCategory = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router-----add category");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.addCategoryV1(request.payload,decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in add category", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
+  public addSubCategory = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router-----add Sub category");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.addSubCategoryV1(request.payload,decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in add sub category", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
 }

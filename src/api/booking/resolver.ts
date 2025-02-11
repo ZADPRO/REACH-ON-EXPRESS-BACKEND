@@ -1,13 +1,14 @@
 import { bookingRepository } from "./bookingRepository";
 
-export class Resolver {
-  public bookingRepository: any;
+export class bookingResolver {
+  public adminRepository: any;
   constructor() {
-    this.bookingRepository = new this.bookingRepository();
+    this.adminRepository = new bookingRepository();
   }
-
-  public async addPartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
-    return await this.bookingRepository.addPartnersV1(user_data, token_data, domain_code);
+  public async parcelBookingV1(user_data: any, token_data: any, domain_code: any): Promise<any> {
+    return await this.adminRepository.parcelBookingV1(user_data, token_data, domain_code);
   }
-
+  public async viewBookingV1(user_data: any, token_data: any, domain_code: any): Promise<any> {
+    return await this.adminRepository.viewBookingV1(user_data, token_data, domain_code);
+  }
 }

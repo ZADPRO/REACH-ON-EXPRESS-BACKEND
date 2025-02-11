@@ -4,25 +4,36 @@ import IRoute from "../../helper/routes";
 import { validateToken } from "../../helper/token";
 import { booking } from "./controller";
 
-export class newRoutes implements IRoute {
-    public async register(server: any): Promise<any> {
-      return new Promise((resolve) => {
-        const controller = new booking();
-        server.route([
-          {
+
+export class bookingRoutes implements IRoute {
+  public async register(server: any): Promise<any> {
+    return new Promise((resolve) => {
+      const controller = new booking();
+      server.route([
+        {
+          method: "POST",
+          path: "/api/v1/route/bookingTest",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.parcelBooking,
+            description: "Signup Checking Validation",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+        {
             method: "POST",
-            // path: "/api/v1/Routes/Signup",
+            path: "/api/v1/route/viewBooking",
             config: {
-              handler: controller.userSignUp,
+              pre: [{ method: validateToken, assign: "token" }],
+              handler: controller.viewBooking,
               description: "Signup Checking Validation",
               tags: ["api", "users"],
               auth: false,
             },
-          },
-        
-          
-        ]);
-        resolve(true);
-      });
-    }
+          }
+      ]);
+      resolve(true);
+    });
   }
+}

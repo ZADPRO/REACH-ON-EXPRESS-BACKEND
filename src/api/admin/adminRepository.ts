@@ -10,13 +10,18 @@ import { generateTokenWithExpire } from "../../helper/token";
 import {
   selectUserByLogin, checkQuery, insertUserQuery, insertUserDomainQuery, insertUserCommunicationQuery,
   addPartnerQuery, addCustomerQuery, deletePartnerQuery, deleteCustomerQuery, getPartnerQuery, getCustomerQuery, updateHistoryQuery, updatePartnerQuery, updateCustomerQuery,
-  getLastCustomerIdQuery, getLastEmployeeIdQuery,fetchProfileData
+  getLastCustomerIdQuery, getLastEmployeeIdQuery,fetchProfileData,
+  addPriceDetailsQuery,
+  insertCategoryQuery,
+  getAllCategoriesQuery,
+  insertSubcategoryQuery,
+  getAllSubcategoriesQuery
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
 
 export class adminRepository {
-  public async userSignUpV1(userData: any, token_data?: any): Promise<any> {
+  public async addEmployeeV1(userData: any, token_data?: any): Promise<any> {
     const client: PoolClient = await getClient();
     try {
       await client.query('BEGIN');
@@ -24,6 +29,7 @@ export class adminRepository {
       console.log('genPassword line ---- 24', genPassword)
 
       const genHashedPassword = await bcrypt.hash(genPassword, 10);
+      console.log('genHashedPassword', genHashedPassword)
   
       // Check if the username already exists
       const check = [userData.temp_phone];
@@ -50,7 +56,7 @@ export class adminRepository {
       }
   
       // Insert into users table
-      const params = [userData.temp_fname, userData.temp_lname, userData.userType, newCustomerId];
+      const params = [userData.temp_fname, userData.temp_lname, userData.designation, userData.userType, newCustomerId];
       const userResult = await client.query(insertUserQuery, params);
       const newUser = userResult.rows[0];
  
@@ -101,8 +107,12 @@ export class adminRepository {
           
                   main().catch(console.error);
           return encrypt(
-            { success: true, message: "User signup successful", user: newUser, token: generateTokenWithExpire(tokenData, true) },
-            true
+            { 
+              success: true, 
+              message: "User signup successful", 
+              user: newUser, 
+             },
+            false
           );
         }
       }
@@ -118,7 +128,7 @@ export class adminRepository {
           message: "An unexpected error occurred during signup",
           error: error instanceof Error ? error.message : String(error),
         },
-        true
+        false
       );
     } finally {
       client.release();
@@ -127,9 +137,7 @@ export class adminRepository {
   public async viewProfileV1(userData: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }
     const tokens = generateTokenWithExpire(token, true)
-
     try {
-
       const refUserId = userData.refUserId;
       if (!refUserId) {
         throw new Error("Invalid refUserId. Cannot be null or undefined.");
@@ -277,6 +285,8 @@ export class adminRepository {
         {
           success: true,
           message: "Partner inserted successfully.",
+          token: tokens,
+
           data: result,
         },
         false
@@ -291,6 +301,8 @@ export class adminRepository {
           success: false,
           message: "Partner insertion failed",
           error: error instanceof Error ? error.message : "An unknown error occurred",
+          token: tokens,
+
         },
         false
       );
@@ -388,12 +400,17 @@ export class adminRepository {
   }
   public async deletePartnersV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
+    const token = { id: tokendata.id };
+    console.log('token', token);
+    const tokens = generateTokenWithExpire(token, true);
+    console.log('tokens', tokens);
     try {
       if (!userData.documentId) {
         return encrypt(
           {
             success: false,
             message: "No Id provided in the payload",
+
           },
           true
         );
@@ -408,6 +425,7 @@ export class adminRepository {
           {
             success: false,
             message: "Partner record not found",
+            token: tokens,
           },
           false
         );
@@ -428,6 +446,8 @@ export class adminRepository {
         {
           success: true,
           message: "Partner deleted successfully",
+          token: tokens,
+
         },
         false
       );
@@ -653,4 +673,214 @@ export class adminRepository {
       client.release();
     }
   }
+  public async addPricingV1(userData: any, tokendata: any): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id };
+
+    try {
+        await client.query("BEGIN"); // Start Transaction
+
+        const { partnersId, refCustomerId, minWeight, maxWeight, price, dimension, answer } = userData;
+
+        if (!partnersId || !refCustomerId || !minWeight || !maxWeight || !price) {
+            return encrypt(
+                {
+                    success: false,
+                    message: "Missing required fields.",
+                },
+                false
+            );
+        }
+
+        let params = [partnersId, refCustomerId, minWeight, maxWeight, price, dimension ? 1 : 0]; // First 6 parameters
+
+        if (dimension) {
+            const { length, breadth, height, calculation } = userData;
+
+            if (!length || !breadth || !height || !calculation) {
+                return encrypt(
+                    {
+                        success: false,
+                        message: "Missing dimension details.",
+                    },
+                    false
+                );
+            }
+            params.push(length, breadth, height, calculation); // Push remaining 4 parameters
+        } else {
+            params.push(null, null, null, null); // Fill with NULL if dimension is false
+        }
+
+        params.push(answer); // Always push answer (last parameter)
+
+        const result = await client.query(addPriceDetailsQuery, params);
+
+        // Insert transaction history
+        const txnHistoryParams = [
+            9,
+            tokendata.id,
+            "Added price details",
+            CurrentTime(),
+            "admin",
+        ];
+        await client.query(updateHistoryQuery, txnHistoryParams);
+
+        await client.query("COMMIT"); // Commit Transaction
+
+        return encrypt(
+            {
+                success: true,
+                message: "Weight details added successfully.",
+                data: result.rows,
+            },
+            false
+        );
+    } catch (error: any) {
+        await client.query("ROLLBACK"); // Rollback Transaction in case of error
+
+        console.error("Error during weight details insertion:", error);
+
+        return encrypt(
+            {
+                success: false,
+                message: "Weight details insertion failed",
+                error: error instanceof Error ? error.message : "An unknown error occurred",
+            },
+            false
+        );
+    } finally {
+        client.release(); // Release DB connection
+    }
+  }
+  public async addCategoryV1(userData: any, tokendata: any): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id }; // Extract token ID
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+        await client.query("BEGIN"); // Start Transaction
+
+        const { category } = userData;
+
+        if (!category || typeof category !== "string") {
+            return encrypt(
+                {
+                    success: false,
+                    message: "'category' must be a non-empty string.",
+                },
+                false
+            );
+        }
+
+        // Insert category into the database
+        const result = await client.query(insertCategoryQuery, [category]);
+        const insertedCategory = result.rows[0];
+
+        // Insert transaction history
+        const txnHistoryParams = [
+            10, // TransTypeID (5 -> Category Addition)
+            tokendata.id, // refUserId
+            `Add Category`, // transData
+            CurrentTime(),  // TransTime
+            "admin" // UpdatedBy
+        ];
+        await client.query(updateHistoryQuery, txnHistoryParams);
+
+        // Commit Transaction
+        await client.query("COMMIT");
+
+        // Fetch all categories after insertion
+        const allCategories = await client.query(getAllCategoriesQuery);
+
+        return encrypt(
+            {
+                success: true,
+                message: "Category inserted successfully.",
+                data: allCategories.rows, // Return all categories
+                token: tokens,
+            },
+            false
+        );
+    } catch (error: any) {
+        await client.query("ROLLBACK"); // Rollback Transaction on Error
+
+        console.error("Error inserting category:", error);
+
+        return encrypt(
+            {
+                success: false,
+                message: "Category insertion failed",
+                error: error.message || "An unknown error occurred",
+                token: tokens,
+            },
+            false
+        );
+    } finally {
+        client.release(); // Release DB connection
+    }
+  }
+  public async addSubCategoryV1(userData: any, tokendata: any): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id }; // Extract token ID
+    const tokens = generateTokenWithExpire(token, true)
+    try {
+        await client.query("BEGIN"); // Start Transaction
+
+        const { categoryId, subcategory } = userData;
+
+        if (!categoryId || !subcategory) {
+            return encrypt(
+                {
+                    success: false,
+                    message: "Missing categoryId or subcategory.",
+                },
+                false
+            );
+        }
+
+        const result = await client.query(insertSubcategoryQuery, [categoryId, subcategory]);
+
+        // Fetch all subcategories after insertion
+        const allSubcategories = await client.query(getAllSubcategoriesQuery);
+        const txnHistoryParams = [
+          11, // TransTypeID (5 -> Category Addition)
+          tokendata.id, // refUserId
+          `Add sub Category`, // transData
+          CurrentTime(),  // TransTime
+          "admin" // UpdatedBy
+      ];
+      await client.query(updateHistoryQuery, txnHistoryParams);
+      await client.query("COMMIT"); // Commit Transaction
+
+
+        return encrypt(
+            {
+                success: true,
+                message: "Subcategory inserted successfully.",
+                data: allSubcategories.rows, // Return all subcategories
+                token: tokens,
+            },
+            false
+        );
+    } catch (error: any) {
+        await client.query("ROLLBACK");
+
+        console.error("Error inserting subcategory:", error);
+
+        return encrypt(
+            {
+                success: false,
+                message: "Subcategory insertion failed",
+                error: error.message || "An unknown error occurred",
+                token: tokens,
+            },
+            false
+        );
+    } finally {
+        client.release(); 
+    }}
+
+
+
+
 }

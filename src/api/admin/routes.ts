@@ -12,9 +12,10 @@ export class newRoutes implements IRoute {
       server.route([
         {
           method: "POST",
-          path: "/api/v1/Routes/Signup",
+          path: "/api/v1/Routes/addEmployee",
           config: {
-            handler: controller.userSignUp,
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addEmployee,
             description: "Signup Checking Validation",
             tags: ["api", "users"],
             auth: false,
@@ -127,6 +128,37 @@ export class newRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "POST",
+          path: "/api/v1/Routes/addPricing",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addPricing,
+            description: "adding Pricing",
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
+          path: "/api/v1/Routes/addCategory",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addCategory,
+            description: "adding Pricing",
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
+          path: "/api/v1/Routes/addSubCategory",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addSubCategory,
+            description: "adding Pricing",
+            auth: false,
+          },
+        },
+        
         
       ]);
       resolve(true);

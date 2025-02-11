@@ -5,8 +5,8 @@ export class Resolver {
   constructor() {
     this.adminRepository = new adminRepository();
   }
-  public async userSignUpV1(user_data: any, domain_code: any): Promise<any> {
-    return await this.adminRepository.userSignUpV1(user_data, domain_code);
+  public async addEmployeeV1(user_data: any, token_data: any, domain_code: any): Promise<any> {
+    return await this.adminRepository.addEmployeeV1(user_data, token_data, domain_code);
   }
   public async adminloginV1(user_data: any, token_data: any): Promise<any> {
     return await this.adminRepository.adminloginV1(user_data, token_data);
@@ -37,5 +37,14 @@ export class Resolver {
   }
   public async deleteCustomerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.deleteCustomerV1(user_data, token_data, domain_code);
+  }
+  public async addPricingV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.addPricingV1(user_data, token_data, domain_code);
+  }
+  public async addCategoryV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.addCategoryV1(user_data, token_data, domain_code);
+  }
+  public async addSubCategoryV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.addSubCategoryV1(user_data, token_data, domain_code);
   }
 }
