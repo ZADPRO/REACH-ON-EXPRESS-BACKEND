@@ -124,9 +124,9 @@ export class bookingRepository {
                 address: bookingResult[0].consigneeAddress,
                 phone: bookingResult[0].consigneePhone,
                 email: bookingResult[0].consigneeEmail,
-                gstNumber: bookingResult[0].consigneeGSTnumber
+                gstNumber: bookingResult[0].consigneeGSTnumber,
+                customerRefNo: bookingResult[0].customerRefNo,
             },
-            customerRefNo: bookingResult[0].customerRefNo,
             contentSpecification: bookingResult[0].contentSpecification,
             paperEnclosed: bookingResult[0].paperEnclosed,
             declaredValue: bookingResult[0].declaredValue,

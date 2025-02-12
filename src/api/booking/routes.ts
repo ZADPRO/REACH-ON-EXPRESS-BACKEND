@@ -16,7 +16,7 @@ export class bookingRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.parcelBooking,
-            description: "Signup Checking Validation",
+            description: "booking ",
             tags: ["api", "users"],
             auth: false,
           },
@@ -27,7 +27,7 @@ export class bookingRoutes implements IRoute {
             config: {
               pre: [{ method: validateToken, assign: "token" }],
               handler: controller.viewBooking,
-              description: "Signup Checking Validation",
+              description: "view booking",
               tags: ["api", "users"],
               auth: false,
             },

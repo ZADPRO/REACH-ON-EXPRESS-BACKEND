@@ -3,15 +3,13 @@ export const updateHistoryQuery = `
   VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
   export const addParcelBookingQuery = `
-  INSERT INTO public.parcelbooking
-  (
+  INSERT INTO public.parcelbooking (
     "partnersId", "type", "origin", "destination", "consignorName",
     "consignorAddress", "consignorGSTnumber", "consignorPhone", "consignorEmail",
     "customerRefNo", "consigneeName", "consigneeAddress", "consigneeGSTnumber",
     "consigneePhone", "consigneeEmail", "contentSpecification", "paperEnclosed",
     "declaredValue", "NoOfPieces", "actualWeight", "dimension",
-    "height", "weight", "breadth", "chargedWeight"
-  ) 
+    "height", "weight", "breadth", "chargedWeight" ) 
  VALUES 
   (
     $1, $2, $3, $4, $5,

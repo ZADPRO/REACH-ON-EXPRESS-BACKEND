@@ -14,7 +14,7 @@ export class Profile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router ------------signUp");
+    logger.info("Router ------------add employee");
     try {
       const decodedToken ={
         id:request.plugins.token.id
@@ -26,7 +26,7 @@ export class Profile {
       }
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
-      logger.error("Error in userSignUp:", error);
+      logger.error("Error in add employee:", error);
       return response
         .response({
           success: false,
@@ -162,7 +162,7 @@ export class Profile {
       return response.response(entity).code(200); // Bad Request if failed
 
     } catch (error) {
-      logger.error("Error in getting offers", error);
+      logger.error("Error in getting partner", error);
       return response
         .response({
           success: false,
@@ -263,7 +263,7 @@ export class Profile {
       id:request.plugins.token.id
     }
     console.log('decodedToken', decodedToken)
-    logger.info("Router-----get partners");
+    logger.info("Router-----get customer");
     try {
       let entity;
       entity = await this.resolver.getCustomerV1(request.payload,decodedToken);

@@ -9,16 +9,18 @@ import jwt from "jsonwebtoken";
 import { generateTokenWithExpire } from "../../helper/token";
 import {
   selectUserByLogin, checkQuery, insertUserQuery, insertUserDomainQuery, insertUserCommunicationQuery,
-  addPartnerQuery, addCustomerQuery, deletePartnerQuery, deleteCustomerQuery, getPartnerQuery, getCustomerQuery, updateHistoryQuery, updatePartnerQuery, updateCustomerQuery,
+  addPartnerQuery, insertCustomerQuery, deletePartnerQuery, deleteCustomerQuery, getPartnerQuery, getCustomerQuery, updateHistoryQuery, updatePartnerQuery, updateCustomerQuery,
   getLastCustomerIdQuery, getLastEmployeeIdQuery,fetchProfileData,
   addPriceDetailsQuery,
   insertCategoryQuery,
   getAllCategoriesQuery,
   insertSubcategoryQuery,
-  getAllSubcategoriesQuery
+  getAllSubcategoriesQuery,
+  getLastCustomerRefIdQuery
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
+import moment from "moment";
 
 export class adminRepository {
   public async addEmployeeV1(userData: any, token_data?: any): Promise<any> {
@@ -26,10 +28,7 @@ export class adminRepository {
     try {
       await client.query('BEGIN');
       const genPassword =  generatePassword()
-      console.log('genPassword line ---- 24', genPassword)
-
       const genHashedPassword = await bcrypt.hash(genPassword, 10);
-      console.log('genHashedPassword', genHashedPassword)
   
       // Check if the username already exists
       const check = [userData.temp_phone];
@@ -68,7 +67,6 @@ export class adminRepository {
         genHashedPassword,
         userData.temp_phone,
       ];
-      console.log('domainParams line ---- 65', domainParams)
       
       const domainResult = await client.query(insertUserDomainQuery, domainParams);
   
@@ -193,8 +191,6 @@ export class adminRepository {
         console.log('user', user)
 
         // Verify the password
-        console.log('user_data.password line ---- 22', user_data.password)
-        console.log('user.refCustHashedPassword line ----', user.refCusthashedpassword)
         const validPassword = await bcrypt.compare(user_data.password, user.refCusthashedpassword);
         if (validPassword) {
           const history = [1, user.refUserId, "Login", CurrentTime(), "Admin"];
@@ -238,10 +234,6 @@ export class adminRepository {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
     const tokens = generateTokenWithExpire(token, true);
-
-
-    console.log("--->_", token);
-
 
     try {
       await client.query("BEGIN"); // Start Transaction
@@ -327,7 +319,7 @@ export class adminRepository {
         tokenData.id,
         "Update Partners",
         CurrentTime(),
-        "Customer"
+        "Admin"
       ];
       const txnHistoryResult = await client.query(updateHistoryQuery, txnHistoryParams);
       await client.query("COMMIT");
@@ -401,9 +393,7 @@ export class adminRepository {
   public async deletePartnersV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
-    console.log('token', token);
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
     try {
       if (!userData.documentId) {
         return encrypt(
@@ -465,65 +455,111 @@ export class adminRepository {
       client.release();
     }
   }
-  public async addCustomerV1(user_data: any, tokendata: any): Promise<any> {
+
+
+  public async addCustomerV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; 
+    const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
+
     try {
-      const { paymentType } = user_data;
+        await client.query("BEGIN"); // Start transaction
 
-      if (!paymentType || typeof paymentType !== "string") {
+        const { customerName, customerCode, customerType, notes } = userData;
+
+        // Validate required fields
+        if (!customerName || typeof customerName !== "string") {
+            await client.query("ROLLBACK");
+            return encrypt(
+                {
+                    success: false,
+                    message: "'customerName' must be a non-empty string.",
+                    token: tokens,
+                },
+                false
+            );
+        }
+
+        // Generate new refCustId (Pattern: R-{refCode}-100001-{MM}-{YYYY})
+        const currentMonth = moment().format("MM");
+        const currentYear = moment().format("YYYY");
+
+        // Get the last inserted customer refCustId for the given refCode
+        const lastCustomerResult = await client.query(getLastCustomerRefIdQuery, [customerCode]);
+        let nextCustomerNumber = 100001; // Default start number
+
+        if (lastCustomerResult.rows.length > 0) {
+            const lastRefCustId = lastCustomerResult.rows[0].refCustId; // Example: R-XYZ-100001-01-2025
+            const lastNumberMatch = lastRefCustId.match(/(\d{6})-\d{2}-\d{4}$/);
+
+            if (lastNumberMatch) {
+                nextCustomerNumber = parseInt(lastNumberMatch[1], 10) + 1; // Increment the last number
+            }
+        }
+
+        const refCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
+
+        // Insert Customer
+        const { rows } = await client.query(insertCustomerQuery, [
+            refCustId, 
+            customerName,
+            customerCode || null,
+            customerType ?? true, // Defaults to true if undefined
+            notes || null,
+        ]);
+
+        if (rows.length === 0) {
+            await client.query("ROLLBACK");
+            return encrypt(
+                {
+                    success: false,
+                    message: "Customer insertion failed.",
+                    token: tokens,
+                },
+                false
+            );
+        }
+
+        // Insert Transaction History
+        await client.query(updateHistoryQuery, [5, tokenData.id, "Added a customer", "Admin"]);
+
+        await client.query("COMMIT"); // Commit transaction
+
         return encrypt(
-          {
-            success: false,
-            message: "'Customer' must be a non-empty string.",
-            token: tokens,
-          },
-          false
+            {
+                success: true,
+                message: "Customer inserted successfully.",
+                token: tokens,
+                data: rows[0], // Return inserted data
+            },
+            false
         );
-      }
-      const result = await client.query(addCustomerQuery, [paymentType]);
-      // const insertedData = result.rows[0];
-
-      const txnHistoryParams = [
-        5,
-        tokendata.id,
-        "add Customer",
-        CurrentTime(),
-        "Admin"
-      ];
-      const txnHistoryResult = await client.query(updateHistoryQuery, txnHistoryParams);
-
-      return encrypt(
-        {
-          success: true,
-          message: 'Customer inserted successfully.',
-          token: tokens,
-          //data: insertedData, 
-        },
-        false
-      );
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during Customer insertion:', error);
-
-      return encrypt(
-        {
-          success: false,
-          message: 'Customer insertion failed',
-          error: errorMessage,
-          //   token: tokens,
-        },
-        false
-      );
+        await client.query("ROLLBACK"); // Rollback transaction on failure
+        console.error("Error during Customer insertion:", error);
+        
+        return encrypt(
+            {
+                success: false,
+                message: "Customer insertion failed",
+                error: error instanceof Error ? error.message : "An unknown error occurred",
+                token: tokens,
+            },
+            false
+        );
+    } finally {
+        client.release(); // Ensure client is released
     }
-  }
+}
+
+
+
+
   public async updateCustomerV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     console.log('token', token);
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
 
     try {
       await client.query("BEGIN");
@@ -548,7 +584,7 @@ export class adminRepository {
         {
           success: true,
           message: "Customer updated successfully",
-          //   token: tokens,
+          token: tokens,
           paymentDetails: paymentDetails,
         },
         false
@@ -565,7 +601,7 @@ export class adminRepository {
           success: false,
           message: "Customer update failed",
           error: errorMessage,
-          //   token: tokens,
+          token: tokens,
         },
         false
       );
@@ -878,9 +914,6 @@ export class adminRepository {
         );
     } finally {
         client.release(); 
-    }}
-
-
-
-
+    }
+  }
 }

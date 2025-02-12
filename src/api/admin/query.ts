@@ -63,9 +63,20 @@ export const deletePartnerQuery = `
    UPDATE public."partners" SET "partnersName" = '', "mobileNumber" = '', "validityDate" = ''
 WHERE "partnersId" = $1 RETURNING *;`;
 
-export const addCustomerQuery = `INSERT INTO public."customers" ("refUserId", "refCustomerName", "refCode", "refNotes", "refCustomerType")
-VALUES ($1, $2, $3, $4, $5)
-RETURNING *;`;
+
+
+export const getLastCustomerRefIdQuery = `
+    SELECT "refCustId" FROM public.customers
+    WHERE "refCode" = $1
+    ORDER BY "refCustomerId" DESC
+    LIMIT 1;
+`;
+
+export const insertCustomerQuery = `
+    INSERT INTO public."customers" ("refCustomerName", "refCode", "refCustomerType", "refNotes")
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;
+`;
 
 export const updateCustomerQuery = ``;
 

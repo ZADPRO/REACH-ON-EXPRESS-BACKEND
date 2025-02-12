@@ -40,7 +40,7 @@ export class booking {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router ------------booking ");
+    logger.info("Router ------------view booking ");
     try {
       const decodedToken ={
         id:request.plugins.token.id
@@ -53,7 +53,7 @@ export class booking {
       }
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
-      logger.error("Error in booking:", error);
+      logger.error("Error in view booking:", error);
       return response
         .response({
           success: false,
