@@ -42,12 +42,24 @@ export class newRoutes implements IRoute {
             auth: false,
           },
         },
+
         {
           method: "POST",
           path: "/api/v1/Routes/addPartners",
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addPartners,
+            description: "add partners",
+            tags: ["api", "Users"],
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/Routes/getPartner",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getPartner,
             description: "add partners",
             tags: ["api", "Users"],
             auth: false,
@@ -97,6 +109,16 @@ export class newRoutes implements IRoute {
           },
         },
         {
+          method: "GET",
+          path: "/api/v1/Routes/getCustomers",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getCustomers,
+            description: "view added Customer",
+            auth: false,
+          },
+        },
+        {
           method: "POST",
           path: "/api/v1/Routes/updateCustomer",
           config: {
@@ -118,7 +140,7 @@ export class newRoutes implements IRoute {
           },
         },
         {
-          method: "DELETE",
+          method: "POST",
           path: "/api/v1/Routes/deleteCustomer",
           config: {
             pre: [{ method: validateToken, assign: "token" }],
@@ -135,6 +157,16 @@ export class newRoutes implements IRoute {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addPricing,
             description: "add Pricing",
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/Routes/getPricing",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getPricing,
+            description: "getPricing",
             auth: false,
           },
         },

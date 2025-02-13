@@ -11,7 +11,7 @@ WHERE
   u."refCustId" LIKE 'R-EMP-%'
   `;
 
-  export const getLastCustomerIdQuery = `
+export const getLastCustomerIdQuery = `
   SELECT
     COUNT(*)
   FROM
@@ -48,22 +48,42 @@ export const selectUserByLogin = `SELECT
     "refUserId", "refCusthashedpassword"
 FROM public."refusersdomain" WHERE "refUsername" = $1 OR "refCustMobileNum" = $1;`;
 
-export const addPartnerQuery = `INSERT INTO public."partners" ("partnersName", "refUserId", "phoneNumber", "validityDate")
+export const userDetailsQuery = `
+SELECT
+  u."refUserId",
+  u."refCustId",
+  u."refUserFName",
+  u."refUserLName",
+  rud."refCustMobileNum",
+  rud."refCustpassword",
+  rud."refCusthashedpassword",
+  rud."refUsername",
+  ut."userTypeName"
+FROM
+  public."user" u
+  JOIN "refusersdomain" as rud ON u."refUserId" = rud."refUserId"
+  JOIN "usertype" ut ON u."userTypeId" = ut."userTypeId"
+WHERE
+  u."refUserId" = $1`;
+
+export const addPartnerQuery = `INSERT INTO public."partners" ("partnersName", "refUserId", "phoneNumber", "validity")
   VALUES ($1, $2, $3, $4)
   RETURNING *;`;
 
-export const updatePartnerQuery = `UPDATE public."partners" SET "partnersName" = $1, "mobileNumber" = $2, "validityDate" = $3
+export const updatePartnerQuery = `UPDATE public."partners" SET "partnersName" = $1, "phoneNumber" = $2, "validity" = $3
   WHERE "partnersId" = $4 RETURNING *;`;
 
 export const getPartnerQuery = `
-   SELECT "partnersName","refUserId", "phoneNumber", "validityDate" FROM Public."partners" 
-WHERE "partnersId" = $1;`;
+SELECT "partnersName", "refUserId", "phoneNumber", "validity" 
+FROM public."partners" 
+WHERE "partnersId" = $1 
+AND ("deletedAt" IS NULL AND "deletedBy" IS NULL);`;
 
-export const deletePartnerQuery = `
-   UPDATE public."partners" SET "partnersName" = '', "mobileNumber" = '', "validityDate" = ''
-WHERE "partnersId" = $1 RETURNING *;`;
+export const getPartnersQuery =`SELECT * FROM public."partners"`;
 
-
+export const softDeleteQuery = ` UPDATE public."partners" SET "deletedAt" = NOW(), "deletedBy" = 'Admin'
+WHERE "partnersId" = $1;
+`;
 
 export const getLastCustomerRefIdQuery = `
     SELECT "refCustId" FROM public.customers
@@ -73,23 +93,33 @@ export const getLastCustomerRefIdQuery = `
 `;
 
 export const insertCustomerQuery = `
-    INSERT INTO public."customers" ("refCustomerName", "refCode", "refCustomerType", "refNotes")
-    VALUES ($1, $2, $3, $4)
+    INSERT INTO public."customers" ("refCustId", "refCustomerName", "refCode","refNotes", "refCustomerType", "refAddress", "refPhone")
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
 `;
 
-export const updateCustomerQuery = ``;
+export const updateCustomerQuery = `UPDATE public.customers 
+SET "refCustomerName" = $1, "refCode" = $2, "refNotes" = $3, "refCustomerType" = $4
+WHERE "refCustomerId" = $5 RETURNING *;`;
 
-export const getCustomerQuery = `SELECT "refCustomerName","refUserId", "refCode", "refNotes", "refCustomerType" FROM Public."customers" 
+export const getCustomerQuery = `SELECT "refCustomerName", "refCode", "refNotes", "refCustomerType" FROM Public."customers" 
+WHERE "refCustomerId" = $1 AND ("deletedAt" IS NULL AND "deletedBy" IS NULL);`;
+
+export const getCUstomersQuery = `SELECT * FROM public."customers"`;
+
+export const customerSoftDeleteQuery = `UPDATE public."customers" SET "deletedAt" = NOW(), "deletedBy" = 'Admin'
 WHERE "refCustomerId" = $1;`;
 
-export const deleteCustomerQuery = ``;
-
 export const addPriceDetailsQuery = `INSERT INTO public."pricing"
-  ("partnersId", "refCustomerId", "minWeight", "maxWeight", "price", "weightORdimension", "refLength","refBreadth", "refHeight", "calculation", "answer") 
+  ("partnersId", "minWeight", "maxWeight", "price", "weightORdimension", "refLength","refBreadth", "refHeight", "calculation", "answer") 
   VALUES 
-  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) 
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
   RETURNING *;`;
+
+export const getPriceQuery =`SELECT *
+FROM "pricing" pr
+LEFT JOIN "partners" pa ON pr."partnersId" = pa."partnersId"
+`;  
 
 export const insertCategoryQuery = `
 INSERT INTO public."refCategoryTable" ("refCategory") 

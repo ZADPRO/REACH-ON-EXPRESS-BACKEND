@@ -2,22 +2,36 @@ export const updateHistoryQuery = `
  INSERT INTO public."reftxnhistory" ("transtypeId", "refUserId", "transdata", "transtime", "updatedBy")
   VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
-  export const addParcelBookingQuery = `
-  INSERT INTO public.parcelbooking (
-    "partnersId", "type", "origin", "destination", "consignorName",
+export const vendorLeafQuery = `SELECT "leaf" FROM public.transactionmapping WHERE "partnersId" = $1 LIMIT 1`;
+
+export const refCustIdQuery = `SELECT "refCustId" FROM public.customers WHERE "refCustomerId" = $1 LIMIT 1`;
+
+export const parcelBookingQuery = `
+INSERT INTO public.parcelbooking (
+    "partnersId", "vendorLeaf", "refCustomerId", "refCustId", "customerType",
+    "paymentId", "type", "origin", "destination", "consignorName",
     "consignorAddress", "consignorGSTnumber", "consignorPhone", "consignorEmail",
     "customerRefNo", "consigneeName", "consigneeAddress", "consigneeGSTnumber",
     "consigneePhone", "consigneeEmail", "contentSpecification", "paperEnclosed",
     "declaredValue", "NoOfPieces", "actualWeight", "dimension",
-    "height", "weight", "breadth", "chargedWeight" ) 
- VALUES 
-  (
-    $1, $2, $3, $4, $5,
+    "height", "weight", "breadth", "chargedWeight"
+) VALUES (
+    $1, $2, $3, $4, $5, 
     $6, $7, $8, $9, $10,
-    $11, $12, $13, $14, $15,
+    $11, $12, $13, $14, $15, 
     $16, $17, $18, $19, $20,
-    $21, $22, $23, $24, $25
-  )
-  RETURNING *;`;
+    $21, $22, $23, $24, $25, 
+    $26, $27, $28, $29, $30
+) RETURNING "parcelBookingId";
+`;
 
-  export const fetchParcelBookingData = `SELECT * FROM public.parcelbooking WHERE "parcelBookingId" = $1;`;
+export const updateRefStatusQuery = `UPDATE public.transactionmapping SET "refStatus" = 'Assigned' WHERE "partnersId" = $1`;
+
+
+export const getParcelBookingQuery = `
+   SELECT pb.*, tm."refStatus", c."refCustomerName" 
+    FROM public."parcelbooking" pb
+    LEFT JOIN public."transactionmapping" tm ON pb."partnersId" = tm."partnersId"
+    LEFT JOIN public."customers" c ON pb."refCustomerId" = c."refCustomerId"
+    WHERE pb."parcelBookingId" = $1;
+`;

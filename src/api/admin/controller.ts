@@ -152,9 +152,45 @@ export class Profile {
     console.log('decodedToken', decodedToken)
     logger.info("Router-----get partners");
     try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
       let entity;
       entity = await this.resolver.getPartnersV1(request.payload,decodedToken);
-      console.log('request.payload---------------------------------------------------', request.payload)
+
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in getting partner", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
+  public getPartner = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    const decodedToken ={
+      id:request.plugins.token.id
+    }
+    console.log('decodedToken', decodedToken)
+    logger.info("Router-----get partners");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.getPartnerV1(request.payload,decodedToken);
 
       if (entity.success) {
         return response.response(entity).code(201); // Created
@@ -180,8 +216,11 @@ export class Profile {
   ): Promise<any> => {
     logger.info("Router-----delete partner");
     try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
       let entity;
-      entity = await this.resolver.deletePartnersV1(request.payload);
+      entity = await this.resolver.deletePartnersV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -229,14 +268,48 @@ export class Profile {
         .code(500);
     }
   };
+  public getCustomers = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    const decodedToken ={
+      id:request.plugins.token.id
+    }
+    console.log('decodedToken', decodedToken)
+    logger.info("Router-----get customer");
+    try {
+      let entity;
+      entity = await this.resolver.getCustomersV1(request.payload,decodedToken);
+
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in getting customer", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
   public updateCustomer = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
     logger.info("Router-----update Customer");
     try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
       let entity;
-      entity = await this.resolver.updateCustomerV1(request.payload);
+      entity = await this.resolver.updateCustomerV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -292,8 +365,11 @@ export class Profile {
   ): Promise<any> => {
     logger.info("Router-----delete Customer");
     try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
       let entity;
-      entity = await this.resolver.deleteCustomerV1(request.payload);
+      entity = await this.resolver.deleteCustomerV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -330,6 +406,35 @@ export class Profile {
 
     } catch (error) {
       logger.error("Error in add price", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
+  public getPricing = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router-----get price");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.getPricingV1(request.payload,decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+
+    } catch (error) {
+      logger.error("Error in get price", error);
       return response
         .response({
           success: false,

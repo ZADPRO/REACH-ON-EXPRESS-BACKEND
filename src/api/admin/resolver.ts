@@ -23,11 +23,17 @@ export class Resolver {
   public async getPartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.getPartnersV1(user_data, token_data, domain_code);
   }
+  public async getPartnerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getPartnerV1(user_data, token_data, domain_code);
+  }
   public async deletePartnersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.deletePartnersV1(user_data, token_data, domain_code);
   }
   public async addCustomerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.addCustomerV1(user_data, token_data, domain_code);
+  }
+  public async getCustomersV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getCustomersV1(user_data, token_data, domain_code);
   }
   public async updateCustomerV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.updateCustomerV1(user_data, token_data, domain_code);
@@ -40,6 +46,9 @@ export class Resolver {
   }
   public async addPricingV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.addPricingV1(user_data, token_data, domain_code);
+  }
+  public async getPricingV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getPricingV1(user_data, token_data, domain_code);
   }
   public async addCategoryV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.addCategoryV1(user_data, token_data, domain_code);
