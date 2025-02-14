@@ -21,8 +21,9 @@ export const getLastCustomerIdQuery = `
     `;
 
 export const checkQuery = `SELECT * FROM public."refusersdomain" WHERE "refUsername"=$1 LIMIT 10;`;
-export const insertUserQuery = `INSERT INTO public."user" ( "refUserFName", "refUserLName", "designation", "userTypeId", "refCustId") 
-VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
+export const insertUserQuery = `INSERT INTO public."user" ("refUserFName", "refUserLName", "designation",  "userTypeId", "refCustId","dateOfBirth", "qualification") 
+VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+
 export const insertUserDomainQuery = `INSERT INTO public."refusersdomain" (
 "refUserId", "refCustMobileNum","refCustpassword", "refCusthashedpassword", "refUsername" )
 VALUES ($1, $2,$3, $4, $5)
@@ -31,8 +32,27 @@ export const insertUserCommunicationQuery = `INSERT INTO public."refCommunicatio
 "refUserId", "refMobileNo", "refEmail") VALUES ($1, $2, $3)
 RETURNING *;`;
 
-
+export const getAllEmployeeQuery = `SELECT
+  u."refUserId",
+  u."refCustId",
+  u."refUserFName",
+  u."refUserLName",
+  rc."refEmail", 
+  rud."refCustMobileNum",
+  rud."refCustpassword",
+  rud."refCusthashedpassword",
+  rud."refUsername",
+  ut."userTypeName" 
+FROM
+  public."user" u
+  JOIN "refusersdomain" as rud ON u."refUserId" = rud."refUserId"
+  JOIN "refCommunication" as rc ON u."refUserId" = rud."refUserId"
+  JOIN "usertype" ut ON u."userTypeId" = ut."userTypeId"
+`;
 // TESTING CODE
+
+export const getUsertypeQuery = `SELECT * FROM public."usertype"
+` ;
 
 export const fetchProfileData = `SELECT
     u."refUserFName", u."refCustId", u."refUserLName", u."userTypeId", 
@@ -58,7 +78,7 @@ SELECT
   rud."refCustpassword",
   rud."refCusthashedpassword",
   rud."refUsername",
-  ut."userTypeName"
+  ut."userTypeName" 
 FROM
   public."user" u
   JOIN "refusersdomain" as rud ON u."refUserId" = rud."refUserId"
@@ -79,7 +99,7 @@ FROM public."partners"
 WHERE "partnersId" = $1 
 AND ("deletedAt" IS NULL AND "deletedBy" IS NULL);`;
 
-export const getPartnersQuery =`SELECT * FROM public."partners"`;
+export const getPartnersQuery = `SELECT * FROM public."partners"`;
 
 export const softDeleteQuery = ` UPDATE public."partners" SET "deletedAt" = NOW(), "deletedBy" = 'Admin'
 WHERE "partnersId" = $1;
@@ -116,10 +136,10 @@ export const addPriceDetailsQuery = `INSERT INTO public."pricing"
   ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
   RETURNING *;`;
 
-export const getPriceQuery =`SELECT *
+export const getPriceQuery = `SELECT *
 FROM "pricing" pr
 LEFT JOIN "partners" pa ON pr."partnersId" = pa."partnersId"
-`;  
+`;
 
 export const insertCategoryQuery = `
 INSERT INTO public."refCategoryTable" ("refCategory") 

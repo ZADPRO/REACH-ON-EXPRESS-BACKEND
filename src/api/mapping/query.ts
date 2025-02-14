@@ -20,6 +20,11 @@ export const insertTransactionMappingQuery = (rowCount: number) => {
     `;
 };
 
+export const duplicateCheckQuery = `
+SELECT "leaf" FROM public."transactionmapping"
+WHERE "leaf" = ANY($1::text[])
+`;
+
 // export const GetUserRefCustIdQuery = `SELECT refCustId FROM users WHERE id = $1;`;
 
 // export const GetPartnerValidityQuery = `SELECT validity FROM partners WHERE id = $1;`;

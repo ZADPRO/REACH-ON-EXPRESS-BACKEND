@@ -35,6 +35,56 @@ export class Profile {
         .code(500);
     }
   }
+  public getEmployee = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------add employee");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.getEmployeeV1(request.payload, decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in get employee:", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  }
+  public getUsertype = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------get Usertype");
+    try {
+      const decodedToken ={
+        id:request.plugins.token.id
+      }
+      let entity;
+      entity = await this.resolver.getUsertypeV1(request.payload, decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in get Usertype:", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  }
   public viewProfile = async (
     request: any,
     response: Hapi.ResponseToolkit

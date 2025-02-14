@@ -22,6 +22,29 @@ export class newRoutes implements IRoute {
           },
         },
         {
+          method: "GET",
+          path: "/api/v1/Routes/getEmployee",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getEmployee,
+            description: "get Employee",
+            tags: ["api", "Users"],
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/Routes/getUsertype",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getUsertype,
+            description: "getUsertype",
+            tags: ["api", "Users"],
+            auth: false,
+          },
+        },
+        
+        {
           method: "POST",
           path: "/api/v1/Routes/viewProfile",
           config: {

@@ -21,7 +21,9 @@ import {
   customerSoftDeleteQuery,
   getPartnersQuery,
   getCUstomersQuery,
-  getPriceQuery
+  getPriceQuery,
+  getAllEmployeeQuery,
+  getUsertypeQuery
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
@@ -40,7 +42,11 @@ export class adminRepository {
       const userCheck = await client.query(checkQuery, check);
       if (userCheck.rows.length > 0) {
         await client.query('ROLLBACK');
-        return encrypt({ message: "Already exists", success: true }, false);
+        return encrypt(
+          {
+            success: true,
+            message: "Already exists"
+          }, true);
       }
 
       // Determine customer prefix based on userType
@@ -50,6 +56,7 @@ export class adminRepository {
 
       // Fetch last customer ID based on customerPrefix
       const lastCustomerResult = await client.query(lastCustomerQuery);
+      console.log('lastCustomerResult', lastCustomerResult)
       let newCustomerId: string;
 
       if (lastCustomerResult.rows.length > 0) {
@@ -60,9 +67,11 @@ export class adminRepository {
       }
 
       // Insert into users table
-      const params = [userData.temp_fname, userData.temp_lname, userData.designation, userData.userType, newCustomerId];
+      const params = [userData.temp_fname, userData.temp_lname, userData.designation, userData.userType, newCustomerId, userData.dateOfBirth, userData.qualification];
       const userResult = await client.query(insertUserQuery, params);
+      console.log('userResult', userResult)
       const newUser = userResult.rows[0];
+      console.log('newUser', newUser)
 
       // Insert into userDomain table
       const domainParams = [
@@ -74,10 +83,12 @@ export class adminRepository {
       ];
 
       const domainResult = await client.query(insertUserDomainQuery, domainParams);
+      console.log('domainResult', domainResult)
 
       // Insert into userCommunication table
       const communicationParams = [newUser.refUserId, userData.temp_phone, userData.temp_email];
       const communicationResult = await client.query(insertUserCommunicationQuery, communicationParams);
+      console.log('communicationResult', communicationResult)
 
       if (
         (userResult.rowCount ?? 0) > 0 &&
@@ -115,13 +126,18 @@ export class adminRepository {
               message: "User signup successful",
               user: newUser,
             },
-            false
+            true
           );
         }
       }
 
       await client.query('ROLLBACK');
-      return encrypt({ success: false, message: "Signup failed" }, false);
+      return encrypt(
+        {
+          success: false,
+          message: "Signup failed"
+        }, true);
+
     } catch (error: unknown) {
       await client.query('ROLLBACK');
       console.error('Error during user signup:', error);
@@ -131,7 +147,7 @@ export class adminRepository {
           message: "An unexpected error occurred during signup",
           error: error instanceof Error ? error.message : String(error),
         },
-        false
+        true
       );
     } finally {
       client.release();
@@ -184,6 +200,75 @@ export class adminRepository {
         message: `Error in Profile Page Data retrieval: ${errorMessage}`,
         token: tokens
       }, false);
+    }
+  }
+  public async getUsertypeV1(userData: any, tokendata: any): Promise<any> {
+    const token = { id: tokendata.id }; // Extract token ID
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const Usertype = await executeQuery(getUsertypeQuery);
+      console.log('Usertype', Usertype)
+
+      // Return success response
+      return encrypt(
+        {
+          success: true,
+          message: 'Returned usertype successfully',
+          token: tokens,
+          Usertype: Usertype,
+        },
+        true
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      console.error('Error during data retrieval:', error);
+
+      // Return error response
+      return encrypt(
+        {
+          success: false,
+          message: 'Data retrieval failed',
+          error: errorMessage,
+          token: tokens,
+        },
+        true
+      );
+    }
+  }
+  public async getEmployeeV1(userData: any, tokendata: any): Promise<any> {
+    const token = { id: tokendata.id }; // Extract token ID
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const Employee = await executeQuery(getAllEmployeeQuery);
+
+      // Return success response
+      return encrypt(
+        {
+          success: true,
+          message: 'Returned sub Category successfully',
+          token: tokens,
+          Employee: Employee,
+        },
+        true
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      console.error('Error during data retrieval:', error);
+
+      // Return error response
+      return encrypt(
+        {
+          success: false,
+          message: 'Data retrieval failed',
+          error: errorMessage,
+          token: tokens,
+        },
+        true
+      );
     }
   }
   public async adminloginV1(user_data: any, domain_code?: any): Promise<any> {

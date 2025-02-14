@@ -11,6 +11,12 @@ export class Resolver {
   public async adminloginV1(user_data: any, token_data: any): Promise<any> {
     return await this.adminRepository.adminloginV1(user_data, token_data);
   }
+  public async getEmployeeV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getEmployeeV1(user_data, token_data, domain_code);
+  }
+  public async getUsertypeV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getUsertypeV1(user_data, token_data, domain_code);
+  }
   public async viewProfileV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.viewProfileV1(user_data, token_data, domain_code);
   }
