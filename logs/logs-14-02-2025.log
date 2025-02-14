@@ -585,3 +585,11 @@
 {"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T11:13:46.741Z"}
 {"level":"info","message":"Router ------------get Usertype","timestamp":"2025-02-14T11:13:48.996Z"}
 {"level":"info","message":"Router ------------get Usertype","timestamp":"2025-02-14T11:13:49.022Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T11:55:30.181Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T11:55:30.303Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T11:55:34.754Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T11:55:34.785Z"}
+{"level":"info","message":"Router ------------get Usertype","timestamp":"2025-02-14T11:55:36.111Z"}
+{"level":"info","message":"Router ------------get Usertype","timestamp":"2025-02-14T11:55:36.142Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T11:58:02.478Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T11:58:26.699Z"}

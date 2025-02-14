@@ -32,6 +32,8 @@ import moment from "moment";
 export class adminRepository {
   public async addEmployeeV1(userData: any, token_data?: any): Promise<any> {
     const client: PoolClient = await getClient();
+    const token = { id: token_data.id }; // Extract token ID
+    const tokens = generateTokenWithExpire(token, true);
     try {
       await client.query('BEGIN');
       const genPassword = generatePassword()
@@ -125,6 +127,8 @@ export class adminRepository {
               success: true,
               message: "User signup successful",
               user: newUser,
+              token: tokens,
+
             },
             true
           );
@@ -135,7 +139,9 @@ export class adminRepository {
       return encrypt(
         {
           success: false,
-          message: "Signup failed"
+          message: "Signup failed",
+          token: tokens,
+
         }, true);
 
     } catch (error: unknown) {
