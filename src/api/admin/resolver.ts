@@ -53,7 +53,13 @@ export class Resolver {
   public async addCategoryV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.addCategoryV1(user_data, token_data, domain_code);
   }
+  public async getCategoryV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getCategoryV1(user_data, token_data, domain_code);
+  }
   public async addSubCategoryV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
     return await this.adminRepository.addSubCategoryV1(user_data, token_data, domain_code);
+  }
+  public async getSubCategoryV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
+    return await this.adminRepository.getSubCategoryV1(user_data, token_data, domain_code);
   }
 }

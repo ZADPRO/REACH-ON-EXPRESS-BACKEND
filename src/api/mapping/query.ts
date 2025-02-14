@@ -3,18 +3,18 @@ export const updateHistoryQuery = `
   VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
 export const getPartnerValidityQuery = `
-  SELECT "validity" FROM public."partners" WHERE "partnersId" = $1;
+  SELECT "validity" FROM public."partners" WHERE "partnersName" = $1;
 `;
 
 export const insertTransactionMappingQuery = (rowCount: number) => {
-    const valuesPlaceholder = [];
-    for (let i = 0; i < rowCount; i++) {
-        valuesPlaceholder.push(`($${i * 5 + 1}, $${i * 5 + 2}, $${i * 5 + 3}, $${i * 5 + 4}, $${i * 5 + 5})`);
-    }
+  const valuesPlaceholder = [];
+  for (let i = 0; i < rowCount; i++) {
+    valuesPlaceholder.push(`($${i * 5 + 1}, $${i * 5 + 2}, $${i * 5 + 3}, $${i * 5 + 4}, $${i * 5 + 5})`);
+  }
 
-    return `
+  return `
         INSERT INTO public."transactionmapping" 
-        ("refStatus", "partnersId", "leaf", "purchasedDate", "validityDate")
+        ("refStatus", "partnersName", "leaf", "purchasedDate", "validityDate")
         VALUES ${valuesPlaceholder.join(", ")}
         RETURNING *;
     `;
@@ -26,13 +26,13 @@ export const insertTransactionMappingQuery = (rowCount: number) => {
 
 
 
-export const transactionMappingQuery = `  SELECT 
+export const transactionMappingQuery = `SELECT 
     t.leaf AS "vendorLeaf",
     p."partnersName" AS "vendor",
-    r."refStatusName" AS "status",
+    t."refStatus" ,
     t."purchasedDate",
-    p."validity"
+    p."validity",
+    t."validityDate"
   FROM "transactionmapping" t
-  LEFT JOIN "partners" p ON t."partnersId" = p."partnersId"
-  LEFT JOIN "refStatus" r ON t."refStatusId" = r."refStatusId"
-  WHERE t."leaf" = $1;`;
+  LEFT JOIN "partners" p ON t."partnersName" = p."partnersName"
+  `;

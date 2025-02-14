@@ -181,12 +181,32 @@ export class newRoutes implements IRoute {
           },
         },
         {
+          method: "GET",
+          path: "/api/v1/Routes/getCategory",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getCategory,
+            description: "get category",
+            auth: false,
+          },
+        },
+        {
           method: "POST",
           path: "/api/v1/Routes/addSubCategory",
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addSubCategory,
             description: "add sub category",
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/Routes/getSubCategory",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getSubCategory,
+            description: "get sub category",
             auth: false,
           },
         },

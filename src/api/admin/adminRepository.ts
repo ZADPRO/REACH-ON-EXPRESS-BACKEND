@@ -1008,13 +1008,13 @@ export class adminRepository {
       await client.query("COMMIT");
 
       // Fetch all categories after insertion
-      const allCategories = await client.query(getAllCategoriesQuery);
+      // const allCategories = await client.query(getAllCategoriesQuery);
 
       return encrypt(
         {
           success: true,
           message: "Category inserted successfully.",
-          data: allCategories, // Return all categories
+          // data: allCategories, // Return all categories
           token: tokens,
         },
         true
@@ -1035,6 +1035,45 @@ export class adminRepository {
       );
     } finally {
       client.release(); // Release DB connection
+    }
+  }
+  public async getCategoryV1(userData: any, tokendata: any): Promise<any> {
+    const token = { id: tokendata.id }; // Extract token ID
+    console.log('token', token);
+
+    // Generate token with expiration
+    const tokens = generateTokenWithExpire(token, true);
+    console.log('tokens', tokens);
+
+    try {
+
+      const allCategories = await executeQuery(getAllCategoriesQuery);
+
+      // Return success response
+      return encrypt(
+        {
+          success: true,
+          message: 'Returned Category successfully',
+          token: tokens,
+          Category: allCategories,
+        },
+        true
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      console.error('Error during data retrieval:', error);
+
+      // Return error response
+      return encrypt(
+        {
+          success: false,
+          message: 'Data retrieval failed',
+          error: errorMessage,
+          token: tokens,
+        },
+        true
+      );
     }
   }
   public async addSubCategoryV1(userData: any, tokendata: any): Promise<any> {
@@ -1058,8 +1097,7 @@ export class adminRepository {
 
       const result = await client.query(insertSubcategoryQuery, [categoryId, subcategory]);
 
-      // Fetch all subcategories after insertion
-      const allSubcategories = await client.query(getAllSubcategoriesQuery);
+      // const allSubcategories = await client.query(getAllSubcategoriesQuery);
       const txnHistoryParams = [
         11, // TransTypeID (5 -> Category Addition)
         tokendata.id, // refUserId
@@ -1075,10 +1113,10 @@ export class adminRepository {
         {
           success: true,
           message: "Subcategory inserted successfully.",
-          data: allSubcategories.rows, // Return all subcategories
+          // data: allSubcategories.rows, // Return all subcategories
           token: tokens,
         },
-        false
+        true
       );
     } catch (error: any) {
       await client.query("ROLLBACK");
@@ -1092,10 +1130,46 @@ export class adminRepository {
           error: error.message || "An unknown error occurred",
           token: tokens,
         },
-        false
+        true
       );
     } finally {
       client.release();
+    }
+  }
+  public async getSubCategoryV1(userData: any, tokendata: any): Promise<any> {
+    const token = { id: tokendata.id }; // Extract token ID
+
+    // Generate token with expiration
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const allSubcategories = await executeQuery(getAllSubcategoriesQuery);
+
+      // Return success response
+      return encrypt(
+        {
+          success: true,
+          message: 'Returned sub Category successfully',
+          token: tokens,
+          SubCategory: allSubcategories,
+        },
+        true
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      console.error('Error during data retrieval:', error);
+
+      // Return error response
+      return encrypt(
+        {
+          success: false,
+          message: 'Data retrieval failed',
+          error: errorMessage,
+          token: tokens,
+        },
+        true
+      );
     }
   }
 }

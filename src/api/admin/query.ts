@@ -133,5 +133,10 @@ export const insertSubcategoryQuery = `
   VALUES ($1, $2) RETURNING *;`;
 
 export const getAllSubcategoriesQuery = `
-  SELECT * FROM public."refSubcategoryTable";`;
+  SELECT
+  rsc.*,
+  rc.*
+FROM
+  public."refSubcategoryTable" rsc
+  JOIN "refCategoryTable" as rc ON rsc."refCategoryId" = rc."refCategoryId";`;
 

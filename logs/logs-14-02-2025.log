@@ -1,0 +1,267 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:29:47.389Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-14T04:32:30.400Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-14T04:32:30.422Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-14T04:32:30.635Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-14T04:32:30.652Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:34:04.680Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:34:39.313Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:34:53.036Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:35:01.021Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:35:15.621Z"}
+{"level":"info","message":"Router-----add category","timestamp":"2025-02-14T04:35:20.829Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:36:39.445Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:37:02.178Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:38:07.874Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:38:18.592Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:38:26.927Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-14T04:39:35.058Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-14T04:40:11.066Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:40:51.835Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:41:09.078Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:41:13.214Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:41:16.950Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:41:40.969Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:41:41.241Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:41:55.608Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:42:15.470Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:42:29.189Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:42:29.901Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:43:02.549Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:43:07.579Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:43:20.977Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:43:42.357Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:43:46.040Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:43:48.448Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/Routes/addSubCategory conflicts with existing /api/v1/Routes/addSubCategory","name":"AssertError","stack":"AssertError: New route /api/v1/Routes/addSubCategory conflicts with existing /api/v1/Routes/addSubCategory\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\INDHU\\Desktop\\JP-Backend\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\INDHU\\Desktop\\JP-Backend\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\INDHU\\Desktop\\JP-Backend\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\INDHU\\Desktop\\JP-Backend\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:12:14\n    at new Promise (<anonymous>)\n    at newRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\src\\api\\admin\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-02-14T04:44:48.757Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:44:59.895Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:45:31.664Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:45:40.806Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:46:02.560Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:46:29.199Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:46:35.087Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:46:43.034Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:46:45.087Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:47:05.073Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:48:33.654Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:48:44.192Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T04:48:45.105Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:48:56.329Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T04:49:18.657Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:49:57.136Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T04:50:13.945Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:28:23.575Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:28:23.674Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:29:16.229Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:29:26.030Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:29:32.300Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:31:35.234Z"}
+{"level":"info","message":"Router-----add Sub category","timestamp":"2025-02-14T05:31:57.811Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:32:40.251Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:32:51.795Z"}
+{"level":"info","message":"Router-----add Sub category","timestamp":"2025-02-14T05:33:13.914Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:33:48.204Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:33:54.772Z"}
+{"level":"info","message":"Router-----add Sub category","timestamp":"2025-02-14T05:34:14.328Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:34:14.433Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:38:04.528Z"}
+{"level":"info","message":"Router-----add Sub category","timestamp":"2025-02-14T05:41:03.015Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:41:03.154Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:46:13.878Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:46:27.206Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:46:52.752Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:47:58.011Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:48:00.236Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-14T05:48:20.961Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-14T05:48:21.053Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-14T05:48:21.966Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-14T05:48:21.982Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-14T05:48:22.029Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-14T05:48:22.092Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:48:23.544Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:48:23.583Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:48:37.202Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:48:49.228Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:48:51.213Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:48:56.208Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:49:03.222Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:49:29.204Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:49:33.698Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:49:33.731Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:49:48.116Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:49:48.134Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:50:03.257Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:50:03.274Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:50:15.688Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:50:15.704Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:50:33.152Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:50:33.167Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:50:37.589Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:50:37.604Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:50:48.274Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:50:48.293Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:50:49.327Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:50:49.332Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:50:50.508Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:50:50.524Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:51:02.113Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:51:02.134Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:51:30.192Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:51:30.209Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:52:23.879Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:52:23.896Z"}
+{"level":"info","message":"Router-----add Sub category","timestamp":"2025-02-14T05:52:38.162Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T05:52:38.241Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-14T05:52:38.247Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:55:21.218Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:55:41.646Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:57:46.548Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:58:50.618Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:59:28.982Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T05:59:34.835Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:00:17.304Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:00:24.230Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:00:48.369Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:00:56.154Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:01:38.305Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:02:01.300Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:05:49.227Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:08:14.451Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:08:46.912Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:10:58.526Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:14:10.180Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:14:57.645Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:15:17.068Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:16:23.216Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:17:05.820Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:17:27.783Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:17:36.535Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:18:12.785Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:18:25.383Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:19:07.965Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:19:26.307Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:19:38.842Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:20:14.093Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:20:21.311Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:20:37.867Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:20:42.937Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:21:01.349Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:21:09.640Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:21:27.176Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:21:36.785Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:22:28.130Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:22:47.870Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:27:06.016Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:30:32.484Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:33:01.813Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:36:53.167Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:38:10.586Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:40:29.913Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:42:08.635Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T06:44:31.188Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:46:38.289Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:46:50.088Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:47:08.606Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:47:11.833Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:47:35.661Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:47:45.807Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:47:52.528Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:48:41.023Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:48:49.346Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:49:14.355Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:49:16.387Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:49:31.880Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:49:52.177Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:49:57.229Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:50:09.970Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:50:09.996Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:51:02.746Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:52:11.749Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:52:14.082Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T06:54:25.106Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T06:54:25.209Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T06:54:28.162Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-14T06:54:30.519Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:54:49.064Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:54:53.982Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:54:56.220Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:54:56.275Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T06:55:26.479Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:55:28.694Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:55:28.928Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:55:48.514Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:55:52.332Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:56:19.171Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:56:19.445Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:56:24.079Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:56:24.146Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:56:49.487Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:56:49.677Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:57:05.246Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:57:05.492Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:57:08.324Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:57:08.387Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:57:24.091Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:57:24.293Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:21.191Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:21.407Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:24.091Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:24.157Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:35.564Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:35.697Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:40.225Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:40.285Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:43.242Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:43.312Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:52.493Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:58:52.557Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:59:06.470Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:59:06.819Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:59:12.530Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:59:12.600Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:59:18.364Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T06:59:18.430Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:00:23.804Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:00:23.967Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:00:24.824Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:00:38.249Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:00:55.546Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:01:07.731Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:01:12.746Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:02:47.158Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:02:56.583Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:03:06.414Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:03:08.775Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:03:12.754Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:03:15.267Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:03:17.878Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:04:11.850Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:04:16.654Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:04:36.836Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:04:36.995Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T07:05:35.813Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:05:41.997Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:05:42.334Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T07:06:12.990Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:06:40.478Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T07:07:14.653Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:07:26.491Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:03.116Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:03.284Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:04.687Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:04.753Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:33.066Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:35.827Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:38.695Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:40.457Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:54.809Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:08:54.920Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T07:09:25.768Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:09:26.339Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:09:26.472Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T07:17:05.773Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:17:22.777Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:17:22.900Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T07:18:59.343Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:19:11.820Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-14T07:19:11.967Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-02-14T07:20:33.456Z"}

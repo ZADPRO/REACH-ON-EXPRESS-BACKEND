@@ -21,7 +21,7 @@ export class mappingRoutes implements IRoute {
           },
         },
         {
-          method: "POST",
+          method: "GET",
           path: "/api/v1/routes/mapping",
           config: {
             pre: [{ method: validateToken, assign: "token" }],
