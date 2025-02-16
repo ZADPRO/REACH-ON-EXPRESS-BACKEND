@@ -25,8 +25,15 @@ INSERT INTO public.parcelbooking (
 ) RETURNING "parcelBookingId";
 `;
 
-export const updateRefStatusQuery = `UPDATE public.transactionmapping SET "refStatus" = 'Assigned' WHERE "partnersName" = $1`;
-
+export const updateRefStatusQuery = `UPDATE public.transactionmapping 
+SET "refStatus" = 'Assigned' 
+WHERE ctid IN (
+    SELECT ctid FROM public.transactionmapping 
+    WHERE "partnersName" = $1 
+    AND ("refStatus" IS null OR "refStatus" = 'Not Assigned') 
+    ORDER BY ctid ASC
+    LIMIT 1
+);`;
 
 export const getParcelBookingQuery = `
    SELECT pb.*, tm."refStatus", c."refCustomerName" 

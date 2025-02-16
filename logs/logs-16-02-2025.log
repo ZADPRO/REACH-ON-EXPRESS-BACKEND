@@ -10,3 +10,50 @@
 {"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:11:51.842Z"}
 {"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:12:33.777Z"}
 {"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:14:19.391Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:31:24.876Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:31:27.745Z"}
+{"code":"28P01","file":"auth.c","length":104,"level":"error","line":"324","message":"Error in booking: password authentication failed for user \"postgres\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"postgres\"\n    at D:\\REACH-ON-EXPRESS\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-02-16T04:31:27.822Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:31:44.135Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:31:46.176Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:31:53.453Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:31:53.492Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:32:44.000Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:33:09.806Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:33:17.252Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:33:17.281Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:34:15.716Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:34:43.559Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:35:34.243Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:36:00.248Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:36:52.373Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:36:52.442Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:37:08.728Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:37:08.848Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:37:08.946Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:37:14.294Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:37:25.703Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:37:31.447Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:40:00.946Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:40:07.668Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:40:20.426Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:40:36.839Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:41:01.024Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:41:13.795Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:41:21.635Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:41:27.838Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:41:33.081Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:41:40.567Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:41:40.604Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-16T04:41:43.574Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-16T04:41:43.594Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:41:52.854Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-16T04:41:52.883Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-16T04:41:53.255Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-16T04:41:53.276Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:49:03.049Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-16T04:49:16.707Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-16T04:49:16.792Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:50:31.773Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:50:38.585Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:51:08.005Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:51:10.240Z"}
