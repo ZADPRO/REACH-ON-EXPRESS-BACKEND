@@ -14,6 +14,7 @@ import {
   updateHistoryQuery,
   updateRefStatusQuery,
   vendorLeafQuery,
+  parselBookingData,
 } from "./query";
 
 export class bookingRepository {
@@ -54,6 +55,11 @@ export class bookingRepository {
         paymentId,
         customerType,
         refCustomerId,
+        netAmount,
+        pickUP,
+        count,
+        consignorPincode,
+        consigneePincode,
       } = userData;
 
       // Validate required fields
@@ -74,7 +80,12 @@ export class bookingRepository {
         !NoOfPieces ||
         !actualWeight ||
         !paymentId ||
-        !refCustomerId
+        !refCustomerId ||
+        !netAmount ||
+        !pickUP ||
+        !count ||
+        !consignorPincode ||
+        !consigneePincode
       ) {
         return encrypt(
           { success: false, message: "Missing required fields." },
@@ -86,23 +97,19 @@ export class bookingRepository {
       const vendorLeafResult = await client.query(vendorLeafQuery, [
         partnersName,
       ]);
-      console.log("vendorLeafResult", vendorLeafResult);
+
       const vendorLeaf = vendorLeafResult.rows.length
         ? vendorLeafResult.rows[0].leaf
         : null;
-      console.log("vendorLeaf", vendorLeaf);
 
-      // Fetch `refCustId` from `customers`
       const refCustIdResult = await client.query(refCustIdQuery, [
         refCustomerId,
       ]);
-      console.log("refCustIdResult", refCustIdResult);
+
       const refCustId = refCustIdResult.rows.length
         ? refCustIdResult.rows[0].refCustId
         : null;
-      console.log("refCustId", refCustId);
 
-      // Ensure necessary values exist
       if (!vendorLeaf || !refCustId) {
         return encrypt(
           { success: false, message: "Invalid partnersId or refCustomerId." },
@@ -110,11 +117,10 @@ export class bookingRepository {
         );
       }
 
-      // Ensure `customerType` is a boolean
       const customerTypeBoolean =
         customerType === true || customerType === "true";
 
-      // Insert into `parcelbooking`
+      const bookedDate = new Date();
 
       const parcelResult = await client.query(parcelBookingQuery, [
         partnersName,
@@ -147,16 +153,21 @@ export class bookingRepository {
         dimension ? weight : null,
         dimension ? breadth : null,
         dimension ? chargedWeight : null,
+        bookedDate,
+        netAmount,
+        pickUP,
+        count,
+        consignorPincode,
+        consigneePincode,
       ]);
 
-      const parcelBookingId = parcelResult.rows[0]?.parcelBookingId;
+      const parcelBookingId = parcelResult.rows[0];
       console.log("parcelBookingId", parcelBookingId);
 
       if (!parcelBookingId) {
         throw new Error("Parcel booking insertion failed.");
       }
 
-      // Update `refStatus` in `transactionmapping`
       await client.query(updateRefStatusQuery, [partnersName]);
 
       await client.query(updateHistoryQuery, [
@@ -175,11 +186,10 @@ export class bookingRepository {
           message: "Parcel booking details added successfully.",
           parcelBookingId: parcelBookingId,
         },
-        false
+        true
       );
     } catch (error: any) {
-      await client.query("ROLLBACK"); // Rollback Transaction in case of error
-      // logger.error("Error during parcel booking insertion:", error);
+      await client.query("ROLLBACK");
       return encrypt(
         {
           success: false,
@@ -189,10 +199,10 @@ export class bookingRepository {
               ? error.message
               : "An unknown error occurred",
         },
-        false
+        true
       );
     } finally {
-      client.release(); // Release DB connection
+      client.release();
     }
   }
 
@@ -264,7 +274,7 @@ export class bookingRepository {
           token: tokens,
           data: bookingData,
         },
-        false
+        true
       );
     } catch (error) {
       const errorMessage = (error as Error).message;
@@ -276,7 +286,37 @@ export class bookingRepository {
           message: `Error in Parcel Booking Data retrieval: ${errorMessage}`,
           token: tokens,
         },
-        false
+        true
+      );
+    }
+  }
+  public async viewPastBookingV1(userData: any, tokenData: any): Promise<any> {
+    const token = { id: tokenData.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const ParcelBookingData = await executeQuery(parselBookingData, []);
+
+      return encrypt(
+        {
+          success: true,
+          message: "Parcel Past booking details retrieved successfully",
+          token: tokens,
+          data: ParcelBookingData,
+        },
+        true
+      );
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      console.error("Error in view Parcel Past Booking:", errorMessage);
+
+      return encrypt(
+        {
+          success: false,
+          message: `Error in Parcel past Booking Data retrieval: ${errorMessage}`,
+          token: tokens,
+        },
+        true
       );
     }
   }

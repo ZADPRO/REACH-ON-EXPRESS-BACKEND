@@ -57,3 +57,71 @@
 {"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:50:38.585Z"}
 {"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T04:51:08.005Z"}
 {"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T04:51:10.240Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:19:44.896Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:21:34.083Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:21:53.988Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:22:07.500Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:22:17.800Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:30:32.471Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:30:41.224Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:34:27.154Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:35:37.529Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:41:34.148Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:42:46.575Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:42:57.732Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:43:03.709Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:44:16.534Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:45:43.089Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:45:51.546Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:48:33.653Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:48:53.859Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T07:49:03.392Z"}
+{"code":"28P01","file":"auth.c","length":104,"level":"error","line":"324","message":"Error in booking: password authentication failed for user \"postgres\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"postgres\"\n    at C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-02-16T07:49:03.454Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:50:12.430Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T07:50:15.033Z"}
+{"code":"28P01","file":"auth.c","length":104,"level":"error","line":"324","message":"Error in booking: password authentication failed for user \"postgres\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"postgres\"\n    at C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-02-16T07:50:15.228Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:50:57.765Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:51:03.783Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T07:51:08.090Z"}
+{"code":"28P01","file":"auth.c","length":104,"level":"error","line":"324","message":"Error in booking: password authentication failed for user \"postgres\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"postgres\"\n    at C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-02-16T07:51:08.147Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:51:36.774Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T07:51:55.528Z"}
+{"code":"28P01","file":"auth.c","length":104,"level":"error","line":"324","message":"Error in booking: password authentication failed for user \"postgres\"","name":"error","routine":"auth_failed","severity":"FATAL","stack":"error: password authentication failed for user \"postgres\"\n    at C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-02-16T07:51:55.583Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:52:24.792Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:52:30.710Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-02-16T07:52:37.236Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:53:57.322Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:54:03.012Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:54:07.915Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:54:12.614Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:54:19.206Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/route/viewBooking conflicts with existing /api/v1/route/viewBooking","name":"AssertError","stack":"AssertError: New route /api/v1/route/viewBooking conflicts with existing /api/v1/route/viewBooking\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\src\\api\\booking\\routes.ts:11:14\n    at new Promise (<anonymous>)\n    at bookingRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\src\\api\\booking\\routes.ts:9:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\ReachOnExpress\\REACH-ON-EXPRESS-BACKEND\\src\\api\\booking\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-02-16T07:56:14.958Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:56:18.670Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:56:24.908Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:56:30.732Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:56:54.518Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:57:00.522Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:57:08.331Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:57:18.861Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:57:25.957Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:57:39.614Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:57:49.841Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:58:26.143Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:58:33.253Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:59:46.858Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T07:59:54.698Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:00:05.323Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:00:11.943Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:00:27.921Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-16T08:00:53.355Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:06.593Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:10.393Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:21.920Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:31.265Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:42.311Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:46.613Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:52.124Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:01:58.112Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:02:03.596Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:02:13.562Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-16T08:02:18.170Z"}
