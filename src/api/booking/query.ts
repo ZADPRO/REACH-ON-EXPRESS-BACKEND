@@ -2,13 +2,13 @@ export const updateHistoryQuery = `
  INSERT INTO public."reftxnhistory" ("transtypeId", "refUserId", "transdata", "transtime", "updatedBy")
   VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
-export const vendorLeafQuery = `SELECT "leaf" FROM public.transactionmapping WHERE "partnersId" = $1 LIMIT 1`;
+export const vendorLeafQuery = `SELECT "leaf" FROM public.transactionmapping WHERE "partnersName" = $1 LIMIT 1`;
 
 export const refCustIdQuery = `SELECT "refCustId" FROM public.customers WHERE "refCustomerId" = $1 LIMIT 1`;
 
 export const parcelBookingQuery = `
 INSERT INTO public.parcelbooking (
-    "partnersId", "vendorLeaf", "refCustomerId", "refCustId", "customerType",
+    "partnersName", "vendorLeaf", "refCustomerId", "refCustId", "customerType",
     "paymentId", "type", "origin", "destination", "consignorName",
     "consignorAddress", "consignorGSTnumber", "consignorPhone", "consignorEmail",
     "customerRefNo", "consigneeName", "consigneeAddress", "consigneeGSTnumber",
@@ -25,13 +25,13 @@ INSERT INTO public.parcelbooking (
 ) RETURNING "parcelBookingId";
 `;
 
-export const updateRefStatusQuery = `UPDATE public.transactionmapping SET "refStatus" = 'Assigned' WHERE "partnersId" = $1`;
+export const updateRefStatusQuery = `UPDATE public.transactionmapping SET "refStatus" = 'Assigned' WHERE "partnersName" = $1`;
 
 
 export const getParcelBookingQuery = `
    SELECT pb.*, tm."refStatus", c."refCustomerName" 
     FROM public."parcelbooking" pb
-    LEFT JOIN public."transactionmapping" tm ON pb."partnersId" = tm."partnersId"
+    LEFT JOIN public."transactionmapping" tm ON pb."partnersName" = tm."partnersName"
     LEFT JOIN public."customers" c ON pb."refCustomerId" = c."refCustomerId"
     WHERE pb."parcelBookingId" = $1;
 `;

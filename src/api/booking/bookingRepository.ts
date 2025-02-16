@@ -19,7 +19,7 @@ export class bookingRepository {
             await client.query("BEGIN"); // Start Transaction
 
             const {
-                partnersId, type, origin, destination, consignorName,
+                partnersName, type, origin, destination, consignorName,
                 consignorAddress, consignorGSTnumber, consignorPhone, consignorEmail,
                 customerRefNo, consigneeName, consigneeAddress, consigneeGSTnumber,
                 consigneePhone, consigneeEmail, contentSpecification, paperEnclosed,
@@ -28,7 +28,7 @@ export class bookingRepository {
             } = userData;
 
             // Validate required fields
-            if (!partnersId || !type || !origin || !destination || !consignorName ||
+            if (!partnersName || !type || !origin || !destination || !consignorName ||
                 !consignorAddress || !consignorPhone || !customerRefNo || !consigneeName ||
                 !consigneeAddress || !consigneePhone || !contentSpecification || !declaredValue ||
                 !NoOfPieces || !actualWeight || !paymentId || !refCustomerId) {
@@ -36,12 +36,16 @@ export class bookingRepository {
             }
 
             // Fetch `vendorLeaf` from `transactionmapping`
-            const vendorLeafResult = await client.query(vendorLeafQuery, [partnersId]);
+            const vendorLeafResult = await client.query(vendorLeafQuery, [partnersName]);
+            console.log('vendorLeafResult', vendorLeafResult)
             const vendorLeaf = vendorLeafResult.rows.length ? vendorLeafResult.rows[0].leaf : null;
+            console.log('vendorLeaf', vendorLeaf)
 
             // Fetch `refCustId` from `customers`
             const refCustIdResult = await client.query(refCustIdQuery, [refCustomerId]);
+            console.log('refCustIdResult', refCustIdResult)
             const refCustId = refCustIdResult.rows.length ? refCustIdResult.rows[0].refCustId : null;
+            console.log('refCustId', refCustId)
 
             // Ensure necessary values exist
             if (!vendorLeaf || !refCustId) {
@@ -55,7 +59,7 @@ export class bookingRepository {
 
 
             const parcelResult = await client.query(parcelBookingQuery, [
-                partnersId, vendorLeaf, refCustomerId, refCustId, customerTypeBoolean,
+                partnersName, vendorLeaf, refCustomerId, refCustId, customerTypeBoolean,
                 paymentId, type, origin, destination, consignorName,
                 consignorAddress, consignorGSTnumber, consignorPhone, consignorEmail,
                 customerRefNo, consigneeName, consigneeAddress, consigneeGSTnumber,
@@ -72,7 +76,7 @@ export class bookingRepository {
             }
 
             // Update `refStatus` in `transactionmapping`
-            await client.query(updateRefStatusQuery, [partnersId]);
+            await client.query(updateRefStatusQuery, [partnersName]);
 
             await client.query(updateHistoryQuery, [12, tokenData.id, "parcel booking",CurrentTime(), "Admin"]);
             
