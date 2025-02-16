@@ -593,3 +593,17 @@
 {"level":"info","message":"Router ------------get Usertype","timestamp":"2025-02-14T11:55:36.142Z"}
 {"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T11:58:02.478Z"}
 {"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T11:58:26.699Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T11:58:37.869Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:02:15.779Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:03:02.102Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:03:02.107Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:03:11.175Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:03:11.193Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T12:08:10.102Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:08:15.653Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:08:15.767Z"}
+{"level":"info","message":"Router ------------get Usertype","timestamp":"2025-02-14T12:08:28.836Z"}
+{"level":"info","message":"Router ------------get Usertype","timestamp":"2025-02-14T12:08:28.938Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:57:26.990Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-14T12:57:27.184Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-14T13:02:50.387Z"}

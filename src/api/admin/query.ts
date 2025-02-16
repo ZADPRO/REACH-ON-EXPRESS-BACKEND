@@ -32,22 +32,11 @@ export const insertUserCommunicationQuery = `INSERT INTO public."refCommunicatio
 "refUserId", "refMobileNo", "refEmail") VALUES ($1, $2, $3)
 RETURNING *;`;
 
-export const getAllEmployeeQuery = `SELECT
-  u."refUserId",
-  u."refCustId",
-  u."refUserFName",
-  u."refUserLName",
-  rc."refEmail", 
-  rud."refCustMobileNum",
-  rud."refCustpassword",
-  rud."refCusthashedpassword",
-  rud."refUsername",
-  ut."userTypeName" 
-FROM
-  public."user" u
-  JOIN "refusersdomain" as rud ON u."refUserId" = rud."refUserId"
-  JOIN "refCommunication" as rc ON u."refUserId" = rud."refUserId"
-  JOIN "usertype" ut ON u."userTypeId" = ut."userTypeId"
+export const getAllEmployeeQuery = `select * from 
+public.user u 
+JOIN public.refusersdomain rud ON u."refUserId" = rud."refUserId"
+JOIN public."refCommunication" rcu on u."refUserId" = rcu."refUserId"
+JOIN public.usertype ut ON u."userTypeId" = ut."userTypeId"
 `;
 // TESTING CODE
 
