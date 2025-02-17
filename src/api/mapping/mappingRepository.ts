@@ -93,7 +93,7 @@ export class mappingRepository {
 
         // Add values for batch insert
         values.push(
-          "not assigned",
+          "Not Assigned",
           vendor,
           vendorLeaf,
           purchasedDate,

@@ -19,6 +19,7 @@ import {
 
 export class bookingRepository {
   public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
+    console.log("userData", userData);
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
@@ -89,7 +90,7 @@ export class bookingRepository {
       ) {
         return encrypt(
           { success: false, message: "Missing required fields." },
-          false
+          true
         );
       }
 
@@ -97,6 +98,7 @@ export class bookingRepository {
       const vendorLeafResult = await client.query(vendorLeafQuery, [
         partnersName,
       ]);
+      console.log("vendorLeafResult", vendorLeafResult);
 
       const vendorLeaf = vendorLeafResult.rows.length
         ? vendorLeafResult.rows[0].leaf
@@ -105,21 +107,24 @@ export class bookingRepository {
       const refCustIdResult = await client.query(refCustIdQuery, [
         refCustomerId,
       ]);
+      console.log("refCustIdResult", refCustIdResult);
 
       const refCustId = refCustIdResult.rows.length
         ? refCustIdResult.rows[0].refCustId
         : null;
 
+      console.log("refCustId", refCustId);
       if (!vendorLeaf || !refCustId) {
         return encrypt(
           { success: false, message: "Invalid partnersId or refCustomerId." },
-          false
+          true
         );
       }
 
       const customerTypeBoolean =
         customerType === true || customerType === "true";
 
+      console.log("customerTypeBoolean", customerTypeBoolean);
       const bookedDate = new Date();
 
       const parcelResult = await client.query(parcelBookingQuery, [
@@ -189,6 +194,7 @@ export class bookingRepository {
         true
       );
     } catch (error: any) {
+      console.log("error", error);
       await client.query("ROLLBACK");
       return encrypt(
         {
