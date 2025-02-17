@@ -4,7 +4,6 @@ import IRoute from "../../helper/routes";
 import { validateToken } from "../../helper/token";
 import { Profile } from "./controller";
 
-
 export class newRoutes implements IRoute {
   public async register(server: any): Promise<any> {
     return new Promise((resolve) => {
@@ -43,7 +42,7 @@ export class newRoutes implements IRoute {
             auth: false,
           },
         },
-        
+
         {
           method: "POST",
           path: "/api/v1/Routes/viewProfile",
@@ -233,8 +232,6 @@ export class newRoutes implements IRoute {
             auth: false,
           },
         },
-        
-        
       ]);
       resolve(true);
     });

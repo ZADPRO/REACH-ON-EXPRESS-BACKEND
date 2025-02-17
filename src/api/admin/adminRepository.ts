@@ -8,9 +8,22 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { generateTokenWithExpire } from "../../helper/token";
 import {
-  selectUserByLogin, checkQuery, insertUserQuery, insertUserDomainQuery, insertUserCommunicationQuery,
-  addPartnerQuery, insertCustomerQuery, softDeleteQuery, getPartnerQuery, getCustomerQuery, updateHistoryQuery, updatePartnerQuery, updateCustomerQuery,
-  getLastCustomerIdQuery, getLastEmployeeIdQuery, fetchProfileData,
+  selectUserByLogin,
+  checkQuery,
+  insertUserQuery,
+  insertUserDomainQuery,
+  insertUserCommunicationQuery,
+  addPartnerQuery,
+  insertCustomerQuery,
+  softDeleteQuery,
+  getPartnerQuery,
+  getCustomerQuery,
+  updateHistoryQuery,
+  updatePartnerQuery,
+  updateCustomerQuery,
+  getLastCustomerIdQuery,
+  getLastEmployeeIdQuery,
+  fetchProfileData,
   addPriceDetailsQuery,
   insertCategoryQuery,
   getAllCategoriesQuery,
@@ -23,7 +36,7 @@ import {
   getCUstomersQuery,
   getPriceQuery,
   getAllEmployeeQuery,
-  getUsertypeQuery
+  getUsertypeQuery,
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
@@ -35,45 +48,62 @@ export class adminRepository {
     const token = { id: token_data.id }; // Extract token ID
     const tokens = generateTokenWithExpire(token, true);
     try {
-      await client.query('BEGIN');
-      const genPassword = generatePassword()
+      await client.query("BEGIN");
+      const genPassword = generatePassword();
       const genHashedPassword = await bcrypt.hash(genPassword, 10);
 
       // Check if the username already exists
       const check = [userData.temp_phone];
       const userCheck = await client.query(checkQuery, check);
       if (userCheck.rows.length > 0) {
-        await client.query('ROLLBACK');
+        await client.query("ROLLBACK");
         return encrypt(
           {
             success: true,
-            message: "Already exists"
-          }, true);
+            message: "Already exists",
+          },
+          true
+        );
       }
 
       // Determine customer prefix based on userType
-      let customerPrefix = userData.userType === 4 ? 'R-UNIQ-' : 'R-EMP-';
+      let customerPrefix = userData.userType === 4 ? "R-UNIQ-" : "R-EMP-";
       let baseNumber = userData.userType === 4 ? 10000 : 0;
-      const lastCustomerQuery = customerPrefix === 'R-UNIQ-' ? getLastCustomerIdQuery : getLastEmployeeIdQuery;
+      const lastCustomerQuery =
+        customerPrefix === "R-UNIQ-"
+          ? getLastCustomerIdQuery
+          : getLastEmployeeIdQuery;
 
       // Fetch last customer ID based on customerPrefix
       const lastCustomerResult = await client.query(lastCustomerQuery);
-      console.log('lastCustomerResult', lastCustomerResult)
+      console.log("lastCustomerResult", lastCustomerResult);
       let newCustomerId: string;
 
       if (lastCustomerResult.rows.length > 0) {
         const lastNumber = parseInt(lastCustomerResult.rows[0].count, 10);
-        newCustomerId = `${customerPrefix}${(baseNumber + lastNumber + 1).toString().padStart(4, '0')}`;
+        newCustomerId = `${customerPrefix}${(baseNumber + lastNumber + 1)
+          .toString()
+          .padStart(4, "0")}`;
       } else {
-        newCustomerId = `${customerPrefix}${(baseNumber + 1).toString().padStart(4, '0')}`;
+        newCustomerId = `${customerPrefix}${(baseNumber + 1)
+          .toString()
+          .padStart(4, "0")}`;
       }
 
       // Insert into users table
-      const params = [userData.temp_fname, userData.temp_lname, userData.designation, userData.userType, newCustomerId, userData.dateOfBirth, userData.qualification];
+      const params = [
+        userData.temp_fname,
+        userData.temp_lname,
+        userData.designation,
+        userData.userType,
+        newCustomerId,
+        userData.dateOfBirth,
+        userData.qualification,
+      ];
       const userResult = await client.query(insertUserQuery, params);
-      console.log('userResult', userResult)
+      console.log("userResult", userResult);
       const newUser = userResult.rows[0];
-      console.log('newUser', newUser)
+      console.log("newUser", newUser);
 
       // Insert into userDomain table
       const domainParams = [
@@ -84,20 +114,36 @@ export class adminRepository {
         userData.temp_phone,
       ];
 
-      const domainResult = await client.query(insertUserDomainQuery, domainParams);
-      console.log('domainResult', domainResult)
+      const domainResult = await client.query(
+        insertUserDomainQuery,
+        domainParams
+      );
+      console.log("domainResult", domainResult);
 
       // Insert into userCommunication table
-      const communicationParams = [newUser.refUserId, userData.temp_phone, userData.temp_email];
-      const communicationResult = await client.query(insertUserCommunicationQuery, communicationParams);
-      console.log('communicationResult', communicationResult)
+      const communicationParams = [
+        newUser.refUserId,
+        userData.temp_phone,
+        userData.temp_email,
+      ];
+      const communicationResult = await client.query(
+        insertUserCommunicationQuery,
+        communicationParams
+      );
+      console.log("communicationResult", communicationResult);
 
       if (
         (userResult.rowCount ?? 0) > 0 &&
         (domainResult.rowCount ?? 0) > 0 &&
         (communicationResult.rowCount ?? 0) > 0
       ) {
-        const history = [8, newUser.refUserId, "User SignUp", CurrentTime(), "user"];
+        const history = [
+          8,
+          newUser.refUserId,
+          "User SignUp",
+          CurrentTime(),
+          "user",
+        ];
         const updateHistory = await client.query(updateHistoryQuery, history);
 
         if ((updateHistory.rowCount ?? 0) > 0) {
@@ -105,12 +151,15 @@ export class adminRepository {
             id: newUser.refUserId,
             email: userData.temp_su_email,
           };
-          await client.query('COMMIT');
+          await client.query("COMMIT");
           const main = async () => {
             const mailOptions = {
               to: userData.temp_email,
               subject: "You Accont has be Created Successfully In our Platform", // Subject of the email
-              html: generateSignupEmailContent(userData.temp_phone, genPassword),
+              html: generateSignupEmailContent(
+                userData.temp_phone,
+                genPassword
+              ),
             };
 
             // Call the sendEmail function
@@ -128,25 +177,24 @@ export class adminRepository {
               message: "User signup successful",
               user: newUser,
               token: tokens,
-
             },
             true
           );
         }
       }
 
-      await client.query('ROLLBACK');
+      await client.query("ROLLBACK");
       return encrypt(
         {
           success: false,
           message: "Signup failed",
           token: tokens,
-
-        }, true);
-
+        },
+        true
+      );
     } catch (error: unknown) {
-      await client.query('ROLLBACK');
-      console.error('Error during user signup:', error);
+      await client.query("ROLLBACK");
+      console.error("Error during user signup:", error);
       return encrypt(
         {
           success: false,
@@ -160,8 +208,8 @@ export class adminRepository {
     }
   }
   public async viewProfileV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id }
-    const tokens = generateTokenWithExpire(token, true)
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
     try {
       const refUserId = userData.refUserId;
       if (!refUserId) {
@@ -185,27 +233,32 @@ export class adminRepository {
         address2: profileResult[0].refPincode,
         custMobile: profileResult[0].refCustMobileNum,
         password: profileResult[0].refCustpassword,
-        hashedpassword: profileResult[0].refCusthashedpassword
+        hashedpassword: profileResult[0].refCusthashedpassword,
       };
       const registerData = {
         ProfileData: profileData,
       };
 
-
-      return encrypt({
-        success: true,
-        message: " Profile Page Data retrieved successfully",
-        token: tokens,
-        data: registerData,
-      }, false);
+      return encrypt(
+        {
+          success: true,
+          message: " Profile Page Data retrieved successfully",
+          token: tokens,
+          data: registerData,
+        },
+        false
+      );
     } catch (error) {
       const errorMessage = (error as Error).message; // Cast `error` to `Error` type
-      console.error('Error in profilePageDataV1:', errorMessage);
-      return encrypt({
-        success: false,
-        message: `Error in Profile Page Data retrieval: ${errorMessage}`,
-        token: tokens
-      }, false);
+      console.error("Error in profilePageDataV1:", errorMessage);
+      return encrypt(
+        {
+          success: false,
+          message: `Error in Profile Page Data retrieval: ${errorMessage}`,
+          token: tokens,
+        },
+        false
+      );
     }
   }
   public async getUsertypeV1(userData: any, tokendata: any): Promise<any> {
@@ -214,13 +267,13 @@ export class adminRepository {
 
     try {
       const Usertype = await executeQuery(getUsertypeQuery);
-      console.log('Usertype', Usertype)
+      console.log("Usertype", Usertype);
 
       // Return success response
       return encrypt(
         {
           success: true,
-          message: 'Returned usertype successfully',
+          message: "Returned usertype successfully",
           token: tokens,
           Usertype: Usertype,
         },
@@ -228,14 +281,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -254,7 +308,7 @@ export class adminRepository {
       return encrypt(
         {
           success: true,
-          message: 'Returned sub Category successfully',
+          message: "Returned sub Category successfully",
           token: tokens,
           Employee: Employee,
         },
@@ -262,14 +316,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -284,10 +339,13 @@ export class adminRepository {
 
       if (users.length > 0) {
         const user = users[0];
-        console.log('user', user)
+        console.log("user", user);
 
         // Verify the password
-        const validPassword = await bcrypt.compare(user_data.password, user.refCusthashedpassword);
+        const validPassword = await bcrypt.compare(
+          user_data.password,
+          user.refCusthashedpassword
+        );
         if (validPassword) {
           const history = [1, user.refUserId, "Login", CurrentTime(), "Admin"];
           const updateHistory = await executeQuery(updateHistoryQuery, history);
@@ -295,14 +353,16 @@ export class adminRepository {
           if (updateHistory) {
             const tokenData = { id: user.refUserId };
 
-            const userDetails = await executeQuery(userDetailsQuery, [user.refUserId])
+            const userDetails = await executeQuery(userDetailsQuery, [
+              user.refUserId,
+            ]);
 
             return encrypt(
               {
                 success: true,
                 message: "Login successful",
                 userDetails: userDetails,
-                token: generateTokenWithExpire(tokenData, true)
+                token: generateTokenWithExpire(tokenData, true),
               },
               true
             );
@@ -351,7 +411,6 @@ export class adminRepository {
 
       console.log(tokendata);
 
-
       const result = await client.query(addPartnerQuery, [
         partnersName,
         tokendata.id, // Including refUserId
@@ -390,9 +449,11 @@ export class adminRepository {
         {
           success: false,
           message: "Partner insertion failed",
-          error: error instanceof Error ? error.message : "An unknown error occurred",
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
           token: tokens,
-
         },
         true
       );
@@ -403,23 +464,29 @@ export class adminRepository {
   public async updatePartnersV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
-    console.log('token', token);
+    console.log("token", token);
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
+    console.log("tokens", tokens);
 
     try {
       await client.query("BEGIN");
       const { partnersName, phoneNumber, validity, partnerId } = userData;
       const documentParams = [partnersName, phoneNumber, validity, partnerId];
-      const partnerDetails = await client.query(updatePartnerQuery, documentParams);
+      const partnerDetails = await client.query(
+        updatePartnerQuery,
+        documentParams
+      );
       const txnHistoryParams = [
         3,
         tokenData.id,
         "Update Partners",
         CurrentTime(),
-        "Admin"
+        "Admin",
       ];
-      const txnHistoryResult = await client.query(updateHistoryQuery, txnHistoryParams);
+      const txnHistoryResult = await client.query(
+        updateHistoryQuery,
+        txnHistoryParams
+      );
       await client.query("COMMIT");
       return encrypt(
         {
@@ -432,7 +499,8 @@ export class adminRepository {
       );
     } catch (error) {
       await client.query("ROLLBACK");
-      const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
       console.error("Error during Partner update:", error);
       return encrypt(
         {
@@ -449,26 +517,26 @@ export class adminRepository {
   }
   public async getPartnersV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log('token', token);
+    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
+    console.log("tokens", tokens);
 
     try {
       const { partnerId } = user_data;
-      console.log('user_data', user_data)
-      console.log('partnersId', partnerId)
+      console.log("user_data", user_data);
+      console.log("partnersId", partnerId);
 
       // Get Restaurant/Document Details
       const partners = await executeQuery(getPartnerQuery, [partnerId]);
-      console.log('partners', partners)
+      console.log("partners", partners);
 
       // Return success response
       return encrypt(
         {
           success: true,
-          message: 'Returned partners successfully',
+          message: "Returned partners successfully",
           token: tokens,
           partners: partners,
         },
@@ -476,14 +544,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -493,22 +562,21 @@ export class adminRepository {
   }
   public async getPartnerV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log('token', token);
+    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
+    console.log("tokens", tokens);
 
     try {
-
       const partners = await executeQuery(getPartnersQuery);
-      console.log('partners', partners)
+      console.log("partners", partners);
 
       // Return success response
       return encrypt(
         {
           success: true,
-          message: 'Returned partners successfully',
+          message: "Returned partners successfully",
           token: tokens,
           partners: partners,
         },
@@ -516,14 +584,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -574,7 +643,7 @@ export class adminRepository {
         tokenData.id,
         "Partner Soft Deleted",
         CurrentTime(),
-        "Admin"
+        "Admin",
       ];
       await client.query(updateHistoryQuery, transactionValues);
 
@@ -588,7 +657,6 @@ export class adminRepository {
         },
         false
       );
-
     } catch (error) {
       console.error("Error marking Partner as deleted:", error);
       await client.query("ROLLBACK");
@@ -596,7 +664,9 @@ export class adminRepository {
       return encrypt(
         {
           success: false,
-          message: `Error marking Partner as deleted: ${(error as Error).message}`,
+          message: `Error marking Partner as deleted: ${
+            (error as Error).message
+          }`,
           token: tokens,
         },
         false
@@ -613,7 +683,14 @@ export class adminRepository {
     try {
       await client.query("BEGIN"); // Start transaction
 
-      const { customerName, customerCode, customerType, notes, refAddress, refPhone } = userData;
+      const {
+        customerName,
+        customerCode,
+        customerType,
+        notes,
+        refAddress,
+        refPhone,
+      } = userData;
 
       // if (!customerName || typeof customerName !== "string") {
       //     await client.query("ROLLBACK");
@@ -631,7 +708,9 @@ export class adminRepository {
       const currentYear = moment().format("YY");
 
       // Get the last inserted customer refCustId for the given refCode
-      const lastCustomerResult = await client.query(getLastCustomerRefIdQuery, [userData.customerCode]);
+      const lastCustomerResult = await client.query(getLastCustomerRefIdQuery, [
+        userData.customerCode,
+      ]);
       let nextCustomerNumber = 100001; // Default start number
 
       if (lastCustomerResult.rows.length > 0) {
@@ -643,7 +722,7 @@ export class adminRepository {
         }
       }
       const refCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
-      console.log('refCustId', refCustId)
+      console.log("refCustId", refCustId);
 
       // Insert Customer
       const { rows } = await client.query(insertCustomerQuery, [
@@ -653,12 +732,12 @@ export class adminRepository {
         notes,
         customerType ?? true,
         refAddress,
-        refPhone
+        refPhone,
       ]);
 
-      console.log('rows line 566', rows)
+      console.log("rows line 566", rows);
       if (rows.length === 0) {
-        console.log('rows', rows)
+        console.log("rows", rows);
         await client.query("ROLLBACK");
         return encrypt(
           {
@@ -671,7 +750,13 @@ export class adminRepository {
       }
 
       // Insert Transaction History
-      await client.query(updateHistoryQuery, [5, tokenData.id, "Added a customer", CurrentTime(), "Admin"]);
+      await client.query(updateHistoryQuery, [
+        5,
+        tokenData.id,
+        "Added a customer",
+        CurrentTime(),
+        "Admin",
+      ]);
 
       await client.query("COMMIT"); // Commit transaction
 
@@ -680,7 +765,7 @@ export class adminRepository {
           success: true,
           message: "Customer inserted successfully.",
           token: tokens,
-          data: rows[0], // Return inserted data
+          data: rows, // Return inserted data
         },
         true
       );
@@ -692,7 +777,10 @@ export class adminRepository {
         {
           success: false,
           message: "Customer insertion failed",
-          error: error instanceof Error ? error.message : "An unknown error occurred",
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
           token: tokens,
         },
         true
@@ -703,21 +791,20 @@ export class adminRepository {
   }
   public async getCustomersV1(userData: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log('token', token);
+    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
+    console.log("tokens", tokens);
 
     try {
-
       const Customer = await executeQuery(getCUstomersQuery);
 
       // Return success response
       return encrypt(
         {
           success: true,
-          message: 'Returned Customer successfully',
+          message: "Returned Customer successfully",
           token: tokens,
           Customer: Customer,
         },
@@ -725,14 +812,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -748,7 +836,8 @@ export class adminRepository {
     try {
       await client.query("BEGIN"); // Start transaction
 
-      const { customerName, customerCode, notes, customerType, refCustomerId } = userData;
+      const { customerName, customerCode, notes, customerType, refCustomerId } =
+        userData;
 
       if (!refCustomerId) {
         return encrypt(
@@ -762,7 +851,9 @@ export class adminRepository {
       }
 
       // Check if the customer exists
-      const existingCustomer = await client.query(getCustomerQuery, [refCustomerId]);
+      const existingCustomer = await client.query(getCustomerQuery, [
+        refCustomerId,
+      ]);
       if (existingCustomer.rowCount === 0) {
         await client.query("ROLLBACK");
         return encrypt(
@@ -776,8 +867,17 @@ export class adminRepository {
       }
 
       // Update Customer
-      const updateParams = [customerName, customerCode, notes, customerType ?? true, refCustomerId];
-      const updatedCustomer = await client.query(updateCustomerQuery, updateParams);
+      const updateParams = [
+        customerName,
+        customerCode,
+        notes,
+        customerType ?? true,
+        refCustomerId,
+      ];
+      const updatedCustomer = await client.query(
+        updateCustomerQuery,
+        updateParams
+      );
 
       if (updatedCustomer.rowCount === 0) {
         await client.query("ROLLBACK");
@@ -792,7 +892,13 @@ export class adminRepository {
       }
 
       // Insert Transaction History
-      const txnHistoryParams = [6, tokenData.id, "Customer updated", CurrentTime(), "Admin"];
+      const txnHistoryParams = [
+        6,
+        tokenData.id,
+        "Customer updated",
+        CurrentTime(),
+        "Admin",
+      ];
       await client.query(updateHistoryQuery, txnHistoryParams);
 
       await client.query("COMMIT"); // Commit transaction
@@ -806,7 +912,6 @@ export class adminRepository {
         },
         false
       );
-
     } catch (error) {
       await client.query("ROLLBACK"); // Rollback transaction on failure
       console.error("Error during Customer update:", error);
@@ -815,7 +920,10 @@ export class adminRepository {
         {
           success: false,
           message: "Customer update failed.",
-          error: error instanceof Error ? error.message : "An unknown error occurred",
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
           token: tokens,
         },
         false
@@ -826,11 +934,11 @@ export class adminRepository {
   }
   public async getCustomerV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log('token', token);
+    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
+    console.log("tokens", tokens);
 
     try {
       const { refCustomerId } = user_data;
@@ -842,7 +950,7 @@ export class adminRepository {
       return encrypt(
         {
           success: true,
-          message: 'Returned Customer successfully',
+          message: "Returned Customer successfully",
           token: tokens,
           Customer: Customer,
         },
@@ -850,14 +958,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -886,9 +995,14 @@ export class adminRepository {
       await client.query("BEGIN");
 
       // Check if the partner exists before attempting an update
-      const existingPartner = await client.query(getCustomerQuery, [refCustomerId]);
-      console.log('refCustomerId------------------------------------', refCustomerId)
-      console.log('existingPartner', existingPartner)
+      const existingPartner = await client.query(getCustomerQuery, [
+        refCustomerId,
+      ]);
+      console.log(
+        "refCustomerId------------------------------------",
+        refCustomerId
+      );
+      console.log("existingPartner", existingPartner);
 
       if (existingPartner.rowCount === 0) {
         await client.query("ROLLBACK");
@@ -910,7 +1024,7 @@ export class adminRepository {
         tokenData.id,
         "Partner Soft Deleted",
         CurrentTime(),
-        "Admin"
+        "Admin",
       ];
       await client.query(updateHistoryQuery, transactionValues);
 
@@ -924,7 +1038,6 @@ export class adminRepository {
         },
         false
       );
-
     } catch (error) {
       console.error("Error marking Partner as deleted:", error);
       await client.query("ROLLBACK");
@@ -932,7 +1045,9 @@ export class adminRepository {
       return encrypt(
         {
           success: false,
-          message: `Error marking Partner as deleted: ${(error as Error).message}`,
+          message: `Error marking Partner as deleted: ${
+            (error as Error).message
+          }`,
           token: tokens,
         },
         false
@@ -948,7 +1063,8 @@ export class adminRepository {
     try {
       await client.query("BEGIN"); // Start Transaction
 
-      const { partnersId, minWeight, maxWeight, price, dimension, answer } = userData;
+      const { partnersId, minWeight, maxWeight, price, dimension, answer } =
+        userData;
 
       if (!partnersId || !minWeight || !maxWeight || !price) {
         return encrypt(
@@ -983,7 +1099,6 @@ export class adminRepository {
 
       const result = await client.query(addPriceDetailsQuery, params);
 
-
       // Insert transaction history
       const txnHistoryParams = [
         9,
@@ -1013,7 +1128,10 @@ export class adminRepository {
         {
           success: false,
           message: "Weight details insertion failed",
-          error: error instanceof Error ? error.message : "An unknown error occurred",
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
         },
         true
       );
@@ -1023,14 +1141,13 @@ export class adminRepository {
   }
   public async getPricingV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log('token', token);
+    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
+    console.log("tokens", tokens);
 
     try {
-
       // Get Restaurant/Document Details
       const price = await executeQuery(getPriceQuery);
 
@@ -1038,7 +1155,7 @@ export class adminRepository {
       return encrypt(
         {
           success: true,
-          message: 'Returned price successfully',
+          message: "Returned price successfully",
           token: tokens,
           price: price,
         },
@@ -1046,14 +1163,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -1090,8 +1208,8 @@ export class adminRepository {
         10, // TransTypeID (5 -> Category Addition)
         tokendata.id, // refUserId
         `Add Category`, // transData
-        CurrentTime(),  // TransTime
-        "admin" // UpdatedBy
+        CurrentTime(), // TransTime
+        "admin", // UpdatedBy
       ];
       await client.query(updateHistoryQuery, txnHistoryParams);
 
@@ -1130,21 +1248,20 @@ export class adminRepository {
   }
   public async getCategoryV1(userData: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log('token', token);
+    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log('tokens', tokens);
+    console.log("tokens", tokens);
 
     try {
-
       const allCategories = await executeQuery(getAllCategoriesQuery);
 
       // Return success response
       return encrypt(
         {
           success: true,
-          message: 'Returned Category successfully',
+          message: "Returned Category successfully",
           token: tokens,
           Category: allCategories,
         },
@@ -1152,14 +1269,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },
@@ -1170,7 +1288,7 @@ export class adminRepository {
   public async addSubCategoryV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
-    const tokens = generateTokenWithExpire(token, true)
+    const tokens = generateTokenWithExpire(token, true);
     try {
       await client.query("BEGIN"); // Start Transaction
 
@@ -1186,19 +1304,21 @@ export class adminRepository {
         );
       }
 
-      const result = await client.query(insertSubcategoryQuery, [categoryId, subcategory]);
+      const result = await client.query(insertSubcategoryQuery, [
+        categoryId,
+        subcategory,
+      ]);
 
       // const allSubcategories = await client.query(getAllSubcategoriesQuery);
       const txnHistoryParams = [
         11, // TransTypeID (5 -> Category Addition)
         tokendata.id, // refUserId
         `Add sub Category`, // transData
-        CurrentTime(),  // TransTime
-        "admin" // UpdatedBy
+        CurrentTime(), // TransTime
+        "admin", // UpdatedBy
       ];
       await client.query(updateHistoryQuery, txnHistoryParams);
       await client.query("COMMIT"); // Commit Transaction
-
 
       return encrypt(
         {
@@ -1240,7 +1360,7 @@ export class adminRepository {
       return encrypt(
         {
           success: true,
-          message: 'Returned sub Category successfully',
+          message: "Returned sub Category successfully",
           token: tokens,
           SubCategory: allSubcategories,
         },
@@ -1248,14 +1368,15 @@ export class adminRepository {
       );
     } catch (error) {
       // Error handling
-      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-      console.error('Error during data retrieval:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
 
       // Return error response
       return encrypt(
         {
           success: false,
-          message: 'Data retrieval failed',
+          message: "Data retrieval failed",
           error: errorMessage,
           token: tokens,
         },

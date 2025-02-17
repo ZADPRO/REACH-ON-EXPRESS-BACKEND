@@ -41,7 +41,7 @@ JOIN public.usertype ut ON u."userTypeId" = ut."userTypeId"
 // TESTING CODE
 
 export const getUsertypeQuery = `SELECT * FROM public."usertype"
-` ;
+`;
 
 export const fetchProfileData = `SELECT
     u."refUserFName", u."refCustId", u."refUserLName", u."userTypeId", 
@@ -148,4 +148,3 @@ export const getAllSubcategoriesQuery = `
 FROM
   public."refSubcategoryTable" rsc
   JOIN "refCategoryTable" as rc ON rsc."refCategoryId" = rc."refCategoryId";`;
-

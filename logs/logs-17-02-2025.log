@@ -1,0 +1,353 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T06:03:56.050Z"}
+{"level":"info","message":"Router-----add partner","timestamp":"2025-02-17T06:04:02.721Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:04:02.813Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:04:05.822Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:04:05.832Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:04:05.882Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:04:05.955Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:04:14.180Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:04:14.230Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T06:05:15.013Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:10:59.500Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:10:59.635Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:11:07.387Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:11:07.595Z"}
+{"level":"info","message":"Router-----add partner","timestamp":"2025-02-17T06:11:26.262Z"}
+{"code":"3D000","file":"postinit.c","length":103,"level":"error","line":"1033","message":"Error in add partner database \"reachonexpress_db\" does not exist","name":"error","routine":"InitPostgres","severity":"FATAL","stack":"error: database \"reachonexpress_db\" does not exist\n    at D:\\REACH-ON-EXPRESS\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-02-17T06:11:26.346Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T06:11:38.382Z"}
+{"level":"info","message":"Router-----add partner","timestamp":"2025-02-17T06:11:41.427Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:11:41.542Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:11:44.471Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:11:44.537Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T06:18:26.477Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-17T06:21:05.344Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-17T06:21:09.605Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:21:21.703Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:21:21.722Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T06:21:21.740Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:21:21.856Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:21:21.870Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T06:21:21.902Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-17T06:23:46.928Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-17T06:23:54.118Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:26:51.081Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:26:51.227Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:27:19.959Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:27:20.039Z"}
+{"level":"info","message":"Router-----add partner","timestamp":"2025-02-17T06:27:47.276Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:27:47.511Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:27:51.756Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:27:51.765Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:27:51.787Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:27:51.870Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:28:06.395Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:28:06.404Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:28:06.497Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:28:06.518Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T06:28:30.926Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T06:29:48.064Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:30:14.029Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:30:14.051Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:30:14.182Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:30:14.193Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:31:25.328Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:31:25.345Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T06:31:45.902Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:32:38.259Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:32:38.274Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:32:38.378Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:32:38.412Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:33:04.377Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T06:33:04.394Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:33:04.486Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T06:33:04.514Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:33:05.708Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T06:33:05.715Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:33:05.735Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T06:33:05.744Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:10.179Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:10.314Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:19.736Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T06:34:19.753Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:19.804Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T06:34:20.029Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T06:34:21.660Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T06:34:21.684Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T06:34:21.704Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T06:34:21.724Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:35.206Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:34:35.217Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T06:34:35.227Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:34:35.330Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:35.339Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T06:34:35.364Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:45.436Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-17T06:34:45.449Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:34:45.527Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-17T06:34:45.573Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-17T06:34:48.964Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-02-17T06:34:48.984Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:56:54.865Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:56:54.897Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:56:55.027Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:56:55.038Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:56:56.885Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:56:56.960Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:56:56.989Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:56:57.002Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T06:57:47.940Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:58:35.037Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:58:35.048Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:58:41.974Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:58:42.040Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T06:58:54.099Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T06:59:56.882Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T06:59:56.897Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:00:02.343Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:00:02.374Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:00:06.865Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:00:06.876Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:01:02.868Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:01:02.878Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:01:04.909Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:01:04.921Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T07:01:14.499Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:01:22.701Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:01:22.712Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:01:58.794Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:01:58.807Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:02:00.800Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:02:00.812Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T07:02:16.851Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:02:17.086Z"}
+{"level":"info","message":"Router-----add partner","timestamp":"2025-02-17T07:02:27.272Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:02:27.451Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:03:09.743Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:03:09.770Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:03:09.914Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:03:10.023Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:03:42.529Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:03:42.540Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:03:42.653Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:03:42.676Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T07:07:49.879Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:07:50.117Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:08:54.493Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:08:54.824Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:09:00.065Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:09:00.726Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:09:34.643Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:09:34.656Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:09:34.765Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:09:34.786Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:10:06.418Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:10:06.425Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:10:06.524Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:10:06.554Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T07:10:15.675Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:10:15.791Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:10:43.979Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:10:43.985Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:10:44.097Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:10:44.130Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T07:11:50.242Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T07:12:29.729Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:16:59.904Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:16:59.960Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:17:00.058Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:17:00.074Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:18:13.682Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:18:13.693Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:18:13.814Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:18:13.856Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:18:19.583Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:18:19.607Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:18:19.695Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:18:19.717Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:14.330Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:14.338Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:14.461Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:14.484Z"}
+{"level":"info","message":"Router-----add price","timestamp":"2025-02-17T07:19:23.243Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:41.551Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:41.564Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:41.770Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:41.780Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:48.352Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:48.374Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:48.472Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:48.492Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:54.100Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:54.125Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:19:54.194Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:19:54.205Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:20:04.712Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:20:04.736Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:20:04.877Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:20:04.952Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:20:59.818Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:20:59.828Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:00.722Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:00.731Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:03.511Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:03.526Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:03.583Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:03.590Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:12.460Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:12.480Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:12.736Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:12.751Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:14.651Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:14.660Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:14.750Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:14.759Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:16.943Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:16.953Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:17.795Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:17.807Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:18.627Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:18.636Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:18.709Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:18.714Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:22.375Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:22.384Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:22.838Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:22.849Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:24.077Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:24.084Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:24.166Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:24.181Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:27.019Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:27.028Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:27.701Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:27.709Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:28.641Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:28.649Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:28.757Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:28.765Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:29.567Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:29.581Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:29.617Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:29.632Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:35.838Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:35.849Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:36.755Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:36.770Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:38.267Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:38.276Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:38.770Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:38.777Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:40.983Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:40.992Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:21:41.009Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:21:41.017Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-17T07:25:14.607Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:26:02.189Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:26:02.199Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:26:02.207Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:26:02.282Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:26:02.305Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:26:02.310Z"}
+{"level":"info","message":"Router-----add price","timestamp":"2025-02-17T07:27:00.070Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:27:00.216Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:27:13.836Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:27:13.855Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:27:13.983Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:27:14.001Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:28:14.344Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:28:14.354Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:28:14.491Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:28:14.582Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:28:17.664Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:28:17.887Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:28:17.902Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:28:17.948Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:28:55.947Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:28:55.960Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:28:56.092Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:28:56.102Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:29:15.394Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:29:15.418Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:29:15.555Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:29:15.645Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:29:23.563Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:29:23.572Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:29:23.612Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:29:23.620Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:31:03.173Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:31:03.193Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:31:03.216Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:31:03.304Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:31:03.314Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:31:03.388Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:36:35.959Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:36:35.983Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:36:35.996Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:36:36.086Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:36:36.096Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:36:36.181Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:37:55.916Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:37:55.923Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:37:55.931Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:37:56.033Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:37:56.050Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:37:56.124Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:38:54.103Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:38:54.126Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:38:54.139Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:38:54.217Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:38:54.229Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:38:54.256Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:39:43.891Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:39:43.901Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:39:43.911Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:39:44.028Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:39:44.052Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:39:44.079Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:45:31.790Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:45:31.799Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:45:31.808Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:45:31.981Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:45:32.007Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:45:32.045Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:45:35.101Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:45:35.107Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:45:35.112Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:45:35.143Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:45:35.149Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:45:35.153Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:48:26.656Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:48:26.665Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:48:26.675Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:48:26.816Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:48:26.826Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:48:26.833Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:48:58.410Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:48:58.416Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:48:58.500Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-02-17T07:48:58.506Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:49:00.921Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:49:00.928Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-02-17T07:49:00.936Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-02-17T07:49:00.944Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:49:10.028Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:49:10.035Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:49:10.042Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:49:10.072Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:49:10.082Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:49:10.129Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:49:25.783Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-17T07:49:25.789Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:49:25.882Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-02-17T07:49:25.896Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:51:02.280Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:51:02.292Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:51:02.298Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-02-17T07:51:02.360Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-02-17T07:51:02.366Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-02-17T07:51:02.370Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-02-17T09:45:52.054Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T11:52:25.154Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T11:52:31.284Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T11:52:37.365Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T11:52:43.757Z"}

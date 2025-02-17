@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const pool = new Pool({
-  user: process.env.DB_USER || "postgres",
+  user: process.env.DB_USER || "reachonexpress",
   host: process.env.DB_HOST || "localhost",
-  database: process.env.DB_NAME || "ReachOnExpress",
-  password: process.env.DB_PASSWORD || "vijay",
-  port: Number(process.env.DB_PORT) || 5432,
+  database: process.env.DB_NAME || "reachonexpress_db",
+  password: process.env.DB_PASSWORD || "reachoneadmin@1",
+  port: Number(process.env.DB_PORT) || 5436,
 });
 
 export const executeQuery = async (
