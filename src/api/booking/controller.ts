@@ -42,6 +42,36 @@ export class booking {
         .code(500);
     }
   };
+  public updateBooking = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------update Booking ");
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      
+
+      let entity;
+      entity = await this.resolver.updateBookingV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in update Booking:", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
   public viewBooking = async (
     request: any,
     response: Hapi.ResponseToolkit
@@ -93,6 +123,64 @@ export class booking {
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
       logger.error("Error in view Past booking:", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
+  public paymentMode = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------payment Mode ");
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      
+
+      let entity;
+      entity = await this.resolver.paymentModeV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in view payment Mode", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
+  public addReport = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------add Report ");
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      let entity;
+      entity = await this.resolver.addReportV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in add Report", error);
       return response
         .response({
           success: false,

@@ -1,0 +1,53 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:18:54.419Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:19:01.633Z"}
+{"code":"3D000","file":"postinit.c","length":100,"level":"error","line":"1050","message":"Error in add Customer database \"ReachOnExpress\" does not exist","name":"error","routine":"InitPostgres","severity":"FATAL","stack":"error: database \"ReachOnExpress\" does not exist\n    at C:\\Users\\INDHU\\Desktop\\JP-Backend\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-02-17T08:19:01.727Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:19:29.244Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:19:38.499Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:19:43.921Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:19:56.408Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:20:03.554Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:26:00.944Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:26:10.321Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:26:10.931Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:29:12.507Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:29:34.874Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:29:48.707Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:30:39.490Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:30:51.868Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:31:22.825Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:31:28.839Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:32:05.872Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T08:32:15.762Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T08:32:18.178Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:38:25.616Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T09:39:30.856Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:41:44.099Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:46:50.299Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T09:48:21.931Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T09:48:27.050Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:48:29.338Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T09:50:07.360Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:50:12.810Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:50:54.669Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:51:21.140Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T09:55:14.496Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:55:57.538Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T09:59:13.790Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:59:18.570Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T09:59:34.846Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:02:20.885Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T10:02:27.680Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T10:02:45.058Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:14:45.291Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T10:14:47.366Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:16:23.686Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T10:16:25.944Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:21:05.031Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T10:21:08.530Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:21:54.428Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T10:21:57.569Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:22:12.591Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:24:54.769Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-02-17T10:24:57.500Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T10:26:12.838Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-02-17T12:05:18.209Z"}

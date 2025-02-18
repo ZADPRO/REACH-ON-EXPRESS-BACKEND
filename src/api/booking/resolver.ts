@@ -16,6 +16,17 @@ export class bookingResolver {
       domain_code
     );
   }
+  public async updateBookingV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.adminRepository.updateBookingV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
   public async viewBookingV1(
     user_data: any,
     token_data: any,
@@ -38,4 +49,28 @@ export class bookingResolver {
       domain_code
     );
   }
+  public async paymentModeV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.adminRepository.paymentModeV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  
+  public async addReportV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.adminRepository.addReportV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  
 }

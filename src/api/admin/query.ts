@@ -101,6 +101,10 @@ export const getLastCustomerRefIdQuery = `
     LIMIT 1;
 `;
 
+export const getCustomerCount = `
+  SELECT COUNT(*) FROM public."customers"
+`;
+
 export const insertCustomerQuery = `
     INSERT INTO public."customers" ("refCustId", "refCustomerName", "refCode","refNotes", "refCustomerType", "refAddress", "refPhone")
     VALUES ($1, $2, $3, $4, $5, $6, $7)

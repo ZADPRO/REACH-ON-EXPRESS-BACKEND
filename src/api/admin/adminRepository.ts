@@ -23,7 +23,8 @@ import {
   getCUstomersQuery,
   getPriceQuery,
   getAllEmployeeQuery,
-  getUsertypeQuery
+  getUsertypeQuery,
+  getCustomerCount
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
@@ -614,36 +615,17 @@ export class adminRepository {
       await client.query("BEGIN"); // Start transaction
 
       const { customerName, customerCode, customerType, notes, refAddress, refPhone } = userData;
-
-      // if (!customerName || typeof customerName !== "string") {
-      //     await client.query("ROLLBACK");
-      //     return encrypt(
-      //         {
-      //             success: false,
-      //             message: "'customerName' must be a non-empty string.",
-      //             token: tokens,
-      //         },
-      //         false
-      //     );
-      // }
-
       const currentMonth = moment().format("MM");
       const currentYear = moment().format("YY");
 
-      // Get the last inserted customer refCustId for the given refCode
-      const lastCustomerResult = await client.query(getLastCustomerRefIdQuery, [userData.customerCode]);
-      let nextCustomerNumber = 100001; // Default start number
+      // Get the total customer count
+      const userCountResult = await executeQuery(getCustomerCount);
+      const userCount = parseInt(userCountResult[0]?.count ?? "0", 10); // Convert count to a number
+      const nextCustomerNumber = userCount + 1; // Increment customer count
 
-      if (lastCustomerResult.rows.length > 0) {
-        const lastRefCustId = lastCustomerResult.rows[0].refCustId; // Example: R-XYZ-100001-01-2025
-        const lastNumberMatch = lastRefCustId.match(/(\d{6})-\d{2}-\d{2}$/);
-
-        if (lastNumberMatch) {
-          nextCustomerNumber = parseInt(lastNumberMatch[1], 10) + 1; // Increment the last number
-        }
-      }
-      const refCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
-      console.log('refCustId', refCustId)
+      // Generate new refCustId
+      const refCustId = `R-${customerCode}-${String(10000 + nextCustomerNumber)}-${currentMonth}-${currentYear}`;
+      console.log("Generated refCustId:", refCustId);
 
       // Insert Customer
       const { rows } = await client.query(insertCustomerQuery, [
@@ -656,9 +638,7 @@ export class adminRepository {
         refPhone
       ]);
 
-      console.log('rows line 566', rows)
       if (rows.length === 0) {
-        console.log('rows', rows)
         await client.query("ROLLBACK");
         return encrypt(
           {
@@ -666,12 +646,18 @@ export class adminRepository {
             message: "Customer insertion failed.",
             token: tokens,
           },
-          true
+          false
         );
       }
 
       // Insert Transaction History
-      await client.query(updateHistoryQuery, [5, tokenData.id, "Added a customer", CurrentTime(), "Admin"]);
+      await client.query(updateHistoryQuery, [
+        5,
+        parseInt(tokenData.id),
+        "Added a customer",
+        moment().format("YYYY-MM-DD HH:mm:ss"),
+        "Admin",
+      ]);
 
       await client.query("COMMIT"); // Commit transaction
 
@@ -682,7 +668,7 @@ export class adminRepository {
           token: tokens,
           data: rows[0], // Return inserted data
         },
-        true
+        false
       );
     } catch (error) {
       await client.query("ROLLBACK"); // Rollback transaction on failure
@@ -695,7 +681,7 @@ export class adminRepository {
           error: error instanceof Error ? error.message : "An unknown error occurred",
           token: tokens,
         },
-        true
+        false
       );
     } finally {
       client.release(); // Ensure client is released

@@ -22,6 +22,17 @@ export class bookingRoutes implements IRoute {
         },
         {
           method: "POST",
+          path: "/api/v1/route/updateBooking",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.updateBooking,
+            description: "update Booking ",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
           path: "/api/v1/route/viewBooking",
           config: {
             pre: [{ method: validateToken, assign: "token" }],
@@ -38,6 +49,28 @@ export class bookingRoutes implements IRoute {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.viewPastBooking,
             description: "view Past booking",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/route/paymentMode",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.paymentMode,
+            description: "paymentMode",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/route/addReport",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addReport,
+            description: "add Report",
             tags: ["api", "users"],
             auth: false,
           },
