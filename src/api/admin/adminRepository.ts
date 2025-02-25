@@ -384,7 +384,7 @@ export class adminRepository {
       return encrypt(
         {
           success: false,
-          message: "Check the credentials",
+          message: error,
         },
         true
       );
