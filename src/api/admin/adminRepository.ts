@@ -37,7 +37,7 @@ import {
   getPriceQuery,
   getAllEmployeeQuery,
   getUsertypeQuery,
-  getCustomerCount
+  getCustomerCount,
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
@@ -384,7 +384,7 @@ export class adminRepository {
       return encrypt(
         {
           success: false,
-          message: error,
+          message: "Error message" + error,
         },
         true
       );
