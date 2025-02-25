@@ -6,15 +6,9 @@ dotenv.config();
 const pool = new Pool({
   user: process.env.DB_USER || "reachonexpress",
   host: process.env.DB_HOST || "localhost",
-<<<<<<< HEAD
-  database: process.env.DB_NAME || "reach_on_express",
-  password: process.env.DB_PASSWORD || "1234",
-  port: Number(process.env.DB_PORT) || 5432,
-=======
   database: process.env.DB_NAME || "reachonexpress_db",
-  password: process.env.DB_PASSWORD || "reachoneadmin@1",
+  password: process.env.DB_PASSWORD || "reachoneadmin@2025",
   port: Number(process.env.DB_PORT) || 5436,
->>>>>>> 0416bc8527bd28bd319b40373d50a5784e0e7c6f
 });
 
 export const executeQuery = async (

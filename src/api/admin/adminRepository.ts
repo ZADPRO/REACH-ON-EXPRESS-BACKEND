@@ -37,10 +37,7 @@ import {
   getPriceQuery,
   getAllEmployeeQuery,
   getUsertypeQuery,
-<<<<<<< HEAD
   getCustomerCount
-=======
->>>>>>> 0416bc8527bd28bd319b40373d50a5784e0e7c6f
 } from "./query";
 import { generateSignupEmailContent } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
@@ -687,20 +684,6 @@ export class adminRepository {
     try {
       await client.query("BEGIN"); // Start transaction
 
-<<<<<<< HEAD
-      const { customerName, customerCode, customerType, notes, refAddress, refPhone } = userData;
-      const currentMonth = moment().format("MM");
-      const currentYear = moment().format("YY");
-
-      // Get the total customer count
-      const userCountResult = await executeQuery(getCustomerCount);
-      const userCount = parseInt(userCountResult[0]?.count ?? "0", 10); // Convert count to a number
-      const nextCustomerNumber = userCount + 1; // Increment customer count
-
-      // Generate new refCustId
-      const refCustId = `R-${customerCode}-${String(10000 + nextCustomerNumber)}-${currentMonth}-${currentYear}`;
-      console.log("Generated refCustId:", refCustId);
-=======
       const {
         customerName,
         customerCode,
@@ -741,7 +724,6 @@ export class adminRepository {
       }
       const refCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
       console.log("refCustId", refCustId);
->>>>>>> 0416bc8527bd28bd319b40373d50a5784e0e7c6f
 
       // Insert Customer
       const { rows } = await client.query(insertCustomerQuery, [
@@ -754,13 +736,9 @@ export class adminRepository {
         refPhone,
       ]);
 
-<<<<<<< HEAD
-      if (rows.length === 0) {
-=======
       console.log("rows line 566", rows);
       if (rows.length === 0) {
         console.log("rows", rows);
->>>>>>> 0416bc8527bd28bd319b40373d50a5784e0e7c6f
         await client.query("ROLLBACK");
         return encrypt(
           {
@@ -775,15 +753,9 @@ export class adminRepository {
       // Insert Transaction History
       await client.query(updateHistoryQuery, [
         5,
-<<<<<<< HEAD
-        parseInt(tokenData.id),
-        "Added a customer",
-        moment().format("YYYY-MM-DD HH:mm:ss"),
-=======
         tokenData.id,
         "Added a customer",
         CurrentTime(),
->>>>>>> 0416bc8527bd28bd319b40373d50a5784e0e7c6f
         "Admin",
       ]);
 

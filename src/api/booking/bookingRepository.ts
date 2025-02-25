@@ -569,7 +569,7 @@ export class bookingRepository {
           token: tokens,
           data: ParcelBookingData,
         },
-        false
+        true
       );
     } catch (error) {
       const errorMessage = (error as Error).message;
@@ -581,7 +581,7 @@ export class bookingRepository {
           message: `Error in Parcel past Booking Data retrieval: ${errorMessage}`,
           token: tokens,
         },
-        false
+        true
       );
     }
   }
