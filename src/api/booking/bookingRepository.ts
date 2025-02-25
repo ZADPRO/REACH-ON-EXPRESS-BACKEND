@@ -96,7 +96,7 @@ export class bookingRepository {
         return encrypt(
           {
             success: false,
-            message: "Missing required fields."
+            message: "Missing required fields.",
           },
           false
         );
@@ -126,7 +126,7 @@ export class bookingRepository {
         return encrypt(
           {
             success: false,
-            message: "Invalid partnersId or refCustomerId."
+            message: "Invalid partnersId or refCustomerId.",
           },
           false
         );
@@ -185,17 +185,18 @@ export class bookingRepository {
         throw new Error("Parcel booking insertion failed.");
       }
 
-
       // Create the prefix and date part
-      const refCustIdBase = refCustId.split('-');  // Assuming refCustomerId is in the format "R-NK-10008-02-25"
-      const refCustIdPrefix = refCustIdBase.slice(0, 3).join('-');  // This will be "R-NK-10008"
-      const refCustIdDate = refCustIdBase.slice(3).join('-'); // This will be "02-25"
+      const refCustIdBase = refCustId.split("-"); // Assuming refCustomerId is in the format "R-NK-10008-02-25"
+      const refCustIdPrefix = refCustIdBase.slice(0, 3).join("-"); // This will be "R-NK-10008"
+      const refCustIdDate = refCustIdBase.slice(3).join("-"); // This will be "02-25"
 
       // Now insert the same data into `refParcelBooking` table multiple times based on `count`
       if (count >= 2) {
         for (let i = 1; i <= count; i++) {
-          const newRefCustId = `${refCustIdPrefix}-${String(i).padStart(3, "0")}-${refCustIdDate}`; // Generating refCustId like "R-NK-10008-001-02-25"
-
+          const newRefCustId = `${refCustIdPrefix}-${String(i).padStart(
+            3,
+            "0"
+          )}-${refCustIdDate}`; // Generating refCustId like "R-NK-10008-001-02-25"
 
           await client.query(refParcelBookingQuery, [
             partnersName,
@@ -276,13 +277,17 @@ export class bookingRepository {
       client.release();
     }
   }
-  public async updateBookingV1(userData: any, tokenData: any, isRefParcel: boolean): Promise<any> {
+  public async updateBookingV1(
+    userData: any,
+    tokenData: any,
+    isRefParcel: boolean
+  ): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true); // Assuming token generation is needed
-    
+
     try {
-      await client.query('BEGIN'); // Start transaction
+      await client.query("BEGIN"); // Start transaction
 
       const {
         partnersName,
@@ -318,10 +323,13 @@ export class bookingRepository {
         count,
         consignorPincode,
         consigneePincode,
-        parcelBookingId, 
-        isRefParcel
+        parcelBookingId,
+        isRefParcel,
       } = userData;
-      console.log('parcelBookingId---------------------------------------------------------', parcelBookingId)
+      console.log(
+        "parcelBookingId---------------------------------------------------------",
+        parcelBookingId
+      );
 
       // Validate required fields
       if (!parcelBookingId) {
@@ -331,8 +339,9 @@ export class bookingRepository {
         );
       }
 
-      const customerTypeBoolean = customerType === true || customerType === "true";
-      console.log('isRefParcel', isRefParcel)
+      const customerTypeBoolean =
+        customerType === true || customerType === "true";
+      console.log("isRefParcel", isRefParcel);
 
       // Update `parcelBooking` table if isRefParcel is true
       if (isRefParcel === true) {
@@ -369,7 +378,7 @@ export class bookingRepository {
           pickUP,
           consignorPincode,
           consigneePincode,
-          parcelBookingId
+          parcelBookingId,
         ]);
         console.log("Updated parcelBooking:", updateResult);
       }
@@ -409,22 +418,29 @@ export class bookingRepository {
           pickUP,
           consignorPincode,
           consigneePincode,
-          parcelBookingId
+          parcelBookingId,
         ]);
         console.log("Updated refParcelBooking:", updateResult);
       }
 
-      await client.query('COMMIT'); // Commit transaction
+      await client.query("COMMIT"); // Commit transaction
 
       return encrypt(
-        { success: true, message: "Parcel booking details updated successfully." },
+        {
+          success: true,
+          message: "Parcel booking details updated successfully.",
+        },
         false
       );
     } catch (error: any) {
       console.log("Error updating booking:", error);
-      await client.query('ROLLBACK');
+      await client.query("ROLLBACK");
       return encrypt(
-        { success: false, message: "Parcel booking update failed.", error: error.message || "An unknown error occurred" },
+        {
+          success: false,
+          message: "Parcel booking update failed.",
+          error: error.message || "An unknown error occurred",
+        },
         false
       );
     } finally {
@@ -432,45 +448,45 @@ export class bookingRepository {
     }
   }
   public async paymentModeV1(user_data: any, tokendata: any): Promise<any> {
-      const token = { id: tokendata.id }; // Extract token ID
-      console.log('token', token);
-  
-      // Generate token with expiration
-      const tokens = generateTokenWithExpire(token, true);
-      console.log('tokens', tokens);
-  
-      try {
-  
-        const payment = await executeQuery(getPaymentQuery);
-  
-        // Return success response
-        return encrypt(
-          {
-            success: true,
-            message: 'Returned paymennts successfully',
-            token: tokens,
-            paymentMode: payment,
-          },
-          false
-        );
-      } catch (error) {
-        // Error handling
-        const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-        console.error('Error during data retrieval:', error);
-  
-        // Return error response
-        return encrypt(
-          {
-            success: false,
-            message: 'Data retrieval failed',
-            error: errorMessage,
-            token: tokens,
-          },
-          false
-        );
-      }
+    const token = { id: tokendata.id }; // Extract token ID
+    console.log("token", token);
+
+    // Generate token with expiration
+    const tokens = generateTokenWithExpire(token, true);
+    console.log("tokens", tokens);
+
+    try {
+      const payment = await executeQuery(getPaymentQuery);
+
+      // Return success response
+      return encrypt(
+        {
+          success: true,
+          message: "Returned paymennts successfully",
+          token: tokens,
+          paymentMode: payment,
+        },
+        false
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
+
+      // Return error response
+      return encrypt(
+        {
+          success: false,
+          message: "Data retrieval failed",
+          error: errorMessage,
+          token: tokens,
+        },
+        false
+      );
     }
-  
+  }
+
   public async viewBookingV1(userData: any, tokenData: any): Promise<any> {
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
@@ -590,45 +606,44 @@ export class bookingRepository {
     const tokens = generateTokenWithExpire(token, true);
 
     try {
+      // Retrieve all Parcel Booking Data
+      const parcelBookingData = await executeQuery(parselBookingData, []);
 
-        // Retrieve all Parcel Booking Data
-        const parcelBookingData = await executeQuery(parselBookingData, []);
+      // Process each entry to get refParcelBooking data based on vendorLeaf
+      for (const parcel of parcelBookingData) {
+        const { vendorLeaf } = parcel;
 
-        // Process each entry to get refParcelBooking data based on vendorLeaf
-        for (const parcel of parcelBookingData) {
-            const { vendorLeaf } = parcel;
+        // Retrieve related records from refParcelBooking table where vendorLeaf matches
 
-            // Retrieve related records from refParcelBooking table where vendorLeaf matches
-          
-            const refParcelBookingData = await executeQuery(refParcelBookingDataQuery, [vendorLeaf]);
-
-            // Attach retrieved data to the main parcel record
-            parcel.refParcelBookings = refParcelBookingData;
-        }
-
-        return encrypt(
-            {
-                success: true,
-                message: "Report details retrieved successfully",
-                token: tokens,
-                data: parcelBookingData, // Each parcel contains only its relevant refParcelBookings
-            },
-            false
+        const refParcelBookingData = await executeQuery(
+          refParcelBookingDataQuery,
+          [vendorLeaf]
         );
+
+        // Attach retrieved data to the main parcel record
+        parcel.refParcelBookings = refParcelBookingData;
+      }
+
+      return encrypt(
+        {
+          success: true,
+          message: "Report details retrieved successfully",
+          token: tokens,
+          data: parcelBookingData, // Each parcel contains only its relevant refParcelBookings
+        },
+        true
+      );
     } catch (error: any) {
-        console.error("Error in report:", error.message);
+      console.error("Error in report:", error.message);
 
-        return encrypt(
-            {
-                success: false,
-                message: `Error in Parcel past Booking Data retrieval: ${error.message}`,
-                token: tokens,
-            },
-            false
-        );
+      return encrypt(
+        {
+          success: false,
+          message: `Error in Parcel past Booking Data retrieval: ${error.message}`,
+          token: tokens,
+        },
+        true
+      );
     }
-}
-
-
-
+  }
 }

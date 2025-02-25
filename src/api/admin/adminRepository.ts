@@ -374,6 +374,7 @@ export class adminRepository {
       // Return error if user not found or invalid password
       return encrypt(
         {
+          tesitng: "tesitng",
           success: false,
           message: "Invalid login credentials",
         },
@@ -746,7 +747,7 @@ export class adminRepository {
             message: "Customer insertion failed.",
             token: tokens,
           },
-          false
+          true
         );
       }
 
@@ -768,7 +769,7 @@ export class adminRepository {
           token: tokens,
           data: rows, // Return inserted data
         },
-        false
+        true
       );
     } catch (error) {
       await client.query("ROLLBACK"); // Rollback transaction on failure
@@ -784,7 +785,7 @@ export class adminRepository {
               : "An unknown error occurred",
           token: tokens,
         },
-        false
+        true
       );
     } finally {
       client.release(); // Ensure client is released
