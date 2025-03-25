@@ -3,6 +3,7 @@ import * as Hapi from "@hapi/hapi";
 import IRoute from "../../helper/routes";
 import { validateToken } from "../../helper/token";
 import { Profile } from "./controller";
+import validate from "./validate";
 
 export class newRoutes implements IRoute {
   public async register(server: any): Promise<any> {
@@ -15,6 +16,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addEmployee,
+            validate: validate.addEmployee,
             description: "add employee",
             tags: ["api", "users"],
             auth: false,
@@ -26,6 +28,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.getEmployee,
+            // validate: validate.getEmployee,
             description: "get Employee",
             tags: ["api", "Users"],
             auth: false,
@@ -49,6 +52,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.viewProfile,
+            validate: validate.viewProfile,
             description: "view profile",
             tags: ["api", "Users"],
             auth: false,
@@ -59,6 +63,7 @@ export class newRoutes implements IRoute {
           path: "/api/v1/Routes/login",
           config: {
             handler: controller.adminlogin,
+            validate: validate.userLogin,
             description: "login Checking Validation",
             // tags: ["api", "users"],
             auth: false,
@@ -71,6 +76,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addPartners,
+            validate: validate.addPartners,
             description: "add partners",
             tags: ["api", "Users"],
             auth: false,

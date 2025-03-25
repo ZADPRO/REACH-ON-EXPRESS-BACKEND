@@ -21,6 +21,7 @@ export const getLastCustomerIdQuery = `
     `;
 
 export const checkQuery = `SELECT * FROM public."refusersdomain" WHERE "refUsername"=$1 LIMIT 10;`;
+
 export const insertUserQuery = `INSERT INTO public."user" ("refUserFName", "refUserLName", "designation",  "userTypeId", "refCustId","dateOfBirth", "qualification") 
 VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
 

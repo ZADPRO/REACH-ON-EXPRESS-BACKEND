@@ -63,7 +63,7 @@ export class adminRepository {
             success: true,
             message: "Already exists",
           },
-          true
+        true
         );
       }
 
@@ -150,7 +150,7 @@ export class adminRepository {
         if ((updateHistory.rowCount ?? 0) > 0) {
           const tokenData = {
             id: newUser.refUserId,
-            email: userData.temp_su_email,
+            email: userData.temp_email,
           };
           await client.query("COMMIT");
           const main = async () => {
@@ -247,7 +247,7 @@ export class adminRepository {
           token: tokens,
           data: registerData,
         },
-        false
+        true
       );
     } catch (error) {
       const errorMessage = (error as Error).message; // Cast `error` to `Error` type
@@ -258,7 +258,7 @@ export class adminRepository {
           message: `Error in Profile Page Data retrieval: ${errorMessage}`,
           token: tokens,
         },
-        false
+        true
       );
     }
   }
@@ -391,6 +391,8 @@ export class adminRepository {
       );
     }
   }
+
+
   public async addPartnersV1(user_data: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
@@ -677,6 +679,8 @@ export class adminRepository {
       client.release();
     }
   }
+
+
   public async addCustomerV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
@@ -1058,6 +1062,8 @@ export class adminRepository {
       client.release();
     }
   }
+
+  
   public async addPricingV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
@@ -1181,6 +1187,7 @@ export class adminRepository {
       );
     }
   }
+
   public async addCategoryV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
@@ -1287,6 +1294,7 @@ export class adminRepository {
       );
     }
   }
+
   public async addSubCategoryV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
