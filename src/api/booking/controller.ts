@@ -189,4 +189,32 @@ export class booking {
         .code(500);
     }
   };
+  public updateFinance = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------update Finance");
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      let entity;
+      entity = await this.resolver.updateFinanceV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in update Finance", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
 }

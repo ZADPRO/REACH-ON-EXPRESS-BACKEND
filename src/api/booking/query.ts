@@ -1,11 +1,22 @@
 export const updateHistoryQuery = `
- INSERT INTO public."reftxnhistory" ("transtypeId", "refUserId", "transdata", "transtime", "updatedBy")
-  VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
+INSERT INTO
+  public."reftxnhistory" (
+    "transtypeId",
+    "refUserId",
+    "transdata",
+    "transtime",
+    "updatedBy"
+  )
+VALUES
+  ($1, $2, $3, $4, $5)
+RETURNING
+  *;`
+  ;
 
 export const vendorLeafQuery = `SELECT "leaf" FROM public.transactionmapping WHERE "partnersName" = $1 LIMIT 1`;
 
 export const refCustIdQuery = `SELECT "refCustId" FROM public.customers WHERE "refCustomerId" = $1 LIMIT 1`;
-
+export const getParcelBookingCount = `SELECT COUNT(*) AS total FROM public.parcelbooking WHERE "parcelBookingId" = $1`
 export const parcelBookingQuery = `
 INSERT INTO
   public.parcelbooking (
@@ -91,7 +102,7 @@ RETURNING
 
 export const refParcelBookingQuery = `
 INSERT INTO
-  public.refparcelbooking (
+  public."parcelbooking" (
     "partnersName",
     "vendorLeaf",
     "refCustomerId",
@@ -173,7 +184,6 @@ RETURNING
 `;
 
 
-
 export const updateRefStatusQuery = `UPDATE public.transactionmapping 
 SET "refStatus" = 'Assigned' 
 WHERE ctid IN (
@@ -183,6 +193,34 @@ WHERE ctid IN (
     ORDER BY ctid ASC
     LIMIT 1
 );`;
+
+export const getCustomerQuery = `SELECT
+  "refCustId",
+  "refCustomerName",
+  "refCode",
+  "refNotes",
+  "refCustomerType"
+FROM
+  Public."customers"
+WHERE
+  "refCustomerId" = $1
+  AND (
+    "deletedAt" IS NULL
+    AND "deletedBy" IS NULL
+  );`;
+
+export const addFinanceQuery = `INSERT INTO
+  public."refFinanceTable"  (
+    "refCustomerName",
+    "refOutstandingAmt",
+    "refBalanceAmount"
+  )
+VALUES
+  ($1, $2, $3)
+RETURNING
+  *;
+
+`;
 
 export const parcelBookingUpdateQuery = `UPDATE public.parcelbooking
 SET 
@@ -269,4 +307,15 @@ export const getPaymentQuery = `SELECT "paymentId", "paymentName" FROM public."r
 export const parselBookingData = `SELECT * FROM public.parcelbooking pb ORDER BY pb."parcelBookingId" DESC`;
 
 export const refParcelBookingDataQuery = `SELECT * FROM public."refparcelbooking" WHERE "vendorLeaf" = $1`;
+
+export const getFinanceDataQuery = `SELECT * FROM public."refFinanceTable" WHERE "refCustomerName" = $1
+`;
  
+export const updateFinanceQuery =`UPDATE
+  public."refFinanceTable"
+SET
+  "refPayAmount" = $2,
+  "refBalanceAmount" = $3,
+WHERE
+  "refCustomerName" = $3;
+`;

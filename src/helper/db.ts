@@ -3,21 +3,21 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// const pool = new Pool({
-//   user: process.env.DB_USER || "reachonexpress",
-//   host: process.env.DB_HOST || "localhost",
-//   database: process.env.DB_NAME || "reachonexpress_db",
-//   password: process.env.DB_PASSWORD || "reachoneadmin@2025",
-//   port: Number(process.env.DB_PORT) || 5436,
-// });
-
 const pool = new Pool({
-  user: process.env.DB_USER || "postgres",
-  host: process.env.DB_HOST || "localhost",
-  database: process.env.DB_NAME || "reach_on_express",
-  password: process.env.DB_PASSWORD || "1234",
-  port: Number(process.env.DB_PORT) || 5432,
+  user: process.env.DB_USER || "reachonexpress",
+  host: process.env.DB_HOST || "zadroit.brightoncloudtech.com",
+  database: process.env.DB_NAME || "reachonexpress_db",
+  password: process.env.DB_PASSWORD || "reachoneadmin@2025",
+  port: Number(process.env.DB_PORT) || 5436,
 });
+
+// const pool = new Pool({
+//   user: process.env.DB_USER || "postgres",
+//   host: process.env.DB_HOST || "localhost",
+//   database: process.env.DB_NAME || "reach_on_express",
+//   password: process.env.DB_PASSWORD || "1234",
+//   port: Number(process.env.DB_PORT) || 5432,
+// });
 
 export const executeQuery = async (
   query: string,

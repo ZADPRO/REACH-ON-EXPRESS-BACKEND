@@ -3,6 +3,7 @@ import * as Hapi from "@hapi/hapi";
 import IRoute from "../../helper/routes";
 import { validateToken } from "../../helper/token";
 import { tracking } from "./controller";
+import validate from "./validate";
 
 export class newRoutes implements IRoute {
     public async register(server: any): Promise<any> {
@@ -11,14 +12,17 @@ export class newRoutes implements IRoute {
         server.route([
           {
             method: "POST",
-            // path: "/api/v1/Routes/Signup",
+            path: "/api/v1/newRoutes/tracking",
             config: {
-            //   handler: controller.userSignUp,
-              description: "Signup Checking Validation",
+              pre: [{ method: validateToken, assign: "token" }],
+              handler: controller.tracking,
+              validate: validate.tracking,
+              description: "tracking",
               tags: ["api", "users"],
               auth: false,
             },
           },
+          
         
           
         ]);

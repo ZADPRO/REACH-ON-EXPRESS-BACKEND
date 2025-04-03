@@ -27,7 +27,6 @@ export class mappingRepository {
     const tokens = generateTokenWithExpire(token, true);
 
     try {
-      console.log(" -> Line Number ----------------------------------- 23");
       await client.query("BEGIN");
 
       const mappingData = userData.mappingData;
@@ -35,11 +34,18 @@ export class mappingRepository {
 
       if (!Array.isArray(mappingData) || mappingData.length === 0) {
         await client.query("ROLLBACK");
-        return { success: false, message: "Invalid or empty mapping data" };
+        return encrypt(
+          {
+            success: false,
+            message: "Invalid or empty mapping data",
+          },
+          true
+        );
       }
 
       // Extract vendorLeaf values for duplicate check
       const vendorLeafValues = mappingData.map(({ vendorLeaf }) => vendorLeaf);
+      console.log("vendorLeafValues", vendorLeafValues);
 
       // Query to check if any vendorLeaf already exists
 
@@ -63,15 +69,13 @@ export class mappingRepository {
       const values: (string | number)[] = [];
 
       for (const { vendor, vendorLeaf, purchasedDate } of mappingData) {
-        console.log("vendor", vendor);
-
         // Fetch validity period from partners table
         const { rows: partnerRows } = await client.query(
           getPartnerValidityQuery,
           [vendor]
         );
-
         console.log("partnerRows", partnerRows);
+
         if (partnerRows.length === 0) {
           await client.query("ROLLBACK");
           return encrypt(
@@ -86,7 +90,6 @@ export class mappingRepository {
         const validityDays = partnerRows[0].validity;
         console.log("validityDays", validityDays);
 
-        // Calculate validityDate
         const validityDate = moment(purchasedDate)
           .add(validityDays, "days")
           .format("YYYY-MM-DD");
@@ -102,7 +105,6 @@ export class mappingRepository {
       }
 
       const query = insertTransactionMappingQuery(mappingData.length);
-      console.log("query", query);
       const { rows } = await client.query(query, values);
 
       if (rows.length === 0) {
@@ -123,7 +125,6 @@ export class mappingRepository {
         moment().format("YYYY-MM-DD HH:mm:ss"),
         "admin",
       ];
-      console.log("txnHistoryParams", txnHistoryParams);
       await client.query(updateHistoryQuery, txnHistoryParams);
 
       await client.query("COMMIT");

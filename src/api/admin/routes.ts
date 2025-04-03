@@ -16,7 +16,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addEmployee,
-            validate: validate.addEmployee,
+            // validate: validate.addEmployee,
             description: "add employee",
             tags: ["api", "users"],
             auth: false,
@@ -52,7 +52,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.viewProfile,
-            validate: validate.viewProfile,
+            // validate: validate.viewProfile,
             description: "view profile",
             tags: ["api", "Users"],
             auth: false,
@@ -63,7 +63,7 @@ export class newRoutes implements IRoute {
           path: "/api/v1/Routes/login",
           config: {
             handler: controller.adminlogin,
-            validate: validate.userLogin,
+            // validate: validate.userLogin,
             description: "login Checking Validation",
             // tags: ["api", "users"],
             auth: false,
@@ -76,7 +76,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addPartners,
-            validate: validate.addPartners,
+            // validate: validate.addPartners,
             description: "add partners",
             tags: ["api", "Users"],
             auth: false,
@@ -99,6 +99,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.updatePartners,
+            // validate: validate.updatePartners,
             description: "update partners",
             tags: ["api", "Users"],
             auth: false,
@@ -110,7 +111,8 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.getPartners,
-            description: "view added products",
+            // validate: validate.getPartners,
+            description: "view added Partners",
             auth: false,
           },
         },
@@ -120,6 +122,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.deletePartners,
+            // validate: validate.deletePartners,
             description: "delete partners",
             tags: ["api", "Users"],
             auth: false,
@@ -131,6 +134,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addCustomer,
+            // validate: validate.addCustomer,
             description: "add Customers",
             tags: ["api", "Users"],
             auth: false,
@@ -152,6 +156,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.updateCustomer,
+            // validate: validate.updateCustomer,
             description: "Update Customers",
             tags: ["api", "Users"],
             auth: false,
@@ -163,6 +168,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.getCustomer,
+            // validate: validate.getCustomer,
             description: "view added products",
             auth: false,
           },
@@ -173,6 +179,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.deleteCustomer,
+            // validate: validate.deleteCustomer,
             description: "delete partners",
             tags: ["api", "Users"],
             auth: false,
@@ -184,6 +191,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addPricing,
+            // validate: validate.addPricing,
             description: "add Pricing",
             auth: false,
           },
@@ -204,6 +212,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addCategory,
+            // validate: validate.addCategory,
             description: "add category",
             auth: false,
           },
@@ -224,6 +233,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addSubCategory,
+            // validate: validate.addSubCategory,
             description: "add sub category",
             auth: false,
           },

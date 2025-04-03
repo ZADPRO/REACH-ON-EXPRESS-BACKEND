@@ -95,11 +95,23 @@ export const softDeleteQuery = ` UPDATE public."partners" SET "deletedAt" = NOW(
 WHERE "partnersId" = $1;
 `;
 
+// export const getLastCustomerRefIdQuery = `
+//     SELECT "refCustId" FROM public.customers
+//     WHERE "refCode" = $1
+//     ORDER BY "refCustomerId" DESC
+//     LIMIT 1;
+// `;
 export const getLastCustomerRefIdQuery = `
-    SELECT "refCustId" FROM public.customers
-    WHERE "refCode" = $1
-    ORDER BY "refCustomerId" DESC
-    LIMIT 1;
+    SELECT
+  cu."refCustId"
+FROM
+  public.customers cu
+WHERE
+  cu."refCode" = $1
+ORDER BY
+  cu."refCustomerId" DESC
+LIMIT
+  1;
 `;
 
 export const getCustomerCount = `
@@ -112,12 +124,35 @@ export const insertCustomerQuery = `
     RETURNING *;
 `;
 
-export const updateCustomerQuery = `UPDATE public.customers 
-SET "refCustomerName" = $1, "refCode" = $2, "refNotes" = $3, "refCustomerType" = $4
-WHERE "refCustomerId" = $5 RETURNING *;`;
+export const updateCustomerQuery = `UPDATE
+  public.customers 
+SET
+  "refCustId" = $1,
+  "refCustomerName" = $2,
+  "refCode" = $3,
+  "refNotes" = $4,
+  "refCustomerType" = $5,
+  "refAddress" = $6,
+  "refPhone" = $7
+WHERE
+  "refCustomerId" = $8
+RETURNING
+  *;`;
 
-export const getCustomerQuery = `SELECT "refCustomerName", "refCode", "refNotes", "refCustomerType" FROM Public."customers" 
-WHERE "refCustomerId" = $1 AND ("deletedAt" IS NULL AND "deletedBy" IS NULL);`;
+export const getCustomerQuery = `SELECT
+  "refCustId",
+  "refCustomerName",
+  "refCode",
+  "refNotes",
+  "refCustomerType"
+FROM
+  Public."customers"
+WHERE
+  "refCustomerId" = $1
+  AND (
+    "deletedAt" IS NULL
+    AND "deletedBy" IS NULL
+  );`;
 
 export const getCUstomersQuery = `SELECT * FROM public."customers"`;
 

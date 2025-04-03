@@ -3,6 +3,7 @@ import * as Hapi from "@hapi/hapi";
 import IRoute from "../../helper/routes";
 import { validateToken } from "../../helper/token";
 import { mapping } from "./controller";
+import validate from "./validate";
 
 export class mappingRoutes implements IRoute {
   public async register(server: any): Promise<any> {
@@ -15,7 +16,8 @@ export class mappingRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.AddTransactionMapping,
-            description: "Signup Checking Validation",
+            validate: validate.AddTransactionMapping,
+            description: "Add Transaction Mapping",
             tags: ["api", "users"],
             auth: false,
           },
@@ -26,13 +28,11 @@ export class mappingRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.transactionMapping,
-            description: "Signup Checking Validation",
+            description: "view Transaction Mapping",
             tags: ["api", "users"],
             auth: false,
           },
         },
-
-
       ]);
       resolve(true);
     });

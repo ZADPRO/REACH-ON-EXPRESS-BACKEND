@@ -54,4 +54,132 @@ export default {
       authorization: Joi.string().optional(),
     }).unknown(),
   },
+  updatePartners: {
+    payload: Joi.object({
+      partnersName: Joi.string().required(),
+      phoneNumber: Joi.string()
+        .pattern(/^\d{10}$/)
+        .required(),
+      validity: Joi.string().required(),
+      partnerId: Joi.number().integer().required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  getPartners: {
+    payload: Joi.object({
+      partnerId: Joi.number().integer().required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  deletePartners: {
+    payload: Joi.object({
+      partnerId: Joi.number().integer().required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  addCustomer: {
+    payload: Joi.object({
+      customerName: Joi.string().required(),
+      customerCode: Joi.string().required(),
+      customerType: Joi.boolean().required(),
+      notes: Joi.string().required(),
+      refAddress: Joi.string().required(),
+      refPhone: Joi.string()
+        .pattern(/^\d{10}$/)
+        .required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  updateCustomer: {
+    payload: Joi.object({
+      customerName: Joi.string().required(),
+      customerCode: Joi.string().required(),
+      notes: Joi.string().required(),
+      customerType: Joi.boolean().required(),
+      refAddress: Joi.string().required(),
+      refPhone: Joi.string()
+        .pattern(/^\d{10}$/)
+        .required(),
+      refCustomerId: Joi.number().integer().required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  getCustomer: {
+    payload: Joi.object({
+      refCustomerId: Joi.number().integer().required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  deleteCustomer: {
+    payload: Joi.object({
+      refCustomerId: Joi.number().integer().required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  addPricing: {
+    payload: Joi.object({
+      partnersId: Joi.number().integer().required(),
+      minWeight: Joi.string().required(),
+      maxWeight:Joi.string().required(),
+      price: Joi.string().required(),
+      dimension: Joi.boolean().optional(),
+      length: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.optional(),
+      }),
+      breadth: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.optional(),
+      }),
+      height: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.optional(),
+      }),
+      calculation: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.optional(),
+      }),
+      answer: Joi.string().optional(),
+    }),
+
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  addCategory:{
+    payload: Joi.object({
+      category: Joi.string().required()
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  addSubCategory:{
+    payload: Joi.object({
+      categoryId: Joi.number().integer().required(),
+      subcategory: Joi.string().required()
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  }
+
 };

@@ -63,7 +63,7 @@ export class adminRepository {
             success: true,
             message: "Already exists",
           },
-        true
+          true
         );
       }
 
@@ -392,7 +392,6 @@ export class adminRepository {
     }
   }
 
-
   public async addPartnersV1(user_data: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
@@ -475,11 +474,8 @@ export class adminRepository {
     try {
       await client.query("BEGIN");
       const { partnersName, phoneNumber, validity, partnerId } = userData;
-      const documentParams = [partnersName, phoneNumber, validity, partnerId];
-      const partnerDetails = await client.query(
-        updatePartnerQuery,
-        documentParams
-      );
+      const Params = [partnersName, phoneNumber, validity, partnerId];
+      const partnerDetails = await client.query(updatePartnerQuery, Params);
       const txnHistoryParams = [
         3,
         tokenData.id,
@@ -499,7 +495,7 @@ export class adminRepository {
           token: tokens,
           partnerDetails: partnerDetails,
         },
-        false
+        true
       );
     } catch (error) {
       await client.query("ROLLBACK");
@@ -513,7 +509,7 @@ export class adminRepository {
           error: errorMessage,
           token: tokens,
         },
-        false
+        true
       );
     } finally {
       client.release();
@@ -544,7 +540,7 @@ export class adminRepository {
           token: tokens,
           partners: partners,
         },
-        false
+        true
       );
     } catch (error) {
       // Error handling
@@ -560,7 +556,7 @@ export class adminRepository {
           error: errorMessage,
           token: tokens,
         },
-        false
+        true
       );
     }
   }
@@ -635,7 +631,7 @@ export class adminRepository {
             message: "Partner record not found.",
             token: tokens,
           },
-          false
+          true
         );
       }
 
@@ -659,7 +655,7 @@ export class adminRepository {
           message: "Partner marked as deleted successfully.",
           token: tokens,
         },
-        false
+        true
       );
     } catch (error) {
       console.error("Error marking Partner as deleted:", error);
@@ -673,13 +669,12 @@ export class adminRepository {
           }`,
           token: tokens,
         },
-        false
+        true
       );
     } finally {
       client.release();
     }
   }
-
 
   public async addCustomerV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
@@ -834,17 +829,137 @@ export class adminRepository {
       );
     }
   }
+  // public async updateCustomerV1(userData: any, tokenData: any): Promise<any> {
+  //   const client: PoolClient = await getClient();
+  //   const token = { id: tokenData.id };
+  //   const tokens = generateTokenWithExpire(token, true);
+
+  //   try {
+  //     await client.query("BEGIN"); // Start transaction
+
+  //     const {
+  //       customerName,
+  //       customerCode,
+  //       notes,
+  //       customerType,
+  //       refAddress,
+  //       refPhone,
+  //       refCustomerId
+  //     } = userData;
+
+  //     if (!refCustomerId) {
+  //       return encrypt(
+  //         {
+  //           success: false,
+  //           message: "Invalid request: refCustomerId is required.",
+  //           token: tokens,
+  //         },
+  //         false
+  //       );
+  //     }
+
+  //     // Check if the customer exists
+  //     const existingCustomer = await client.query(getCustomerQuery, [
+  //       refCustomerId,
+  //     ]);
+  //     if (existingCustomer.rowCount === 0) {
+  //       await client.query("ROLLBACK");
+  //       return encrypt(
+  //         {
+  //           success: false,
+  //           message: "Customer record not found.",
+  //           token: tokens,
+  //         },
+  //         false
+  //       );
+  //     }
+
+  //     // Update Customer
+  //     const updateParams = [
+  //       customerName,
+  //       customerCode,
+  //       notes,
+  //       customerType,
+  //       refAddress,
+  //       refPhone
+  //     ];
+  //     const updatedCustomer = await client.query(
+  //       updateCustomerQuery,
+  //       updateParams
+  //     );
+
+  //     if (updatedCustomer.rowCount === 0) {
+  //       await client.query("ROLLBACK");
+  //       return encrypt(
+  //         {
+  //           success: false,
+  //           message: "Customer update failed.",
+  //           token: tokens,
+  //         },
+  //         false
+  //       );
+  //     }
+
+  //     // Insert Transaction History
+  //     const txnHistoryParams = [
+  //       6,
+  //       tokenData.id,
+  //       "Customer updated",
+  //       CurrentTime(),
+  //       "Admin",
+  //     ];
+  //     await client.query(updateHistoryQuery, txnHistoryParams);
+
+  //     await client.query("COMMIT"); // Commit transaction
+
+  //     return encrypt(
+  //       {
+  //         success: true,
+  //         message: "Customer updated successfully.",
+  //         token: tokens,
+  //         data: updatedCustomer.rows[0],
+  //       },
+  //       false
+  //     );
+  //   } catch (error) {
+  //     await client.query("ROLLBACK"); // Rollback transaction on failure
+  //     console.error("Error during Customer update:", error);
+
+  //     return encrypt(
+  //       {
+  //         success: false,
+  //         message: "Customer update failed.",
+  //         error:
+  //           error instanceof Error
+  //             ? error.message
+  //             : "An unknown error occurred",
+  //         token: tokens,
+  //       },
+  //       false
+  //     );
+  //   } finally {
+  //     client.release(); // Ensure client is released
+  //   }
+  // }
+
   public async updateCustomerV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
-
+  
     try {
       await client.query("BEGIN"); // Start transaction
-
-      const { customerName, customerCode, notes, customerType, refCustomerId } =
-        userData;
-
+  
+      const {
+        customerName,
+        customerCode,
+        notes,
+        customerType,
+        refAddress,
+        refPhone,
+        refCustomerId,
+      } = userData;
+  
       if (!refCustomerId) {
         return encrypt(
           {
@@ -852,39 +967,68 @@ export class adminRepository {
             message: "Invalid request: refCustomerId is required.",
             token: tokens,
           },
-          false
+          true
         );
       }
-
-      // Check if the customer exists
-      const existingCustomer = await client.query(getCustomerQuery, [
+  
+      // Fetch the existing customer data
+      const existingCustomerResult = await client.query(getCustomerQuery, [
         refCustomerId,
       ]);
-      if (existingCustomer.rowCount === 0) {
-        await client.query("ROLLBACK");
+  
+      if (existingCustomerResult.rowCount === 0) {
         return encrypt(
           {
             success: false,
             message: "Customer record not found.",
             token: tokens,
           },
-          false
+          true
         );
       }
-
+  
+      const existingCustomer = existingCustomerResult.rows[0];
+  
+      // Extract refCustId from the result
+      const { refCustId } = existingCustomer; // This is where refCustId is extracted
+  
+      let updatedRefCustId = refCustId;
+  
+      if (customerCode && customerCode !== existingCustomer.refCode) {
+        // Convert refCustomerId to a string if it's not already
+        const refCustIdStr = refCustId.toString();
+        console.log('refCustId', refCustIdStr);
+  
+        // Split by "-" and check parts
+        const refCustIdParts = refCustIdStr.split("-");
+        console.log("refCustIdParts:", refCustIdParts); // Debug log
+  
+        const nextCustomerNumber = refCustIdParts[2]; 
+        const currentMonth = refCustIdParts[3]; 
+        const currentYear = refCustIdParts[4]; 
+  
+        updatedRefCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
+  
+        console.log("Updated refCustId:", updatedRefCustId); // Debug log
+      }
+  
       // Update Customer
       const updateParams = [
+        updatedRefCustId,
         customerName,
         customerCode,
         notes,
-        customerType ?? true,
+        customerType,
+        refAddress,
+        refPhone,
         refCustomerId,
       ];
+  
       const updatedCustomer = await client.query(
         updateCustomerQuery,
         updateParams
       );
-
+  
       if (updatedCustomer.rowCount === 0) {
         await client.query("ROLLBACK");
         return encrypt(
@@ -893,35 +1037,35 @@ export class adminRepository {
             message: "Customer update failed.",
             token: tokens,
           },
-          false
+          true
         );
       }
-
+  
       // Insert Transaction History
       const txnHistoryParams = [
         6,
         tokenData.id,
-        "Customer updated",
+        `Customer updated (refCustId: ${updatedRefCustId})`,
         CurrentTime(),
         "Admin",
       ];
       await client.query(updateHistoryQuery, txnHistoryParams);
-
+  
       await client.query("COMMIT"); // Commit transaction
-
+  
       return encrypt(
         {
           success: true,
           message: "Customer updated successfully.",
           token: tokens,
-          data: updatedCustomer.rows[0],
+          data: { ...updatedCustomer.rows[0], refCustId: updatedRefCustId },
         },
-        false
+        true
       );
     } catch (error) {
       await client.query("ROLLBACK"); // Rollback transaction on failure
       console.error("Error during Customer update:", error);
-
+  
       return encrypt(
         {
           success: false,
@@ -932,12 +1076,13 @@ export class adminRepository {
               : "An unknown error occurred",
           token: tokens,
         },
-        false
+        true
       );
     } finally {
       client.release(); // Ensure client is released
     }
   }
+  
   public async getCustomerV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
     console.log("token", token);
@@ -960,7 +1105,7 @@ export class adminRepository {
           token: tokens,
           Customer: Customer,
         },
-        false
+        true
       );
     } catch (error) {
       // Error handling
@@ -976,7 +1121,7 @@ export class adminRepository {
           error: errorMessage,
           token: tokens,
         },
-        false
+        true
       );
     }
   }
@@ -1018,7 +1163,7 @@ export class adminRepository {
             message: "customer record not found.",
             token: tokens,
           },
-          false
+          true
         );
       }
 
@@ -1042,7 +1187,7 @@ export class adminRepository {
           message: "Partner marked as deleted successfully.",
           token: tokens,
         },
-        false
+        true
       );
     } catch (error) {
       console.error("Error marking Partner as deleted:", error);
@@ -1056,23 +1201,27 @@ export class adminRepository {
           }`,
           token: tokens,
         },
-        false
+        true
       );
     } finally {
       client.release();
     }
   }
 
-  
   public async addPricingV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
-
     try {
       await client.query("BEGIN"); // Start Transaction
 
-      const { partnersId, minWeight, maxWeight, price, dimension, answer } =
-        userData;
+      const { 
+        partnersId, 
+        minWeight, 
+        maxWeight, 
+        price, 
+        dimension, 
+        answer 
+      } = userData;
 
       if (!partnersId || !minWeight || !maxWeight || !price) {
         return encrypt(
@@ -1147,6 +1296,7 @@ export class adminRepository {
       client.release(); // Release DB connection
     }
   }
+  
   public async getPricingV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
     console.log("token", token);
