@@ -25,6 +25,7 @@ import {
   updateFinanceQuery,
   getFinanceDataQuery,
   getParcelBookingCount,
+  getfinanceDataQuery,
 } from "./query";
 
 export class bookingRepository {
@@ -1299,5 +1300,35 @@ export class bookingRepository {
 //         client.release(); // Release DB connection
 //     }
 // }
+public async listFinanceV1(userData: any, tokenData: any): Promise<any> {
+  const token = { id: tokenData.id };
+  const tokens = generateTokenWithExpire(token, true);
+
+  try {
+    const financeDataResult = await executeQuery(getfinanceDataQuery);
+    return encrypt(
+      {
+        success: true,
+        message: "finance data retrieved successfully",
+        token: tokens,
+        data: financeDataResult,
+      },
+      true
+    );
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    console.error("Error in finance data:", errorMessage);
+
+    return encrypt(
+      {
+        success: false,
+        message: `Error in finance data retrieval: ${errorMessage}`,
+        token: tokens,
+      },
+      true
+    );
+  }
+}
+
 
 }

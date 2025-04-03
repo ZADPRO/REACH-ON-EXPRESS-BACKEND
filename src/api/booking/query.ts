@@ -319,3 +319,7 @@ SET
 WHERE
   "refCustomerName" = $3;
 `;
+
+export const getfinanceDataQuery = `SELECT * FROM public."refFinanceTable"
+`
+;

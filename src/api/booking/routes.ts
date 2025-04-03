@@ -91,6 +91,17 @@ export class bookingRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "GET",
+          path: "/api/v1/route/listFinance",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.listFinance,
+            description: "listFinance",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });
