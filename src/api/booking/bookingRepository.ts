@@ -26,6 +26,7 @@ import {
   getFinanceDataQuery,
   getParcelBookingCount,
   getfinanceDataQuery,
+  getReportDataQuery,
 } from "./query";
 
 export class bookingRepository {
@@ -410,6 +411,8 @@ export class bookingRepository {
         Count,
         consignorPincode,
         consigneePincode,
+        CurrentTime(),
+        "Admin"
       ]);
   
       if (parcelResult.rows.length > 0) {
@@ -468,7 +471,6 @@ export class bookingRepository {
       client.release();
     }
   }
-  
 
   // public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
   //   const client: PoolClient = await getClient();
@@ -1323,6 +1325,45 @@ public async listFinanceV1(userData: any, tokenData: any): Promise<any> {
       {
         success: false,
         message: `Error in finance data retrieval: ${errorMessage}`,
+        token: tokens,
+      },
+      true
+    );
+  }
+}
+public async addreportDataV1(userData: any, tokenData: any): Promise<any> {
+  const token = { id: tokenData.id };
+  const tokens = generateTokenWithExpire(token, true);
+
+  try {
+    const {
+      refCustomerId,
+      fromDate,  // Start date
+      toDate     // End date
+    } = userData;
+
+    const parcelBookingData = await executeQuery(getReportDataQuery, [
+      refCustomerId,
+      fromDate,
+      toDate
+    ]);
+
+    return encrypt(
+      {
+        success: true,
+        message: "Report details retrieved successfully",
+        token: tokens,
+        data: parcelBookingData, 
+      },
+      true
+    );
+  } catch (error: any) {
+    console.error("Error in report:", error.message);
+
+    return encrypt(
+      {
+        success: false,
+        message: `Error in Parcel past Booking Data retrieval: ${error.message}`,
         token: tokens,
       },
       true

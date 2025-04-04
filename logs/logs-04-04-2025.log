@@ -1,0 +1,40 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T07:17:34.544Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-04T07:19:00.475Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-04T07:21:20.391Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T07:36:23.994Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T07:36:35.651Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/route/updateFinance conflicts with existing /api/v1/route/updateFinance","name":"AssertError","stack":"AssertError: New route /api/v1/route/updateFinance conflicts with existing /api/v1/route/updateFinance\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\INDHU\\Desktop\\projects\\JP-Backend\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\INDHU\\Desktop\\projects\\JP-Backend\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\INDHU\\Desktop\\projects\\JP-Backend\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\INDHU\\Desktop\\projects\\JP-Backend\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\INDHU\\Desktop\\projects\\JP-Backend\\src\\api\\booking\\routes.ts:12:14\n    at new Promise (<anonymous>)\n    at bookingRoutes.<anonymous> (C:\\Users\\INDHU\\Desktop\\projects\\JP-Backend\\src\\api\\booking\\routes.ts:10:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\INDHU\\Desktop\\projects\\JP-Backend\\src\\api\\booking\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-04T09:43:01.070Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:44:06.689Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:44:36.991Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:45:06.050Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:45:26.960Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:46:43.333Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:46:58.744Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:49:53.867Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:50:00.477Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:50:08.336Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:57:10.154Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:57:23.335Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-04T09:57:26.227Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T09:57:49.942Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:02:02.445Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:03:32.412Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:03:58.836Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:04:04.720Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:05:03.979Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:05:10.259Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:05:22.346Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:05:33.268Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:05:41.920Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:06:13.668Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:06:25.290Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:06:40.382Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:06:45.310Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:06:57.340Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:07:02.431Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:07:48.821Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:07:55.077Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-04T10:08:12.083Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:09:17.387Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:11:33.267Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-04T10:12:01.815Z"}

@@ -138,7 +138,9 @@ INSERT INTO
     "pickUP",
     count,
     "consignorPincode",
-    "consigneePincode"
+    "consigneePincode",
+    "createdAt",
+    "createdBy"
   )
 VALUES
   (
@@ -177,7 +179,9 @@ VALUES
     $33,
     $34,
     $35,
-    $36
+    $36,
+    $37,
+    $38
   )
 RETURNING
   *;
@@ -310,7 +314,6 @@ export const refParcelBookingDataQuery = `SELECT * FROM public."refparcelbooking
 
 export const getFinanceDataQuery = `SELECT * FROM public."refFinanceTable" WHERE "refCustomerName" = $1
 `;
- 
 export const updateFinanceQuery =`UPDATE
   public."refFinanceTable"
 SET
@@ -321,5 +324,15 @@ WHERE
 `;
 
 export const getfinanceDataQuery = `SELECT * FROM public."refFinanceTable"
-`
-;
+`;
+
+export const getReportDataQuery = `SELECT
+    *
+  FROM
+    public.parcelbooking pb
+  WHERE
+    pb."refCustomerId" = $1
+    AND pb."createdAt" BETWEEN $2 AND $3
+  ORDER BY
+    pb."parcelBookingId" DESC
+`;

@@ -18,6 +18,7 @@ export class bookingRoutes implements IRoute {
             handler: controller.parcelBooking,
             validate: validate.parcelBooking,
             description: "booking ",
+
             tags: ["api", "users"],
             auth: false,
           },
@@ -98,6 +99,18 @@ export class bookingRoutes implements IRoute {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.listFinance,
             description: "listFinance",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
+          path: "/api/v1/route/addreportData",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addreportData,
+            // validate: validate.addreportData,
+            description: "view booking",
             tags: ["api", "users"],
             auth: false,
           },
