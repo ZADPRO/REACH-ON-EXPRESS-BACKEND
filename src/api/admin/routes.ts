@@ -63,7 +63,7 @@ export class newRoutes implements IRoute {
           path: "/api/v1/Routes/login",
           config: {
             handler: controller.adminlogin,
-            // validate: validate.userLogin,
+            validate: validate.userLogin,
             description: "login Checking Validation",
             // tags: ["api", "users"],
             auth: false,

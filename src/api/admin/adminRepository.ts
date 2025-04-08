@@ -365,7 +365,7 @@ export class adminRepository {
                 userDetails: userDetails,
                 token: generateTokenWithExpire(tokenData, true),
               },
-              false
+              true
             );
           }
         }
