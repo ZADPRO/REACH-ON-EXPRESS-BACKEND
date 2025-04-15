@@ -16,7 +16,7 @@ export class bookingRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.parcelBooking,
-            validate: validate.parcelBooking,
+            // validate: validate.parcelBooking,
             description: "booking ",
 
             tags: ["api", "users"],

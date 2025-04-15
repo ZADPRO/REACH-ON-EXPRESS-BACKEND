@@ -287,10 +287,10 @@ export class bookingRepository {
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
     let parcelBookingId: any = null;
-  
+
     try {
       await client.query("BEGIN"); // Start Transaction
-  
+
       const {
         partnersName,
         type,
@@ -326,53 +326,80 @@ export class bookingRepository {
         consignorPincode,
         consigneePincode,
       } = userData;
-  
+
       // Validate required fields
       if (
-        !partnersName || !type || !origin || !destination || !consignorName ||
-        !consignorAddress || !consignorPhone || !customerRefNo || !consigneeName ||
-        !consigneeAddress || !consigneePhone || !contentSpecification || !declaredValue ||
-        !NoOfPieces || !actualWeight || !paymentId || !refCustomerId || !netAmount ||
-        !pickUP || !consignorPincode || !consigneePincode
+        !partnersName ||
+        !type ||
+        !origin ||
+        !destination ||
+        !consignorName ||
+        !consignorAddress ||
+        !consignorPhone ||
+        !customerRefNo ||
+        !consigneeName ||
+        !consigneeAddress ||
+        !consigneePhone ||
+        !contentSpecification ||
+        !declaredValue ||
+        !NoOfPieces ||
+        !actualWeight ||
+        !paymentId ||
+        !refCustomerId ||
+        !netAmount ||
+        !pickUP ||
+        !consignorPincode ||
+        !consigneePincode
       ) {
         throw new Error("Missing required fields.");
       }
-  
+
       // Fetch `vendorLeaf` from `transactionmapping`
-      const vendorLeafResult = await client.query(vendorLeafQuery, [partnersName]);
-      const vendorLeaf = vendorLeafResult.rows.length ? vendorLeafResult.rows[0].leaf : null;
-  
-      const refCustIdResult = await client.query(refCustIdQuery, [refCustomerId]);
-      const refCustId = refCustIdResult.rows.length ? refCustIdResult.rows[0].refCustId : null;
-  
+      const vendorLeafResult = await client.query(vendorLeafQuery, [
+        partnersName,
+      ]);
+      const vendorLeaf = vendorLeafResult.rows.length
+        ? vendorLeafResult.rows[0].leaf
+        : null;
+
+      const refCustIdResult = await client.query(refCustIdQuery, [
+        refCustomerId,
+      ]);
+      const refCustId = refCustIdResult.rows.length
+        ? refCustIdResult.rows[0].refCustId
+        : null;
+
       if (!vendorLeaf || !refCustId) {
         throw new Error("Invalid partnersId or refCustomerId.");
       }
-  
-      const customerTypeBoolean = customerType === true || customerType === "true";
+
+      const customerTypeBoolean =
+        customerType === true || customerType === "true";
       const bookedDate = new Date();
-  
+
       if (!refCustId || typeof refCustId !== "string") {
         throw new Error("Invalid refCustomerId format.");
       }
-  
+
       const refCustIdBase = refCustId.split("-");
       const refCustIdPrefix = refCustIdBase.slice(0, 3).join("-");
       const refCustIdDate = refCustIdBase.slice(3).join("-");
-  
+
       // Fetch existing count of refParcelBookingId for refCustomerId
-      const countResult = await client.query(
-        getParcelBookingCount,
-        [refCustomerId]
-      );
-  
+      const countResult = await client.query(getParcelBookingCount, [
+        refCustomerId,
+      ]);
+
       let currentCount = parseInt(countResult.rows[0]?.total || "0", 10);
       currentCount++; // Increment count for new entry
-  
-      const newRefCustId = `${refCustIdPrefix}-${String(currentCount).padStart(3, "0")}-${refCustIdDate}`;
-  
+
+      const newRefCustId = `${refCustIdPrefix}-${String(currentCount).padStart(
+        3,
+        "0"
+      )}-${refCustIdDate}`;
+
       console.log(`Inserting refParcelBooking with refCustId: ${newRefCustId}`);
-  
+
       // Insert into `refParcelBooking`
       const parcelResult = await client.query(refParcelBookingQuery, [
         partnersName,
@@ -412,23 +439,26 @@ export class bookingRepository {
         consignorPincode,
         consigneePincode,
         CurrentTime(),
-        "Admin"
+        "Admin",
       ]);
-  
+
       if (parcelResult.rows.length > 0) {
         parcelBookingId = parcelResult.rows[0];
       } else {
         throw new Error("Parcel booking insertion returned no rows.");
       }
-  
+
       // Update reference status
       await client.query(updateRefStatusQuery, [partnersName]);
-  
+
       // Fetch customer details
-      const customerResult = await client.query(getCustomerQuery, [refCustomerId]);
-      if (customerResult.rows.length === 0) throw new Error("Customer not found.");
+      const customerResult = await client.query(getCustomerQuery, [
+        refCustomerId,
+      ]);
+      if (customerResult.rows.length === 0)
+        throw new Error("Customer not found.");
       const { refCustomerName } = customerResult.rows[0];
-  
+
       // Add finance entry if applicable
       if (customerTypeBoolean && paymentId === 4) {
         await client.query(addFinanceQuery, [
@@ -437,7 +467,7 @@ export class bookingRepository {
           netAmount,
         ]);
       }
-  
+
       // Insert transaction history
       await client.query(updateHistoryQuery, [
         12,
@@ -446,9 +476,9 @@ export class bookingRepository {
         CurrentTime(),
         "Admin",
       ]);
-  
+
       await client.query("COMMIT"); // Commit Transaction
-  
+
       return encrypt(
         {
           success: true,
@@ -463,7 +493,10 @@ export class bookingRepository {
       return encrypt(
         {
           success: false,
-          error: error instanceof Error ? error.message : "An unknown error occurred",
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
         },
         true
       );
@@ -1163,213 +1196,216 @@ export class bookingRepository {
     const tokens = generateTokenWithExpire(token, true);
 
     try {
-        await client.query("BEGIN"); // Start Transaction
+      await client.query("BEGIN"); // Start Transaction
 
-        const { refCustomerName, refPayAmount } = user_data;
+      const { refCustomerName, refPayAmount } = user_data;
 
-        // Ensure the finance data is properly retrieved
-        const financeData: any = await executeQuery(getFinanceDataQuery, [refCustomerName]);
+      // Ensure the finance data is properly retrieved
+      const financeData: any = await executeQuery(getFinanceDataQuery, [
+        refCustomerName,
+      ]);
 
-        // Debugging: Log financeData to see what is returned
-        console.log("Finance Data:", financeData);
+      // Debugging: Log financeData to see what is returned
+      console.log("Finance Data:", financeData);
 
-        // Check if financeData is valid
-        if (!financeData || !financeData.rows || financeData.rows.length === 0) {
-            throw new Error("Finance record not found for the given customer.");
-        }
+      // Check if financeData is valid
+      if (!financeData || !financeData.rows || financeData.rows.length === 0) {
+        throw new Error("Finance record not found for the given customer.");
+      }
 
-        const { refOutstandingAmt } = financeData.rows[0];
-        const refBalanceAmount = refOutstandingAmt - refPayAmount;
+      const { refOutstandingAmt } = financeData.rows[0];
+      const refBalanceAmount = refOutstandingAmt - refPayAmount;
 
-        // Ensure refBalanceAmount does not go negative
-        if (refBalanceAmount < 0) {
-            throw new Error("Payment amount exceeds outstanding balance.");
-        }
+      // Ensure refBalanceAmount does not go negative
+      if (refBalanceAmount < 0) {
+        throw new Error("Payment amount exceeds outstanding balance.");
+      }
 
-        const result = await client.query(updateFinanceQuery, [
-            refCustomerName,
-            refPayAmount,
-            refBalanceAmount,
-        ]);
+      const result = await client.query(updateFinanceQuery, [
+        refCustomerName,
+        refPayAmount,
+        refBalanceAmount,
+      ]);
 
-        // Insert transaction history
-        const txnHistoryParams = [
-            15, // Assuming transaction type ID (adjust if needed)
-            tokendata.id,
-            `Outstanding Amount: ${refOutstandingAmt}, Paid Amount: ${refPayAmount}, Balance Amount: ${refBalanceAmount}`,
-            CurrentTime(),
-            "Admin",
-        ];
-        await client.query(updateHistoryQuery, txnHistoryParams);
+      // Insert transaction history
+      const txnHistoryParams = [
+        15, // Assuming transaction type ID (adjust if needed)
+        tokendata.id,
+        `Outstanding Amount: ${refOutstandingAmt}, Paid Amount: ${refPayAmount}, Balance Amount: ${refBalanceAmount}`,
+        CurrentTime(),
+        "Admin",
+      ];
+      await client.query(updateHistoryQuery, txnHistoryParams);
 
-        await client.query("COMMIT"); // Commit Transaction
+      await client.query("COMMIT"); // Commit Transaction
 
-        return encrypt(
-            {
-                success: true,
-                message: "Finance details updated successfully.",
-                token: tokens,
-                data: result.rows[0],
-            },
-            true
-        );
+      return encrypt(
+        {
+          success: true,
+          message: "Finance details updated successfully.",
+          token: tokens,
+          data: result.rows[0],
+        },
+        true
+      );
     } catch (error: any) {
-        await client.query("ROLLBACK"); // Rollback Transaction in case of error
+      await client.query("ROLLBACK"); // Rollback Transaction in case of error
 
-        console.error("Error during finance update:", error);
+      console.error("Error during finance update:", error);
 
-        return encrypt(
-            {
-                success: false,
-                message: "Finance update failed",
-                error: error instanceof Error ? error.message : "An unknown error occurred",
-                token: tokens,
-            },
-            true
-        );
+      return encrypt(
+        {
+          success: false,
+          message: "Finance update failed",
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+          token: tokens,
+        },
+        true
+      );
     } finally {
-        client.release(); // Release DB connection
+      client.release(); // Release DB connection
     }
-}
-
-//   public async updateFinanceV1(user_data: any, tokendata: any): Promise<any> {
-//     const client: PoolClient = await getClient();
-//     const token = { id: tokendata.id };
-//     const tokens = generateTokenWithExpire(token, true);
-
-//     try {
-//         await client.query("BEGIN"); // Start Transaction
-
-//         const { refCustomerName, refPayAmount } = user_data;
-
-//         // Ensure the finance data is properly retrieved
-//         const financeData:any = await executeQuery(getFinanceDataQuery, [refCustomerName]);
-
-//         // if (!financeData.rows.length) {
-//         //     throw new Error("Finance record not found for the given customer.");
-//         // }
-
-//         const { refOutstandingAmt } = financeData.rows[0];
-//         const refBalanceAmount = refOutstandingAmt - refPayAmount;
-
-//         // Ensure refBalanceAmount does not go negative
-//         if (refBalanceAmount < 0) {
-//             throw new Error("Payment amount exceeds outstanding balance.");
-//         }
-
-//         const result = await client.query(updateFinanceQuery, [
-//             refCustomerName,
-//             refPayAmount,
-//             refBalanceAmount,
-//         ]);
-
-//         // Insert transaction history
-//         const txnHistoryParams = [
-//             15, // Assuming transaction type ID (adjust if needed)
-//             tokendata.id,
-//             `Outstanding Amount: ${refOutstandingAmt}, Paid Amount: ${refPayAmount}, Balance Amount: ${refBalanceAmount}`,
-//             CurrentTime(),
-//             "Admin",
-//         ];
-//         await client.query(updateHistoryQuery, txnHistoryParams);
-
-//         await client.query("COMMIT"); // Commit Transaction
-
-//         return encrypt(
-//             {
-//                 success: true,
-//                 message: "Finance details updated successfully.",
-//                 token: tokens,
-//                 data: result.rows[0],
-//             },
-//             true
-//         );
-//     } catch (error: any) {
-//         await client.query("ROLLBACK"); // Rollback Transaction in case of error
-
-//         console.error("Error during finance update:", error);
-
-//         return encrypt(
-//             {
-//                 success: false,
-//                 message: "Finance update failed",
-//                 error: error instanceof Error ? error.message : "An unknown error occurred",
-//                 token: tokens,
-//             },
-//             true
-//         );
-//     } finally {
-//         client.release(); // Release DB connection
-//     }
-// }
-public async listFinanceV1(userData: any, tokenData: any): Promise<any> {
-  const token = { id: tokenData.id };
-  const tokens = generateTokenWithExpire(token, true);
-
-  try {
-    const financeDataResult = await executeQuery(getfinanceDataQuery);
-    return encrypt(
-      {
-        success: true,
-        message: "finance data retrieved successfully",
-        token: tokens,
-        data: financeDataResult,
-      },
-      true
-    );
-  } catch (error) {
-    const errorMessage = (error as Error).message;
-    console.error("Error in finance data:", errorMessage);
-
-    return encrypt(
-      {
-        success: false,
-        message: `Error in finance data retrieval: ${errorMessage}`,
-        token: tokens,
-      },
-      true
-    );
   }
-}
-public async addreportDataV1(userData: any, tokenData: any): Promise<any> {
-  const token = { id: tokenData.id };
-  const tokens = generateTokenWithExpire(token, true);
 
-  try {
-    const {
-      refCustomerId,
-      fromDate,  // Start date
-      toDate     // End date
-    } = userData;
+  //   public async updateFinanceV1(user_data: any, tokendata: any): Promise<any> {
+  //     const client: PoolClient = await getClient();
+  //     const token = { id: tokendata.id };
+  //     const tokens = generateTokenWithExpire(token, true);
 
-    const parcelBookingData = await executeQuery(getReportDataQuery, [
-      refCustomerId,
-      fromDate,
-      toDate
-    ]);
+  //     try {
+  //         await client.query("BEGIN"); // Start Transaction
 
-    return encrypt(
-      {
-        success: true,
-        message: "Report details retrieved successfully",
-        token: tokens,
-        data: parcelBookingData, 
-      },
-      true
-    );
-  } catch (error: any) {
-    console.error("Error in report:", error.message);
+  //         const { refCustomerName, refPayAmount } = user_data;
 
-    return encrypt(
-      {
-        success: false,
-        message: `Error in Parcel past Booking Data retrieval: ${error.message}`,
-        token: tokens,
-      },
-      true
-    );
+  //         // Ensure the finance data is properly retrieved
+  //         const financeData:any = await executeQuery(getFinanceDataQuery, [refCustomerName]);
+
+  //         // if (!financeData.rows.length) {
+  //         //     throw new Error("Finance record not found for the given customer.");
+  //         // }
+
+  //         const { refOutstandingAmt } = financeData.rows[0];
+  //         const refBalanceAmount = refOutstandingAmt - refPayAmount;
+
+  //         // Ensure refBalanceAmount does not go negative
+  //         if (refBalanceAmount < 0) {
+  //             throw new Error("Payment amount exceeds outstanding balance.");
+  //         }
+
+  //         const result = await client.query(updateFinanceQuery, [
+  //             refCustomerName,
+  //             refPayAmount,
+  //             refBalanceAmount,
+  //         ]);
+
+  //         // Insert transaction history
+  //         const txnHistoryParams = [
+  //             15, // Assuming transaction type ID (adjust if needed)
+  //             tokendata.id,
+  //             `Outstanding Amount: ${refOutstandingAmt}, Paid Amount: ${refPayAmount}, Balance Amount: ${refBalanceAmount}`,
+  //             CurrentTime(),
+  //             "Admin",
+  //         ];
+  //         await client.query(updateHistoryQuery, txnHistoryParams);
+
+  //         await client.query("COMMIT"); // Commit Transaction
+
+  //         return encrypt(
+  //             {
+  //                 success: true,
+  //                 message: "Finance details updated successfully.",
+  //                 token: tokens,
+  //                 data: result.rows[0],
+  //             },
+  //             true
+  //         );
+  //     } catch (error: any) {
+  //         await client.query("ROLLBACK"); // Rollback Transaction in case of error
+
+  //         console.error("Error during finance update:", error);
+
+  //         return encrypt(
+  //             {
+  //                 success: false,
+  //                 message: "Finance update failed",
+  //                 error: error instanceof Error ? error.message : "An unknown error occurred",
+  //                 token: tokens,
+  //             },
+  //             true
+  //         );
+  //     } finally {
+  //         client.release(); // Release DB connection
+  //     }
+  // }
+  public async listFinanceV1(userData: any, tokenData: any): Promise<any> {
+    const token = { id: tokenData.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const financeDataResult = await executeQuery(getfinanceDataQuery);
+      return encrypt(
+        {
+          success: true,
+          message: "finance data retrieved successfully",
+          token: tokens,
+          data: financeDataResult,
+        },
+        true
+      );
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      console.error("Error in finance data:", errorMessage);
+
+      return encrypt(
+        {
+          success: false,
+          message: `Error in finance data retrieval: ${errorMessage}`,
+          token: tokens,
+        },
+        true
+      );
+    }
   }
-}
+  public async addreportDataV1(userData: any, tokenData: any): Promise<any> {
+    const token = { id: tokenData.id };
+    const tokens = generateTokenWithExpire(token, true);
 
+    try {
+      const {
+        refCustomerId,
+        fromDate, // Start date
+        toDate, // End date
+      } = userData;
 
+      const parcelBookingData = await executeQuery(getReportDataQuery, [
+        refCustomerId,
+        fromDate,
+        toDate,
+      ]);
+
+      return encrypt(
+        {
+          success: true,
+          message: "Report details retrieved successfully",
+          token: tokens,
+          data: parcelBookingData,
+        },
+        true
+      );
+    } catch (error: any) {
+      console.error("Error in report:", error.message);
+
+      return encrypt(
+        {
+          success: false,
+          message: `Error in Parcel past Booking Data retrieval: ${error.message}`,
+          token: tokens,
+        },
+        true
+      );
+    }
+  }
 }

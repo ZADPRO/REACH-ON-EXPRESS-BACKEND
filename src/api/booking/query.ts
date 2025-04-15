@@ -308,9 +308,9 @@ export const getParcelBookingQuery = `
 
 export const getPaymentQuery = `SELECT "paymentId", "paymentName" FROM public."refModeOfPayment" `;
 
-export const parselBookingData = `SELECT * FROM public.parcelbooking pb ORDER BY pb."parcelBookingId" DESC`;
+export const parselBookingData = `SELECT * FROM public."parcelbooking" pb ORDER BY pb."parcelBookingId" DESC`;
 
-export const refParcelBookingDataQuery = `SELECT * FROM public."refparcelbooking" WHERE "vendorLeaf" = $1`;
+export const refParcelBookingDataQuery = `SELECT * FROM public."parcelbooking" WHERE "vendorLeaf" = $1`;
 
 export const getFinanceDataQuery = `SELECT * FROM public."refFinanceTable" WHERE "refCustomerName" = $1
 `;

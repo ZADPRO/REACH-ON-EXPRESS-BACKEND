@@ -16,7 +16,7 @@ export class mappingRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.AddTransactionMapping,
-            validate: validate.AddTransactionMapping,
+            // validate: validate.AddTransactionMapping,
             description: "Add Transaction Mapping",
             tags: ["api", "users"],
             auth: false,
