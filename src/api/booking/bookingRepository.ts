@@ -365,11 +365,13 @@ export class bookingRepository {
       const refCustIdResult = await client.query(refCustIdQuery, [
         refCustomerId,
       ]);
+      console.log("refCustIdResult line 368", refCustIdResult);
       const refCustId = refCustIdResult.rows.length
         ? refCustIdResult.rows[0].refCustId
         : null;
+      console.log("refCustId line 371", refCustId);
 
-      if (!vendorLeaf || !refCustId) {
+      if (!refCustId) {
         throw new Error("Invalid partnersId or refCustomerId.");
       }
 

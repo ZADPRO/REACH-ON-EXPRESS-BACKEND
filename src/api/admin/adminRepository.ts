@@ -68,12 +68,20 @@ export class adminRepository {
       }
 
       // Determine customer prefix based on userType
-      let customerPrefix = userData.userType === 4 ? "R-UNIQ-" : "R-EMP-";
-      let baseNumber = userData.userType === 4 ? 10000 : 0;
+      const prefixMap: Record<number, string> = {
+        1: "SADM",
+        2: "ADM",
+        3: "FIN",
+        4: "EMP",
+      };
+
+      const prefix = prefixMap[userData.userType] ?? "EMP";
+      const customerPrefix = `R-${prefix}-`;
+
+      const baseNumber = userData.userType === 4 ? 10000 : 0;
+
       const lastCustomerQuery =
-        customerPrefix === "R-UNIQ-"
-          ? getLastCustomerIdQuery
-          : getLastEmployeeIdQuery;
+        prefix === "EMP" ? getLastEmployeeIdQuery : getLastCustomerIdQuery;
 
       // Fetch last customer ID based on customerPrefix
       const lastCustomerResult = await client.query(lastCustomerQuery);
@@ -946,10 +954,10 @@ export class adminRepository {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
-  
+
     try {
       await client.query("BEGIN"); // Start transaction
-  
+
       const {
         customerName,
         customerCode,
@@ -959,7 +967,7 @@ export class adminRepository {
         refPhone,
         refCustomerId,
       } = userData;
-  
+
       if (!refCustomerId) {
         return encrypt(
           {
@@ -970,12 +978,12 @@ export class adminRepository {
           true
         );
       }
-  
+
       // Fetch the existing customer data
       const existingCustomerResult = await client.query(getCustomerQuery, [
         refCustomerId,
       ]);
-  
+
       if (existingCustomerResult.rowCount === 0) {
         return encrypt(
           {
@@ -986,32 +994,32 @@ export class adminRepository {
           true
         );
       }
-  
+
       const existingCustomer = existingCustomerResult.rows[0];
-  
+
       // Extract refCustId from the result
       const { refCustId } = existingCustomer; // This is where refCustId is extracted
-  
+
       let updatedRefCustId = refCustId;
-  
+
       if (customerCode && customerCode !== existingCustomer.refCode) {
         // Convert refCustomerId to a string if it's not already
         const refCustIdStr = refCustId.toString();
-        console.log('refCustId', refCustIdStr);
-  
+        console.log("refCustId", refCustIdStr);
+
         // Split by "-" and check parts
         const refCustIdParts = refCustIdStr.split("-");
         console.log("refCustIdParts:", refCustIdParts); // Debug log
-  
-        const nextCustomerNumber = refCustIdParts[2]; 
-        const currentMonth = refCustIdParts[3]; 
-        const currentYear = refCustIdParts[4]; 
-  
+
+        const nextCustomerNumber = refCustIdParts[2];
+        const currentMonth = refCustIdParts[3];
+        const currentYear = refCustIdParts[4];
+
         updatedRefCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
-  
+
         console.log("Updated refCustId:", updatedRefCustId); // Debug log
       }
-  
+
       // Update Customer
       const updateParams = [
         updatedRefCustId,
@@ -1023,12 +1031,12 @@ export class adminRepository {
         refPhone,
         refCustomerId,
       ];
-  
+
       const updatedCustomer = await client.query(
         updateCustomerQuery,
         updateParams
       );
-  
+
       if (updatedCustomer.rowCount === 0) {
         await client.query("ROLLBACK");
         return encrypt(
@@ -1040,7 +1048,7 @@ export class adminRepository {
           true
         );
       }
-  
+
       // Insert Transaction History
       const txnHistoryParams = [
         6,
@@ -1050,9 +1058,9 @@ export class adminRepository {
         "Admin",
       ];
       await client.query(updateHistoryQuery, txnHistoryParams);
-  
+
       await client.query("COMMIT"); // Commit transaction
-  
+
       return encrypt(
         {
           success: true,
@@ -1065,7 +1073,7 @@ export class adminRepository {
     } catch (error) {
       await client.query("ROLLBACK"); // Rollback transaction on failure
       console.error("Error during Customer update:", error);
-  
+
       return encrypt(
         {
           success: false,
@@ -1082,7 +1090,7 @@ export class adminRepository {
       client.release(); // Ensure client is released
     }
   }
-  
+
   public async getCustomerV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
     console.log("token", token);
@@ -1214,14 +1222,8 @@ export class adminRepository {
     try {
       await client.query("BEGIN"); // Start Transaction
 
-      const { 
-        partnersId, 
-        minWeight, 
-        maxWeight, 
-        price, 
-        dimension, 
-        answer 
-      } = userData;
+      const { partnersId, minWeight, maxWeight, price, dimension, answer } =
+        userData;
 
       if (!partnersId || !minWeight || !maxWeight || !price) {
         return encrypt(
@@ -1296,7 +1298,7 @@ export class adminRepository {
       client.release(); // Release DB connection
     }
   }
-  
+
   public async getPricingV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
     console.log("token", token);

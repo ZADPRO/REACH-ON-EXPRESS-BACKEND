@@ -137,3 +137,499 @@
 {"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T06:29:35.290Z"}
 {"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T06:29:35.306Z"}
 {"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T06:29:35.622Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-15T07:06:31.322Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:08:03.231Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:08:03.278Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:08:03.304Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:08:03.326Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:08:03.632Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:08:03.650Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:08:03.663Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:08:03.833Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:09:45.130Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:09:45.480Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:09:45.503Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:09:57.328Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:09:57.727Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:09:57.750Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:10:07.445Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:10:07.629Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:10:07.706Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:10:15.371Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:10:15.603Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:10:15.623Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:11:03.449Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:11:03.866Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:11:03.885Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:14:21.695Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:14:22.021Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:14:22.026Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:14:48.533Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:14:48.844Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:14:48.853Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-15T07:15:51.343Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:16:11.362Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:16:11.737Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:16:11.753Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-15T07:16:26.699Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:16:31.118Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:16:31.526Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:16:31.538Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-15T07:27:51.268Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-15T07:28:14.116Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:28:19.468Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:28:19.892Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:28:19.905Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-15T07:28:51.393Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:29:12.074Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:29:12.485Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:29:12.554Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:31:40.284Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:31:40.332Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:31:40.348Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:31:40.366Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:31:41.646Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:31:41.670Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:31:41.703Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:31:41.713Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:31:43.122Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:31:43.134Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:31:43.144Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:31:43.153Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:31:53.703Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:31:54.037Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:31:54.052Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:32:04.578Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:32:04.597Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:32:04.611Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:32:04.622Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:32:13.601Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:32:13.610Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:32:13.623Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:32:13.632Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:32:40.551Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:32:40.570Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:32:40.589Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:32:40.605Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:32:49.154Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:32:49.162Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:32:49.169Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:32:49.176Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:32:51.998Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:32:52.007Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:32:52.015Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:32:52.022Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:32:59.090Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:32:59.095Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:32:59.100Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:32:59.105Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:32:59.132Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:32:59.146Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:32:59.152Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:32:59.258Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:05.400Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:05.406Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:33:05.413Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:33:05.418Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:11.508Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:11.524Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:33:11.568Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:33:11.589Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:15.354Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:15.362Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:33:15.373Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:33:15.380Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:22.484Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:22.546Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:33:22.599Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:33:22.680Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:30.340Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:30.350Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:33:30.360Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:33:30.369Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:31.856Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:31.871Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:33:31.882Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:33:31.896Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:37.005Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:37.047Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T07:33:37.096Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T07:33:37.116Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:33:57.180Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:33:57.425Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:33:57.434Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:36:18.401Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:36:18.703Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:36:18.709Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-15T07:37:05.761Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:37:10.547Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:37:11.278Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:37:11.290Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T07:55:43.723Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T07:55:44.368Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:55:44.382Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:55:54.723Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T07:55:54.733Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T07:55:54.924Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T07:55:54.995Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:40:00.415Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T08:40:00.567Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:40:01.136Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T08:40:01.229Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:42:11.311Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:42:11.319Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:42:11.328Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:42:11.348Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:42:11.557Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:42:11.578Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:42:11.586Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:42:11.741Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:45:41.936Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:45:41.943Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:45:41.947Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:45:41.951Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:45:42.139Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:45:42.145Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:45:42.150Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:45:42.287Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:46:49.970Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:46:49.980Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:46:49.992Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:46:50.006Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:46:51.554Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:46:51.602Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:46:51.624Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:46:51.637Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:46:55.224Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:46:55.323Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:46:55.378Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:46:55.447Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:47:07.024Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:47:07.036Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:47:07.045Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:47:07.053Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:47:19.884Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:47:19.892Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:47:19.902Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:47:19.909Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:48:00.136Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:48:00.143Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:48:00.148Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:48:00.153Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:48:05.162Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:48:05.170Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:48:05.186Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:48:05.193Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:48:06.232Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:48:06.257Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:48:06.270Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:48:06.283Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:48:08.995Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:48:09.032Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:48:09.051Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:48:09.097Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:48:10.099Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:48:10.109Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:48:10.117Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:48:10.126Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:48:12.664Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:48:12.671Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:48:12.676Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:48:12.689Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:48:19.964Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:48:20.017Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:48:20.068Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:48:20.135Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:50:30.862Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:50:30.875Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:50:30.887Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:50:30.917Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:50:47.702Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:50:47.716Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:50:47.730Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:50:47.738Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:50:48.054Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:50:48.077Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:50:48.149Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:50:48.262Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:50:54.074Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:50:54.080Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:50:54.085Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:50:54.088Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T08:50:54.145Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T08:50:54.160Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T08:50:54.177Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T08:50:54.357Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:05:20.728Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:05:20.749Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:05:20.761Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:05:20.770Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:05:29.217Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:05:29.292Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:05:29.337Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:05:29.388Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:06:53.068Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:06:53.074Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:06:53.079Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:06:53.084Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:07:58.303Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:07:58.314Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:07:58.324Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:07:58.335Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:08:04.985Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:08:05.002Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:08:05.023Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:08:05.043Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:08:09.318Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:08:09.329Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:08:09.336Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:08:09.347Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:12:53.524Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:12:53.581Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:12:53.597Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:12:53.907Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:12:54.113Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:12:54.147Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:12:54.166Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:12:54.346Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-15T09:13:03.739Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:17.184Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:17.422Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:13:38.568Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:13:38.925Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:42.120Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:13:42.137Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:42.174Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:13:42.349Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:13:44.816Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:13:44.868Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:46.428Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:13:46.437Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:46.476Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:13:46.487Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:55.823Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:55.874Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:57.745Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:13:57.752Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:13:57.793Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:13:57.997Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:15:17.621Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:15:17.626Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:15:17.845Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:15:17.850Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:17:22.722Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:17:22.730Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-15T09:17:53.061Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:17:58.449Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:17:58.457Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:17:58.494Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:17:58.674Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:18:02.389Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:18:02.403Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:18:02.440Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:18:02.468Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:18:06.204Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:18:06.251Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:18:21.513Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:26:21.980Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:26:22.211Z"}
+{"level":"info","message":"Router-----add partner","timestamp":"2025-04-15T09:27:57.825Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:27:58.268Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:28:01.688Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:28:01.735Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:35:56.164Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:35:56.175Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:35:56.383Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:35:56.390Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:36:15.494Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:36:15.500Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:36:15.686Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:36:15.695Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:36:34.297Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:36:34.560Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:36:41.237Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:36:41.280Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-04-15T09:37:12.500Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:37:12.934Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-04-15T09:37:25.699Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:37:26.046Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:37:37.665Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:37:37.850Z"}
+{"level":"info","message":"Router-----add Customer","timestamp":"2025-04-15T09:40:52.274Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:40:52.668Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:42:13.772Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:42:13.781Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:42:14.015Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:42:14.023Z"}
+{"level":"info","message":"Router-----add price","timestamp":"2025-04-15T09:42:43.782Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:42:52.052Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:42:52.057Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:42:52.100Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T09:42:52.247Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:44:57.187Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:44:57.191Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:44:57.396Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:44:57.409Z"}
+{"level":"info","message":"Router-----add category","timestamp":"2025-04-15T09:45:52.377Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:45:52.813Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:50:02.246Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:50:02.251Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:50:02.489Z"}
+{"level":"info","message":"Router-----add get category","timestamp":"2025-04-15T09:50:02.512Z"}
+{"level":"info","message":"Router-----add category","timestamp":"2025-04-15T09:50:13.536Z"}
+{"level":"info","message":"Router-----get category","timestamp":"2025-04-15T09:50:13.963Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:52:46.813Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:52:46.821Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:52:46.834Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:52:46.840Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:52:47.032Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:52:47.083Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:52:47.089Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:52:47.228Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:56:17.095Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:56:17.167Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T09:56:17.182Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T09:56:17.189Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T09:56:21.664Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:56:22.090Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:56:22.094Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T09:56:31.131Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:56:31.924Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:56:31.930Z"}
+{"level":"info","message":"Router ------------booking ","timestamp":"2025-04-15T09:56:44.754Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T09:56:45.257Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T09:56:45.264Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:00:15.207Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:00:15.211Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:00:15.215Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:00:15.218Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:00:15.457Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:00:15.490Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:00:15.495Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:00:15.585Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:01:30.142Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:01:30.150Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:01:30.155Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:01:30.159Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:01:52.801Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:01:52.804Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:01:52.808Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:01:52.811Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:01:53.038Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:01:53.041Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:01:53.045Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:01:53.186Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:01:53.956Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:01:53.959Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:01:54.010Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:01:54.135Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:02:00.855Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:02:00.912Z"}
+{"level":"info","message":"Router ------------get Usertype","timestamp":"2025-04-15T10:02:05.874Z"}
+{"level":"info","message":"Router ------------get Usertype","timestamp":"2025-04-15T10:02:05.926Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:02:45.215Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:02:45.234Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:02:50.325Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:02:50.328Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:02:50.382Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:02:50.510Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:02:50.931Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:02:50.989Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:03:57.972Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:03:58.275Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:05:42.425Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:05:42.431Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:05:42.639Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:05:43.117Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:08:07.754Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T10:08:07.783Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:08:08.127Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T10:08:08.196Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:08:09.730Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:08:09.740Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:08:09.749Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:08:09.757Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:08:09.794Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:08:09.807Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:08:10.014Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:08:10.111Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:08:10.394Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:08:10.445Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:08:12.223Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:08:12.274Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:08:33.364Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:08:33.627Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:13:34.628Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T10:13:34.636Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:13:34.988Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T10:13:35.027Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:13:36.097Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:13:36.151Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:13:41.076Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:13:41.082Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:13:41.088Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:13:41.092Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:13:41.137Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:13:41.155Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:13:41.366Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:13:41.539Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:13:51.875Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:13:52.193Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:27:22.006Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:27:22.262Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:31:00.264Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:31:00.591Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:31:02.093Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:31:02.101Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:31:02.155Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:31:02.639Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:31:07.869Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:31:07.924Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:32:43.667Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:32:43.673Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:32:43.911Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:32:44.032Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:33:10.025Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-15T10:33:10.332Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:33:10.862Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T10:33:10.873Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:33:10.914Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-15T10:33:11.249Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:34:51.445Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:34:51.449Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:34:51.704Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:34:51.762Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:34:53.489Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:34:53.496Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:34:53.504Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:34:53.509Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:34:53.536Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:34:53.541Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:34:53.752Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:34:53.886Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:50:40.751Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:50:40.754Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:50:40.758Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:50:40.760Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:50:40.994Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:50:40.997Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:50:41.007Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:50:41.173Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:50:58.371Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:50:58.376Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:50:58.378Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:50:58.382Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-15T10:50:58.667Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-15T10:50:58.670Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:50:58.672Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:50:58.699Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:50:59.711Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:50:59.718Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T10:50:59.758Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-15T10:50:59.872Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:52:17.381Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-15T10:52:17.614Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T12:37:13.163Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T12:37:13.205Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-15T12:37:13.495Z"}
+{"level":"info","message":"Router-----get price","timestamp":"2025-04-15T12:37:13.503Z"}
