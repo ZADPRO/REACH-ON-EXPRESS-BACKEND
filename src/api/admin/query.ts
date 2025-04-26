@@ -59,6 +59,7 @@ SELECT
   u."refCustId",
   u."refUserFName",
   u."refUserLName",
+  u."userTypeId",
   rud."refCustMobileNum",
   rud."refCustpassword",
   rud."refCusthashedpassword",
