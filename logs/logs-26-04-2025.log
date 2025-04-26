@@ -1,0 +1,472 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T05:52:01.021Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T05:55:44.792Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T05:55:44.805Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T05:55:45.307Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T05:55:45.357Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T05:55:45.371Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T05:55:45.395Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T05:55:45.527Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T05:55:45.542Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T05:55:45.810Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T05:55:45.945Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T05:55:45.962Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T05:55:46.075Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T05:55:46.205Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T05:55:46.320Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T05:55:46.435Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T05:55:46.714Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:01:21.744Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:01:21.749Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:01:38.555Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:01:38.560Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:01:41.767Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:01:46.615Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:01:59.393Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:01:59.404Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:01:59.413Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:01:59.419Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:02:01.543Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:02:26.601Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:02:26.616Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:02:26.624Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:02:26.632Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-26T06:02:27.292Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-26T06:02:29.550Z"}
+{"level":"info","message":"Router ------------list Finance","timestamp":"2025-04-26T06:02:39.459Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:02:44.808Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:02:44.838Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:02:46.841Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:02:47.768Z"}
+{"level":"info","message":"Router ------------add employee","timestamp":"2025-04-26T06:02:47.781Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:02:52.469Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:02:55.388Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:03:00.548Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:03:01.786Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:03:11.346Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:03:11.366Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:03:11.374Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:03:11.379Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:03:14.887Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:03:14.896Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:03:14.904Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:03:16.862Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:03:30.501Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:03:32.592Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:03:35.264Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:03:35.270Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:03:35.386Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:03:35.525Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:03:35.579Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:03:35.584Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:03:36.162Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:03:36.168Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T06:18:25.173Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:20:26.594Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:20:26.605Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:26.612Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:20:26.618Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-26T06:20:29.259Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"zadroit.brightoncloudtech.com","level":"error","message":"Error in transaction Mapping: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com","stack":"Error: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com\n    at D:\\REACH-ON-EXPRESS\\ReachonFinal\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"getaddrinfo","timestamp":"2025-04-26T06:20:31.138Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:20:31.146Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:20:31.153Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:31.168Z"}
+{"level":"info","message":"Router ------------add Report ","timestamp":"2025-04-26T06:20:31.177Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:20:31.192Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"zadroit.brightoncloudtech.com","level":"error","message":"Error in transaction Mapping: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com","stack":"Error: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com\n    at D:\\REACH-ON-EXPRESS\\ReachonFinal\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"getaddrinfo","timestamp":"2025-04-26T06:20:31.197Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:20:31.202Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:31.213Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:20:31.227Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:20:31.232Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:31.236Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"zadroit.brightoncloudtech.com","level":"error","message":"Error in transaction Mapping: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com","stack":"Error: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com\n    at D:\\REACH-ON-EXPRESS\\ReachonFinal\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"getaddrinfo","timestamp":"2025-04-26T06:20:31.238Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:20:31.252Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:31.263Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"zadroit.brightoncloudtech.com","level":"error","message":"Error in transaction Mapping: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com","stack":"Error: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com\n    at D:\\REACH-ON-EXPRESS\\ReachonFinal\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"getaddrinfo","timestamp":"2025-04-26T06:20:31.267Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:31.277Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:43.767Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:20:43.791Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:22:27.920Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:22:47.925Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-26T06:23:04.746Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-26T06:23:50.045Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-26T06:24:21.451Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-26T06:24:43.201Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:24:55.723Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:24:55.731Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:24:56.040Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:24:56.049Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:25:00.244Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:25:02.012Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:25:03.216Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:25:04.774Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T06:25:04.808Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:25:07.214Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:25:10.161Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T06:25:10.500Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:25:11.870Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:25:14.341Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:25:16.714Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:25:16.719Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:25:16.830Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:25:17.181Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T06:40:01.067Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-26T06:41:43.816Z"}
+{"level":"info","message":"Router ------------admin login","timestamp":"2025-04-26T06:42:29.560Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T06:48:52.967Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:49:42.313Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:49:42.325Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:49:42.835Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:49:42.954Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T06:53:04.513Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:54:24.763Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:54:24.773Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:56:36.373Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:56:36.396Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:56:36.917Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:56:37.031Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T06:56:44.034Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:56:59.286Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:56:59.318Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:56:59.714Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:56:59.926Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:57:28.767Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:57:28.778Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:57:37.541Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:57:37.618Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:57:44.449Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:57:44.561Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:57:46.536Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:57:46.553Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:57:49.952Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:57:50.038Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:58:02.313Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:58:02.321Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:58:02.797Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:58:02.928Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:58:03.163Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T06:58:10.979Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:58:12.858Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T06:58:18.447Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T06:58:18.453Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:03:53.873Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:03:53.880Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:04:12.752Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:04:12.758Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:04:17.767Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:04:22.527Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:04:22.542Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:04:28.801Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:04:31.539Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:04:31.550Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:04:37.745Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:04:37.749Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:04:37.910Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:04:38.562Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:05:56.576Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:05:56.583Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:05:57.098Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:05:57.312Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:07:08.836Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:07:08.844Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"zadroit.brightoncloudtech.com","level":"error","message":"Error in transaction Mapping: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com","stack":"Error: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com\n    at D:\\REACH-ON-EXPRESS\\ReachonFinal\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"getaddrinfo","timestamp":"2025-04-26T07:07:20.502Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:07:20.516Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:07:20.523Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:07:28.059Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:07:28.207Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:07:28.352Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:07:28.653Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:08:15.329Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:08:15.339Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:08:24.679Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:08:24.684Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:11:14.743Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:11:14.749Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:12:47.841Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:12:47.848Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:12:49.841Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:12:49.850Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:12:51.456Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:12:51.463Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:13:13.076Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:13:13.091Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:13:19.834Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:13:19.840Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:13:20.644Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:13:23.565Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:13:27.704Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:13:27.720Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:07.843Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:07.851Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:15.651Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:15.994Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:17.471Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:17.476Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:20.879Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:20.884Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:46.810Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:46.821Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:48.445Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:48.461Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:50.773Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:50.780Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:53.442Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:53.449Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:14:56.457Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:14:56.463Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:16:29.102Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:16:29.110Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:17:03.470Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:17:03.477Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:17:04.031Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:17:04.160Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:17:26.363Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:17:26.367Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:17:27.034Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:17:27.329Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:18:48.809Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:18:48.815Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:18:49.257Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:18:49.514Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:18:56.825Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:18:56.841Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:18:59.490Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:18:59.497Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:19:02.464Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:19:02.471Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:19:15.407Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:19:15.714Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:19:17.534Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:19:17.549Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:19:17.637Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:19:17.872Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:19:19.387Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:19:19.395Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:19:19.605Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:19:19.807Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:23:21.789Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:23:21.799Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:23:25.482Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:23:25.489Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:24:00.755Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:24:00.772Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:24:01.968Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:24:02.114Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:24:44.743Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:24:44.747Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:24:45.184Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:24:45.420Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:24:54.796Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:24:54.801Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:24:54.952Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:24:55.196Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:03.778Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:03.782Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:03.867Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:03.980Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:04.053Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:04.126Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:06.490Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:06.496Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:06.595Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:09.718Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:09.738Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:09.872Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:10.121Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:23.520Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:23.537Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"zadroit.brightoncloudtech.com","level":"error","message":"Error in transaction Mapping: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com","stack":"Error: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com\n    at D:\\REACH-ON-EXPRESS\\ReachonFinal\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"getaddrinfo","timestamp":"2025-04-26T07:25:23.548Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:23.560Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:23.569Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"zadroit.brightoncloudtech.com","level":"error","message":"Error in transaction Mapping: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com","stack":"Error: getaddrinfo ENOTFOUND zadroit.brightoncloudtech.com\n    at D:\\REACH-ON-EXPRESS\\ReachonFinal\\REACH-ON-EXPRESS-BACKEND\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"getaddrinfo","timestamp":"2025-04-26T07:25:23.574Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:34.286Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:34.293Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:40.510Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:40.515Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:43.067Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:43.365Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:43.643Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:43.654Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:44.228Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:44.684Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:45.526Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:45.535Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:45.661Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:45.917Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:48.477Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:48.484Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:48.596Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:48.831Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:49.484Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:49.492Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:49.629Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:49.850Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:51.597Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:51.628Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:51.747Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:51.952Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:55.932Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:55.952Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:56.048Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:56.179Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:25:56.248Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:56.340Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:56.843Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:25:57.263Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:04.755Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:26:04.763Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:04.879Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:26:05.186Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:07.926Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:26:07.932Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:08.046Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:26:08.273Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:16.712Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:18.055Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:26:18.134Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:18.344Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:26:18.421Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:26:25.748Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:26:25.767Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:28:16.051Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:28:16.066Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:28:22.480Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:28:22.487Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:28:24.484Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:28:24.492Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:28:29.857Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:28:29.862Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:28:41.802Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:28:41.838Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:28:43.127Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:28:43.138Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:28:48.763Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:28:48.770Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:29:49.753Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:29:49.760Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:29:55.515Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:29:55.524Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:30:02.601Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:30:02.605Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:30:03.744Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:30:03.756Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T07:31:30.829Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:31:45.028Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:31:45.041Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:31:48.883Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:31:48.921Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:31:49.010Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:31:49.231Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T07:32:18.335Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:32:29.552Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:32:29.557Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:35:19.879Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:35:19.885Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:36:49.795Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:36:49.805Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:36:50.392Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:36:50.583Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:36:52.486Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:36:52.508Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:37:00.551Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:37:00.571Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:38:08.356Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:38:08.368Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:38:16.838Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:38:16.845Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T07:39:47.547Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:39:56.746Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:39:56.818Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:40:19.113Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:40:19.419Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:41:29.835Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:41:29.843Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:41:32.190Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:41:32.229Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:41:35.878Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:41:35.886Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:41:51.597Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:41:51.909Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:42:13.635Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:42:13.642Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:42:44.556Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:42:44.865Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:44:58.005Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:44:58.014Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:04.100Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:04.108Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:07.062Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:07.075Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:07.177Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:07.375Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:09.732Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:09.737Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:31.680Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:31.686Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:34.527Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:34.533Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:39.478Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:39.482Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:42.352Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:42.364Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:45:48.144Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:45:48.151Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:46:25.026Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:46:25.339Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:47:01.402Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:47:01.405Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:47:43.838Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:47:44.149Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:48:15.509Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:48:15.515Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:48:53.624Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:48:53.636Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T07:49:01.081Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:49:07.573Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:49:07.795Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:50:36.834Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:50:36.843Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:50:37.370Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:50:37.547Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:51:37.725Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:51:37.730Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:52:32.432Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:52:32.744Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:52:34.490Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:52:34.495Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:52:37.411Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:52:37.421Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:52:45.318Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:52:45.323Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:53:24.794Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:53:24.800Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:53:27.184Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:53:27.188Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:53:55.395Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:53:55.703Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T07:53:55.713Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T07:53:55.726Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:53:56.051Z"}
+{"level":"info","message":"Router ------------view Past booking ","timestamp":"2025-04-26T07:53:56.286Z"}
+{"level":"info","message":"Router-----get customer","timestamp":"2025-04-26T07:53:56.295Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:53:56.550Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:53:58.480Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:53:58.484Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:53:58.608Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:53:58.876Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T07:57:16.831Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:57:39.122Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:57:39.144Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T07:57:46.254Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T07:57:51.669Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T07:57:51.798Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T08:01:11.610Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T08:01:28.686Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T08:01:41.081Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T08:01:50.025Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T08:02:05.173Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T08:02:05.189Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T08:02:07.350Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T08:02:07.357Z"}
+{"level":"info","message":"Router ------------insert transaction Mapping ","timestamp":"2025-04-26T08:02:14.012Z"}
+{"level":"info","message":"Router-----get partners","timestamp":"2025-04-26T08:02:19.842Z"}
+{"level":"info","message":"Router ------------transaction Mapping ","timestamp":"2025-04-26T08:02:19.920Z"}

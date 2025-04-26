@@ -9,7 +9,11 @@ export const getPartnerValidityQuery = `
 export const insertTransactionMappingQuery = (rowCount: number) => {
   const valuesPlaceholder = [];
   for (let i = 0; i < rowCount; i++) {
-    valuesPlaceholder.push(`($${i * 5 + 1}, $${i * 5 + 2}, $${i * 5 + 3}, $${i * 5 + 4}, $${i * 5 + 5})`);
+    valuesPlaceholder.push(
+      `($${i * 5 + 1}, $${i * 5 + 2}, $${i * 5 + 3}, $${i * 5 + 4}, $${
+        i * 5 + 5
+      })`
+    );
   }
 
   return `
@@ -21,15 +25,15 @@ export const insertTransactionMappingQuery = (rowCount: number) => {
 };
 
 export const duplicateCheckQuery = `
-SELECT "leaf" FROM public."transactionmapping"
-WHERE "leaf" = ANY($1::text[])
+SELECT "leaf", "partnersName", "purchasedDate" FROM public."transactionmapping"
+WHERE ("leaf", "partnersName", "purchasedDate") IN (
+  SELECT unnest($1::text[]), unnest($2::text[]), unnest($3::text[])
+)
 `;
 
 // export const GetUserRefCustIdQuery = `SELECT refCustId FROM users WHERE id = $1;`;
 
 // export const GetPartnerValidityQuery = `SELECT validity FROM partners WHERE id = $1;`;
-
-
 
 export const transactionMappingQuery = `SELECT 
     t.leaf AS "vendorLeaf",

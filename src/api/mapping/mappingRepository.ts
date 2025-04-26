@@ -45,12 +45,16 @@ export class mappingRepository {
 
       // Extract vendorLeaf values for duplicate check
       const vendorLeafValues = mappingData.map(({ vendorLeaf }) => vendorLeaf);
+      const vendorValues = mappingData.map(({ vendor }) => vendor);
+      const purchasedDateValues = mappingData.map(
+        ({ purchasedDate }) => purchasedDate
+      );
       console.log("vendorLeafValues", vendorLeafValues);
-
-      // Query to check if any vendorLeaf already exists
 
       const { rows: duplicateRows } = await client.query(duplicateCheckQuery, [
         vendorLeafValues,
+        vendorValues,
+        purchasedDateValues,
       ]);
 
       if (duplicateRows.length > 0) {
@@ -58,7 +62,7 @@ export class mappingRepository {
         return encrypt(
           {
             success: false,
-            message: `Duplicate vendorLeaf values found: ${duplicateRows
+            message: `Duplicate entries found for leafs: ${duplicateRows
               .map((row) => row.leaf)
               .join(", ")}`,
           },
@@ -92,7 +96,7 @@ export class mappingRepository {
 
         const validityDate = moment(purchasedDate)
           .add(validityDays, "days")
-          .format("YYYY-MM-DD");
+          .format("YYYY/MM/DD");
 
         // Add values for batch insert
         values.push(
@@ -182,7 +186,6 @@ export class mappingRepository {
       }
 
       const vendorDetails = queryResult.rows;
-      console.log("vendorDetails:", vendorDetails);
 
       // Insert transaction history
       const txnHistoryParams = [
