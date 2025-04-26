@@ -113,6 +113,8 @@ export class adminRepository {
         userData.bankBranch,
         userData.pfDeduction,
         userData.salary,
+        userData.finalSalary,
+        userData.ifsc,
       ];
       const userResult = await client.query(insertUserQuery, params);
       const newUser = userResult.rows[0];

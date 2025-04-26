@@ -17,8 +17,8 @@ WHERE u."refCustId" LIKE 'R-' || $1 || '-%'
 
 export const checkQuery = `SELECT * FROM public."refusersdomain" WHERE "refUsername"=$1 LIMIT 10;`;
 
-export const insertUserQuery = `INSERT INTO public."user" ("refUserFName", "refUserLName", "designation",  "userTypeId", "refCustId","dateOfBirth", "qualification", "bankAccountNumber", "bankBranch", "pfDeduction", "salary") 
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *;`;
+export const insertUserQuery = `INSERT INTO public."user" ("refUserFName", "refUserLName", "designation",  "userTypeId", "refCustId","dateOfBirth", "qualification", "bankAccountNumber", "bankBranch", "pfDeduction", "salary", "finalSalary", "ifsc") 
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *;`;
 
 export const insertUserDomainQuery = `INSERT INTO public."refusersdomain" (
 "refUserId", "refCustMobileNum","refCustpassword", "refCusthashedpassword", "refUsername" )
