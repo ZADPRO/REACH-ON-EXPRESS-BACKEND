@@ -84,10 +84,11 @@ export class adminRepository {
         prefix === "EMP" ? getLastEmployeeIdQuery : getLastCustomerIdQuery;
 
       // Fetch last customer ID based on customerPrefix
-      const lastCustomerResult = await client.query(lastCustomerQuery);
+      const lastCustomerResult = await client.query(lastCustomerQuery, [
+        prefix,
+      ]);
       console.log("lastCustomerResult", lastCustomerResult);
       let newCustomerId: string;
-
       if (lastCustomerResult.rows.length > 0) {
         const lastNumber = parseInt(lastCustomerResult.rows[0].count, 10);
         newCustomerId = `${customerPrefix}${(baseNumber + lastNumber + 1)
@@ -108,11 +109,13 @@ export class adminRepository {
         newCustomerId,
         userData.dateOfBirth,
         userData.qualification,
+        userData.bankAccountNumber,
+        userData.bankBranch,
+        userData.pfDeduction,
+        userData.salary,
       ];
       const userResult = await client.query(insertUserQuery, params);
-      console.log("userResult", userResult);
       const newUser = userResult.rows[0];
-      console.log("newUser", newUser);
 
       // Insert into userDomain table
       const domainParams = [

@@ -3,27 +3,22 @@ export const updateHistoryQuery = `
   VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
 export const getLastEmployeeIdQuery = `
-SELECT
-  COUNT(*)
-FROM
-  public."user" u
-WHERE
-  u."refCustId" LIKE 'R-EMP-%'
+SELECT COUNT(*)
+FROM public."user" u
+WHERE u."refCustId" LIKE 'R-' || $1 || '-%'
   `;
 
 export const getLastCustomerIdQuery = `
-  SELECT
-    COUNT(*)
-  FROM
-    public."user" u
-  WHERE
-    u."refCustId" LIKE 'R-UNIQ-%'
+SELECT COUNT(*)
+FROM public."user" u
+WHERE u."refCustId" LIKE 'R-' || $1 || '-%'
+
     `;
 
 export const checkQuery = `SELECT * FROM public."refusersdomain" WHERE "refUsername"=$1 LIMIT 10;`;
 
-export const insertUserQuery = `INSERT INTO public."user" ("refUserFName", "refUserLName", "designation",  "userTypeId", "refCustId","dateOfBirth", "qualification") 
-VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+export const insertUserQuery = `INSERT INTO public."user" ("refUserFName", "refUserLName", "designation",  "userTypeId", "refCustId","dateOfBirth", "qualification", "bankAccountNumber", "bankBranch", "pfDeduction", "salary") 
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *;`;
 
 export const insertUserDomainQuery = `INSERT INTO public."refusersdomain" (
 "refUserId", "refCustMobileNum","refCustpassword", "refCusthashedpassword", "refUsername" )
