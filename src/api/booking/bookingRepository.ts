@@ -810,7 +810,11 @@ export class bookingRepository {
       // Validate required fields
       if (!parcelBookingId) {
         return encrypt(
-          { success: false, message: "Missing parcelBookingId." },
+          {
+             success: false,
+             token: tokens,
+              message: "Missing parcelBookingId." 
+            },
           true
         );
       }
@@ -1370,7 +1374,7 @@ export class bookingRepository {
         {
           success: false,
           message: `Error in finance data retrieval: ${errorMessage}`,
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -1409,7 +1413,7 @@ export class bookingRepository {
         {
           success: false,
           message: `Error in Parcel past Booking Data retrieval: ${error.message}`,
-          token: tokens,
+          token: tokens
         },
         true
       );

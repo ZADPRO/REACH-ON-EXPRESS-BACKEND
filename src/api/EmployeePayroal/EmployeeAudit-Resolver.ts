@@ -60,6 +60,7 @@ export class EmployeeAuditRepository {
         {
           success: true,
           message: "New Month Employee Payed Successfully",
+          data:data,
           token: tokens,
         },
         true
@@ -70,7 +71,7 @@ export class EmployeeAuditRepository {
           success: false,
           message: "Failed to insert New Month Employee Payed",
           error: (error as Error).message,
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -89,7 +90,7 @@ export class EmployeeAuditRepository {
           success: true,
           message: "Employee Payed List passed Successfully",
           token: tokens,
-          data: data,
+          data: data
         },
         true
       );
@@ -99,7 +100,7 @@ export class EmployeeAuditRepository {
           success: false,
           message: "Failed to Getting Teh Employee Payed List",
           error: (error as Error).message,
-          token: tokens,
+          token: tokens
         },
         true
       );

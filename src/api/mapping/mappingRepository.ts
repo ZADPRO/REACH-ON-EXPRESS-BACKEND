@@ -38,6 +38,7 @@ export class mappingRepository {
           {
             success: false,
             message: "Invalid or empty mapping data",
+            token: tokens
           },
           true
         );
@@ -65,6 +66,7 @@ export class mappingRepository {
             message: `Duplicate entries found for leafs: ${duplicateRows
               .map((row) => row.leaf)
               .join(", ")}`,
+              token: tokens
           },
           true
         );
@@ -86,6 +88,7 @@ export class mappingRepository {
             {
               success: false,
               message: `Partner with ID ${vendor} not found`,
+              token: tokens
             },
             true
           );
@@ -117,6 +120,7 @@ export class mappingRepository {
           {
             success: false,
             message: "Failed to insert transaction mapping",
+            token: tokens
           },
           true
         );
@@ -138,7 +142,7 @@ export class mappingRepository {
           success: true,
           message: "Transaction mapping inserted successfully",
           data: rows,
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -149,7 +153,7 @@ export class mappingRepository {
           success: false,
           message: "Failed to insert transaction mapping",
           error: (error as Error).message,
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -179,7 +183,7 @@ export class mappingRepository {
           {
             success: false,
             message: "No data found for the given userData",
-            token: tokens,
+            token: tokens
           },
           true
         );

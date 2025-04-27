@@ -62,6 +62,7 @@ export class adminRepository {
           {
             success: true,
             message: "Already exists",
+            token:tokens
           },
           true
         );
@@ -214,6 +215,7 @@ export class adminRepository {
           success: false,
           message: "An unexpected error occurred during signup",
           error: error instanceof Error ? error.message : String(error),
+          token:tokens
         },
         true
       );
@@ -420,6 +422,7 @@ export class adminRepository {
           {
             success: false,
             message: "'Partner' must be a non-empty string.",
+            token:tokens
           },
           true
         );
@@ -451,8 +454,7 @@ export class adminRepository {
           success: true,
           message: "Partner inserted successfully.",
           token: tokens,
-
-          data: result,
+          data: result
         },
         true
       );
@@ -469,7 +471,7 @@ export class adminRepository {
             error instanceof Error
               ? error.message
               : "An unknown error occurred",
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -520,7 +522,7 @@ export class adminRepository {
           success: false,
           message: "Partner update failed",
           error: errorMessage,
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -626,6 +628,8 @@ export class adminRepository {
           {
             success: false,
             message: "Invalid request: partnerId is required.",
+            token: tokens
+
           },
           true
         );
@@ -642,7 +646,7 @@ export class adminRepository {
           {
             success: false,
             message: "Partner record not found.",
-            token: tokens,
+            token: tokens
           },
           true
         );
@@ -666,7 +670,7 @@ export class adminRepository {
         {
           success: true,
           message: "Partner marked as deleted successfully.",
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -680,7 +684,7 @@ export class adminRepository {
           message: `Error marking Partner as deleted: ${
             (error as Error).message
           }`,
-          token: tokens,
+          token: tokens
         },
         true
       );
@@ -714,7 +718,7 @@ export class adminRepository {
       //             message: "'customerName' must be a non-empty string.",
       //             token: tokens,
       //         },
-      //         false
+      //         true
       //     );
       // }
 
@@ -867,7 +871,7 @@ export class adminRepository {
   //           message: "Invalid request: refCustomerId is required.",
   //           token: tokens,
   //         },
-  //         false
+  //         true
   //       );
   //     }
 
@@ -883,7 +887,8 @@ export class adminRepository {
   //           message: "Customer record not found.",
   //           token: tokens,
   //         },
-  //         false
+  //         true
+
   //       );
   //     }
 
@@ -909,7 +914,7 @@ export class adminRepository {
   //           message: "Customer update failed.",
   //           token: tokens,
   //         },
-  //         false
+  //         true
   //       );
   //     }
 
@@ -932,7 +937,7 @@ export class adminRepository {
   //         token: tokens,
   //         data: updatedCustomer.rows[0],
   //       },
-  //       false
+  //       true
   //     );
   //   } catch (error) {
   //     await client.query("ROLLBACK"); // Rollback transaction on failure
@@ -948,7 +953,7 @@ export class adminRepository {
   //             : "An unknown error occurred",
   //         token: tokens,
   //       },
-  //       false
+  //       true
   //     );
   //   } finally {
   //     client.release(); // Ensure client is released
@@ -1151,6 +1156,7 @@ export class adminRepository {
           {
             success: false,
             message: "Invalid request: refCustomerId is required.",
+            token: tokens
           },
           true
         );
@@ -1224,6 +1230,8 @@ export class adminRepository {
   public async addPricingV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
+
     try {
       await client.query("BEGIN"); // Start Transaction
 
@@ -1235,8 +1243,9 @@ export class adminRepository {
           {
             success: false,
             message: "Missing required fields.",
+            token: tokens
           },
-          false
+          true
         );
       }
 
@@ -1250,6 +1259,7 @@ export class adminRepository {
             {
               success: false,
               message: "Missing dimension details.",
+              token: tokens
             },
             true
           );
@@ -1280,6 +1290,8 @@ export class adminRepository {
           success: true,
           message: "Weight details added successfully.",
           data: result,
+          token: tokens,
+
         },
         true
       );
@@ -1296,6 +1308,7 @@ export class adminRepository {
             error instanceof Error
               ? error.message
               : "An unknown error occurred",
+              token: tokens,
         },
         true
       );
@@ -1360,6 +1373,7 @@ export class adminRepository {
           {
             success: false,
             message: "'category' must be a non-empty string.",
+            token: tokens
           },
           true
         );
@@ -1389,7 +1403,7 @@ export class adminRepository {
         {
           success: true,
           message: "Category inserted successfully.",
-          // data: allCategories, // Return all categories
+          data: insertedCategory, // Return all categories
           token: tokens,
         },
         true
@@ -1466,8 +1480,9 @@ export class adminRepository {
           {
             success: false,
             message: "Missing categoryId or subcategory.",
+            token: tokens
           },
-          false
+          true
         );
       }
 
