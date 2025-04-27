@@ -17,8 +17,8 @@ export class tracking {
       logger.info("Router-----add partner");
       try {
         const decodedToken ={
-          id:request.plugins.token.id
-        }
+        id:request.plugins.token.id
+      }
         console.log('decodedToken', decodedToken)
         let entity;
         entity = await this.resolver.trackingV1(request.payload,decodedToken);

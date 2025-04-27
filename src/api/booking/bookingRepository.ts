@@ -486,6 +486,7 @@ export class bookingRepository {
           success: true,
           message: "Parcel booking details added successfully.",
           parcelBookingId: parcelBookingId,
+          token:tokens
         },
         true
       );
@@ -499,6 +500,7 @@ export class bookingRepository {
             error instanceof Error
               ? error.message
               : "An unknown error occurred",
+              token:tokens
         },
         true
       );
@@ -903,6 +905,7 @@ export class bookingRepository {
         {
           success: true,
           message: "Parcel booking details updated successfully.",
+          token:tokens
         },
         true
       );
@@ -914,6 +917,8 @@ export class bookingRepository {
           success: false,
           message: "Parcel booking update failed.",
           error: error.message || "An unknown error occurred",
+          token:tokens
+
         },
         true
       );

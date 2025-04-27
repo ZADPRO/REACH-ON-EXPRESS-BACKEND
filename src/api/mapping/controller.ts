@@ -40,9 +40,12 @@ export class mapping {
    ): Promise<any> => {
      logger.info("Router ------------transaction Mapping ");
      try {
+      //  const decodedToken ={
+      //    id:request.plugins.token.id
+      //  }
        const decodedToken ={
-         id:request.plugins.token.id
-       }
+        id:request.plugins.token.id
+      }
        
        let entity;
        entity = await this.resolver.transactionMappingV1(request.payload, decodedToken);

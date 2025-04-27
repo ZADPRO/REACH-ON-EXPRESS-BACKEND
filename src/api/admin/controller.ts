@@ -322,12 +322,13 @@ export class Profile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    const decodedToken = {
-      id: request.plugins.token.id,
-    };
-    console.log("decodedToken", decodedToken);
     logger.info("Router-----get customer");
+
     try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      console.log("decodedToken", decodedToken);
       let entity;
       entity = await this.resolver.getCustomersV1(
         request.payload,
@@ -386,12 +387,13 @@ export class Profile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    const decodedToken = {
-      id: request.plugins.token.id,
-    };
-    console.log("decodedToken", decodedToken);
+   
     logger.info("Router-----get customer");
     try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      console.log("decodedToken", decodedToken);
       let entity;
       entity = await this.resolver.getCustomerV1(request.payload, decodedToken);
 
