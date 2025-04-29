@@ -33,6 +33,17 @@ export class mappingRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "GET",
+          path: "/api/v1/routes/ListMappingLeaf",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.listTokens,
+            description: "view Transaction Mapping",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

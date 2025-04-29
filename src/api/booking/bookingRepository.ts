@@ -27,6 +27,7 @@ import {
   getParcelBookingCount,
   getfinanceDataQuery,
   getReportDataQuery,
+  updateVendorLeaf,
 } from "./query";
 
 export class bookingRepository {
@@ -302,6 +303,7 @@ export class bookingRepository {
         consignorPhone,
         consignorEmail,
         customerRefNo,
+        leaf,
         consigneeName,
         consigneeAddress,
         consigneeGSTnumber,
@@ -355,12 +357,12 @@ export class bookingRepository {
       }
 
       // Fetch `vendorLeaf` from `transactionmapping`
-      const vendorLeafResult = await client.query(vendorLeafQuery, [
-        partnersName,
+      const vendorLeaf = leaf;
+
+      const updateVendorLeafQuery = await client.query(updateVendorLeaf, [
+        leaf,
       ]);
-      const vendorLeaf = vendorLeafResult.rows.length
-        ? vendorLeafResult.rows[0].leaf
-        : null;
+      console.log("updateVendorLeafQuery", updateVendorLeafQuery);
 
       const refCustIdResult = await client.query(refCustIdQuery, [
         refCustomerId,
@@ -369,7 +371,6 @@ export class bookingRepository {
       const refCustId = refCustIdResult.rows.length
         ? refCustIdResult.rows[0].refCustId
         : null;
-      console.log("refCustId line 371", refCustId);
 
       if (!refCustId) {
         throw new Error("Invalid partnersId or refCustomerId.");
@@ -394,6 +395,7 @@ export class bookingRepository {
 
       let currentCount = parseInt(countResult.rows[0]?.total || "0", 10);
       currentCount++; // Increment count for new entry
+      console.log("currentCount", currentCount);
 
       const newRefCustId = `${refCustIdPrefix}-${String(currentCount).padStart(
         3,
@@ -444,6 +446,7 @@ export class bookingRepository {
         "Admin",
       ]);
 
+      console.log("parcelResult", parcelResult);
       if (parcelResult.rows.length > 0) {
         parcelBookingId = parcelResult.rows[0];
       } else {
@@ -457,6 +460,7 @@ export class bookingRepository {
       const customerResult = await client.query(getCustomerQuery, [
         refCustomerId,
       ]);
+      console.log("customerResult", customerResult);
       if (customerResult.rows.length === 0)
         throw new Error("Customer not found.");
       const { refCustomerName } = customerResult.rows[0];
@@ -486,7 +490,7 @@ export class bookingRepository {
           success: true,
           message: "Parcel booking details added successfully.",
           parcelBookingId: parcelBookingId,
-          token:tokens
+          token: tokens,
         },
         true
       );
@@ -500,7 +504,7 @@ export class bookingRepository {
             error instanceof Error
               ? error.message
               : "An unknown error occurred",
-              token:tokens
+          token: tokens,
         },
         true
       );
@@ -811,10 +815,10 @@ export class bookingRepository {
       if (!parcelBookingId) {
         return encrypt(
           {
-             success: false,
-             token: tokens,
-              message: "Missing parcelBookingId." 
-            },
+            success: false,
+            token: tokens,
+            message: "Missing parcelBookingId.",
+          },
           true
         );
       }
@@ -909,7 +913,7 @@ export class bookingRepository {
         {
           success: true,
           message: "Parcel booking details updated successfully.",
-          token:tokens
+          token: tokens,
         },
         true
       );
@@ -921,8 +925,7 @@ export class bookingRepository {
           success: false,
           message: "Parcel booking update failed.",
           error: error.message || "An unknown error occurred",
-          token:tokens
-
+          token: tokens,
         },
         true
       );
@@ -1374,7 +1377,7 @@ export class bookingRepository {
         {
           success: false,
           message: `Error in finance data retrieval: ${errorMessage}`,
-          token: tokens
+          token: tokens,
         },
         true
       );
@@ -1413,7 +1416,7 @@ export class bookingRepository {
         {
           success: false,
           message: `Error in Parcel past Booking Data retrieval: ${error.message}`,
-          token: tokens
+          token: tokens,
         },
         true
       );

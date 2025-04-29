@@ -387,7 +387,6 @@ export class Profile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-   
     logger.info("Router-----get customer");
     try {
       const decodedToken = {

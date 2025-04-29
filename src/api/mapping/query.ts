@@ -45,3 +45,15 @@ export const transactionMappingQuery = `SELECT
   FROM "transactionmapping" t
   LEFT JOIN "partners" p ON t."partnersName" = p."partnersName"
   `;
+
+export const listLeafQuery = `
+  SELECT 
+    t.leaf AS "vendorLeaf",
+    p."partnersName" AS "vendor",
+    t."refStatus" ,
+    t."purchasedDate",
+    p."validity",
+    t."validityDate"
+  FROM "transactionmapping" t
+  LEFT JOIN "partners" p ON t."partnersName" = p."partnersName"
+  WHERE t."refStatus" = 'Not Assigned'`;

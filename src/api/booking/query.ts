@@ -10,13 +10,19 @@ INSERT INTO
 VALUES
   ($1, $2, $3, $4, $5)
 RETURNING
-  *;`
-  ;
+  *;`;
 
-export const vendorLeafQuery = `SELECT "leaf" FROM public.transactionmapping WHERE "partnersName" = $1 LIMIT 1`;
+export const vendorLeafQuery = `SELECT "leaf" FROM public.transactionmapping WHERE "leaf" = $1 LIMIT 1`;
 
 export const refCustIdQuery = `SELECT "refCustId" FROM public.customers WHERE "refCustomerId" = $1 LIMIT 1`;
-export const getParcelBookingCount = `SELECT COUNT(*) AS total FROM public.parcelbooking WHERE "parcelBookingId" = $1`
+
+export const updateVendorLeaf = `UPDATE public.transactionmapping
+SET "refStatus" = 'Assigned'
+WHERE leaf = $1
+  AND "refStatus" = 'Not Assigned';
+`;
+
+export const getParcelBookingCount = `SELECT COUNT(*) AS total FROM public.parcelbooking WHERE "parcelBookingId" = $1`;
 export const parcelBookingQuery = `
 INSERT INTO
   public.parcelbooking (
@@ -187,7 +193,6 @@ RETURNING
   *;
 `;
 
-
 export const updateRefStatusQuery = `UPDATE public.transactionmapping 
 SET "refStatus" = 'Assigned' 
 WHERE ctid IN (
@@ -314,7 +319,7 @@ export const refParcelBookingDataQuery = `SELECT * FROM public."parcelbooking" W
 
 export const getFinanceDataQuery = `SELECT * FROM public."refFinanceTable" WHERE "refCustomerName" = $1
 `;
-export const updateFinanceQuery =`UPDATE
+export const updateFinanceQuery = `UPDATE
   public."refFinanceTable"
 SET
   "refPayAmount" = $2,

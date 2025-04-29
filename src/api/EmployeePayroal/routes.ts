@@ -45,6 +45,18 @@ export class EmployeePayAuditRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "POST",
+          path: "/api/v1/Employee/checkApi",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.checkApi,
+            // validate: validate.AddTransactionMapping,
+            description: "Add Transaction Mapping",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

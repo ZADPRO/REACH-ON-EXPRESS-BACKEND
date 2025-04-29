@@ -13,6 +13,7 @@ import {
   duplicateCheckQuery,
   getPartnerValidityQuery,
   insertTransactionMappingQuery,
+  listLeafQuery,
   transactionMappingQuery,
   updateHistoryQuery,
 } from "./query";
@@ -38,7 +39,7 @@ export class mappingRepository {
           {
             success: false,
             message: "Invalid or empty mapping data",
-            token: tokens
+            token: tokens,
           },
           true
         );
@@ -66,7 +67,7 @@ export class mappingRepository {
             message: `Duplicate entries found for leafs: ${duplicateRows
               .map((row) => row.leaf)
               .join(", ")}`,
-              token: tokens
+            token: tokens,
           },
           true
         );
@@ -88,7 +89,7 @@ export class mappingRepository {
             {
               success: false,
               message: `Partner with ID ${vendor} not found`,
-              token: tokens
+              token: tokens,
             },
             true
           );
@@ -120,7 +121,7 @@ export class mappingRepository {
           {
             success: false,
             message: "Failed to insert transaction mapping",
-            token: tokens
+            token: tokens,
           },
           true
         );
@@ -142,18 +143,19 @@ export class mappingRepository {
           success: true,
           message: "Transaction mapping inserted successfully",
           data: rows,
-          token: tokens
+          token: tokens,
         },
         true
       );
     } catch (error: unknown) {
+      console.log('error line ------ 151', error)
       await client.query("ROLLBACK");
       return encrypt(
         {
           success: false,
           message: "Failed to insert transaction mapping",
           error: (error as Error).message,
-          token: tokens
+          token: tokens,
         },
         true
       );
@@ -183,7 +185,77 @@ export class mappingRepository {
           {
             success: false,
             message: "No data found for the given userData",
-            token: tokens
+            token: tokens,
+          },
+          true
+        );
+      }
+
+      const vendorDetails = queryResult.rows;
+
+      // Insert transaction history
+      const txnHistoryParams = [
+        13, // TransTypeID
+        tokendata.id, // refUserId (Modify as needed)
+        "Fetched vendor details",
+        CurrentTime(), // TransTime
+        "admin", // UpdatedBy (Modify based on logged-in user)
+      ];
+      await client.query(updateHistoryQuery, txnHistoryParams);
+
+      await client.query("COMMIT");
+
+      return encrypt(
+        {
+          success: true,
+          data: vendorDetails,
+          token: tokens,
+        },
+        true
+      );
+    } catch (error: unknown) {
+      await client.query("ROLLBACK");
+
+      let errorMessage = "An unknown error occurred";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+
+      console.error("Error fetching vendor details:", error);
+
+      return encrypt(
+        {
+          success: false,
+          message: "Failed to fetch vendor details",
+          error: errorMessage,
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async listTokens(userData: any, tokendata: any): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      await client.query("BEGIN");
+
+      // Fetch vendor details
+      const queryResult = await client.query(listLeafQuery);
+
+      if (!queryResult.rows.length) {
+        // Check if rows array is empty
+        await client.query("ROLLBACK");
+        return encrypt(
+          {
+            success: false,
+            message: "No data found for the given userData",
+            token: tokens,
           },
           true
         );

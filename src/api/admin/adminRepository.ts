@@ -62,7 +62,7 @@ export class adminRepository {
           {
             success: true,
             message: "Already exists",
-            token:tokens
+            token: tokens,
           },
           true
         );
@@ -215,7 +215,7 @@ export class adminRepository {
           success: false,
           message: "An unexpected error occurred during signup",
           error: error instanceof Error ? error.message : String(error),
-          token:tokens
+          token: tokens,
         },
         true
       );
@@ -373,6 +373,10 @@ export class adminRepository {
               user.refUserId,
             ]);
 
+            console.log(
+              "generateTokenWithExpire(tokenData, true)",
+              generateTokenWithExpire(tokenData, true)
+            );
             return encrypt(
               {
                 success: true,
@@ -422,7 +426,7 @@ export class adminRepository {
           {
             success: false,
             message: "'Partner' must be a non-empty string.",
-            token:tokens
+            token: tokens,
           },
           true
         );
@@ -454,7 +458,7 @@ export class adminRepository {
           success: true,
           message: "Partner inserted successfully.",
           token: tokens,
-          data: result
+          data: result,
         },
         true
       );
@@ -471,7 +475,7 @@ export class adminRepository {
             error instanceof Error
               ? error.message
               : "An unknown error occurred",
-          token: tokens
+          token: tokens,
         },
         true
       );
@@ -522,7 +526,7 @@ export class adminRepository {
           success: false,
           message: "Partner update failed",
           error: errorMessage,
-          token: tokens
+          token: tokens,
         },
         true
       );
@@ -628,8 +632,7 @@ export class adminRepository {
           {
             success: false,
             message: "Invalid request: partnerId is required.",
-            token: tokens
-
+            token: tokens,
           },
           true
         );
@@ -646,7 +649,7 @@ export class adminRepository {
           {
             success: false,
             message: "Partner record not found.",
-            token: tokens
+            token: tokens,
           },
           true
         );
@@ -670,7 +673,7 @@ export class adminRepository {
         {
           success: true,
           message: "Partner marked as deleted successfully.",
-          token: tokens
+          token: tokens,
         },
         true
       );
@@ -684,7 +687,7 @@ export class adminRepository {
           message: `Error marking Partner as deleted: ${
             (error as Error).message
           }`,
-          token: tokens
+          token: tokens,
         },
         true
       );
@@ -1156,7 +1159,7 @@ export class adminRepository {
           {
             success: false,
             message: "Invalid request: refCustomerId is required.",
-            token: tokens
+            token: tokens,
           },
           true
         );
@@ -1243,7 +1246,7 @@ export class adminRepository {
           {
             success: false,
             message: "Missing required fields.",
-            token: tokens
+            token: tokens,
           },
           true
         );
@@ -1259,7 +1262,7 @@ export class adminRepository {
             {
               success: false,
               message: "Missing dimension details.",
-              token: tokens
+              token: tokens,
             },
             true
           );
@@ -1291,7 +1294,6 @@ export class adminRepository {
           message: "Weight details added successfully.",
           data: result,
           token: tokens,
-
         },
         true
       );
@@ -1308,7 +1310,7 @@ export class adminRepository {
             error instanceof Error
               ? error.message
               : "An unknown error occurred",
-              token: tokens,
+          token: tokens,
         },
         true
       );
@@ -1373,7 +1375,7 @@ export class adminRepository {
           {
             success: false,
             message: "'category' must be a non-empty string.",
-            token: tokens
+            token: tokens,
           },
           true
         );
@@ -1480,7 +1482,7 @@ export class adminRepository {
           {
             success: false,
             message: "Missing categoryId or subcategory.",
-            token: tokens
+            token: tokens,
           },
           true
         );
