@@ -39,7 +39,10 @@ import {
   getUsertypeQuery,
   getCustomerCount,
 } from "./query";
-import { generateSignupEmailContent } from "../../helper/mailcontent";
+import {
+  generateSignupEmailContent,
+  generateCustomerWelcomeEmailContent,
+} from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
 import moment from "moment";
 
@@ -709,6 +712,7 @@ export class adminRepository {
         customerCode,
         customerType,
         notes,
+        email,
         refAddress,
         refPhone,
       } = userData;
@@ -751,6 +755,7 @@ export class adminRepository {
         customerName,
         customerCode,
         notes,
+        email,
         customerType ?? true,
         refAddress,
         refPhone,
@@ -769,6 +774,26 @@ export class adminRepository {
           true
         );
       }
+      console.log("userData", userData);
+
+      const mail = async () => {
+        const mailOptions = {
+          to: userData.email,
+          subject: "You Accont has be Created Successfully In our Platform",
+          html: generateCustomerWelcomeEmailContent(
+            userData.refPhone,
+            userData.refPhone
+          ),
+        };
+        console.log("mailOptions", mailOptions);
+        try {
+          await sendEmail(mailOptions);
+          console.log("mailOptions", mailOptions);
+        } catch (error) {
+          console.error("Failed to send email:", error);
+        }
+      };
+      mail().catch(console.error);
 
       // Insert Transaction History
       await client.query(updateHistoryQuery, [
