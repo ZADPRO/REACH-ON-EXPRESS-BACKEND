@@ -62,21 +62,16 @@ function decodeToken(token: string): JwtPayload | { error: string } {
 
 // VALIDATE TOKEN
 function validateToken(request: any, h: ResponseToolkit) {
-  console.log("request line ------ 65", request);
   const authHeader = request.headers.authorization;
-  console.log("authHeader line ----- 66  \n \n", authHeader);
 
   if (!authHeader) {
     return h.response({ error: "Token missing" }).code(401).takeover();
   }
 
   const token = authHeader.split(" ")[1];
-  console.log("token", token);
   const decodedToken = decodeToken(token);
-  console.log("decodedToken line ------ 76", decodedToken);
 
   if (decodedToken.error) {
-    console.log("line ----- 80");
     return h
       .response(
         encrypt(

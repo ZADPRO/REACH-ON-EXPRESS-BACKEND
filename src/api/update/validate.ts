@@ -27,64 +27,62 @@ export default {
       authorization: Joi.string().optional(),
     }).unknown(),
   },
-  updatePricing:{
+  updatePricing: {
     payload: Joi.object({
-        pricingId: Joi.number().integer().required(),
-        partnersId: Joi.number().integer().required(),
-        minWeight: Joi.string().required(),
-        maxWeight: Joi.string().required(),
-        price: Joi.string().required(),
-        dimension: Joi.boolean().required(),
-        answer: Joi.string().required(),
-      
-        // Conditional dimension fields
-        length: Joi.when('dimension', {
-          is: true,
-          then: Joi.string().required(),
-          otherwise: Joi.any().strip()
-        }),
-        breadth: Joi.when('dimension', {
-          is: true,
-          then: Joi.string().required(),
-          otherwise: Joi.any().strip()
-        }),
-        height: Joi.when('dimension', {
-          is: true,
-          then: Joi.string().required(),
-          otherwise: Joi.any().strip()
-        }),
-        calculation: Joi.when('dimension', {
-          is: true,
-          then: Joi.string().required(),
-          otherwise: Joi.any().strip()
-        })
-      
-    })
+      pricingId: Joi.number().integer().required(),
+      partnersId: Joi.number().integer().required(),
+      minWeight: Joi.string().required(),
+      maxWeight: Joi.string().required(),
+      price: Joi.string().required(),
+      dimension: Joi.boolean().required(),
+      answer: Joi.string().required(),
+
+      // Conditional dimension fields
+      length: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.any().strip(),
+      }),
+      breadth: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.any().strip(),
+      }),
+      height: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.any().strip(),
+      }),
+      calculation: Joi.when("dimension", {
+        is: true,
+        then: Joi.string().required(),
+        otherwise: Joi.any().strip(),
+      }),
+    }),
   },
 
-  deletePartners:{
-   payload: Joi.object({
-    partnerId: Joi.number().integer().required(),
-   }) ,
-   headers: Joi.object({
-    authorization: Joi.string().optional(),
-  }).unknown(),
+  deletePartners: {
+    payload: Joi.object({
+      partnerId: Joi.number().integer().required(),
+    }),
+    headers: Joi.object({
+      authorization: Joi.string().optional(),
+    }).unknown(),
   },
-  deleteCustomers:{
+  deleteCustomers: {
     payload: Joi.object({
-        refCustomerId: Joi.number().integer().required(),
-    }) ,
+      refCustomerId: Joi.number().integer().required(),
+    }),
     headers: Joi.object({
-     authorization: Joi.string().optional(),
-   }).unknown(),
-   },
-   deletePricing:{
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
+  deletePricing: {
     payload: Joi.object({
-        pricingId: Joi.number().integer().required(),
-    }) ,
+      pricingId: Joi.number().integer().required(),
+    }),
     headers: Joi.object({
-     authorization: Joi.string().optional(),
-   }).unknown(),
-   },
+      authorization: Joi.string().optional(),
+    }).unknown(),
+  },
 };
-

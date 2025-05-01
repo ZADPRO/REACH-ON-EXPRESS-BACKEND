@@ -6,6 +6,7 @@ import { encrypt } from "../../helper/encrypt";
 import { CurrentTime } from "../../helper/common";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import qs from "qs";
 import { generateTokenWithExpire } from "../../helper/token";
 import {
   getParcelBookingQuery,
@@ -29,490 +30,11 @@ import {
   getReportDataQuery,
   updateVendorLeaf,
 } from "./query";
+import { invoiceNumberChecking } from "../admin/query";
+import axios from "axios";
+import logger from "../../helper/logger";
 
 export class bookingRepository {
-  // public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
-  //   const client: PoolClient = await getClient();
-  //   const token = { id: tokenData.id };
-  //   const tokens = generateTokenWithExpire(token, true);
-
-  //   try {
-  //     await client.query("BEGIN"); // Start Transaction
-
-  //     const {
-  //       partnersName,
-  //       type,
-  //       origin,
-  //       destination,
-  //       consignorName,
-  //       consignorAddress,
-  //       consignorGSTnumber,
-  //       consignorPhone,
-  //       consignorEmail,
-  //       customerRefNo,
-  //       consigneeName,
-  //       consigneeAddress,
-  //       consigneeGSTnumber,
-  //       consigneePhone,
-  //       consigneeEmail,
-  //       contentSpecification,
-  //       paperEnclosed,
-  //       declaredValue,
-  //       NoOfPieces,
-  //       actualWeight,
-  //       dimension,
-  //       height,
-  //       weight,
-  //       breadth,
-  //       chargedWeight,
-  //       paymentId,
-  //       customerType,
-  //       refCustomerId,
-  //       netAmount,
-  //       pickUP,
-  //       count,
-  //       consignorPincode,
-  //       consigneePincode,
-  //     } = userData;
-
-  //     // Validate required fields
-  //     if (
-  //       !partnersName ||
-  //       !type ||
-  //       !origin ||
-  //       !destination ||
-  //       !consignorName ||
-  //       !consignorAddress ||
-  //       !consignorPhone ||
-  //       !customerRefNo ||
-  //       !consigneeName ||
-  //       !consigneeAddress ||
-  //       !consigneePhone ||
-  //       !contentSpecification ||
-  //       !declaredValue ||
-  //       !NoOfPieces ||
-  //       !actualWeight ||
-  //       !paymentId ||
-  //       !refCustomerId ||
-  //       !netAmount ||
-  //       !pickUP ||
-  //       !count ||
-  //       !consignorPincode ||
-  //       !consigneePincode
-  //     ) {
-  //       return encrypt(
-  //         {
-  //           success: false,
-  //           message: "Missing required fields.",
-  //         },
-  //         false
-  //       );
-  //     }
-
-  //     // Fetch `vendorLeaf` from `transactionmapping`
-  //     const vendorLeafResult = await client.query(vendorLeafQuery, [
-  //       partnersName,
-  //     ]);
-
-  //     const vendorLeaf = vendorLeafResult.rows.length
-  //       ? vendorLeafResult.rows[0].leaf
-  //       : null;
-
-  //     const refCustIdResult = await client.query(refCustIdQuery, [
-  //       refCustomerId,
-  //     ]);
-
-  //     const refCustId = refCustIdResult.rows.length
-  //       ? refCustIdResult.rows[0].refCustId
-  //       : null;
-
-  //     // if (!vendorLeaf || !refCustId) {
-  //     //   return encrypt(
-  //     //     {
-  //     //       success: false,
-  //     //       message: "Invalid partnersId or refCustomerId.",
-  //     //     },
-  //     //     false
-  //     //   );
-  //     // }
-
-  //     const customerTypeBoolean =
-  //       customerType === true || customerType === "true";
-
-  //     const bookedDate = new Date();
-
-  //     // Insert into `parcelBooking` table (existing logic)
-  //     // const parcelResult = await client.query(parcelBookingQuery, [
-  //     //   partnersName,
-  //     //   vendorLeaf,
-  //     //   refCustomerId,
-  //     //   refCustId,
-  //     //   customerTypeBoolean,
-  //     //   paymentId,
-  //     //   type,
-  //     //   origin,
-  //     //   destination,
-  //     //   consignorName,
-  //     //   consignorAddress,
-  //     //   consignorGSTnumber,
-  //     //   consignorPhone,
-  //     //   consignorEmail,
-  //     //   customerRefNo,
-  //     //   consigneeName,
-  //     //   consigneeAddress,
-  //     //   consigneeGSTnumber,
-  //     //   consigneePhone,
-  //     //   consigneeEmail,
-  //     //   contentSpecification,
-  //     //   paperEnclosed,
-  //     //   declaredValue,
-  //     //   NoOfPieces,
-  //     //   actualWeight,
-  //     //   dimension ? 1 : 0,
-  //     //   dimension ? height : null,
-  //     //   dimension ? weight : null,
-  //     //   dimension ? breadth : null,
-  //     //   dimension ? chargedWeight : null,
-  //     //   bookedDate,
-  //     //   netAmount,
-  //     //   pickUP,
-  //     //   count,
-  //     //   consignorPincode,
-  //     //   consigneePincode,
-  //     // ]);
-
-  //     // const parcelBookingId = parcelResult.rows[0];
-
-  //     // if (!parcelBookingId) {
-  //     //   throw new Error("Parcel booking insertion failed.");
-  //     // }
-
-  //     // Create the prefix and date part
-  //     const refCustIdBase = refCustId.split("-"); // Assuming refCustomerId is in the format "R-NK-10008-02-25"
-  //     const refCustIdPrefix = refCustIdBase.slice(0, 3).join("-"); // This will be "R-NK-10008"
-  //     const refCustIdDate = refCustIdBase.slice(3).join("-"); // This will be "02-25"
-
-  //     // Now insert the same data into `refParcelBooking` table multiple times based on `count`
-  //     if (count >= 2) {
-  //       for (let i = 1; i <= count; i++) {
-  //         const newRefCustId = `${refCustIdPrefix}-${String(i).padStart(
-  //           3,
-  //           "0"
-  //         )}-${refCustIdDate}`; // Generating refCustId like "R-NK-10008-001-02-25"
-
-  //         const parcelResult = await client.query(refParcelBookingQuery, [
-  //           partnersName,
-  //           vendorLeaf,
-  //           refCustomerId,
-  //           newRefCustId, // Updated refCustId with increment
-  //           customerTypeBoolean,
-  //           paymentId,
-  //           type,
-  //           origin,
-  //           destination,
-  //           consignorName,
-  //           consignorAddress,
-  //           consignorGSTnumber,
-  //           consignorPhone,
-  //           consignorEmail,
-  //           customerRefNo,
-  //           consigneeName,
-  //           consigneeAddress,
-  //           consigneeGSTnumber,
-  //           consigneePhone,
-  //           consigneeEmail,
-  //           contentSpecification,
-  //           paperEnclosed,
-  //           declaredValue,
-  //           NoOfPieces,
-  //           actualWeight,
-  //           dimension ? 1 : 0,
-  //           dimension ? height : null,
-  //           dimension ? weight : null,
-  //           dimension ? breadth : null,
-  //           dimension ? chargedWeight : null,
-  //           bookedDate,
-  //           netAmount,
-  //           pickUP,
-  //           count,
-  //           consignorPincode,
-  //           consigneePincode,
-  //         ]);
-  //         const parcelBookingId = parcelResult.rows[0];
-
-  //     if (!parcelBookingId) {
-  //       throw new Error("Parcel booking insertion failed.");
-  //     }
-  //     await client.query(updateRefStatusQuery, [partnersName]);
-  //     console.log('parcelBookingId', parcelBookingId)
-  //   }
-
-  // }
-  // await client.query(updateHistoryQuery, [
-  //       12,
-  //       tokenData.id,
-  //       "parcel booking",
-  //       CurrentTime(),
-  //       "Admin",
-  //     ]);
-
-  //     await client.query("COMMIT"); // Commit Transaction
-
-  //     return encrypt(
-  //       {
-  //         success: true,
-  //         message: "Parcel booking details added successfully.",
-  //         parcelBookingId: parcelBookingId,
-  //       },
-  //       false
-  //     );
-  //   } catch (error: any) {
-  //     console.log("error", error);
-  //     await client.query("ROLLBACK");
-  //     return encrypt(
-  //       {
-  //         success: false,
-  //         error:
-  //           error instanceof Error
-  //             ? error.message
-  //             : "An unknown error occurred",
-  //       },
-  //       false
-  //     );
-  //   } finally {
-  //     client.release();
-  //   }
-  // }
-  public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
-    const client: PoolClient = await getClient();
-    const token = { id: tokenData.id };
-    const tokens = generateTokenWithExpire(token, true);
-    let parcelBookingId: any = null;
-
-    try {
-      await client.query("BEGIN"); // Start Transaction
-
-      const {
-        partnersName,
-        type,
-        origin,
-        destination,
-        consignorName,
-        consignorAddress,
-        consignorGSTnumber,
-        consignorPhone,
-        consignorEmail,
-        customerRefNo,
-        leaf,
-        consigneeName,
-        consigneeAddress,
-        consigneeGSTnumber,
-        consigneePhone,
-        consigneeEmail,
-        contentSpecification,
-        paperEnclosed,
-        declaredValue,
-        NoOfPieces,
-        actualWeight,
-        dimension,
-        height,
-        weight,
-        breadth,
-        chargedWeight,
-        paymentId,
-        customerType,
-        refCustomerId,
-        netAmount,
-        pickUP,
-        Count,
-        consignorPincode,
-        consigneePincode,
-      } = userData;
-
-      // Validate required fields
-      if (
-        !partnersName ||
-        !type ||
-        !origin ||
-        !destination ||
-        !consignorName ||
-        !consignorAddress ||
-        !consignorPhone ||
-        !customerRefNo ||
-        !consigneeName ||
-        !consigneeAddress ||
-        !consigneePhone ||
-        !contentSpecification ||
-        !declaredValue ||
-        !NoOfPieces ||
-        !actualWeight ||
-        !paymentId ||
-        !refCustomerId ||
-        !netAmount ||
-        !pickUP ||
-        !consignorPincode ||
-        !consigneePincode
-      ) {
-        throw new Error("Missing required fields.");
-      }
-
-      // Fetch `vendorLeaf` from `transactionmapping`
-      const vendorLeaf = leaf;
-
-      const updateVendorLeafQuery = await client.query(updateVendorLeaf, [
-        leaf,
-      ]);
-      console.log("updateVendorLeafQuery", updateVendorLeafQuery);
-
-      const refCustIdResult = await client.query(refCustIdQuery, [
-        refCustomerId,
-      ]);
-      console.log("refCustIdResult line 368", refCustIdResult);
-      const refCustId = refCustIdResult.rows.length
-        ? refCustIdResult.rows[0].refCustId
-        : null;
-
-      if (!refCustId) {
-        throw new Error("Invalid partnersId or refCustomerId.");
-      }
-
-      const customerTypeBoolean =
-        customerType === true || customerType === "true";
-      const bookedDate = new Date();
-
-      if (!refCustId || typeof refCustId !== "string") {
-        throw new Error("Invalid refCustomerId format.");
-      }
-
-      const refCustIdBase = refCustId.split("-");
-      const refCustIdPrefix = refCustIdBase.slice(0, 3).join("-");
-      const refCustIdDate = refCustIdBase.slice(3).join("-");
-
-      // Fetch existing count of refParcelBookingId for refCustomerId
-      const countResult = await client.query(getParcelBookingCount, [
-        refCustomerId,
-      ]);
-
-      let currentCount = parseInt(countResult.rows[0]?.total || "0", 10);
-      currentCount++; // Increment count for new entry
-      console.log("currentCount", currentCount);
-
-      const newRefCustId = `${refCustIdPrefix}-${String(currentCount).padStart(
-        3,
-        "0"
-      )}-${refCustIdDate}`;
-
-      console.log(`Inserting refParcelBooking with refCustId: ${newRefCustId}`);
-
-      // Insert into `refParcelBooking`
-      const parcelResult = await client.query(refParcelBookingQuery, [
-        partnersName,
-        vendorLeaf,
-        refCustomerId,
-        newRefCustId,
-        customerTypeBoolean,
-        paymentId,
-        type,
-        origin,
-        destination,
-        consignorName,
-        consignorAddress,
-        consignorGSTnumber,
-        consignorPhone,
-        consignorEmail,
-        customerRefNo,
-        consigneeName,
-        consigneeAddress,
-        consigneeGSTnumber,
-        consigneePhone,
-        consigneeEmail,
-        contentSpecification,
-        paperEnclosed,
-        declaredValue,
-        NoOfPieces,
-        actualWeight,
-        dimension ? 1 : 0,
-        dimension ? height : null,
-        dimension ? weight : null,
-        dimension ? breadth : null,
-        dimension ? chargedWeight : null,
-        bookedDate,
-        netAmount,
-        pickUP,
-        Count,
-        consignorPincode,
-        consigneePincode,
-        CurrentTime(),
-        "Admin",
-      ]);
-
-      console.log("parcelResult", parcelResult);
-      if (parcelResult.rows.length > 0) {
-        parcelBookingId = parcelResult.rows[0];
-      } else {
-        throw new Error("Parcel booking insertion returned no rows.");
-      }
-
-      // Update reference status
-      await client.query(updateRefStatusQuery, [partnersName]);
-
-      // Fetch customer details
-      const customerResult = await client.query(getCustomerQuery, [
-        refCustomerId,
-      ]);
-      console.log("customerResult", customerResult);
-      if (customerResult.rows.length === 0)
-        throw new Error("Customer not found.");
-      const { refCustomerName } = customerResult.rows[0];
-
-      // Add finance entry if applicable
-      if (customerTypeBoolean && paymentId === 4) {
-        await client.query(addFinanceQuery, [
-          refCustomerName,
-          netAmount,
-          netAmount,
-        ]);
-      }
-
-      // Insert transaction history
-      await client.query(updateHistoryQuery, [
-        12,
-        tokenData.id,
-        `Parcel Booking: 1 record inserted with refCustId ${newRefCustId}`,
-        CurrentTime(),
-        "Admin",
-      ]);
-
-      await client.query("COMMIT"); // Commit Transaction
-
-      return encrypt(
-        {
-          success: true,
-          message: "Parcel booking details added successfully.",
-          parcelBookingId: parcelBookingId,
-          token: tokens,
-        },
-        true
-      );
-    } catch (error: any) {
-      console.error("Transaction error:", error);
-      await client.query("ROLLBACK");
-      return encrypt(
-        {
-          success: false,
-          error:
-            error instanceof Error
-              ? error.message
-              : "An unknown error occurred",
-          token: tokens,
-        },
-        true
-      );
-    } finally {
-      client.release();
-    }
-  }
-
   // public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
   //   const client: PoolClient = await getClient();
   //   const token = { id: tokenData.id };
@@ -533,6 +55,7 @@ export class bookingRepository {
   //       consignorPhone,
   //       consignorEmail,
   //       customerRefNo,
+  //       leaf,
   //       consigneeName,
   //       consigneeAddress,
   //       consigneeGSTnumber,
@@ -553,7 +76,7 @@ export class bookingRepository {
   //       refCustomerId,
   //       netAmount,
   //       pickUP,
-  //       count,
+  //       Count,
   //       consignorPincode,
   //       consigneePincode,
   //     } = userData;
@@ -579,7 +102,6 @@ export class bookingRepository {
   //       !refCustomerId ||
   //       !netAmount ||
   //       !pickUP ||
-  //       !count ||
   //       !consignorPincode ||
   //       !consigneePincode
   //     ) {
@@ -587,25 +109,22 @@ export class bookingRepository {
   //     }
 
   //     // Fetch `vendorLeaf` from `transactionmapping`
-  //     const vendorLeafResult = await client.query(vendorLeafQuery, [
-  //       partnersName,
-  //     ]);
-  //     const vendorLeaf = vendorLeafResult.rows.length
-  //       ? vendorLeafResult.rows[0].leaf
-  //       : null;
+  //     const vendorLeaf = leaf;
 
-  //     console.log("vendorLeaf------------------------------------------------------------------------363", vendorLeaf);
+  //     const updateVendorLeafQuery = await client.query(updateVendorLeaf, [
+  //       leaf,
+  //     ]);
+  //     console.log("updateVendorLeafQuery", updateVendorLeafQuery);
+
   //     const refCustIdResult = await client.query(refCustIdQuery, [
   //       refCustomerId,
   //     ]);
-
+  //     console.log("refCustIdResult line 368", refCustIdResult);
   //     const refCustId = refCustIdResult.rows.length
   //       ? refCustIdResult.rows[0].refCustId
   //       : null;
-  //     console.log("refCustId---------------------------------------------------------------------------371", refCustId);
 
-  //     if (!vendorLeaf|| !refCustId ) {
-
+  //     if (!refCustId) {
   //       throw new Error("Invalid partnersId or refCustomerId.");
   //     }
 
@@ -613,132 +132,119 @@ export class bookingRepository {
   //       customerType === true || customerType === "true";
   //     const bookedDate = new Date();
 
-  //     // Ensure refCustomerId format is correct before splitting
   //     if (!refCustId || typeof refCustId !== "string") {
   //       throw new Error("Invalid refCustomerId format.");
   //     }
+
   //     const refCustIdBase = refCustId.split("-");
   //     const refCustIdPrefix = refCustIdBase.slice(0, 3).join("-");
   //     const refCustIdDate = refCustIdBase.slice(3).join("-");
 
-  //     // Insert into `refParcelBooking` table multiple times based on `count`
-  //     for (let i = 1; i <= count; i++) {
-  //       const newRefCustId = `${refCustIdPrefix}-${String(i).padStart(
-  //         3,
-  //         "0"
-  //       )}-${refCustIdDate}`;
-  //       console.log(
-  //         `Inserting refParcelBooking with refCustId: ${newRefCustId}`
-  //       );
+  //     // Fetch existing count of refParcelBookingId for refCustomerId
+  //     const countResult = await client.query(getParcelBookingCount, [
+  //       refCustomerId,
+  //     ]);
 
-  //       try {
-  //         const parcelResult = await client.query(refParcelBookingQuery, [
-  //           partnersName,
-  //           vendorLeaf,
-  //           refCustomerId,
-  //           newRefCustId,
-  //           customerTypeBoolean,
-  //           paymentId,
-  //           type,
-  //           origin,
-  //           destination,
-  //           consignorName,
-  //           consignorAddress,
-  //           consignorGSTnumber,
-  //           consignorPhone,
-  //           consignorEmail,
-  //           customerRefNo,
-  //           consigneeName,
-  //           consigneeAddress,
-  //           consigneeGSTnumber,
-  //           consigneePhone,
-  //           consigneeEmail,
-  //           contentSpecification,
-  //           paperEnclosed,
-  //           declaredValue,
-  //           NoOfPieces,
-  //           actualWeight,
-  //           dimension ? 1 : 0,
-  //           dimension ? height : null,
-  //           dimension ? weight : null,
-  //           dimension ? breadth : null,
-  //           dimension ? chargedWeight : null,
-  //           bookedDate,
-  //           netAmount,
-  //           pickUP,
-  //           count,
-  //           consignorPincode,
-  //           consigneePincode,
-  //         ]);
+  //     let currentCount = parseInt(countResult.rows[0]?.total || "0", 10);
+  //     currentCount++; // Increment count for new entry
+  //     console.log("currentCount", currentCount);
 
-  //         if (parcelResult.rows.length > 0) {
-  //           parcelBookingId = parcelResult.rows[0];
-  //         } else {
-  //           throw new Error("Parcel booking insertion returned no rows.");
-  //         }
+  //     const newRefCustId = `${refCustIdPrefix}-${String(currentCount).padStart(
+  //       3,
+  //       "0"
+  //     )}-${refCustIdDate}`;
 
-  //         await client.query(updateRefStatusQuery, [partnersName]);
+  //     console.log(`Inserting refParcelBooking with refCustId: ${newRefCustId}`);
 
-  //         const customer = await client.query(getCustomerQuery, [refCustomerId]);
-  //         console.log('customer', customer)
+  //     // Insert into `refParcelBooking`
+  //     const parcelResult = await client.query(refParcelBookingQuery, [
+  //       partnersName,
+  //       vendorLeaf,
+  //       refCustomerId,
+  //       newRefCustId,
+  //       customerTypeBoolean,
+  //       paymentId,
+  //       type,
+  //       origin,
+  //       destination,
+  //       consignorName,
+  //       consignorAddress,
+  //       consignorGSTnumber,
+  //       consignorPhone,
+  //       consignorEmail,
+  //       customerRefNo,
+  //       consigneeName,
+  //       consigneeAddress,
+  //       consigneeGSTnumber,
+  //       consigneePhone,
+  //       consigneeEmail,
+  //       contentSpecification,
+  //       paperEnclosed,
+  //       declaredValue,
+  //       NoOfPieces,
+  //       actualWeight,
+  //       dimension ? 1 : 0,
+  //       dimension ? height : null,
+  //       dimension ? weight : null,
+  //       dimension ? breadth : null,
+  //       dimension ? chargedWeight : null,
+  //       bookedDate,
+  //       netAmount,
+  //       pickUP,
+  //       Count,
+  //       consignorPincode,
+  //       consigneePincode,
+  //       CurrentTime(),
+  //       "Admin",
+  //     ]);
 
-  //         const { refCustomerName } = customer.rows[0];
-
-  //         if (customerTypeBoolean && paymentId === 4) {
-  //           //  if (customerType===true && paymentId === 4)
-
-  //           await client.query(addFinanceQuery, [
-  //             refCustomerName,
-  //             netAmount,
-  //             netAmount,
-  //           ]);
-  //         }
-  //        const updateHistory =  await client.query(updateHistoryQuery, [
-  //          12,
-  //          tokenData.id,
-  //          "parcel booking",
-  //          CurrentTime(),
-  //          "Admin",
-  //         ]);
-  //         console.log('updateHistory', updateHistory)
-  //         await client.query("COMMIT"); // Commit Transaction
-  //       } catch (error) {
-  //         console.error("Error inserting into refParcelBooking:", error);
-  //         throw error;
-  //       }
+  //     console.log("parcelResult", parcelResult);
+  //     if (parcelResult.rows.length > 0) {
+  //       parcelBookingId = parcelResult.rows[0];
+  //     } else {
+  //       throw new Error("Parcel booking insertion returned no rows.");
   //     }
 
-  //     // await client.query(updateRefStatusQuery, [partnersName]);
+  //     // Update reference status
+  //     await client.query(updateRefStatusQuery, [partnersName]);
 
-  //     // const customer = await client.query(getCustomerQuery, [refCustomerId]);
+  //     // Fetch customer details
+  //     const customerResult = await client.query(getCustomerQuery, [
+  //       refCustomerId,
+  //     ]);
+  //     console.log("customerResult", customerResult);
+  //     if (customerResult.rows.length === 0)
+  //       throw new Error("Customer not found.");
+  //     const { refCustomerName } = customerResult.rows[0];
 
-  //     // const { refCustomerName } = customer.rows[0];
+  //     // Add finance entry if applicable
+  //     if (customerTypeBoolean && paymentId === 4) {
+  //       await client.query(addFinanceQuery, [
+  //         refCustomerName,
+  //         netAmount,
+  //         netAmount,
+  //       ]);
+  //     }
 
-  //     // if (customerTypeBoolean && paymentId === 4) {
-  //     //   //  if (customerType===true && paymentId === 4)
+  //     // Insert transaction history
+  //     await client.query(updateHistoryQuery, [
+  //       12,
+  //       tokenData.id,
+  //       `Parcel Booking: 1 record inserted with refCustId ${newRefCustId}`,
+  //       CurrentTime(),
+  //       "Admin",
+  //     ]);
 
-  //     //   await client.query(addFinanceQuery, [
-  //     //     refCustomerName,
-  //     //     netAmount,
-  //     //     netAmount,
-  //     //   ]);
-  //     // }
-  //     // await client.query(updateHistoryQuery, [
-  //     //   12,
-  //     //   tokenData.id,
-  //     //   "parcel booking",
-  //     //   CurrentTime(),
-  //     //   "Admin",
-  //     // ]);
-  //     // await client.query("COMMIT"); // Commit Transaction
+  //     await client.query("COMMIT"); // Commit Transaction
 
   //     return encrypt(
   //       {
   //         success: true,
   //         message: "Parcel booking details added successfully.",
   //         parcelBookingId: parcelBookingId,
+  //         token: tokens,
   //       },
-  //       false
+  //       true
   //     );
   //   } catch (error: any) {
   //     console.error("Transaction error:", error);
@@ -750,13 +256,193 @@ export class bookingRepository {
   //           error instanceof Error
   //             ? error.message
   //             : "An unknown error occurred",
+  //         token: tokens,
   //       },
-  //       false
+  //       true
   //     );
   //   } finally {
   //     client.release();
   //   }
   // }
+
+  public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
+    console.log("userData in repository", userData);
+    const client: PoolClient = await getClient();
+    const token = { id: tokenData.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      if (userData.vendor === "DTDC") {
+        const generateInvoiceNumber = async () => {
+          const invoiceCheckQuery = await executeQuery(invoiceNumberChecking);
+          const count = parseInt(invoiceCheckQuery[0].count) + 1;
+
+          const baseNumber = 10000 + count;
+
+          const currentDate = new Date();
+          const month = (currentDate.getMonth() + 1)
+            .toString()
+            .padStart(2, "0"); // 01 to 12
+          const year = currentDate.getFullYear().toString().slice(-2); // last two digits
+
+          const suffix = `${month}${year}`;
+          const invoiceNumber = `RDTDC${baseNumber}${suffix}`;
+
+          return invoiceNumber;
+        };
+
+        const updateInvoiceNumber = async () => {
+          const invoiceNumber = await generateInvoiceNumber();
+          userData.payload.invoice_number = invoiceNumber; // Replace the old invoice number
+          console.log(
+            "Updated userData with new invoice number:",
+            userData.payload
+          );
+        };
+
+        updateInvoiceNumber();
+
+        const sendConsignmentData = async () => {
+          try {
+            const response = await axios.post(
+              "https://dtdcapi.shipsy.io/api/customer/integration/consignment/softdata",
+              userData.payload,
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  "api-key": "5dd8e4d35166672758bd1ee8953025",
+                },
+              }
+            );
+
+            // ✅ Handle response
+            console.log("response", response.data);
+            if (
+              response.data.status === "OK" &&
+              Array.isArray(response.data.data) &&
+              response.data.data.length > 0
+            ) {
+              const result = response.data.data[0];
+
+              if (result.success) {
+                return encrypt(
+                  {
+                    success: true,
+                    message: result,
+                    token: tokens,
+                  },
+                  true
+                );
+              } else {
+                console.log("Consignment API error:", result);
+                return encrypt(
+                  {
+                    success: false,
+                    message: result,
+                    token: tokens,
+                  },
+                  true
+                );
+              }
+            } else {
+              console.log("DTDC API Failure:", response.data);
+              return encrypt(
+                {
+                  success: false,
+                  message: response.data || { error: "Unknown error" },
+                  token: tokens,
+                },
+                true
+              );
+            }
+          } catch (err) {
+            console.error("Error in consignment creation:", err);
+            return encrypt(
+              {
+                success: false,
+                message: err,
+                token: tokens,
+              },
+              true
+            );
+          }
+        };
+
+        sendConsignmentData();
+      } else if (userData.vendor === "Delhivery") {
+        console.log("userData.vendor", userData.vendor);
+        console.log("userData", userData);
+
+        const payload = {
+          format: "json",
+          data: JSON.stringify(userData.payload),
+        };
+
+        axios
+          .post(
+            "https://track.delhivery.com/api/cmu/create.json",
+
+            qs.stringify(payload),
+            {
+              headers: {
+                Accept: "application/json",
+                Authorization: "Token f4881f7518b05af9e0e3446b8b697c490dbef74f",
+              },
+            }
+          )
+          .then((res) => {
+            const data = res.data;
+
+            if (data.success && data.packages?.length > 0) {
+              const pkg = data.packages[0];
+
+              if (pkg.status === "Success" && pkg.waybill) {
+                console.log("✅ Success - Waybill:", pkg.waybill);
+              } else {
+                console.warn(
+                  "⚠️ Package returned with status:",
+                  pkg.status,
+                  "Remarks:",
+                  pkg.remarks?.[0]
+                );
+              }
+            } else {
+              console.error(
+                "❌ Failed to create shipment:",
+                data.rmk || "Unknown error"
+              );
+            }
+          })
+          .catch((err) => {
+            console.error("🚫 Axios Error:", err);
+          });
+      } else {
+        console.log("Partners name is not configured");
+      }
+      return encrypt(
+        {
+          success: true,
+          message: "Parcel booking details added successfully.",
+          token: tokens,
+        },
+        true
+      );
+    } catch (error: any) {
+      console.log("Error updating booking:", error);
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: "Parcel booking failed.",
+          error: error.message || "An unknown error occurred",
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
   public async updateBookingV1(
     userData: any,
     tokenData: any,
@@ -806,10 +492,6 @@ export class bookingRepository {
         parcelBookingId,
         isRefParcel,
       } = userData;
-      console.log(
-        "parcelBookingId---------------------------------------------------------",
-        parcelBookingId
-      );
 
       // Validate required fields
       if (!parcelBookingId) {
@@ -825,7 +507,6 @@ export class bookingRepository {
 
       const customerTypeBoolean =
         customerType === true || customerType === "true";
-      console.log("isRefParcel", isRefParcel);
 
       // Update `parcelBooking` table if isRefParcel is true
       if (isRefParcel === true) {
@@ -864,7 +545,6 @@ export class bookingRepository {
           consigneePincode,
           parcelBookingId,
         ]);
-        console.log("Updated parcelBooking:", updateResult);
       }
 
       // Update `refParcelBooking` table if isRefParcel is false
@@ -904,7 +584,6 @@ export class bookingRepository {
           consigneePincode,
           parcelBookingId,
         ]);
-        console.log("Updated refParcelBooking:", updateResult);
       }
 
       await client.query("COMMIT"); // Commit transaction
@@ -935,11 +614,9 @@ export class bookingRepository {
   }
   public async paymentModeV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       const payment = await executeQuery(getPaymentQuery);
@@ -1132,78 +809,7 @@ export class bookingRepository {
       );
     }
   }
-  // public async updateFinanceV1(user_data: any, tokendata: any): Promise<any> {
-  //   const client: PoolClient = await getClient();
-  //   const token = { id: tokendata.id };
-  //   const tokens = generateTokenWithExpire(token, true);
 
-  //   try {
-  //     await client.query("BEGIN"); // Start Transaction
-
-  //     const { refCustomerName, refPayAmount } = user_data;
-
-  //     const financeData: any = executeQuery(getFinanceDataQuery, [
-  //       refCustomerName,
-  //     ]);
-  //     const { refOutstandingAmt } = financeData.rows[0];
-
-  //     const refBalanceAmount = refOutstandingAmt - refPayAmount;
-
-  //     const result = await client.query(updateFinanceQuery, [
-  //       refCustomerName,
-  //       refPayAmount,
-  //       refBalanceAmount,
-  //     ]);
-
-  //     // const txnHistoryParams = [
-  //     //   ,
-  //     //   tokendata.id,
-  //     //   "amount",
-  //     //   CurrentTime(),
-  //     //   "admin",
-  //     // ];
-  //     // await client.query(updateHistoryQuery, txnHistoryParams);
-
-  //     const txnHistoryParams = [
-  //       tokendata.id,
-  //       `Outstanding Amount: ${refOutstandingAmt}, PayAmount: ${refPayAmount}, Balance Amount: ${refBalanceAmount}`,
-  //       CurrentTime(),
-  //       "admin",
-  //     ];
-
-  //     await client.query("COMMIT"); // Commit Transaction
-
-  //     return encrypt(
-  //       {
-  //         success: true,
-  //         message: "Partner inserted successfully.",
-  //         token: tokens,
-
-  //         data: result,
-  //       },
-  //       true
-  //     );
-  //   } catch (error: any) {
-  //     await client.query("ROLLBACK"); // Rollback Transaction in case of error
-
-  //     console.error("Error during Partner insertion:", error);
-
-  //     return encrypt(
-  //       {
-  //         success: false,
-  //         message: "Partner insertion failed",
-  //         error:
-  //           error instanceof Error
-  //             ? error.message
-  //             : "An unknown error occurred",
-  //         token: tokens,
-  //       },
-  //       true
-  //     );
-  //   } finally {
-  //     client.release(); // Release DB connection
-  //   }
-  // }
   public async updateFinanceV1(user_data: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
@@ -1220,7 +826,6 @@ export class bookingRepository {
       ]);
 
       // Debugging: Log financeData to see what is returned
-      console.log("Finance Data:", financeData);
 
       // Check if financeData is valid
       if (!financeData || !financeData.rows || financeData.rows.length === 0) {
@@ -1284,76 +889,6 @@ export class bookingRepository {
     }
   }
 
-  //   public async updateFinanceV1(user_data: any, tokendata: any): Promise<any> {
-  //     const client: PoolClient = await getClient();
-  //     const token = { id: tokendata.id };
-  //     const tokens = generateTokenWithExpire(token, true);
-
-  //     try {
-  //         await client.query("BEGIN"); // Start Transaction
-
-  //         const { refCustomerName, refPayAmount } = user_data;
-
-  //         // Ensure the finance data is properly retrieved
-  //         const financeData:any = await executeQuery(getFinanceDataQuery, [refCustomerName]);
-
-  //         // if (!financeData.rows.length) {
-  //         //     throw new Error("Finance record not found for the given customer.");
-  //         // }
-
-  //         const { refOutstandingAmt } = financeData.rows[0];
-  //         const refBalanceAmount = refOutstandingAmt - refPayAmount;
-
-  //         // Ensure refBalanceAmount does not go negative
-  //         if (refBalanceAmount < 0) {
-  //             throw new Error("Payment amount exceeds outstanding balance.");
-  //         }
-
-  //         const result = await client.query(updateFinanceQuery, [
-  //             refCustomerName,
-  //             refPayAmount,
-  //             refBalanceAmount,
-  //         ]);
-
-  //         // Insert transaction history
-  //         const txnHistoryParams = [
-  //             15, // Assuming transaction type ID (adjust if needed)
-  //             tokendata.id,
-  //             `Outstanding Amount: ${refOutstandingAmt}, Paid Amount: ${refPayAmount}, Balance Amount: ${refBalanceAmount}`,
-  //             CurrentTime(),
-  //             "Admin",
-  //         ];
-  //         await client.query(updateHistoryQuery, txnHistoryParams);
-
-  //         await client.query("COMMIT"); // Commit Transaction
-
-  //         return encrypt(
-  //             {
-  //                 success: true,
-  //                 message: "Finance details updated successfully.",
-  //                 token: tokens,
-  //                 data: result.rows[0],
-  //             },
-  //             true
-  //         );
-  //     } catch (error: any) {
-  //         await client.query("ROLLBACK"); // Rollback Transaction in case of error
-
-  //         console.error("Error during finance update:", error);
-
-  //         return encrypt(
-  //             {
-  //                 success: false,
-  //                 message: "Finance update failed",
-  //                 error: error instanceof Error ? error.message : "An unknown error occurred",
-  //                 token: tokens,
-  //             },
-  //             true
-  //         );
-  //     } finally {
-  //         client.release(); // Release DB connection
-  //     }
-  // }
   public async listFinanceV1(userData: any, tokenData: any): Promise<any> {
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);

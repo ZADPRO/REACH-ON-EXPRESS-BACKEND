@@ -8,7 +8,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { generateTokenWithExpire } from "../../helper/token";
 import {
-    deleteCustomerQuery,
+  deleteCustomerQuery,
   deletePartnerQuery,
   deletePricingQuery,
   getCustomerQuery,
@@ -89,6 +89,7 @@ export class updateRepository {
         customerName,
         customerCode,
         notes,
+        email,
         customerType,
         refAddress,
         refPhone,
@@ -153,6 +154,7 @@ export class updateRepository {
         customerName,
         customerCode,
         notes,
+        email,
         customerType,
         refAddress,
         refPhone,
@@ -365,9 +367,10 @@ export class updateRepository {
       }
 
       await client.query(deletePartnerQuery, [
-        partnerId, 
+        partnerId,
         CurrentTime(),
-        tokenData.id]);
+        tokenData.id,
+      ]);
 
       // Log transaction history
       const transactionValues = [
@@ -429,7 +432,9 @@ export class updateRepository {
       await client.query("BEGIN");
 
       // Check if the partner exists before attempting an update
-      const existingPartner = await client.query(getCustomerQuery, [refCustomerId]);
+      const existingPartner = await client.query(getCustomerQuery, [
+        refCustomerId,
+      ]);
 
       if (existingPartner.rowCount === 0) {
         await client.query("ROLLBACK");
@@ -443,7 +448,11 @@ export class updateRepository {
         );
       }
 
-      await client.query(deleteCustomerQuery, [refCustomerId, CurrentTime(),tokenData.id]);
+      await client.query(deleteCustomerQuery, [
+        refCustomerId,
+        CurrentTime(),
+        tokenData.id,
+      ]);
 
       // Log transaction history
       const transactionValues = [
@@ -505,21 +514,25 @@ export class updateRepository {
       await client.query("BEGIN");
 
       // Check if the partner exists before attempting an update
-    //   const existingPartner = await client.query(getPartnerQuery, [pricingId]);
+      //   const existingPartner = await client.query(getPartnerQuery, [pricingId]);
 
-    //   if (existingPartner.rowCount === 0) {
-    //     await client.query("ROLLBACK");
-    //     return encrypt(
-    //       {
-    //         success: false,
-    //         message: "price record not found.",
-    //         token: tokens,
-    //       },
-    //       true
-    //     );
-    //   }
+      //   if (existingPartner.rowCount === 0) {
+      //     await client.query("ROLLBACK");
+      //     return encrypt(
+      //       {
+      //         success: false,
+      //         message: "price record not found.",
+      //         token: tokens,
+      //       },
+      //       true
+      //     );
+      //   }
 
-      await client.query(deletePricingQuery, [pricingId, CurrentTime(),tokenData.id]);
+      await client.query(deletePricingQuery, [
+        pricingId,
+        CurrentTime(),
+        tokenData.id,
+      ]);
 
       // Log transaction history
       const transactionValues = [

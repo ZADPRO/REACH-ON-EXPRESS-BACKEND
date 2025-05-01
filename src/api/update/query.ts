@@ -50,11 +50,12 @@ SET
   "refCustomerName" = $2,
   "refCode" = $3,
   "refNotes" = $4,
-  "refCustomerType" = $5,
-  "refAddress" = $6,
-  "refPhone" = $7
+  "refEmail"=$5,
+  "refCustomerType" = $6,
+  "refAddress" = $7,
+  "refPhone" = $8
 WHERE
-  "refCustomerId" = $8
+  "refCustomerId" = $9
 RETURNING
   *;`;
 

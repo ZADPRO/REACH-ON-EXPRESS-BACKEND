@@ -91,7 +91,6 @@ export class adminRepository {
       const lastCustomerResult = await client.query(lastCustomerQuery, [
         prefix,
       ]);
-      console.log("lastCustomerResult", lastCustomerResult);
       let newCustomerId: string;
       if (lastCustomerResult.rows.length > 0) {
         const lastNumber = parseInt(lastCustomerResult.rows[0].count, 10);
@@ -136,7 +135,6 @@ export class adminRepository {
         insertUserDomainQuery,
         domainParams
       );
-      console.log("domainResult", domainResult);
 
       // Insert into userCommunication table
       const communicationParams = [
@@ -148,7 +146,6 @@ export class adminRepository {
         insertUserCommunicationQuery,
         communicationParams
       );
-      console.log("communicationResult", communicationResult);
 
       if (
         (userResult.rowCount ?? 0) > 0 &&
@@ -286,7 +283,6 @@ export class adminRepository {
 
     try {
       const Usertype = await executeQuery(getUsertypeQuery);
-      console.log("Usertype", Usertype);
 
       // Return success response
       return encrypt(
@@ -358,7 +354,6 @@ export class adminRepository {
 
       if (users.length > 0) {
         const user = users[0];
-        console.log("user", user);
 
         // Verify the password
         const validPassword = await bcrypt.compare(
@@ -376,10 +371,7 @@ export class adminRepository {
               user.refUserId,
             ]);
 
-            console.log(
-              "generateTokenWithExpire(tokenData, true)",
-              generateTokenWithExpire(tokenData, true)
-            );
+           
             return encrypt(
               {
                 success: true,
@@ -435,7 +427,6 @@ export class adminRepository {
         );
       }
 
-      console.log(tokendata);
 
       const result = await client.query(addPartnerQuery, [
         partnersName,
@@ -489,9 +480,7 @@ export class adminRepository {
   public async updatePartnersV1(userData: any, tokenData: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
-    console.log("token", token);
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       await client.query("BEGIN");
@@ -539,20 +528,13 @@ export class adminRepository {
   }
   public async getPartnersV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log("token", token);
-
-    // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       const { partnerId } = user_data;
-      console.log("user_data", user_data);
-      console.log("partnersId", partnerId);
 
       // Get Restaurant/Document Details
       const partners = await executeQuery(getPartnerQuery, [partnerId]);
-      console.log("partners", partners);
 
       // Return success response
       return encrypt(
@@ -584,15 +566,12 @@ export class adminRepository {
   }
   public async getPartnerV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       const partners = await executeQuery(getPartnersQuery);
-      console.log("partners", partners);
 
       // Return success response
       return encrypt(
@@ -747,7 +726,6 @@ export class adminRepository {
         }
       }
       const refCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
-      console.log("refCustId", refCustId);
 
       // Insert Customer
       const { rows } = await client.query(insertCustomerQuery, [
@@ -761,9 +739,7 @@ export class adminRepository {
         refPhone,
       ]);
 
-      console.log("rows line 566", rows);
       if (rows.length === 0) {
-        console.log("rows", rows);
         await client.query("ROLLBACK");
         return encrypt(
           {
@@ -774,7 +750,6 @@ export class adminRepository {
           true
         );
       }
-      console.log("userData", userData);
 
       const mail = async () => {
         const mailOptions = {
@@ -785,10 +760,8 @@ export class adminRepository {
             userData.refPhone
           ),
         };
-        console.log("mailOptions", mailOptions);
         try {
           await sendEmail(mailOptions);
-          console.log("mailOptions", mailOptions);
         } catch (error) {
           console.error("Failed to send email:", error);
         }
@@ -837,11 +810,9 @@ export class adminRepository {
   }
   public async getCustomersV1(userData: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       const Customer = await executeQuery(getCUstomersQuery);
@@ -1043,11 +1014,9 @@ export class adminRepository {
       if (customerCode && customerCode !== existingCustomer.refCode) {
         // Convert refCustomerId to a string if it's not already
         const refCustIdStr = refCustId.toString();
-        console.log("refCustId", refCustIdStr);
 
         // Split by "-" and check parts
         const refCustIdParts = refCustIdStr.split("-");
-        console.log("refCustIdParts:", refCustIdParts); // Debug log
 
         const nextCustomerNumber = refCustIdParts[2];
         const currentMonth = refCustIdParts[3];
@@ -1055,7 +1024,6 @@ export class adminRepository {
 
         updatedRefCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
 
-        console.log("Updated refCustId:", updatedRefCustId); // Debug log
       }
 
       // Update Customer
@@ -1131,11 +1099,9 @@ export class adminRepository {
 
   public async getCustomerV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       const { refCustomerId } = user_data;
@@ -1196,12 +1162,7 @@ export class adminRepository {
       const existingPartner = await client.query(getCustomerQuery, [
         refCustomerId,
       ]);
-      console.log(
-        "refCustomerId------------------------------------",
-        refCustomerId
-      );
-      console.log("existingPartner", existingPartner);
-
+    
       if (existingPartner.rowCount === 0) {
         await client.query("ROLLBACK");
         return encrypt(
@@ -1346,11 +1307,9 @@ export class adminRepository {
 
   public async getPricingV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       // Get Restaurant/Document Details
@@ -1455,11 +1414,9 @@ export class adminRepository {
   }
   public async getCategoryV1(userData: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id }; // Extract token ID
-    console.log("token", token);
 
     // Generate token with expiration
     const tokens = generateTokenWithExpire(token, true);
-    console.log("tokens", tokens);
 
     try {
       const allCategories = await executeQuery(getAllCategoriesQuery);

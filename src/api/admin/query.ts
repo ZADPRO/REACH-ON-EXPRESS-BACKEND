@@ -153,7 +153,7 @@ WHERE
     AND "deletedBy" IS NULL
   );`;
 
-export const getCUstomersQuery = `SELECT * FROM public."customers"`;
+export const getCUstomersQuery = `SELECT * FROM public."customers" where "isDelete" is not true`;
 
 export const customerSoftDeleteQuery = `UPDATE public."customers" SET "deletedAt" = NOW(), "deletedBy" = 'Admin'
 WHERE "refCustomerId" = $1;`;
@@ -192,3 +192,9 @@ export const getAllSubcategoriesQuery = `
 FROM
   public."refSubcategoryTable" rsc
   JOIN "refCategoryTable" as rc ON rsc."refCategoryId" = rc."refCategoryId";`;
+
+export const invoiceNumberChecking = `
+  SELECT COUNT(*) 
+  FROM public.parcelbooking pb
+  WHERE DATE_TRUNC('month', pb."bookedDate"::timestamp) = DATE_TRUNC('month', CURRENT_DATE)
+`;

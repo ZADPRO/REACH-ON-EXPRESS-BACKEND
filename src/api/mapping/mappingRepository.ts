@@ -31,7 +31,6 @@ export class mappingRepository {
       await client.query("BEGIN");
 
       const mappingData = userData.mappingData;
-      console.log("mappingData", mappingData);
 
       if (!Array.isArray(mappingData) || mappingData.length === 0) {
         await client.query("ROLLBACK");
@@ -51,7 +50,6 @@ export class mappingRepository {
       const purchasedDateValues = mappingData.map(
         ({ purchasedDate }) => purchasedDate
       );
-      console.log("vendorLeafValues", vendorLeafValues);
 
       const { rows: duplicateRows } = await client.query(duplicateCheckQuery, [
         vendorLeafValues,
@@ -81,7 +79,6 @@ export class mappingRepository {
           getPartnerValidityQuery,
           [vendor]
         );
-        console.log("partnerRows", partnerRows);
 
         if (partnerRows.length === 0) {
           await client.query("ROLLBACK");
@@ -96,7 +93,6 @@ export class mappingRepository {
         }
 
         const validityDays = partnerRows[0].validity;
-        console.log("validityDays", validityDays);
 
         const validityDate = moment(purchasedDate)
           .add(validityDays, "days")
@@ -148,7 +144,6 @@ export class mappingRepository {
         true
       );
     } catch (error: unknown) {
-      console.log('error line ------ 151', error)
       await client.query("ROLLBACK");
       return encrypt(
         {

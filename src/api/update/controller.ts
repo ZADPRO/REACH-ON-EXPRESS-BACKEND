@@ -169,7 +169,8 @@ export class updateController {
         })
         .code(500);
     }
-  }; public deletePricing = async (
+  };
+  public deletePricing = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
