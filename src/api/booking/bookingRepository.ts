@@ -35,236 +35,6 @@ import axios from "axios";
 import logger from "../../helper/logger";
 
 export class bookingRepository {
-  // public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
-  //   const client: PoolClient = await getClient();
-  //   const token = { id: tokenData.id };
-  //   const tokens = generateTokenWithExpire(token, true);
-  //   let parcelBookingId: any = null;
-
-  //   try {
-  //     await client.query("BEGIN"); // Start Transaction
-
-  //     const {
-  //       partnersName,
-  //       type,
-  //       origin,
-  //       destination,
-  //       consignorName,
-  //       consignorAddress,
-  //       consignorGSTnumber,
-  //       consignorPhone,
-  //       consignorEmail,
-  //       customerRefNo,
-  //       leaf,
-  //       consigneeName,
-  //       consigneeAddress,
-  //       consigneeGSTnumber,
-  //       consigneePhone,
-  //       consigneeEmail,
-  //       contentSpecification,
-  //       paperEnclosed,
-  //       declaredValue,
-  //       NoOfPieces,
-  //       actualWeight,
-  //       dimension,
-  //       height,
-  //       weight,
-  //       breadth,
-  //       chargedWeight,
-  //       paymentId,
-  //       customerType,
-  //       refCustomerId,
-  //       netAmount,
-  //       pickUP,
-  //       Count,
-  //       consignorPincode,
-  //       consigneePincode,
-  //     } = userData;
-
-  //     // Validate required fields
-  //     if (
-  //       !partnersName ||
-  //       !type ||
-  //       !origin ||
-  //       !destination ||
-  //       !consignorName ||
-  //       !consignorAddress ||
-  //       !consignorPhone ||
-  //       !customerRefNo ||
-  //       !consigneeName ||
-  //       !consigneeAddress ||
-  //       !consigneePhone ||
-  //       !contentSpecification ||
-  //       !declaredValue ||
-  //       !NoOfPieces ||
-  //       !actualWeight ||
-  //       !paymentId ||
-  //       !refCustomerId ||
-  //       !netAmount ||
-  //       !pickUP ||
-  //       !consignorPincode ||
-  //       !consigneePincode
-  //     ) {
-  //       throw new Error("Missing required fields.");
-  //     }
-
-  //     // Fetch `vendorLeaf` from `transactionmapping`
-  //     const vendorLeaf = leaf;
-
-  //     const updateVendorLeafQuery = await client.query(updateVendorLeaf, [
-  //       leaf,
-  //     ]);
-  //     console.log("updateVendorLeafQuery", updateVendorLeafQuery);
-
-  //     const refCustIdResult = await client.query(refCustIdQuery, [
-  //       refCustomerId,
-  //     ]);
-  //     console.log("refCustIdResult line 368", refCustIdResult);
-  //     const refCustId = refCustIdResult.rows.length
-  //       ? refCustIdResult.rows[0].refCustId
-  //       : null;
-
-  //     if (!refCustId) {
-  //       throw new Error("Invalid partnersId or refCustomerId.");
-  //     }
-
-  //     const customerTypeBoolean =
-  //       customerType === true || customerType === "true";
-  //     const bookedDate = new Date();
-
-  //     if (!refCustId || typeof refCustId !== "string") {
-  //       throw new Error("Invalid refCustomerId format.");
-  //     }
-
-  //     const refCustIdBase = refCustId.split("-");
-  //     const refCustIdPrefix = refCustIdBase.slice(0, 3).join("-");
-  //     const refCustIdDate = refCustIdBase.slice(3).join("-");
-
-  //     // Fetch existing count of refParcelBookingId for refCustomerId
-  //     const countResult = await client.query(getParcelBookingCount, [
-  //       refCustomerId,
-  //     ]);
-
-  //     let currentCount = parseInt(countResult.rows[0]?.total || "0", 10);
-  //     currentCount++; // Increment count for new entry
-  //     console.log("currentCount", currentCount);
-
-  //     const newRefCustId = `${refCustIdPrefix}-${String(currentCount).padStart(
-  //       3,
-  //       "0"
-  //     )}-${refCustIdDate}`;
-
-  //     console.log(`Inserting refParcelBooking with refCustId: ${newRefCustId}`);
-
-  //     // Insert into `refParcelBooking`
-  //     const parcelResult = await client.query(refParcelBookingQuery, [
-  //       partnersName,
-  //       vendorLeaf,
-  //       refCustomerId,
-  //       newRefCustId,
-  //       customerTypeBoolean,
-  //       paymentId,
-  //       type,
-  //       origin,
-  //       destination,
-  //       consignorName,
-  //       consignorAddress,
-  //       consignorGSTnumber,
-  //       consignorPhone,
-  //       consignorEmail,
-  //       customerRefNo,
-  //       consigneeName,
-  //       consigneeAddress,
-  //       consigneeGSTnumber,
-  //       consigneePhone,
-  //       consigneeEmail,
-  //       contentSpecification,
-  //       paperEnclosed,
-  //       declaredValue,
-  //       NoOfPieces,
-  //       actualWeight,
-  //       dimension ? 1 : 0,
-  //       dimension ? height : null,
-  //       dimension ? weight : null,
-  //       dimension ? breadth : null,
-  //       dimension ? chargedWeight : null,
-  //       bookedDate,
-  //       netAmount,
-  //       pickUP,
-  //       Count,
-  //       consignorPincode,
-  //       consigneePincode,
-  //       CurrentTime(),
-  //       "Admin",
-  //     ]);
-
-  //     console.log("parcelResult", parcelResult);
-  //     if (parcelResult.rows.length > 0) {
-  //       parcelBookingId = parcelResult.rows[0];
-  //     } else {
-  //       throw new Error("Parcel booking insertion returned no rows.");
-  //     }
-
-  //     // Update reference status
-  //     await client.query(updateRefStatusQuery, [partnersName]);
-
-  //     // Fetch customer details
-  //     const customerResult = await client.query(getCustomerQuery, [
-  //       refCustomerId,
-  //     ]);
-  //     console.log("customerResult", customerResult);
-  //     if (customerResult.rows.length === 0)
-  //       throw new Error("Customer not found.");
-  //     const { refCustomerName } = customerResult.rows[0];
-
-  //     // Add finance entry if applicable
-  //     if (customerTypeBoolean && paymentId === 4) {
-  //       await client.query(addFinanceQuery, [
-  //         refCustomerName,
-  //         netAmount,
-  //         netAmount,
-  //       ]);
-  //     }
-
-  //     // Insert transaction history
-  //     await client.query(updateHistoryQuery, [
-  //       12,
-  //       tokenData.id,
-  //       `Parcel Booking: 1 record inserted with refCustId ${newRefCustId}`,
-  //       CurrentTime(),
-  //       "Admin",
-  //     ]);
-
-  //     await client.query("COMMIT"); // Commit Transaction
-
-  //     return encrypt(
-  //       {
-  //         success: true,
-  //         message: "Parcel booking details added successfully.",
-  //         parcelBookingId: parcelBookingId,
-  //         token: tokens,
-  //       },
-  //       true
-  //     );
-  //   } catch (error: any) {
-  //     console.error("Transaction error:", error);
-  //     await client.query("ROLLBACK");
-  //     return encrypt(
-  //       {
-  //         success: false,
-  //         error:
-  //           error instanceof Error
-  //             ? error.message
-  //             : "An unknown error occurred",
-  //         token: tokens,
-  //       },
-  //       true
-  //     );
-  //   } finally {
-  //     client.release();
-  //   }
-  // }
-
   public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
     console.log("userData in repository", userData);
     const client: PoolClient = await getClient();
@@ -272,117 +42,105 @@ export class bookingRepository {
     const tokens = generateTokenWithExpire(token, true);
 
     try {
+      const generateInvoiceNumber = async (prefix: any) => {
+        const invoiceCheckQuery = await executeQuery(invoiceNumberChecking);
+        const count = parseInt(invoiceCheckQuery[0].count) + 1;
+
+        const baseNumber = 10000 + count;
+
+        const currentDate = new Date();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        const year = currentDate.getFullYear().toString().slice(-2);
+
+        const suffix = `${month}${year}`;
+        return `${prefix}${baseNumber}${suffix}`;
+      };
+
       if (userData.vendor === "DTDC") {
-        const generateInvoiceNumber = async () => {
-          const invoiceCheckQuery = await executeQuery(invoiceNumberChecking);
-          const count = parseInt(invoiceCheckQuery[0].count) + 1;
+        const invoiceNumber = await generateInvoiceNumber("RDTDC");
 
-          const baseNumber = 10000 + count;
-
-          const currentDate = new Date();
-          const month = (currentDate.getMonth() + 1)
-            .toString()
-            .padStart(2, "0"); // 01 to 12
-          const year = currentDate.getFullYear().toString().slice(-2); // last two digits
-
-          const suffix = `${month}${year}`;
-          const invoiceNumber = `RDTDC${baseNumber}${suffix}`;
-
-          return invoiceNumber;
+        userData.payload = {
+          ...userData.payload,
+          invoice_number: invoiceNumber,
         };
 
-        const updateInvoiceNumber = async () => {
-          const invoiceNumber = await generateInvoiceNumber();
-          userData.payload.invoice_number = invoiceNumber; // Replace the old invoice number
-          console.log(
-            "Updated userData with new invoice number:",
-            userData.payload
-          );
-        };
+        console.log(
+          "Updated userData with DTDC invoice number:",
+          userData.payload
+        );
 
-        updateInvoiceNumber();
+        const response = await axios.post(
+          "https://dtdcapi.shipsy.io/api/customer/integration/consignment/softdata",
+          userData.payload,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "api-key": "5dd8e4d35166672758bd1ee8953025",
+            },
+          }
+        );
 
-        const sendConsignmentData = async () => {
-          try {
-            const response = await axios.post(
-              "https://dtdcapi.shipsy.io/api/customer/integration/consignment/softdata",
-              userData.payload,
+        console.log("response", response.data);
+
+        if (
+          response.data.status === "OK" &&
+          Array.isArray(response.data.data) &&
+          response.data.data.length > 0
+        ) {
+          const result = response.data.data[0];
+
+          if (result.success) {
+            return encrypt(
               {
-                headers: {
-                  "Content-Type": "application/json",
-                  "api-key": "5dd8e4d35166672758bd1ee8953025",
-                },
-              }
+                success: true,
+                message: result,
+                token: tokens,
+              },
+              true
             );
-
-            // ✅ Handle response
-            console.log("response", response.data);
-            if (
-              response.data.status === "OK" &&
-              Array.isArray(response.data.data) &&
-              response.data.data.length > 0
-            ) {
-              const result = response.data.data[0];
-
-              if (result.success) {
-                return encrypt(
-                  {
-                    success: true,
-                    message: result,
-                    token: tokens,
-                  },
-                  true
-                );
-              } else {
-                console.log("Consignment API error:", result);
-                return encrypt(
-                  {
-                    success: false,
-                    message: result,
-                    token: tokens,
-                  },
-                  true
-                );
-              }
-            } else {
-              console.log("DTDC API Failure:", response.data);
-              return encrypt(
-                {
-                  success: false,
-                  message: response.data || { error: "Unknown error" },
-                  token: tokens,
-                },
-                true
-              );
-            }
-          } catch (err) {
-            console.error("Error in consignment creation:", err);
+          } else {
+            console.log("Consignment API error:", result);
             return encrypt(
               {
                 success: false,
-                message: err,
+                message: result,
                 token: tokens,
               },
               true
             );
           }
-        };
-
-        sendConsignmentData();
+        } else {
+          console.log("DTDC API Failure:", response.data);
+          return encrypt(
+            {
+              success: false,
+              message: response.data || { error: "Unknown error" },
+              token: tokens,
+            },
+            true
+          );
+        }
       } else if (userData.vendor === "Delhivery") {
-        console.log("userData.vendor", userData.vendor);
-        console.log("userData", userData);
+        const invoiceNumber = await generateInvoiceNumber("DLVY");
 
-        const payload = {
+        const updatedPayload = {
           format: "json",
-          data: JSON.stringify(userData.payload),
+          data: JSON.stringify({
+            ...userData.payload,
+            pickup_location: {
+              ...userData.payload.pickup_location,
+            },
+            shipments: userData.payload.shipments.map((shipment: any) => ({
+              ...shipment,
+              order: invoiceNumber,
+            })),
+          }),
         };
 
         axios
           .post(
             "https://track.delhivery.com/api/cmu/create.json",
-
-            qs.stringify(payload),
+            qs.stringify(updatedPayload),
             {
               headers: {
                 Accept: "application/json",
@@ -392,23 +150,20 @@ export class bookingRepository {
           )
           .then((res) => {
             const data = res.data;
-
             if (data.success && data.packages?.length > 0) {
               const pkg = data.packages[0];
-
               if (pkg.status === "Success" && pkg.waybill) {
                 console.log("✅ Success - Waybill:", pkg.waybill);
               } else {
                 console.warn(
-                  "⚠️ Package returned with status:",
+                  "⚠️ Delhivery error:",
                   pkg.status,
-                  "Remarks:",
                   pkg.remarks?.[0]
                 );
               }
             } else {
               console.error(
-                "❌ Failed to create shipment:",
+                "❌ Delhivery API error:",
                 data.rmk || "Unknown error"
               );
             }
@@ -419,6 +174,7 @@ export class bookingRepository {
       } else {
         console.log("Partners name is not configured");
       }
+
       return encrypt(
         {
           success: true,
@@ -427,14 +183,12 @@ export class bookingRepository {
         },
         true
       );
-    } catch (error: any) {
-      console.log("Error updating booking:", error);
-      await client.query("ROLLBACK");
+    } catch (error) {
+      console.error("Main try-catch error:", error);
       return encrypt(
         {
           success: false,
-          message: "Parcel booking failed.",
-          error: error.message || "An unknown error occurred",
+          message: "Unexpected error occurred.",
           token: tokens,
         },
         true
