@@ -29,6 +29,7 @@ import {
   getfinanceDataQuery,
   getReportDataQuery,
   updateVendorLeaf,
+  vendorParcelBookingQuery,
 } from "./query";
 import { invoiceNumberChecking } from "../admin/query";
 import axios from "axios";
@@ -36,10 +37,183 @@ import logger from "../../helper/logger";
 
 export class bookingRepository {
   public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
-    console.log("userData in repository", userData);
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
+
+    const ParcelBookingFromVendor = async (
+      result: any,
+      vendors: string,
+      status: string
+    ) => {
+      console.log(`📦 ParcelBookingFromVendor called for ${vendors}`);
+      console.log("userData in repository", userData);
+
+      const {
+        vendor,
+        leaf,
+        type,
+        origin,
+        destination,
+        consignorName,
+        consignorAddress,
+        consignorCity,
+        consignorState,
+        consignorGSTnumber,
+        consignorPhone,
+        consignorEmail,
+        customerRefNo,
+        consigneeName,
+        consigneeAddress,
+        consigneeCity,
+        consigneeState,
+        consigneeGSTnumber,
+        consigneePhone,
+        consigneeEmail,
+        contentSpecification,
+        paperEnclosed,
+        declaredValue,
+        NoOfPieces,
+        actualWeight,
+        dimension,
+        height,
+        weight,
+        breadth,
+        chargedWeight,
+        paymentId,
+        customerType,
+        refCustomerId,
+        netAmount,
+        pickUP,
+        count,
+        formattedDate,
+        consignorPincode,
+        consigneePincode,
+      } = userData;
+
+      const resultData = JSON.stringify(result); // assuming `result` from API response
+      const leafData = JSON.stringify(leaf); // convert to JSON for PostgreSQL
+      const typeData = JSON.stringify(type);
+      const createdAt = new Date();
+
+      const values = [
+        vendor,
+        leafData,
+        typeData,
+        origin,
+        destination,
+        consignorName,
+        consignorAddress,
+        consignorCity,
+        consignorState,
+        consignorGSTnumber,
+        consignorPhone,
+        consignorEmail,
+        customerRefNo,
+        consigneeName,
+        consigneeAddress,
+        consigneeCity,
+        consigneeState,
+        consigneeGSTnumber,
+        consigneePhone,
+        consigneeEmail,
+        contentSpecification,
+        paperEnclosed,
+        declaredValue,
+        NoOfPieces,
+        actualWeight,
+        dimension,
+        height,
+        weight,
+        breadth,
+        chargedWeight,
+        paymentId,
+        customerType,
+        refCustomerId,
+        netAmount,
+        pickUP,
+        count,
+        formattedDate,
+        consignorPincode,
+        consigneePincode,
+        resultData, // ⬅️ add final API result (as JSON string)
+        createdAt,
+      ];
+      const insertingVendorBooking = await executeQuery(
+        vendorParcelBookingQuery,
+        values
+      );
+      console.log("insertingVendorBooking", insertingVendorBooking);
+
+      if (status === "success") {
+        console.log("✅ Success - Data:", JSON.stringify(result, null, 2));
+      } else {
+        console.log("⚠️ Failure - Data:", JSON.stringify(result, null, 2));
+      }
+
+      if (userData.paymentId === 3) {
+        const refCustomerName = userData.refCustomerId;
+        const netAmount = userData.netAmount.toString(); // Ensure string format
+        const createdAt = new Date().toISOString();
+        const createdBy = "System"; // replace with real user if available
+
+        // 1. Check if customer exists
+        const checkQuery = `
+    SELECT * FROM public."refFinanceTable"
+    WHERE "refCustomerName" = $1
+  `;
+        const existing = await executeQuery(checkQuery, [refCustomerName]);
+
+        if (existing.length > 0) {
+          // 2. Customer exists → update
+
+          const existingOutstanding = parseFloat(
+            existing[0].refOutstandingAmt || "0"
+          );
+          const newOutstanding = (
+            existingOutstanding + parseFloat(netAmount)
+          ).toFixed(2);
+
+          const updateQuery = `
+      UPDATE public."refFinanceTable"
+      SET "refOutstandingAmt" = $2,
+          "refBalanceAmount" = $2,
+          "updatedAt" = $3,
+          "updatedBy" = $4
+      WHERE "refCustomerName" = $1
+    `;
+
+          await executeQuery(updateQuery, [
+            refCustomerName,
+            newOutstanding.toString(),
+            createdAt,
+            createdBy,
+          ]);
+          console.log("🔁 Updated existing finance record");
+        } else {
+          // 3. Customer does not exist → insert
+
+          const insertQuery = `
+      INSERT INTO public."refFinanceTable" (
+        "refCustomerName",
+        "refOutstandingAmt",
+        "refPayAmount",
+        "refBalanceAmount",
+        "createdAt",
+        "createdBy"
+      ) VALUES ($1, $2, '', $2, $3, $4)
+    `;
+
+          await executeQuery(insertQuery, [
+            refCustomerName,
+            netAmount,
+            createdAt,
+            createdBy,
+          ]);
+          console.log("🆕 Inserted new finance record");
+        }
+      }
+    };
 
     try {
       const generateInvoiceNumber = async (prefix: any) => {
@@ -64,11 +238,6 @@ export class bookingRepository {
           invoice_number: invoiceNumber,
         };
 
-        console.log(
-          "Updated userData with DTDC invoice number:",
-          userData.payload
-        );
-
         const response = await axios.post(
           "https://dtdcapi.shipsy.io/api/customer/integration/consignment/softdata",
           userData.payload,
@@ -89,6 +258,9 @@ export class bookingRepository {
         ) {
           const result = response.data.data[0];
 
+          // Pass success result to the function
+          await ParcelBookingFromVendor(result, "DTDC", "success");
+
           if (result.success) {
             return encrypt(
               {
@@ -100,6 +272,7 @@ export class bookingRepository {
             );
           } else {
             console.log("Consignment API error:", result);
+            await ParcelBookingFromVendor(result, "DTDC", "failure");
             return encrypt(
               {
                 success: false,
@@ -111,6 +284,10 @@ export class bookingRepository {
           }
         } else {
           console.log("DTDC API Failure:", response.data);
+
+          // Pass failure data to the function
+          await ParcelBookingFromVendor(response.data, "DTDC", "failure");
+
           return encrypt(
             {
               success: false,
@@ -154,22 +331,30 @@ export class bookingRepository {
               const pkg = data.packages[0];
               if (pkg.status === "Success" && pkg.waybill) {
                 console.log("✅ Success - Waybill:", pkg.waybill);
+                // Pass success result to the function
+                ParcelBookingFromVendor(pkg, "Delhivery", "success");
               } else {
                 console.warn(
                   "⚠️ Delhivery error:",
                   pkg.status,
                   pkg.remarks?.[0]
                 );
+                // Pass failure result to the function
+                ParcelBookingFromVendor(pkg, "Delhivery", "failure");
               }
             } else {
               console.error(
                 "❌ Delhivery API error:",
                 data.rmk || "Unknown error"
               );
+              // Pass failure data to the function
+              ParcelBookingFromVendor(data, "Delhivery", "failure");
             }
           })
           .catch((err) => {
             console.error("🚫 Axios Error:", err);
+            // Handle Axios error
+            ParcelBookingFromVendor(err, "Delhivery", "failure");
           });
       } else {
         console.log("Partners name is not configured");

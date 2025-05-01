@@ -341,3 +341,91 @@ export const getReportDataQuery = `SELECT
   ORDER BY
     pb."parcelBookingId" DESC
 `;
+
+export const vendorParcelBookingQuery = `
+INSERT INTO public."VendorParcelBooking" (
+      vendor,
+      leaf,
+      type,
+      origin,
+      destination,
+      consignorName,
+      consignorAddress,
+      consignorCity,
+      consignorState,
+      consignorGSTnumber,
+      consignorPhone,
+      consignorEmail,
+      customerRefNo,
+      consigneeName,
+      consigneeAddress,
+      consigneeCity,
+      consigneeState,
+      consigneeGSTnumber,
+      consigneePhone,
+      consigneeEmail,
+      contentSpecification,
+      paperEnclosed,
+      declaredValue,
+      NoOfPieces,
+      actualWeight,
+      dimension,
+      height,
+      weight,
+      breadth,
+      chargedWeight,
+      paymentId,
+      customerType,
+      refCustomerId,
+      netAmount,
+      pickUP,
+      count,
+      formattedDate,
+      consignorPincode,
+      consigneePincode,
+      result,
+      createdat
+    ) VALUES (
+      $1,  -- vendor
+      $2::jsonb,  -- leaf (JSON)
+      $3::jsonb,  -- type (JSON)
+      $4,  -- origin
+      $5,  -- destination
+      $6,  -- consignorName
+      $7,  -- consignorAddress
+      $8,  -- consignorCity
+      $9,  -- consignorState
+      $10, -- consignorGSTnumber
+      $11, -- consignorPhone
+      $12, -- consignorEmail
+      $13, -- customerRefNo
+      $14, -- consigneeName
+      $15, -- consigneeAddress
+      $16, -- consigneeCity
+      $17, -- consigneeState
+      $18, -- consigneeGSTnumber
+      $19, -- consigneePhone
+      $20, -- consigneeEmail
+      $21, -- contentSpecification
+      $22, -- paperEnclosed
+      $23, -- declaredValue
+      $24, -- NoOfPieces
+      $25, -- actualWeight
+      $26, -- dimension
+      $27, -- height
+      $28, -- weight
+      $29, -- breadth
+      $30, -- chargedWeight
+      $31, -- paymentId
+      $32, -- customerType
+      $33, -- refCustomerId
+      $34, -- netAmount
+      $35, -- pickUP
+      $36, -- count
+      $37::DATE, -- formattedDate (formatted as YYYY-MM-DD)
+      $38, -- consignorPincode
+      $39,  -- consigneePincode
+      $40::jsonb,  -- result
+      $41  -- created at
+    );
+`;
