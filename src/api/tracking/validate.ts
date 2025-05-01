@@ -11,6 +11,7 @@ export default {
         .optional()
         .when("consignmentNumber", { is: Joi.exist(), then: Joi.forbidden() }),
     }).or("consignmentNumber", "referenceNumber"),
+    
     headers: Joi.object({
       authorization: Joi.string().optional(),
     }).unknown(),

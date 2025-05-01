@@ -8,8 +8,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { generateTokenWithExpire } from "../../helper/token";
 import { GetConsignmentNumberQuery, GetReferenceNumberQuery } from "./query";
-// import { 
-//  } from "./query";
+
 
 
 export class trackingRepository {

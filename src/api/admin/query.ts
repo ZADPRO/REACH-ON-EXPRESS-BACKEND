@@ -49,9 +49,11 @@ LEFT JOIN "refCommunication" rc ON u."refUserId" = rc."refUserId"
 LEFT JOIN "refUserAddress" rua ON u."refUserId" = rua."refUserId"
 LEFT JOIN "refusersdomain" rud ON u."refUserId" = rud."refUserId" WHERE u."refUserId" = $1;`;
 
-export const selectUserByLogin = `SELECT 
+export const selectUserByLogin = `
+SELECT 
     "refUserId", "refCusthashedpassword"
-FROM public."refusersdomain" WHERE "refUsername" = $1 OR "refCustMobileNum" = $1;`;
+FROM public."refusersdomain" WHERE "refUsername" = $1 OR "refCustMobileNum" = $1;
+`;
 
 export const userDetailsQuery = `
 SELECT
@@ -83,7 +85,8 @@ export const getPartnerQuery = `
 SELECT "partnersName", "refUserId", "phoneNumber", "validity" 
 FROM public."partners" 
 WHERE "partnersId" = $1 
-AND ("deletedAt" IS NULL AND "deletedBy" IS NULL);`;
+AND ("deletedAt" IS NULL AND "deletedBy" IS NULL);
+`;
 
 export const getPartnersQuery = `SELECT * FROM public."partners"`;
 
@@ -161,9 +164,14 @@ export const addPriceDetailsQuery = `INSERT INTO public."pricing"
   ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
   RETURNING *;`;
 
-export const getPriceQuery = `SELECT *
-FROM "pricing" pr
-LEFT JOIN "partners" pa ON pr."partnersId" = pa."partnersId"
+export const getPriceQuery = `
+SELECT
+  *
+FROM
+  "pricing" pr
+  LEFT JOIN "partners" pa ON pr."partnersId" = pa."partnersId"
+WHERE
+  pr."isDelete" IS NOT true
 `;
 
 export const insertCategoryQuery = `
