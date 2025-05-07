@@ -232,6 +232,7 @@ export class bookingRepository {
 
       if (userData.vendor === "DTDC") {
         const invoiceNumber = await generateInvoiceNumber("RDTDC");
+        logger.info("Invoice number generated", invoiceNumber);
 
         userData.payload = {
           ...userData.payload,
@@ -251,6 +252,8 @@ export class bookingRepository {
 
         console.log("response", response.data);
 
+        logger.info("DTDC response captured ---> ", response);
+
         if (
           response.data.status === "OK" &&
           Array.isArray(response.data.data) &&
@@ -260,6 +263,8 @@ export class bookingRepository {
 
           // Pass success result to the function
           await ParcelBookingFromVendor(result, "DTDC", "success");
+
+          logger.info("DTDC parcel booking vendor result", result);
 
           if (result.success) {
             return encrypt(
@@ -272,6 +277,7 @@ export class bookingRepository {
             );
           } else {
             console.log("Consignment API error:", result);
+            logger.warn("DTDC API error", result);
             await ParcelBookingFromVendor(result, "DTDC", "failure");
             return encrypt(
               {
@@ -287,6 +293,7 @@ export class bookingRepository {
 
           // Pass failure data to the function
           await ParcelBookingFromVendor(response.data, "DTDC", "failure");
+          logger.warn("DTDC error failed", response);
 
           return encrypt(
             {
@@ -300,6 +307,7 @@ export class bookingRepository {
       } else if (userData.vendor === "Delhivery") {
         const invoiceNumber = await generateInvoiceNumber("DLVY");
 
+        logger.info("DElhivery invoice generated", invoiceNumber);
         const updatedPayload = {
           format: "json",
           data: JSON.stringify({
@@ -327,11 +335,15 @@ export class bookingRepository {
           )
           .then((res) => {
             const data = res.data;
+            logger.info("DElhivery response", res);
+
             if (data.success && data.packages?.length > 0) {
               const pkg = data.packages[0];
               if (pkg.status === "Success" && pkg.waybill) {
                 console.log("✅ Success - Waybill:", pkg.waybill);
                 // Pass success result to the function
+                logger.info("DElhivery status success", pkg);
+
                 ParcelBookingFromVendor(pkg, "Delhivery", "success");
               } else {
                 console.warn(
