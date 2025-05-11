@@ -37,6 +37,7 @@ import logger from "../../helper/logger";
 
 export class bookingRepository {
   public async parcelBookingV1(userData: any, tokenData: any): Promise<any> {
+    console.log("userData", userData);
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
     const tokens = generateTokenWithExpire(token, true);
@@ -89,6 +90,8 @@ export class bookingRepository {
         formattedDate,
         consignorPincode,
         consigneePincode,
+        refCustomerName,
+        refCode,
       } = userData;
 
       const resultData = JSON.stringify(result); // assuming `result` from API response
@@ -138,6 +141,8 @@ export class bookingRepository {
         consigneePincode,
         resultData, // ⬅️ add final API result (as JSON string)
         createdAt,
+        refCustomerName,
+        refCode,
       ];
       const insertingVendorBooking = await executeQuery(
         vendorParcelBookingQuery,
@@ -213,12 +218,16 @@ export class bookingRepository {
           console.log("🆕 Inserted new finance record");
         }
       }
+
+      
     };
 
     try {
       const generateInvoiceNumber = async (prefix: any) => {
         const invoiceCheckQuery = await executeQuery(invoiceNumberChecking);
+        console.log("invoiceCheckQuery", invoiceCheckQuery);
         const count = parseInt(invoiceCheckQuery[0].count) + 1;
+        console.log("count", count);
 
         const baseNumber = 10000 + count;
 
@@ -232,6 +241,7 @@ export class bookingRepository {
 
       if (userData.vendor === "DTDC") {
         const invoiceNumber = await generateInvoiceNumber("RDTDC");
+        console.log("invoiceNumber", invoiceNumber);
         logger.info("Invoice number generated", invoiceNumber);
 
         userData.payload = {
@@ -239,6 +249,7 @@ export class bookingRepository {
           invoice_number: invoiceNumber,
         };
 
+        console.log("userData.payload", userData.payload);
         const response = await axios.post(
           "https://dtdcapi.shipsy.io/api/customer/integration/consignment/softdata",
           userData.payload,
@@ -262,11 +273,11 @@ export class bookingRepository {
           const result = response.data.data[0];
 
           // Pass success result to the function
-          await ParcelBookingFromVendor(result, "DTDC", "success");
 
           logger.info("DTDC parcel booking vendor result", result);
 
           if (result.success) {
+            await ParcelBookingFromVendor(result, "DTDC", "success");
             return encrypt(
               {
                 success: true,
@@ -304,6 +315,7 @@ export class bookingRepository {
             true
           );
         }
+        
       } else if (userData.vendor === "Delhivery") {
         const invoiceNumber = await generateInvoiceNumber("DLVY");
 

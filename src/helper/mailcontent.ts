@@ -27,7 +27,6 @@ export const generateCustomerWelcomeEmailContent = (
       <li><strong>Username:</strong> ${username}</li>
       <li><strong>Password:</strong> ${password}</li>
     </ul>
-    <p>For your security, we recommend logging in and updating your password immediately.</p>
     <p>If you have any questions or need assistance, feel free to contact our support team.</p>
     <p>Warm regards,<br/>The Customer Support Team</p>
   `;

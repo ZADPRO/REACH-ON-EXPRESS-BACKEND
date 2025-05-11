@@ -376,7 +376,7 @@ INSERT INTO public."VendorParcelBooking" (
       chargedWeight,
       paymentId,
       customerType,
-      refCustomerId,
+      "refCustomerId",
       netAmount,
       pickUP,
       count,
@@ -384,7 +384,9 @@ INSERT INTO public."VendorParcelBooking" (
       consignorPincode,
       consigneePincode,
       result,
-      createdat
+      createdat,
+      "refCustomerName",
+      "refCode"
     ) VALUES (
       $1,  -- vendor
       $2::jsonb,  -- leaf (JSON)
@@ -426,6 +428,8 @@ INSERT INTO public."VendorParcelBooking" (
       $38, -- consignorPincode
       $39,  -- consigneePincode
       $40::jsonb,  -- result
-      $41  -- created at
+      $41,  -- created at
+      $42, -- ref custoemr name
+      $43 -- ref custoemr code
     );
 `;

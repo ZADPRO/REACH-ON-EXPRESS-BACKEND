@@ -194,7 +194,7 @@ FROM
   JOIN "refCategoryTable" as rc ON rsc."refCategoryId" = rc."refCategoryId";`;
 
 export const invoiceNumberChecking = `
-  SELECT COUNT(*) 
-  FROM public.parcelbooking pb
-  WHERE DATE_TRUNC('month', pb."bookedDate"::timestamp) = DATE_TRUNC('month', CURRENT_DATE)
+SELECT COUNT(*) 
+  FROM public."VendorParcelBooking" pb
+  WHERE DATE_TRUNC('month', pb.createdat::timestamp) = DATE_TRUNC('month', CURRENT_DATE)
 `;
