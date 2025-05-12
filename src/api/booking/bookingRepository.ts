@@ -50,6 +50,19 @@ export class bookingRepository {
       console.log(`📦 ParcelBookingFromVendor called for ${vendors}`);
       console.log("userData in repository", userData);
 
+      let invoiceNum = null;
+      if (userData.payload?.invoice_number) {
+        invoiceNum = userData.payload.invoice_number;
+      } else if (
+        userData.payload?.shipments &&
+        userData.payload.shipments.length > 0 &&
+        userData.payload.shipments[0]?.order
+      ) {
+        invoiceNum = userData.payload.shipments[0].order;
+      }
+
+      console.log("Final invoice number used:", invoiceNum);
+
       const {
         vendor,
         leaf,
@@ -143,6 +156,8 @@ export class bookingRepository {
         createdAt,
         refCustomerName,
         refCode,
+        status,
+        invoiceNum,
       ];
       const insertingVendorBooking = await executeQuery(
         vendorParcelBookingQuery,
@@ -152,74 +167,76 @@ export class bookingRepository {
 
       if (status === "success") {
         console.log("✅ Success - Data:", JSON.stringify(result, null, 2));
+        if (userData.paymentId === 3) {
+          const refCustomerName = userData.refCustomerId;
+          const netAmount = userData.netAmount.toString(); // Ensure string format
+          const createdAt = new Date().toISOString();
+          const createdBy = "System"; // replace with real user if available
+
+          // 1. Check if customer exists
+          const checkQuery = `
+          SELECT * FROM public."refFinanceTable"
+          WHERE "refCustomerName" = $1
+        `;
+          const existing = await executeQuery(checkQuery, [refCustomerName]);
+
+          if (existing.length > 0) {
+            // 2. Customer exists → update
+
+            const existingOutstanding = parseFloat(
+              existing[0].refOutstandingAmt || "0"
+            );
+            const newOutstanding = (
+              existingOutstanding + parseFloat(netAmount)
+            ).toFixed(2);
+
+            const updateQuery = `
+            UPDATE public."refFinanceTable"
+            SET "refOutstandingAmt" = $2,
+                "refBalanceAmount" = $2,
+                "updatedAt" = $3,
+                "updatedBy" = $4
+            WHERE "refCustomerName" = $1
+          `;
+
+            await executeQuery(updateQuery, [
+              refCustomerName,
+              newOutstanding.toString(),
+              createdAt,
+              createdBy,
+            ]);
+            console.log("🔁 Updated existing finance record");
+          } else {
+            // 3. Customer does not exist → insert
+
+            const insertQuery = `
+            INSERT INTO public."refFinanceTable" (
+              "refCustomerName",
+              "refOutstandingAmt",
+              "refPayAmount",
+              "refBalanceAmount",
+              "createdAt",
+              "createdBy"
+            ) VALUES ($1, $2, '', $2, $3, $4)
+          `;
+
+            await executeQuery(insertQuery, [
+              refCustomerName,
+              netAmount,
+              createdAt,
+              createdBy,
+            ]);
+            console.log("🆕 Inserted new finance record");
+          }
+        }
+
+        
+
+        return { success: true, message: result };
       } else {
         console.log("⚠️ Failure - Data:", JSON.stringify(result, null, 2));
+        return { success: false, message: result };
       }
-
-      if (userData.paymentId === 3) {
-        const refCustomerName = userData.refCustomerId;
-        const netAmount = userData.netAmount.toString(); // Ensure string format
-        const createdAt = new Date().toISOString();
-        const createdBy = "System"; // replace with real user if available
-
-        // 1. Check if customer exists
-        const checkQuery = `
-    SELECT * FROM public."refFinanceTable"
-    WHERE "refCustomerName" = $1
-  `;
-        const existing = await executeQuery(checkQuery, [refCustomerName]);
-
-        if (existing.length > 0) {
-          // 2. Customer exists → update
-
-          const existingOutstanding = parseFloat(
-            existing[0].refOutstandingAmt || "0"
-          );
-          const newOutstanding = (
-            existingOutstanding + parseFloat(netAmount)
-          ).toFixed(2);
-
-          const updateQuery = `
-      UPDATE public."refFinanceTable"
-      SET "refOutstandingAmt" = $2,
-          "refBalanceAmount" = $2,
-          "updatedAt" = $3,
-          "updatedBy" = $4
-      WHERE "refCustomerName" = $1
-    `;
-
-          await executeQuery(updateQuery, [
-            refCustomerName,
-            newOutstanding.toString(),
-            createdAt,
-            createdBy,
-          ]);
-          console.log("🔁 Updated existing finance record");
-        } else {
-          // 3. Customer does not exist → insert
-
-          const insertQuery = `
-      INSERT INTO public."refFinanceTable" (
-        "refCustomerName",
-        "refOutstandingAmt",
-        "refPayAmount",
-        "refBalanceAmount",
-        "createdAt",
-        "createdBy"
-      ) VALUES ($1, $2, '', $2, $3, $4)
-    `;
-
-          await executeQuery(insertQuery, [
-            refCustomerName,
-            netAmount,
-            createdAt,
-            createdBy,
-          ]);
-          console.log("🆕 Inserted new finance record");
-        }
-      }
-
-      
     };
 
     try {
@@ -277,27 +294,21 @@ export class bookingRepository {
           logger.info("DTDC parcel booking vendor result", result);
 
           if (result.success) {
-            await ParcelBookingFromVendor(result, "DTDC", "success");
-            return encrypt(
-              {
-                success: true,
-                message: result,
-                token: tokens,
-              },
-              true
+            const vendorResponse = await ParcelBookingFromVendor(
+              result,
+              "DTDC",
+              "success"
             );
+            return encrypt({ ...vendorResponse, token: tokens }, true);
           } else {
             console.log("Consignment API error:", result);
             logger.warn("DTDC API error", result);
-            await ParcelBookingFromVendor(result, "DTDC", "failure");
-            return encrypt(
-              {
-                success: false,
-                message: result,
-                token: tokens,
-              },
-              true
+            const vendorResponse = await ParcelBookingFromVendor(
+              result,
+              "DTDC",
+              "failure"
             );
+            return encrypt({ ...vendorResponse, token: tokens }, true);
           }
         } else {
           console.log("DTDC API Failure:", response.data);
@@ -315,7 +326,6 @@ export class bookingRepository {
             true
           );
         }
-        
       } else if (userData.vendor === "Delhivery") {
         const invoiceNumber = await generateInvoiceNumber("DLVY");
 
@@ -334,64 +344,48 @@ export class bookingRepository {
           }),
         };
 
-        axios
-          .post(
-            "https://track.delhivery.com/api/cmu/create.json",
-            qs.stringify(updatedPayload),
-            {
-              headers: {
-                Accept: "application/json",
-                Authorization: "Token f4881f7518b05af9e0e3446b8b697c490dbef74f",
-              },
-            }
-          )
-          .then((res) => {
-            const data = res.data;
-            logger.info("DElhivery response", res);
+        const res = await axios.post(
+          "https://track.delhivery.com/api/cmu/create.json",
+          qs.stringify(updatedPayload),
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: "Token f4881f7518b05af9e0e3446b8b697c490dbef74f",
+            },
+          }
+        );
 
-            if (data.success && data.packages?.length > 0) {
-              const pkg = data.packages[0];
-              if (pkg.status === "Success" && pkg.waybill) {
-                console.log("✅ Success - Waybill:", pkg.waybill);
-                // Pass success result to the function
-                logger.info("DElhivery status success", pkg);
+        const data = res.data;
+        logger.info("Delhivery response", res);
 
-                ParcelBookingFromVendor(pkg, "Delhivery", "success");
-              } else {
-                console.warn(
-                  "⚠️ Delhivery error:",
-                  pkg.status,
-                  pkg.remarks?.[0]
-                );
-                // Pass failure result to the function
-                ParcelBookingFromVendor(pkg, "Delhivery", "failure");
-              }
-            } else {
-              console.error(
-                "❌ Delhivery API error:",
-                data.rmk || "Unknown error"
-              );
-              // Pass failure data to the function
-              ParcelBookingFromVendor(data, "Delhivery", "failure");
-            }
-          })
-          .catch((err) => {
-            console.error("🚫 Axios Error:", err);
-            // Handle Axios error
-            ParcelBookingFromVendor(err, "Delhivery", "failure");
-          });
+        if (data.success && data.packages?.length > 0) {
+          const pkg = data.packages[0];
+          if (pkg.status === "Success" && pkg.waybill) {
+            const vendorResponse = await ParcelBookingFromVendor(
+              pkg,
+              "Delhivery",
+              "success"
+            );
+            return encrypt({ ...vendorResponse, token: tokens }, true);
+          } else {
+            const vendorResponse = await ParcelBookingFromVendor(
+              pkg,
+              "Delhivery",
+              "failure"
+            );
+            return encrypt({ ...vendorResponse, token: tokens }, true);
+          }
+        } else {
+          const vendorResponse = await ParcelBookingFromVendor(
+            data,
+            "Delhivery",
+            "failure"
+          );
+          return encrypt({ ...vendorResponse, token: tokens }, true);
+        }
       } else {
         console.log("Partners name is not configured");
       }
-
-      return encrypt(
-        {
-          success: true,
-          message: "Parcel booking details added successfully.",
-          token: tokens,
-        },
-        true
-      );
     } catch (error) {
       console.error("Main try-catch error:", error);
       return encrypt(
@@ -406,6 +400,7 @@ export class bookingRepository {
       client.release();
     }
   }
+
   public async updateBookingV1(
     userData: any,
     tokenData: any,

@@ -386,7 +386,9 @@ INSERT INTO public."VendorParcelBooking" (
       result,
       createdat,
       "refCustomerName",
-      "refCode"
+      "refCode",
+      "parcelStatus",
+      "invoiceNum"
     ) VALUES (
       $1,  -- vendor
       $2::jsonb,  -- leaf (JSON)
@@ -430,6 +432,8 @@ INSERT INTO public."VendorParcelBooking" (
       $40::jsonb,  -- result
       $41,  -- created at
       $42, -- ref custoemr name
-      $43 -- ref custoemr code
+      $43, -- ref custoemr code
+      $44, -- parcel status success or failure
+      $45  -- invoice number
     );
 `;
