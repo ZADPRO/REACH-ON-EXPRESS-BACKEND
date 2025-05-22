@@ -9,7 +9,7 @@ export class financeRoutes implements IRoute {
       const controller = new Finance();
       server.route([
         {
-          method: "POST",
+          method: "GET",
           path: "/api/v1/Finance/viewFinance",
           config: {
             pre: [{ method: validateToken, assign: "token" }],

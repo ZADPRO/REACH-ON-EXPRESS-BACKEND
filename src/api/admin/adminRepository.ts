@@ -371,7 +371,6 @@ export class adminRepository {
               user.refUserId,
             ]);
 
-           
             return encrypt(
               {
                 success: true,
@@ -426,7 +425,6 @@ export class adminRepository {
           true
         );
       }
-
 
       const result = await client.query(addPartnerQuery, [
         partnersName,
@@ -1023,7 +1021,6 @@ export class adminRepository {
         const currentYear = refCustIdParts[4];
 
         updatedRefCustId = `R-${customerCode}-${nextCustomerNumber}-${currentMonth}-${currentYear}`;
-
       }
 
       // Update Customer
@@ -1162,7 +1159,7 @@ export class adminRepository {
       const existingPartner = await client.query(getCustomerQuery, [
         refCustomerId,
       ]);
-    
+
       if (existingPartner.rowCount === 0) {
         await client.query("ROLLBACK");
         return encrypt(

@@ -4,7 +4,7 @@ import { encrypt } from "../../helper/encrypt";
 import { CurrentTime } from "../../helper/common";
 import bcrypt from "bcryptjs";
 import { generateTokenWithExpire } from "../../helper/token";
-import { UserLoginQuery } from "./query";
+import { parcelDetails, UserLoginQuery } from "./query";
 import { updateHistoryQuery } from "../admin/query";
 
 export class UserRepo {
@@ -70,6 +70,49 @@ export class UserRepo {
           message: "User Login Successfully",
           userDetails: userDetails,
           token: generateTokenWithExpire(tokenData, true),
+        },
+        true
+      );
+    } catch (error: any) {
+      await client.query("ROLLBACK");
+
+      console.error("Error during login:", error);
+
+      return encrypt(
+        {
+          success: false,
+          message: "Login failed",
+          error:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+          token: generateTokenWithExpire({ id: tokenData.id }, true),
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async userParcelDetailsV1(
+    user_data: any,
+    tokenData: any
+  ): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokenData.id };
+    console.log("token", token.id);
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const userParcelData = await executeQuery(parcelDetails, [token.id]);
+      console.log("userParcelData", userParcelData);
+      return encrypt(
+        {
+          success: true,
+          message: "User Parcel Details Sent Successfully",
+          token: tokens,
+          userParcelData: userParcelData,
         },
         true
       );
