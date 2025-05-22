@@ -112,6 +112,17 @@ export class bookingRepository {
       const typeData = JSON.stringify(type);
       const createdAt = new Date();
 
+      const vendorLeaf = JSON.parse(leaf).vendorLeaf;
+
+      const query = `
+        UPDATE public.transactionmapping
+        SET "refStatus" = 'Assigned'
+        WHERE leaf = $1
+      `;
+
+      const changeValidData = await executeQuery(query, [vendorLeaf]);
+      console.log("changeValidData", changeValidData);
+
       const values = [
         vendor,
         leafData,
@@ -229,8 +240,6 @@ export class bookingRepository {
             console.log("🆕 Inserted new finance record");
           }
         }
-
-        
 
         return { success: true, message: result };
       } else {

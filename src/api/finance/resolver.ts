@@ -29,4 +29,39 @@ export class Resolver {
       domain_code
     );
   }
+  public async viewTrackingV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.financeRepository.viewTrackingV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+
+  public async updateFinanceReport(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.financeRepository.updateFinanceReport(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+
+  public async viewDashboardData(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.financeRepository.viewDashboardData(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
 }
