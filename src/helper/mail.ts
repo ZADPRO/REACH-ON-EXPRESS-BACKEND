@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
 export const sendEmail = async (mailOptions: MailOptions): Promise<boolean> => {
   try {
     await transporter.sendMail({
-      from: process.env.EMAILID,
+      from: process.env.EMAIL,
       ...mailOptions,
     });
     return true; // success
