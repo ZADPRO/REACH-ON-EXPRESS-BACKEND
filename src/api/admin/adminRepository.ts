@@ -765,12 +765,12 @@ export class adminRepository {
 
         logger.info("mailOptions", mailOptions);
 
-        const success = await sendEmail(mailOptions);
-
-        if (success) {
+        try {
+          await sendEmail(mailOptions);
           logger.info("Email sent successfully.");
-        } else {
-          logger.error("Failed to send email.");
+        } catch (error) {
+          console.error("Failed to send email:", error); // This logs to console
+          logger.error("Detailed email error:", error); // This logs to file/system
         }
       };
 
