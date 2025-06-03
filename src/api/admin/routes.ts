@@ -16,7 +16,7 @@ export class newRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addEmployee,
-            validate: validate.addEmployee,
+            // validate: validate.addEmployee,
             description: "add employee",
             tags: ["api", "users"],
             auth: false,
