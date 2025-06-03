@@ -6,6 +6,7 @@ import { EmployeePayAuditRoutes } from "./api/EmployeePayroal/routes";
 import { updateRoutes } from "./api/update/routes";
 import { financeRoutes } from "./api/finance/routes";
 import { UserRoutes } from "./api/user/routes";
+import { BatchProgramRoute } from "./api/batchRepo/routes";
 
 export default class Router {
   public static async loadRoutes(server: Hapi.Server): Promise<any> {
@@ -16,5 +17,6 @@ export default class Router {
     await new updateRoutes().register(server);
     await new financeRoutes().register(server);
     await new UserRoutes().register(server);
+    await new BatchProgramRoute().register(server);
   }
 }
