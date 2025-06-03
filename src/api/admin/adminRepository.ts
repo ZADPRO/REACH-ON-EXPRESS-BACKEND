@@ -766,7 +766,12 @@ export class adminRepository {
         logger.info("mailOptions", mailOptions);
 
         try {
-          await sendEmail(mailOptions);
+          const result = await sendEmail(mailOptions);
+          if (!result) {
+            logger.error(
+              "Email function returned false - delivery may have failed."
+            );
+          }
           logger.info("Email sent successfully.");
         } catch (error) {
           console.error("Failed to send email:", error); // This logs to console
