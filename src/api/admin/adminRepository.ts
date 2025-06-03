@@ -45,6 +45,7 @@ import {
 } from "../../helper/mailcontent";
 import { sendEmail } from "../../helper/mail";
 import moment from "moment";
+import logger from "../../helper/logger";
 
 export class adminRepository {
   public async addEmployeeV1(userData: any, token_data?: any): Promise<any> {
@@ -349,7 +350,7 @@ export class adminRepository {
   }
   public async adminloginV1(user_data: any, domain_code?: any): Promise<any> {
     try {
-      console.log("process.env", process.env);
+      logger.info("process.env", process.env);
       const params = [user_data.login];
       const users = await executeQuery(selectUserByLogin, params);
 
@@ -759,10 +760,12 @@ export class adminRepository {
             userData.refPhone
           ),
         };
+        logger.info("mailOptions", mailOptions);
         try {
           await sendEmail(mailOptions);
         } catch (error) {
           console.error("Failed to send email:", error);
+          logger.error("error", error);
         }
       };
       mail().catch(console.error);
