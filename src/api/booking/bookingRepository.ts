@@ -410,6 +410,125 @@ export class bookingRepository {
     }
   }
 
+  public async UpdateBulkParcelBookingDataV1(
+    user_data: any,
+    tokendata: any
+  ): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      await client.query("BEGIN");
+
+      const mappingData = user_data.mappingData;
+      console.log("mappingData", mappingData);
+
+      if (!Array.isArray(mappingData) || mappingData.length === 0) {
+        await client.query("ROLLBACK");
+        return encrypt(
+          {
+            success: false,
+            message: "Invalid or empty parcel data",
+            token: tokens,
+          },
+          true
+        );
+      }
+
+      // Define the column names in order
+      const columns = [
+        "DSR_BRANCH_CODE",
+        "DSR_CNNO",
+        "DSR_BOOKED_BY",
+        "DSR_CUST_CODE",
+        "DSR_CN_WEIGHT",
+        "DSR_CN_TYPE",
+        "DSR_DEST",
+        "DSR_MODE",
+        "DSR_NO_OF_PIECES",
+        "DSR_DEST_PIN",
+        "DSR_BOOKING_DATE",
+        "DSR_AMT",
+        "DSR_STATUS",
+        "DSR_POD_RECD",
+        "DSR_BOOKING_TIME",
+        "DSR_DOX",
+        "DSR_SERVICE_TAX",
+        "DSR_SPL_DISC",
+        "DSR_CONTENTS",
+        "DSR_REMARKS",
+        "DSR_VALUE",
+        "DSR_INVNO",
+        "DSR_INVDATE",
+        "MOD_DATE",
+        "OFFICE_TYPE",
+        "OFFICE_CODE",
+        "DSR_REFNO",
+        "MOD_TIME",
+        "NODEID",
+        "USERID",
+        "TRANS_STATUS",
+        "DSR_ACT_CUST_CODE",
+        "DSR_MOBILE",
+        "DSR_EMAIL",
+        "DSR_NDX_PAPER",
+        "DSR_PICKUP_TIME",
+        "DSR_VOL_WEIGHT",
+        "DSR_CAPTURED_WEIGHT",
+        "DSR_ID_NUM",
+        "FR_DP_CODE",
+      ];
+
+      const values: any[] = [];
+      console.log("values", values);
+      const placeholders: string[] = [];
+
+      mappingData.forEach((row, rowIndex) => {
+        const rowPlaceholders: string[] = [];
+
+        columns.forEach((col, colIndex) => {
+          values.push(row[col] || null); // Push value or null
+          rowPlaceholders.push(`$${rowIndex * columns.length + colIndex + 1}`);
+        });
+
+        placeholders.push(`(${rowPlaceholders.join(", ")})`);
+      });
+
+      const query = `
+      INSERT INTO public."bulkParcelDataMapping" (${columns.join(", ")})
+      VALUES ${placeholders.join(", ")}
+    `;
+
+      const result = await client.query(query, values);
+      console.log("result", result);
+
+      await client.query("COMMIT");
+
+      return encrypt(
+        {
+          success: true,
+          message: "Parcel booking data inserted successfully",
+          token: tokens,
+        },
+        true
+      );
+    } catch (error: unknown) {
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: "Failed to insert parcel booking data",
+          error: (error as Error).message,
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
   public async updateBookingV1(
     userData: any,
     tokenData: any,
