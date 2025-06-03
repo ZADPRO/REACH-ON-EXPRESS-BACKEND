@@ -28,6 +28,19 @@ export class bookingResolver {
       domain_code
     );
   }
+
+  public async FetchBulkMappedParcelData(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.adminRepository.FetchBulkMappedParcelData(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+
   public async updateBookingV1(
     user_data: any,
     token_data: any,

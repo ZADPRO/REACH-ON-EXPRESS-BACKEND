@@ -422,7 +422,6 @@ export class bookingRepository {
       await client.query("BEGIN");
 
       const mappingData = user_data.mappingData;
-      console.log("mappingData", mappingData);
 
       if (!Array.isArray(mappingData) || mappingData.length === 0) {
         await client.query("ROLLBACK");
@@ -430,6 +429,41 @@ export class bookingRepository {
           {
             success: false,
             message: "Invalid or empty parcel data",
+            token: tokens,
+          },
+          true
+        );
+      }
+
+      // Duplicate check
+      const duplicateValues = mappingData.map(
+        (row: any, index: number) => row.DSR_CNNO
+      );
+      const duplicatePlaceholders = duplicateValues
+        .map((_, index) => `$${index + 1}`)
+        .join(", ");
+
+      const duplicateQuery = `
+        SELECT dsr_cnno
+        FROM public."bulkParcelDataMapping"
+        WHERE dsr_cnno IN (${duplicatePlaceholders})
+      `;
+
+      const { rows: duplicateRows } = await client.query(
+        duplicateQuery,
+        duplicateValues
+      );
+
+      if (duplicateRows.length > 0) {
+        const duplicates = duplicateRows
+          .map((row) => `CNNO: ${row.dsr_cnno}`)
+          .join("; ");
+
+        await client.query("ROLLBACK");
+        return encrypt(
+          {
+            success: false,
+            message: `Duplicate parcel records found: ${duplicates}`,
             token: tokens,
           },
           true
@@ -481,7 +515,6 @@ export class bookingRepository {
       ];
 
       const values: any[] = [];
-      console.log("values", values);
       const placeholders: string[] = [];
 
       mappingData.forEach((row, rowIndex) => {
@@ -510,6 +543,49 @@ export class bookingRepository {
           success: true,
           message: "Parcel booking data inserted successfully",
           token: tokens,
+        },
+        true
+      );
+    } catch (error: unknown) {
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: "Failed to insert parcel booking data",
+          error: (error as Error).message,
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async FetchBulkMappedParcelData(
+    user_data: any,
+    tokendata: any
+  ): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      await client.query("BEGIN");
+
+      const query = `SELECT * FROM public."bulkParcelDataMapping"`;
+
+      const result = await client.query(query);
+      console.log("result", result);
+
+      await client.query("COMMIT");
+
+      return encrypt(
+        {
+          success: true,
+          message: "Parcel booking data inserted successfully",
+          token: tokens,
+          result: result.rows,
         },
         true
       );
