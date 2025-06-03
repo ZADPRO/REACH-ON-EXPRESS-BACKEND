@@ -19,15 +19,15 @@ const transporter = nodemailer.createTransport({
  * Sends an email using Nodemailer.
  * @param {MailOptions} mailOptions - Options for the email.
  */
-export const sendEmail = async (mailOptions: MailOptions): Promise<void> => {
+export const sendEmail = async (mailOptions: MailOptions): Promise<boolean> => {
   try {
     await transporter.sendMail({
-      from: process.env.EMAILID, // Sender address
+      from: process.env.EMAILID,
       ...mailOptions,
     });
+    return true; // success
   } catch (error) {
     console.error("Error sending email:", error);
+    return false; // failure
   }
 };
-
-

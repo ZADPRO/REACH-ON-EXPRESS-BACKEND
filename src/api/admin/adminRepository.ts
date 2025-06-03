@@ -754,20 +754,24 @@ export class adminRepository {
       const mail = async () => {
         const mailOptions = {
           to: userData.email,
-          subject: "You Accont has be Created Successfully In our Platform",
+          subject: "Your Account has been Created Successfully on Our Platform",
           html: generateCustomerWelcomeEmailContent(
             userData.refPhone,
             userData.refPhone
           ),
         };
+
         logger.info("mailOptions", mailOptions);
-        try {
-          await sendEmail(mailOptions);
-        } catch (error) {
-          console.error("Failed to send email:", error);
-          logger.error("error", error);
+
+        const success = await sendEmail(mailOptions);
+
+        if (success) {
+          logger.info("Email sent successfully.");
+        } else {
+          logger.error("Failed to send email.");
         }
       };
+
       mail().catch(console.error);
 
       // Insert Transaction History
