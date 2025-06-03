@@ -751,6 +751,8 @@ export class adminRepository {
         );
       }
 
+      logger.info("mail confoig", process.env);
+
       const mail = async () => {
         const mailOptions = {
           to: userData.email,
