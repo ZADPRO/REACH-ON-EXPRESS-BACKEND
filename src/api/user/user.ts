@@ -4,7 +4,7 @@ import { encrypt } from "../../helper/encrypt";
 import { CurrentTime } from "../../helper/common";
 import bcrypt from "bcryptjs";
 import { generateTokenWithExpire } from "../../helper/token";
-import { parcelDetails, UserLoginQuery } from "./query";
+import { parcelDetails, userDetailsQuery, UserLoginQuery } from "./query";
 import { updateHistoryQuery } from "../admin/query";
 
 export class UserRepo {
@@ -105,7 +105,18 @@ export class UserRepo {
     const tokens = generateTokenWithExpire(token, true);
 
     try {
-      const userParcelData = await executeQuery(parcelDetails, [token.id]);
+      const getUserDetails = await executeQuery(userDetailsQuery, [token.id]);
+      console.log("getUserDetails", getUserDetails);
+
+      // Check and extract refCode
+      const refCode = getUserDetails?.[0]?.refCode; // Safely access first item
+
+      if (!refCode) {
+        throw new Error("refCode not found for this user.");
+      }
+
+      // Pass refCode to parcelDetails query
+      const userParcelData = await executeQuery(parcelDetails, [refCode]);
       console.log("userParcelData", userParcelData);
       return encrypt(
         {

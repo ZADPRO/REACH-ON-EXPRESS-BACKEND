@@ -34,7 +34,7 @@ export class BatchRepository {
       // Get CNNOs where tempStatus is not 'DLV'
       const cnnoResults = await client.query(
         `
-        SELECT bpd.dsr_cnno, bpd.id FROM "bulkParcelDataMapping" bpd WHERE "tempStatus" IS DISTINCT FROM 'DLV' ORDER BY bpd.id ASC LIMIT 1;
+        SELECT bpd.dsr_cnno, bpd.id FROM "bulkParcelDataMapping" bpd WHERE "tempStatus" IS DISTINCT FROM 'DLV' ORDER BY bpd.id ASC;
         `
       );
 
@@ -74,9 +74,7 @@ export class BatchRepository {
               await client.query(
                 `UPDATE "bulkParcelDataMapping"
                  SET "tempStatus" = $1,
-                     "overallStatus" = $2,
-                     "mod_date" = TO_CHAR(NOW(), 'YYYY-MM-DD'),
-                     "mod_time" = TO_CHAR(NOW(), 'HH24:MI:SS')
+                     "overallStatus" = $2
                  WHERE dsr_cnno = $3`,
                 [tempStatus, overallStatus, cnno]
               );

@@ -4,6 +4,9 @@ export const UserLoginQuery = `
 `;
 
 export const parcelDetails = `
-select * from "public"."VendorParcelBooking" vpc
-where vpc."refCustomerId" = $1;
+select * from public."bulkParcelDataMapping" bpc where bpc.dsr_value = $1 ORDER BY bpc.id ASC;
+`;
+
+export const userDetailsQuery = `
+select * from public.customers c where c."refCustomerId" = $1;
 `;
