@@ -1,6 +1,7 @@
 "use strict";
 
 const Hapi = require("@hapi/hapi");
+import { startCronJobs } from "./batchPrgm/dailyPrgm";
 import logger from "./helper/logger";
 import Router from "./routes";
 
@@ -28,7 +29,7 @@ const init = async () => {
     });
 
     await Router.loadRoutes(server);
-
+    startCronJobs();
     await server.start((error: any) => {
       if (error) {
         logger.error(error);

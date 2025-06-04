@@ -350,7 +350,6 @@ export class adminRepository {
   }
   public async adminloginV1(user_data: any, domain_code?: any): Promise<any> {
     try {
-      logger.info("process.env", process.env);
       const params = [user_data.login];
       const users = await executeQuery(selectUserByLogin, params);
 
