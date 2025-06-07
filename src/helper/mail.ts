@@ -10,8 +10,8 @@ interface MailOptions {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "reachonexpress@gmail.com",
-    pass: "moji amqt skqr xjbu",
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
   },
   logger: true, // Enable internal logging
   debug: true, // Show debug output
@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
 export const sendEmail = async (mailOptions: MailOptions): Promise<boolean> => {
   try {
     await transporter.sendMail({
-      from: "reachonexpress@gmail.com",
+      from: process.env.EMAIL,
       ...mailOptions,
     });
     return true; // success
