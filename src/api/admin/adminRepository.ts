@@ -766,6 +766,7 @@ export class adminRepository {
 
         try {
           const result = await sendEmail(mailOptions);
+          logger.info("Result of email", result);
           if (!result) {
             logger.error(
               "Email function returned false - delivery may have failed."
