@@ -759,7 +759,7 @@ export class adminRepository {
             userData.refPhone
           ),
         };
-
+logger.info("\n\n.env\n",process.env,"\n\n")
         logger.info("mailOptions", mailOptions);
 
         logger.info("Email Cred", process.env.EMAIL, process.env.PASSWORD);
