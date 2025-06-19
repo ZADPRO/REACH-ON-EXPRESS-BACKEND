@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
  */
 export const sendEmail = async (mailOptions: MailOptions): Promise<boolean> => {
   try {
-              logger.info("Mail sending Log ");
+    logger.info("Mail sending Log ");
 
     await transporter.sendMail({
       from: process.env.EMAIL,
@@ -32,8 +32,8 @@ export const sendEmail = async (mailOptions: MailOptions): Promise<boolean> => {
     });
     return true; // success
   } catch (error) {
-              logger.error("Mail sending Log Error", error);
-    
+    logger.error("Mail sending Log Error", error);
+
     console.error("Error sending email:", error);
     return false; // failure
   }

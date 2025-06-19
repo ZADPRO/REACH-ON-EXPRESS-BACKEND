@@ -750,8 +750,6 @@ export class adminRepository {
         );
       }
 
-      logger.info("mail confoig", process.env);
-
       const mail = async () => {
         const mailOptions = {
           to: userData.email,
@@ -764,6 +762,7 @@ export class adminRepository {
 
         logger.info("mailOptions", mailOptions);
 
+        logger.info("Email Cred", process.env.EMAIL, process.env.PASSWORD);
         try {
           const result = await sendEmail(mailOptions);
           logger.info("Result of email", result);
