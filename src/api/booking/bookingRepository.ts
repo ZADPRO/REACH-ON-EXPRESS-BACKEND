@@ -421,7 +421,10 @@ export class bookingRepository {
     try {
       await client.query("BEGIN");
 
+      logger.info("user data", user_data);
       const mappingData = user_data.mappingData;
+
+      logger.info("Mapping data", mappingData);
 
       if (!Array.isArray(mappingData) || mappingData.length === 0) {
         await client.query("ROLLBACK");
@@ -435,6 +438,7 @@ export class bookingRepository {
         );
       }
 
+      logger.info("before duplication --------- > ");
       // Duplicate check
       const duplicateValues = mappingData.map(
         (row: any, index: number) => row.DSR_CNNO
@@ -533,8 +537,11 @@ export class bookingRepository {
       VALUES ${placeholders.join(", ")}
     `;
 
+      logger.info("query", query);
+
       const result = await client.query(query, values);
       console.log("result", result);
+      logger.info("result", result);
 
       await client.query("COMMIT");
 
@@ -547,6 +554,7 @@ export class bookingRepository {
         true
       );
     } catch (error: unknown) {
+      logger.error("error", error);
       await client.query("ROLLBACK");
       return encrypt(
         {
