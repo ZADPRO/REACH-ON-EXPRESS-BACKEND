@@ -34,6 +34,11 @@ export class bookingRoutes implements IRoute {
 
             tags: ["api", "users"],
             auth: false,
+            payload: {
+              maxBytes: 50 * 1024 * 1024, // 50MB limit
+              output: "data", // Required if you're expecting a JSON body
+              parse: true,
+            },
           },
         },
 
