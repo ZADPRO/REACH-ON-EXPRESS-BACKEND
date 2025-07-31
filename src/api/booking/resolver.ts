@@ -41,6 +41,30 @@ export class bookingResolver {
     );
   }
 
+  public async FetchPendingDataRepo(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.adminRepository.FetchPendingDataRepo(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+
+  public async UpdatePendingData(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.adminRepository.UpdatePendingData(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+
   public async updateBookingV1(
     user_data: any,
     token_data: any,

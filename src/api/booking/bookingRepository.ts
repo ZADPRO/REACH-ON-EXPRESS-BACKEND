@@ -747,7 +747,8 @@ export class bookingRepository {
     try {
       await client.query("BEGIN");
 
-      const query = `SELECT * FROM public."bulkParcelDataMapping"`;
+      const query = `SELECT * FROM public."bulkParcelDataMapping"
+          ORDER BY id ASC;`;
 
       const result = await client.query(query);
       console.log("result", result);
@@ -769,6 +770,97 @@ export class bookingRepository {
         {
           success: false,
           message: "Failed to insert parcel booking data",
+          error: (error as Error).message,
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async FetchPendingDataRepo(
+    user_data: any,
+    tokendata: any
+  ): Promise<any> {
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      await client.query("BEGIN");
+
+      const query = `SELECT *
+        FROM public."bulkParcelDataMapping"
+        WHERE "tempStatus" IS NULL OR "tempStatus" = '-'
+        ORDER BY id ASC;`;
+
+      const result = await client.query(query);
+      console.log("result", result);
+
+      await client.query("COMMIT");
+
+      return encrypt(
+        {
+          success: true,
+          message: "Parcel booking data inserted successfully",
+          token: tokens,
+          result: result.rows,
+        },
+        true
+      );
+    } catch (error: unknown) {
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: "Failed to insert parcel booking data",
+          error: (error as Error).message,
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async UpdatePendingData(user_data: any, tokendata: any): Promise<any> {
+    console.log("user_data", user_data);
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      await client.query("BEGIN");
+
+      for (const { id, status } of user_data.updates) {
+        const updateQuery = `
+          UPDATE public."bulkParcelDataMapping"
+          SET "tempStatus" = $1
+          WHERE id = $2
+        `;
+        await client.query(updateQuery, [status, id]);
+      }
+
+      await client.query("COMMIT");
+
+      return encrypt(
+        {
+          success: true,
+          message: "Parcel booking data updated successfully",
+          token: tokens,
+          // result: result.rows,
+        },
+        true
+      );
+    } catch (error: unknown) {
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: "Failed to update parcel booking data",
           error: (error as Error).message,
           token: tokens,
         },

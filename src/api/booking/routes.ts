@@ -56,6 +56,32 @@ export class bookingRoutes implements IRoute {
         },
 
         {
+          method: "GET",
+          path: "/api/v1/route/fetchPendingMappingData",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.FetchPendingData,
+            // validate: validate.parcelBooking,
+            description: "booking ",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+
+        {
+          method: "POST",
+          path: "/api/v1/route/updatePendingData",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.UpdatePendingData,
+            // validate: validate.parcelBooking,
+            description: "booking ",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+
+        {
           method: "POST",
           path: "/api/v1/route/updateBooking",
           config: {

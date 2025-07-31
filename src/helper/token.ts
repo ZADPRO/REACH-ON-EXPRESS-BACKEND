@@ -12,7 +12,7 @@ if (!process.env.ACCESS_TOKEN) {
   throw new Error("ACCESS_TOKEN not found in .env file");
 }
 
-const TOKEN_EXPIRATION = "1d";
+const TOKEN_EXPIRATION = "10d";
 
 // WITH TOKEN EXPIRATION
 function generateTokenWithExpire(

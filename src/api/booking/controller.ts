@@ -109,6 +109,72 @@ export class booking {
     }
   };
 
+  public FetchPendingData = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------booking ");
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      // const decodedToken = {
+      //   id: 1,
+      // };
+
+      let entity;
+      entity = await this.resolver.FetchPendingDataRepo(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in booking:", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
+
+  public UpdatePendingData = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------booking ");
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      // const decodedToken = {
+      //   id: 1,
+      // };
+
+      let entity;
+      entity = await this.resolver.UpdatePendingData(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in booking:", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
+
   public updateBooking = async (
     request: any,
     response: Hapi.ResponseToolkit

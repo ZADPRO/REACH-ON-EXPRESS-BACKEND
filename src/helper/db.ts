@@ -5,7 +5,7 @@ dotenv.config();
 
 const pool = new Pool({
   user: process.env.DB_USER || "reachonexpress",
-  host: process.env.DB_HOST || "zadroit.brightoncloudtech.com",
+  host: process.env.DB_HOST || "192.168.1.112",
   database: process.env.DB_NAME || "reachonexpress_db",
   password: process.env.DB_PASSWORD || "reachoneadmin@2025",
   port: Number(process.env.DB_PORT) || 5436,
