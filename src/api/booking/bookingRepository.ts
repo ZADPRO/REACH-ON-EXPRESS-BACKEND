@@ -832,16 +832,53 @@ export class bookingRepository {
     const token = { id: tokendata.id };
     const tokens = generateTokenWithExpire(token, true);
 
+    const hardCodedOverallStatus = JSON.stringify([
+      {
+        strCode: "BKD",
+        strAction: "Booked",
+        strManifestNo: "",
+        strOrigin: "ERODE BRANCH",
+        strDestination: "",
+        strOriginCode: "E03",
+        strDestinationCode: "",
+        strActionDate: "10062025",
+        strActionTime: "0035",
+        sTrRemarks: "",
+        strLatitude: "",
+        strLongitude: "",
+        strNDCOTP: "",
+      },
+      {
+        strCode: "RTODLV",
+        strAction: "Delivered",
+        strManifestNo: "5074983789",
+        strOrigin: "TIRUPATI BRANCH",
+        strDestination: "",
+        strOriginCode: "V01",
+        strDestinationCode: "",
+        strActionDate: "12062025",
+        strActionTime: "2010",
+        sTrRemarks: "MANASA PULI",
+        strSCDOTP: "N",
+        strLatitude: "13.62898980",
+        strLongitude: "79.41043100",
+        strNDCOTP: "",
+      },
+    ]);
+
     try {
       await client.query("BEGIN");
 
       for (const { id, status } of user_data.updates) {
         const updateQuery = `
-          UPDATE public."bulkParcelDataMapping"
-          SET "tempStatus" = $1
-          WHERE id = $2
-        `;
-        await client.query(updateQuery, [status, id]);
+        UPDATE public."bulkParcelDataMapping"
+        SET 
+          "tempStatus" = $1,
+          "overallStatus" = $2
+        WHERE id = $3
+      `;
+
+        await client.query(updateQuery, [status, hardCodedOverallStatus, id]);
       }
 
       await client.query("COMMIT");
@@ -851,7 +888,6 @@ export class bookingRepository {
           success: true,
           message: "Parcel booking data updated successfully",
           token: tokens,
-          // result: result.rows,
         },
         true
       );
