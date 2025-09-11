@@ -1421,4 +1421,54 @@ export class bookingRepository {
       );
     }
   }
+
+  public async getAllComplaintsV1(userData: any, tokenData: any): Promise<any> {
+    const token = { id: tokenData.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const getAllComplaintsQuery = `
+        SELECT
+          rc.id,
+          rc."refReqId",
+          rc."complaintType",
+          rc."Description",
+          rc."complaintStatus",
+          c."refCustomerName",
+          c."refCustomerId",
+          c."refCustomerId",
+          c."refEmail"
+        FROM
+          public."raiseComplaint" rc
+          JOIN public.customers c ON rc."createdBy"::integer = c."refCustomerId"
+        WHERE
+          rc."isDelete" = false
+        ORDER BY
+          rc.id ASC;  
+    `;
+
+      const result = await executeQuery(getAllComplaintsQuery);
+
+      return encrypt(
+        {
+          success: true,
+          message: "Complaints retrieved successfully",
+          token: tokens,
+          data: result,
+        },
+        true
+      );
+    } catch (error: any) {
+      console.error("Error in getAllComplaintsV1:", error.message);
+
+      return encrypt(
+        {
+          success: false,
+          message: `Error retrieving complaints: ${error.message}`,
+          token: tokens,
+        },
+        true
+      );
+    }
+  }
 }

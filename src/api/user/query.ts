@@ -3,8 +3,19 @@ export const UserLoginQuery = `
   WHERE "refPhone" = $1;
 `;
 
-export const parcelDetails = `
-select * from public."bulkParcelDataMapping" bpc where bpc.dsr_value = $1 ORDER BY bpc.id ASC;
+export const parcelDetailsPaginated = `
+  SELECT *
+  FROM public."bulkParcelDataMapping" bpc
+  WHERE bpc.dsr_value = $1
+    AND (
+      $4 = '' OR
+      bpc.dsr_cnno ILIKE '%' || $4 || '%' OR
+      bpc.dsr_dest ILIKE '%' || $4 || '%' OR
+      bpc.dsr_dest_pin::text ILIKE '%' || $4 || '%' OR
+      bpc.dsr_contents ILIKE '%' || $4 || '%'
+    )
+  ORDER BY bpc.id ASC
+  LIMIT $2 OFFSET $3;
 `;
 
 export const userDetailsQuery = `

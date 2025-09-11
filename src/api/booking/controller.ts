@@ -395,4 +395,33 @@ export class booking {
         .code(500);
     }
   };
+
+  public getAllComplaints = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router ------------get all complaints");
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      let entity;
+      entity = await this.resolver.getAllComplaintsV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(200);
+      }
+      return response.response(entity).code(200);
+    } catch (error) {
+      logger.error("Error in get all complaints", error);
+      return response
+        .response({
+          success: false,
+          message: "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
 }

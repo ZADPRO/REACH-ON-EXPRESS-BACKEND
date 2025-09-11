@@ -47,7 +47,7 @@ export class UserController {
       };
       let entity;
       entity = await this.resolver.userParcelDetailsV1(
-        request.payload,
+        request.query,
         decodedToken
       );
       if (entity.success) {

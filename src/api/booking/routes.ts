@@ -173,6 +173,20 @@ export class bookingRoutes implements IRoute {
             auth: false,
           },
         },
+
+        // COMPLAINT
+        {
+          method: "GET",
+          path: "/api/v1/route/complaints",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getAllComplaints,
+            // validate: validate.addreportData,
+            description: "complaint retrieve",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

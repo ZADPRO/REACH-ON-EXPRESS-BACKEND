@@ -4,7 +4,11 @@ import { encrypt } from "../../helper/encrypt";
 import { CurrentTime } from "../../helper/common";
 import bcrypt from "bcryptjs";
 import { generateTokenWithExpire } from "../../helper/token";
-import { parcelDetails, userDetailsQuery, UserLoginQuery } from "./query";
+import {
+  parcelDetailsPaginated,
+  userDetailsQuery,
+  UserLoginQuery,
+} from "./query";
 import { updateHistoryQuery } from "../admin/query";
 
 export class UserRepo {
@@ -101,45 +105,39 @@ export class UserRepo {
   ): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokenData.id };
-    console.log("token", token.id);
     const tokens = generateTokenWithExpire(token, true);
 
     try {
       const getUserDetails = await executeQuery(userDetailsQuery, [token.id]);
-      console.log("getUserDetails", getUserDetails);
+      const refCode = getUserDetails?.[0]?.refCode;
 
-      // Check and extract refCode
-      const refCode = getUserDetails?.[0]?.refCode; // Safely access first item
+      if (!refCode) throw new Error("refCode not found for this user.");
 
-      if (!refCode) {
-        throw new Error("refCode not found for this user.");
-      }
+      const { page = 1, limit = 50, search = "" } = user_data;
+      const offset = (page - 1) * limit;
 
-      // Pass refCode to parcelDetails query
-      const userParcelData = await executeQuery(parcelDetails, [refCode]);
-      console.log("userParcelData", userParcelData);
+      const userParcelData = await executeQuery(parcelDetailsPaginated, [
+        refCode,
+        limit,
+        offset,
+        search,
+      ]);
+
       return encrypt(
         {
           success: true,
           message: "User Parcel Details Sent Successfully",
           token: tokens,
-          userParcelData: userParcelData,
+          userParcelData,
         },
         true
       );
     } catch (error: any) {
       await client.query("ROLLBACK");
-
-      console.error("Error during login:", error);
-
       return encrypt(
         {
           success: false,
-          message: "Login failed",
-          error:
-            error instanceof Error
-              ? error.message
-              : "An unknown error occurred",
+          message: error.message ?? "Login failed",
           token: generateTokenWithExpire({ id: tokenData.id }, true),
         },
         true
