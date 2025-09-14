@@ -242,16 +242,44 @@ export class UserController {
         id: request.plugins.token.id,
       };
       let entity;
-      entity = await this.resolver.userParDetV1(
-        request.payload,
-        decodedToken
-      );
+      entity = await this.resolver.userParDetV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
       logger.error("Error in user login", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
+
+  public indivParcelDetailsV1 = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info("Router--------user parcel data controller");
+    try {
+      const decodedToken = { id: request.plugins.token.id };
+
+      const entity = await this.resolver.indivParcelDetailsV1(
+        { parcelId: request.params.parcelId }, // pass parcelId
+        decodedToken
+      );
+
+      if (entity.success) {
+        return response.response(entity).code(201);
+      }
+      return response.response(entity).code(200);
+    } catch (error) {
+      logger.error("Error in indivParcelDetails", error);
       return response
         .response({
           success: false,

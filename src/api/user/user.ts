@@ -5,6 +5,7 @@ import { CurrentTime } from "../../helper/common";
 import bcrypt from "bcryptjs";
 import { generateTokenWithExpire } from "../../helper/token";
 import {
+  indivParcelQuery,
   latestParcelData,
   parcelDetailsPaginated,
   userDetailsQuery,
@@ -496,6 +497,45 @@ export class UserRepo {
         {
           success: false,
           message: error.message ?? "Login failed",
+          token: generateTokenWithExpire({ id: tokenData.id }, true),
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async indivParcelDetailsV1(
+    user_data: any,
+    tokenData: any
+  ): Promise<any> {
+    console.log("user_data", user_data);
+    const client: PoolClient = await getClient();
+    const token = { id: tokenData.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      // Run query with parcelId (from params or payload)
+      const indivParcel = await executeQuery(indivParcelQuery, [
+        user_data.parcelId, // make sure you pass parcelId
+      ]);
+
+      return encrypt(
+        {
+          success: true,
+          message: "Individual Parcel Details Sent Successfully",
+          token: tokens,
+          parcel: indivParcel?.[0] || null, // return only one row
+        },
+        true
+      );
+    } catch (error: any) {
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: error.message ?? "Fetching parcel failed",
           token: generateTokenWithExpire({ id: tokenData.id }, true),
         },
         true

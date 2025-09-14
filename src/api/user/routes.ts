@@ -98,6 +98,17 @@ export class UserRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "GET",
+          path: "/api/v1/UserRoutes/parcelDetails/{parcelId}",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.indivParcelDetailsV1,
+            description: "updatePartners",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

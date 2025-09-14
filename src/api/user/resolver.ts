@@ -18,7 +18,7 @@ export class UserReporesolver {
   }
 
   public async raiseRequestV1(userData: any, tokenData?: any): Promise<any> {
-    console.log('userData in resoler - raiseRequestV1', userData)
+    console.log("userData in resoler - raiseRequestV1", userData);
     return await this.userRepo.raiseRequestV1(userData, tokenData);
   }
 
@@ -41,10 +41,10 @@ export class UserReporesolver {
     return await this.userRepo.getAllComplaintsV1(userData, tokenData);
   }
 
-  public async userParDetV1(
-    userData: any,
-    tokenData?: any
-  ): Promise<any> {
+  public async userParDetV1(userData: any, tokenData?: any): Promise<any> {
     return await this.userRepo.userParDetV1(userData, tokenData);
+  }
+  public async indivParcelDetailsV1(userData: any, tokenData?: any): Promise<any> {
+    return await this.userRepo.indivParcelDetailsV1(userData, tokenData);
   }
 }

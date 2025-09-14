@@ -38,3 +38,11 @@ SELECT *
   ORDER BY bpc.id DESC
   LIMIT 1;
 `;
+
+export const indivParcelQuery = `
+  SELECT *
+  FROM public."bulkParcelDataMapping" bpc
+  WHERE bpc.id = $1
+  ORDER BY bpc.id DESC
+  LIMIT 1;
+`;
