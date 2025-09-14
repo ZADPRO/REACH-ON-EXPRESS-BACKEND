@@ -36,7 +36,7 @@ export class UserRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/userRoutes/raiseRequest",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.raiseRequestV1,
             description: "updatePartners",
             tags: ["api", "users"],
@@ -82,6 +82,17 @@ export class UserRoutes implements IRoute {
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.getAllComplaintsV1,
+            description: "updatePartners",
+            tags: ["api", "users"],
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
+          path: "/api/v1/UserRoutes/userParcelDet",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.userParDetV1,
             description: "updatePartners",
             tags: ["api", "users"],
             auth: false,

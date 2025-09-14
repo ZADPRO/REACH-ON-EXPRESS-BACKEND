@@ -5,9 +5,11 @@ import { CurrentTime } from "../../helper/common";
 import bcrypt from "bcryptjs";
 import { generateTokenWithExpire } from "../../helper/token";
 import {
+  latestParcelData,
   parcelDetailsPaginated,
   userDetailsQuery,
   UserLoginQuery,
+  userParcelDetailsAnalysisQuery,
 } from "./query";
 import { updateHistoryQuery } from "../admin/query";
 
@@ -452,6 +454,48 @@ export class UserRepo {
             error instanceof Error
               ? error.message
               : "An unknown error occurred",
+          token: generateTokenWithExpire({ id: tokenData.id }, true),
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async userParDetV1(user_data: any, tokenData: any): Promise<any> {
+    console.log("user_data", user_data);
+    const client: PoolClient = await getClient();
+    const token = { id: tokenData.id };
+    const tokens = generateTokenWithExpire(token, true);
+
+    try {
+      const getUserDetails = await executeQuery(
+        userParcelDetailsAnalysisQuery,
+        [user_data.userData]
+      );
+      console.log("getUserDetails", getUserDetails);
+
+      const latestParcelDetails = await executeQuery(latestParcelData, [
+        user_data.userData,
+      ]);
+
+      return encrypt(
+        {
+          success: true,
+          message: "User Parcel Details Sent Successfully",
+          token: tokens,
+          getUserDetails,
+          latestParcelDetails,
+        },
+        true
+      );
+    } catch (error: any) {
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: error.message ?? "Login failed",
           token: generateTokenWithExpire({ id: tokenData.id }, true),
         },
         true
