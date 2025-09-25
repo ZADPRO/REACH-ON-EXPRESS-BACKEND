@@ -248,6 +248,16 @@ export class newRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "POST",
+          path: "/api/v1/route/complaints/resolve",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.resolveComplaints,
+            description: "get sub category",
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

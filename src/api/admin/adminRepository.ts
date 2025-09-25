@@ -759,7 +759,7 @@ export class adminRepository {
             userData.refPhone
           ),
         };
-logger.info("\n\n.env\n",process.env,"\n\n")
+        logger.info("\n\n.env\n", process.env, "\n\n");
         logger.info("mailOptions", mailOptions);
 
         logger.info("Email Cred", process.env.EMAIL, process.env.PASSWORD);
@@ -1559,6 +1559,75 @@ logger.info("\n\n.env\n",process.env,"\n\n")
         },
         true
       );
+    }
+  }
+
+  public async resolveComplaintsRepoV1(
+    userData: any,
+    tokendata: any
+  ): Promise<any> {
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithExpire(token, true);
+    const client: PoolClient = await getClient();
+
+    try {
+      const { complaintId, resolutionAction, notes } = userData;
+
+      const query = `
+      UPDATE "raiseComplaint"
+      SET "complaintStatus" = $1,
+          "solutionDesc" = $2,
+          "updatedAt" = NOW(),
+          "updatedBy" = $3
+      WHERE id = $4
+      RETURNING *;
+    `;
+
+      const values = [
+        "Resolved", // status always becomes Resolved
+        `${resolutionAction}${notes ? " - " + notes : ""}`, // keep reason+notes
+        tokendata.id.toString(),
+        complaintId,
+      ];
+
+      const result = await client.query(query, values);
+
+      if (result.rowCount === 0) {
+        return encrypt(
+          {
+            success: false,
+            message: "Complaint not found or update failed",
+            token: tokens,
+          },
+          true
+        );
+      }
+
+      return encrypt(
+        {
+          success: true,
+          message: "Complaint resolved successfully",
+          data: result.rows[0],
+          token: tokens,
+        },
+        true
+      );
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error resolving complaint:", error);
+
+      return encrypt(
+        {
+          success: false,
+          message: "Complaint resolution failed",
+          error: errorMessage,
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
     }
   }
 }
