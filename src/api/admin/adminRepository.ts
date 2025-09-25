@@ -1630,4 +1630,67 @@ export class adminRepository {
       client.release();
     }
   }
+
+  public async getAllRaiseRequests(
+    user_data: any,
+    token_data: any,
+    domain_code?: any
+  ): Promise<any> {
+    const tokenId = token_data?.id;
+    if (!tokenId) {
+      throw new Error("Token data is missing or invalid");
+    }
+
+    const tokens = generateTokenWithExpire({ id: tokenId }, true);
+    const client: PoolClient = await getClient();
+
+    try {
+      const query = `
+      SELECT 
+        "reqId",
+        "senderName",
+        "senderId",
+        "senderMobile",
+        "receiverName",
+        "receiverMobile",
+        "receiverPincode",
+        "parcelDetails",
+        "boxCount",
+        weight,
+        specifications,
+        "createdAt",
+        "createdBy",
+        "isDelete",
+        "isAccepted",
+        "latestStatus"
+      FROM "raiseRequest"
+      WHERE "isDelete" IS DISTINCT FROM true
+      ORDER BY "reqId" DESC;
+    `;
+      const result = await client.query(query);
+
+      return encrypt(
+        {
+          success: true,
+          message: "Raise requests fetched successfully",
+          data: result.rows,
+          token: tokens,
+        },
+        true
+      );
+    } catch (error) {
+      console.error("Error fetching raise requests:", error);
+      return encrypt(
+        {
+          success: false,
+          message: "Failed to fetch raise requests",
+          error: error instanceof Error ? error.message : "Unknown error",
+          token: tokens,
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
 }

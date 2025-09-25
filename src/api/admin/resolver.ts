@@ -239,4 +239,16 @@ export class Resolver {
       domain_code
     );
   }
+
+  public async getAllrequestForAdminResolver(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    return await this.adminRepository.getAllRaiseRequests(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
 }

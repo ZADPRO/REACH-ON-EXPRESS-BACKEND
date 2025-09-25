@@ -258,6 +258,16 @@ export class newRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "GET",
+          path: "/api/v1/Routes/getAllRequests",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getAllRequestsForAdmin,
+            description: "get sub category",
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });
